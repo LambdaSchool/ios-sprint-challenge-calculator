@@ -93,6 +93,9 @@
 		CE5FC8F7229F4C7A00BE719B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					four,
+				);
 				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Lambda School";

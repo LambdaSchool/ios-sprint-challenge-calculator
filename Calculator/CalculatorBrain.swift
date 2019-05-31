@@ -12,6 +12,13 @@ class CalculatorBrain {
     var operand1String = ""
     var operand2String = ""
     
+    enum OperatorType {
+        case addition
+        case subtraction
+        case multiplication
+        case division
+    }
+    
     func addOperandDigit(_ digit: String) -> String {
         
     }

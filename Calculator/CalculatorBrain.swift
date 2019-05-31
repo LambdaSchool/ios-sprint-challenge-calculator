@@ -31,7 +31,16 @@ class CalculatorBrain {
     }
     
     func setOperator(_ operatorString: String) {
-        
+        switch operatorString {
+        case "+":
+            operatorType = .addition
+        case "-":
+            operatorType = .subtraction
+        case "×":
+            operatorType = .multiplication
+        default:
+            operatorType = .division
+        }
     }
     
     func calculateIfPossible() -> String? {

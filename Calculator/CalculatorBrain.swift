@@ -42,8 +42,20 @@ class CalculatorBrain {
             operatorType = .division
         }
     }
-    
-    func calculateIfPossible() -> String? {
 
-    }
+//    func calculateIfPossible() -> String? {
+//        if operand1String != "" && operand2String != "" && operatorType != nil {
+//            var outcome: Double = 0.0
+//            var operatorSymbol = operatorType
+//            var operand1StringDouble = Double(operand1String)
+//            var operand2StringDouble = Double(operand2String)
+//
+//            switch operatorSymbol?.rawValue {
+//                case "+":
+//                    outcome = operand1StringDouble + operand2StringDouble
+//                case "-":
+//                    outcome =
+//            }
+//        }
+//    }
 }

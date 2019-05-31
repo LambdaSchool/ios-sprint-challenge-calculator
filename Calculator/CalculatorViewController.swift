@@ -33,31 +33,31 @@ class CalculatorViewController: UIViewController {
     }
     
     // MARK: - Action Handlers
-    
+    var firstNumber = ""
+    var secondNumber = ""
+    var selectedOperator: OperatorType = .addition
     @IBAction func operandTapped(_ choiceSender: UIButton) {
-        var firstNumber = ""
         if let uNumberOne = choiceSender.currentTitle {
-            firstNumber = String(uNumberOne)
+            firstNumber = uNumberOne
         }
         
-        outputLabel.text = calcBrain.addOperandDigitOne(firstNumber)
+        outputLabel.text = String(calcBrain.addOperandDigitOne(firstNumber))
         
+        calcBrain.operand2String = choiceSender.currentTitle
+        if let uNumberTwo = calcBrain.operand2String {
         
-        //var secondNumber = ""
-        //calcBrain.operand2String = choiceSender.currentTitle
-        //if let uNumberTwo = calcBrain.operand2String {
-        //
-        //    secondNumber = uNumberTwo
-        //}
+            secondNumber = uNumberTwo
+        }
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        
-        calcBrain.setOperator(<#T##operatorString: String##String#>)
+        if let selecedOperator = title {
+            selectedOperator = calcBrain.setOperator(selecedOperator)
+        }
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        outputLabel.text = calcBrain.calculateIfPossible(digit1: calcBrain.addOperandDigitOne(firstNumber), digit2: calcBrain.addOperandDigitTwo(secondNumber), operatorSelected: calcBrain.setOperator(selectedOperator.rawValue))
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {

@@ -12,20 +12,37 @@ enum OperatorType: String {
     case subtraction = "-"
     case multiplication = "*"
     case division = "/"
+    case none = ""
 }
 class CalculatorBrain {
     var operand1String: String?
     var operand2String: String?
 
-    func addOperandDigitOne(_ digit1: String) -> String {
-        return digit1
+    func addOperandDigitOne(_ digit1: String) -> Int {
+        var num1 = Int(digit1) ?? 0
+        return num1
     }
-    func addOperandDigitTwo(_ digit2: String) -> String {
-        return digit2
+    func addOperandDigitTwo(_ digit2: String) -> Int {
+        var num2 = Int(digit2) ?? 0
+        return num2
     }
 
-    func setOperator(_ operatorString: String) {
-        let operatorType: OperatorType?
+    func setOperator(_ operatorString: String) -> OperatorType {
+        var selectedOperator: OperatorType
+        switch operatorString {
+        case "+":
+           selectedOperator = .addition
+        case "-":
+            selectedOperator = .subtraction
+        case "*":
+            selectedOperator = .multiplication
+        case "/":
+            selectedOperator = .division
+        default:
+            print("Invalid Input")
+        }
+        
+        return selectedOperator
     }
 
     func calculateIfPossible(digit1: Int, digit2: Int, operatorSelected: OperatorType) -> String? {
@@ -39,6 +56,8 @@ class CalculatorBrain {
             result = digit1 * digit2
         case .division:
             result = digit1 / digit2
+        case .none:
+            print("Invalid Input")
         }
         
         return String(result)

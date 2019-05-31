@@ -35,7 +35,8 @@ class CalculatorViewController: UIViewController {
     // MARK: - Action Handlers
     var firstNumber = ""
     var secondNumber = ""
-    var selectedOperator: OperatorType = .addition
+    var selectedOperator: OperatorType = .none
+    
     @IBAction func operandTapped(_ choiceSender: UIButton) {
         if let uNumberOne = choiceSender.currentTitle {
             firstNumber = uNumberOne
@@ -51,7 +52,7 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        if let selecedOperator = title {
+        if let selecedOperator = sender.currentTitle {
             selectedOperator = calcBrain.setOperator(selecedOperator)
         }
     }

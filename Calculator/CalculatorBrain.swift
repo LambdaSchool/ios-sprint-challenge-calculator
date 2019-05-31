@@ -34,9 +34,9 @@ class CalculatorBrain {
            selectedOperator = .addition
         case "-":
             selectedOperator = .subtraction
-        case "*":
+        case "×":
             selectedOperator = .multiplication
-        case "/":
+        case "÷":
             selectedOperator = .division
         default:
             print("Invalid Input")

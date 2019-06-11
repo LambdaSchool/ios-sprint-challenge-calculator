@@ -10,51 +10,58 @@ import Foundation
 
 enum OperatorType: String {
     case addition = "+"
-    case subtraction = "-"
-    case multiplication = "*"
-    case division = "/"
-    
-    
-}
-    
-var selectedOperator: OperatorType {
-    switch selectedOperator {
-    case .addition:
-        return OperatorType(rawValue: "+")!
-    case .subtraction:
-        return OperatorType(rawValue: "-")!
-    case .multiplication:
-        return OperatorType(rawValue: "*")!
-    case .division:
-        return OperatorType(rawValue: "/")!
-        
-    default:
-        break
-    }
+    case subtraction = "−"
+    case multiplication = "×"
+    case division = "÷"
     
 }
+
 
 class CalculatorBrain {
     var operand1String = ""
     var operand2String = ""
-    var operatorType = OperatorType?
+    var operatorType: OperatorType?
+    
     
     func addOperandDigit(_ digit: String) -> String {
-    
-        if operand1String != "" {
-            operand1String.append(selectedOperator.rawValue)
+        if let _ = operatorType {
+            operand2String = "\(operand2String)\(digit)"
+            return operand2String
         } else {
-            return ""
-
-        
+            operand1String = "\(operand1String)\(digit)"
+            return operand1String
+    }
     }
     
     func setOperator(_ operatorString: String) {
-        
+            if let opType = OperatorType(rawValue: operatorString) {
+                operatorType = opType
+        }
     }
     
     func calculateIfPossible() -> String? {
-        
-    }
+        if !operand1String.isEmpty,
+            !operand2String.isEmpty,
+                let opType = operatorType,
+                let operand1 = Double(operand1String),
+                let operand2 = Double(operand2String) {
+                    switch opType {
+                        case .addition:
+                            return String(operand1 + operand2)
+                        case .subtraction:
+                            return String(operand1 - operand2)
+                        case .multiplication:
+                            return String(operand1 * operand2)
+                        case .division:
+                            if operand2 != 0 {
+                                return String(operand1 / operand2)
+                                } else {
+                                        return "Error"
+                                }
+                            }
+    
+            }
+        return nil
 }
+    
 }

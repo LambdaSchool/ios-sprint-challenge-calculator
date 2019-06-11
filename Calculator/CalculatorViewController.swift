@@ -12,14 +12,14 @@ class CalculatorViewController: UIViewController {
     
     @IBOutlet weak var outputLabel: UILabel!
     
-    var calculatorBrain: CalculatorBrain?
+    var brain: CalculatorBrain?
    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        calculatorBrain = CalculatorBrain()
+        brain = CalculatorBrain()
         
         
         
@@ -30,32 +30,38 @@ class CalculatorViewController: UIViewController {
    
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        if let number = sender.title(for: .normal)  {
-            print(number)
-            outputLabel.text = String((calculatorBrain?.addOperandDigit(number))!)
+        if let digit = sender.titleLabel?.text {
+            outputLabel.text = brain?.addOperandDigit(digit)
         }
-        
+    
+    
         
         
         
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        outputLabel.text.append("\(calculatorBrain?.addOperandDigit(OperatorType.self))")
+        if let buttonText = sender.titleLabel?.text {
+            brain?.setOperator(buttonText)
+        }
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        if let solution = brain?.calculateIfPossible(){
+            outputLabel.text = solution
+            clearTransaction()
+        }
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
+        clearTransaction()
         outputLabel.text = "0"
     }
     
     // MARK: - Private
     
     private func clearTransaction() {
-        let freshCalculatorBrain = calculatorBrain
-        outputLabel.text = freshCalculatorBrain?.addOperandDigit("0")
+        brain = nil
+        brain = CalculatorBrain()
     }
 }

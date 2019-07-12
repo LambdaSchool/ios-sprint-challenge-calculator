@@ -22,15 +22,16 @@ class CalculatorBrain {
     
     func addOperandDigit(_ digit: String) -> String {
         
-        var digitString: String
-        
-        if let unwrappedOperator = operatorType {
+        var digitString: String = digit
+
+        if let operatorExists = operatorType {
+            operand2String.append(digitString)
             digitString = operand2String
         } else {
+            operand1String.append(digitString)
             digitString = operand1String
         }
         
-        digitString.append(digit)
         
         return digitString
     }

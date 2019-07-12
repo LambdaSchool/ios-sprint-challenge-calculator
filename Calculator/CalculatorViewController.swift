@@ -40,6 +40,10 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func clearTapped(_ sender: UIButton) {
         
+        clearTransaction()
+        
+        // Default value
+        outputLabel.text = "0"
     }
     
     // MARK: - Private

@@ -9,17 +9,24 @@
 import UIKit
 
 class CalculatorViewController: UIViewController {
+    var brain: CalculatorBrain?
     
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        brain = CalculatorBrain()
+        
     }
     
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        
+       //display numbers
+        if let digitString = sender.titleLabel?.text {
+            print(digitString)
+        }
+
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
@@ -40,3 +47,4 @@ class CalculatorViewController: UIViewController {
         
     }
 }
+

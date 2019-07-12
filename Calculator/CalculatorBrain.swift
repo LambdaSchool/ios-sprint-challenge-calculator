@@ -52,21 +52,39 @@ class CalculatorBrain {
 				operand2String = operand1String
 			}
 			guard let number1 = Double(operand1String), let number2 = Double(operand2String) else { return nil}
+			var answer = ""
 			
 			switch operatorType {
-			case .addition: return("\(number1 + number2)")
-			case .division: return("\(number1 / number2)")
-			case .multiplication: return("\(number1 * number2)")
-			case .subtraction: return("\(number1 - number2)")
+			case .addition: answer = ("\(number1 + number2)")
+			case .division: answer = ("\(number1 / number2)")
+			case .multiplication: answer = ("\(number1 * number2)")
+			case .subtraction: answer = ("\(number1 - number2)")
 			}
+			
+			operand1String = dropUnecessaryDecimal(answer)
+			clearOperands()
+			return operand1String
 		}
         return nil
     }
+	
+	private func dropUnecessaryDecimal(_ digitString: String) -> String {
+		let digits = digitString.components(separatedBy: ".")
+		if digits.last == "0" {
+			return digits[0]
+		}
+		return digitString
+	}
 	
 	private func safelyAddDecimal(_ digitString: String) -> String {
 		if digitString.contains(".") {
 			return digitString
 		}
 		return "\(digitString)."
+	}
+	
+	private func clearOperands() {
+		operand2String = ""
+		operatorType = nil
 	}
 }

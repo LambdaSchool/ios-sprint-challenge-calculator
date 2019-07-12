@@ -38,6 +38,17 @@ class CalculatorBrain {
     
     func setOperator(_ operatorString: String) {
         
+        if operatorString == "+" {
+            operatorType = .addition
+            
+        } else if operatorString == "-" {
+            operatorType = .subtraction
+            
+        } else if operatorString == "×" {
+            operatorType = .multiplication
+        } else {
+            operatorType = .division
+        }
     }
     
     func calculateIfPossible() -> String? {

@@ -19,6 +19,8 @@ class CalculatorBrain {
     var operand1String = ""
     var operand2String = ""
     var operatorType: OperatorType?
+    var decimalTapped: Bool = false
+    var negativeTapped: Bool = true
     
     func addOperandDigit(_ digit: String) -> String {
         if operatorType != nil {

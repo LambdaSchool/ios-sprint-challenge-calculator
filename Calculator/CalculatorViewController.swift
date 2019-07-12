@@ -30,8 +30,9 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
+        guard let senderTitle = sender.currentTitle else { return }
         if let brain = brain {
-            brain.setOperator(sender.currentTitle!)
+            brain.setOperator(senderTitle)
         }
     }
     

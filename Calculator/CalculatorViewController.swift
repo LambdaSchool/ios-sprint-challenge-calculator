@@ -43,7 +43,15 @@ class CalculatorViewController: UIViewController {
     @IBAction func clearTapped(_ sender: UIButton) {
         clearTransaction()
     }
-    
+	
+	@IBAction func invertTapped(_ sender: UIButton) {
+		outputLabel.text = calculatorBrain?.invertNumber()
+	}
+	
+	@IBAction func percentTapped(_ sender: UIButton) {
+		outputLabel.text = calculatorBrain?.convertToPercentage()
+	}
+	
     // MARK: - Private
     
     private func clearTransaction() {

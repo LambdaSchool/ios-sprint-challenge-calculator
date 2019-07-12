@@ -20,7 +20,11 @@ class CalculatorBrain {
     var operand1String = ""
     var operand2String = ""
     var operatorType: OperatorType?
-	var outputHistory: [Double]?
+	var numberFormatter: NumberFormatter = {
+		let numberFormatter = NumberFormatter()
+		numberFormatter.numberStyle = .decimal
+		return numberFormatter
+	}()
     
     func addOperandDigit(_ digit: String) -> String {
 		guard let _ = operatorType else {
@@ -68,6 +72,26 @@ class CalculatorBrain {
         return nil
     }
 	
+	func invertNumber() -> String {
+		if operatorType == nil {
+			operand1String = invert(operand1String)
+			return operand1String
+		}
+		
+		operand2String = invert(operand2String)
+		return operand2String
+	}
+	
+	func convertToPercentage() -> String {
+		if operatorType == nil {
+			operand1String = fractionize(operand1String)
+			return operand1String
+		}
+		
+		operand2String = fractionize(operand2String)
+		return operand2String
+	}
+	
 	private func dropUnecessaryDecimal(_ digitString: String) -> String {
 		let digits = digitString.components(separatedBy: ".")
 		if digits.last == "0" {
@@ -86,5 +110,23 @@ class CalculatorBrain {
 	private func clearOperands() {
 		operand2String = ""
 		operatorType = nil
+	}
+	
+	private func invert(_ digitString: String) -> String {
+		if digitString.isEmpty || digitString == "0" {
+			return "0"
+		} else if digitString.contains("-") {
+			let positiveDigit = String(digitString.dropFirst(1))
+			return positiveDigit
+		}
+		
+		return "-\(digitString)"
+	}
+	
+	private func fractionize(_ digitString: String) -> String {
+		if let digit = Float(digitString) {
+			return "\(digit / Float(100))"
+		}
+		return "0"
 	}
 }

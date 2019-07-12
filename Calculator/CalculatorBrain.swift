@@ -24,7 +24,7 @@ class CalculatorBrain {
         
         var digitString: String = digit
 
-        if let operatorExists = operatorType {
+        if operatorType != nil {
             operand2String.append(digitString)
             digitString = operand2String
         } else {

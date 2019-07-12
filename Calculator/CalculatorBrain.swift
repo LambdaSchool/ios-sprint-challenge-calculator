@@ -25,25 +25,33 @@ class CalculatorBrain {
         if operatorType == nil {
             operand1String = digit
             return operand1String
-        } else {
+            } else {
             operand2String = digit
             return operand2String
         }
-        
     }
     
     func setOperator(_ operatorString: String)  {
-       
-       
-        
-        }
+        let operatorSymbol =  OperatorType(rawValue: operatorString)
+        operatorType = operatorSymbol
+                }
        
        
     
     
     func calculateIfPossible() -> String? {
+     guard let operand1 = Double(operand1String), let operand2 = Double(operand2String) else {return "error"}
+        guard let operatorSymbol = operatorType else {return "error"}
+        switch operatorSymbol {
+        case .addition: return "\(operand1 + operand2)"
+         case .subtraction : return "\(operand1 - operand2)"
+         case .multiplication: return "\(operand1 * operand2)"
+         case . division: return "\(operand1 + operand2)"
+        }
         
         
-        return ""
     }
 }
+
+
+

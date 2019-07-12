@@ -96,6 +96,20 @@ class CalculatorBrain {
         }
         return "Error"
     }
+    func percent(currentNumberString: String) -> String{
+        if let currentNumber = Double(currentNumberString){
+            let finalResult = truncateEnd(result: String(currentNumber / 100))
+            if operatorType == nil{
+                operand1String = finalResult
+                operand2String = ""
+            }else {
+                operand2String = finalResult
+            }
+            
+            return finalResult
+        }
+        return "Error"
+    }
     func furtherOperate() -> String{
         
         operand1String = calculateIfPossible() ?? "Error"

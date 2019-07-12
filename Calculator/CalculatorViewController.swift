@@ -53,6 +53,9 @@ class CalculatorViewController: UIViewController {
         }
     }
     @IBAction func percentTapped(_ sender: Any) {
+        if let currentNumber = outputLabel.text{
+            outputLabel.text = brain?.percent(currentNumberString: currentNumber)
+        }
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {

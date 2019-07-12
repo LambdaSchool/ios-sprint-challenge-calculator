@@ -22,6 +22,12 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operandTapped(_ sender: UIButton) {
         
+        var digitString: String = "0"
+        if let unwrappedDigit = sender.titleLabel?.text {
+            digitString = unwrappedDigit
+        }
+        
+       outputLabel.text = brain?.addOperandDigit(digitString)
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
@@ -41,4 +47,5 @@ class CalculatorViewController: UIViewController {
     private func clearTransaction() {
         
     }
+    
 }

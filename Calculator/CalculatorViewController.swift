@@ -42,6 +42,11 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func equalTapped(_ sender: UIButton) {
         
+        let solutionString = brain?.calculateIfPossible()
+        
+        if let unwrappedString = solutionString {
+            outputLabel.text = unwrappedString
+        }
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {

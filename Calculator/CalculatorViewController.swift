@@ -28,7 +28,8 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        
+		if let oper = sender.titleLabel?.text {
+			brain?.setOperator(oper)
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {

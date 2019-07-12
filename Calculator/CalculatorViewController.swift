@@ -37,7 +37,7 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func equalTapped(_ sender: UIButton) {
         if let brain = brain {
-            outputLabel.text = brain.calculateIfPossible()
+            outputLabel.text = brain.calculateIfPossible()?.truncate(10)
         }
     }
     
@@ -54,5 +54,11 @@ class CalculatorViewController: UIViewController {
         brain.operand2String = ""
         brain.operatorType = nil
         outputLabel.text = "0"
+    }
+}
+
+extension String {
+    func truncate(_ length: Int, trailing: String = "") -> String {
+        return (self.count > length) ? self.prefix(length) + trailing : self
     }
 }

@@ -52,6 +52,49 @@ class CalculatorBrain {
     }
     
     func calculateIfPossible() -> String? {
+        
+        if operand1String != "" && operand2String != "" {
+            
+            if let unwrappedOperatorType = operatorType {
+                
+                var doubleOperand1String: Double = 0
+                var doubleOperand2String: Double = 0
+
+                if let unwrapped1String = Double(operand1String) {
+                    doubleOperand1String = unwrapped1String
+                }
+                
+                if let unwrapped2String = Double(operand2String) {
+                    doubleOperand2String = unwrapped2String
+                }
+                
+                
+                var value: Double
+                
+                switch unwrappedOperatorType {
+                case .addition:
+                    value = doubleOperand1String + doubleOperand1String
+                case .division:
+                    if doubleOperand2String == 0 {
+                        return "Error"
+                    } else {
+                        value = doubleOperand1String / doubleOperand2String
+                    }
+                case .multiplication:
+                    value = doubleOperand1String * doubleOperand2String
+                case .subtraction:
+                    value = doubleOperand1String - doubleOperand2String
+                    
+                }
+                
+                
+                return String(value)
+            }
+            
+        }
+        
+        
+        
         return "test" // delete this later
     }
 }

@@ -43,13 +43,13 @@ class CalculatorBrain {
 			let oper2 = Double(operand2String) {
 			switch operType {
 			case.addition:
-				return "\(oper1) + \(oper2)"
+				return String(oper1 + oper2)
 			case.subtraction:
-				return "\(oper1) - \(oper2)"
+				return String(oper1 - oper2)
 			case.multiplication:
-				return "\(oper1) * \(oper2)"
+				return String(oper1 * oper2)
 			case.division:
-				return "\(oper1) / \(oper2)"
+				return String(oper1 / oper2)
 			}
 		}
 		return nil

@@ -28,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="112" width="94" height="111"/>
                                 <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <state key="normal" title="C">
+                                <state key="normal" title="AC">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -313,6 +313,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="clearBtn" destination="hzy-Ax-enH" id="9cM-L8-Sqv"/>
                         <outlet property="outputLabel" destination="Hia-YG-WK6" id="CvC-hV-gVd"/>
                     </connections>
                 </viewController>

@@ -9,11 +9,11 @@
 import Foundation
 
 enum OperatorType: String {
-    case division = "/"
-	case multiplication = "*"
-	case subtraction = "-"
+	//+, −, ×, ÷
+    case division = "÷"
+	case multiplication = "×"
+	case subtraction = "−"
 	case addition = "+"
-	case equal = "="
 }
 
 class CalculatorBrain {
@@ -27,7 +27,7 @@ class CalculatorBrain {
 			if digit == "." {
 				operand1String = safelyAddDecimal(operand1String)
 			} else {
-				operand1String = digit
+				operand1String.append(digit)
 			}
 			return operand1String
 		}
@@ -35,17 +35,32 @@ class CalculatorBrain {
 		if digit == "." {
 			operand2String = safelyAddDecimal(operand2String)
 		} else {
-			operand2String = digit
+			operand2String.append(digit)
 		}
-		return operand1String
+		return operand2String
     }
     
     func setOperator(_ operatorString: String) {
-        
+		if operatorType == nil {
+			operatorType = OperatorType(rawValue: operatorString)
+		}
     }
     
     func calculateIfPossible() -> String? {
-        return ""
+		if let operatorType = operatorType {
+			if operand2String.isEmpty {
+				operand2String = operand1String
+			}
+			guard let number1 = Double(operand1String), let number2 = Double(operand2String) else { return nil}
+			
+			switch operatorType {
+			case .addition: return("\(number1 + number2)")
+			case .division: return("\(number1 / number2)")
+			case .multiplication: return("\(number1 * number2)")
+			case .subtraction: return("\(number1 - number2)")
+			}
+		}
+        return nil
     }
 	
 	private func safelyAddDecimal(_ digitString: String) -> String {

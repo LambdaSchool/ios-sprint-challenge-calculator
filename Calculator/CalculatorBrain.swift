@@ -49,9 +49,13 @@ class CalculatorBrain {
 			case.multiplication:
 				return String(oper1 * oper2)
 			case.division:
+				if oper2 != 0{
 				return String(oper1 / oper2)
+				} else {
+					return "Error"
+				}
 			}
 		}
 		return nil
-    }
+	}
 }

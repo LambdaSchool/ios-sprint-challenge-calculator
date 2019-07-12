@@ -37,10 +37,52 @@ class CalculatorBrain {
     }
     
     func setOperator(_ operatorString: String) {
-        
+        switch operatorString {
+        case "+":
+            operatorType = .addition
+        case "-":
+            operatorType = .subtraction
+        case "×":
+            operatorType = .multiplication
+        case "÷":
+            operatorType = .division
+        default:
+            break
+        }
     }
     
     func calculateIfPossible() -> String? {
-        return nil
+        var solution = ""
+        var solutionNumber = 0.0
+        if let operatorType = operatorType {
+            if operand2String == "" && operand1String.isEmpty {
+                solution = "0"
+            } else if operand2String == "" && !operand1String.isEmpty {
+                switch operatorType {
+                case .addition:
+                    solutionNumber = Double(operand1String)! + Double(operand1String)!
+                case .subtraction:
+                    solutionNumber = Double(operand1String)! - Double(operand1String)!
+                case .multiplication:
+                    solutionNumber = Double(operand1String)! * Double(operand1String)!
+                case .division:
+                    solutionNumber = Double(operand1String)! / Double(operand1String)!
+                }
+            } else {
+                switch operatorType {
+                case .addition:
+                    solutionNumber = Double(operand1String)! + Double(operand2String)!
+                case .subtraction:
+                    solutionNumber = Double(operand1String)! - Double(operand2String)!
+                case .multiplication:
+                    solutionNumber = Double(operand1String)! * Double(operand2String)!
+                case .division:
+                    solutionNumber = Double(operand1String)! / Double(operand2String)!
+                }
+            }
+        }
+        
+        solution = String(solutionNumber)
+        return solution
     }
 }

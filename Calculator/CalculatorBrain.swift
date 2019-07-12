@@ -31,9 +31,10 @@ class CalculatorBrain {
     }
     
     func setOperator(_ operatorString: String) {
-        
-    }
-    
+		if let operSet = OperatorType(rawValue: operatorString) {
+			operatorType = operSet
+    	}
+	}
     func calculateIfPossible() -> String? {
         return "Hi"
     }

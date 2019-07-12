@@ -40,7 +40,7 @@ class CalculatorBrain {
         switch operatorString {
         case "+":
             operatorType = .addition
-        case "-":
+        case "−":
             operatorType = .subtraction
         case "×":
             operatorType = .multiplication
@@ -80,5 +80,11 @@ class CalculatorBrain {
         }else {
             return result
         }
+    }
+    func furtherOperate() -> String{
+        
+        operand1String = calculateIfPossible() ?? "Error"
+        operand2String = ""
+        return operand1String
     }
 }

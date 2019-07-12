@@ -11,6 +11,7 @@ import UIKit
 class CalculatorViewController: UIViewController {
     var brain: CalculatorBrain?
     
+    
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
@@ -25,8 +26,9 @@ class CalculatorViewController: UIViewController {
        //display numbers
         if let digitString = sender.titleLabel?.text {
             print(digitString)
+            outputLabel.text = brain?.addOperandDigit(digitString)
         }
-
+        
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {

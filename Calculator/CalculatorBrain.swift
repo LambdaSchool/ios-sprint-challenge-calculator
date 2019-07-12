@@ -81,6 +81,21 @@ class CalculatorBrain {
             return result
         }
     }
+    
+    func switchSign(currentNumberString: String) -> String{
+        if let currentNumber = Double(currentNumberString){
+            let finalResult = truncateEnd(result: String(currentNumber * -1))
+            if operatorType == nil{
+                operand1String = finalResult
+                operand2String = ""
+            }else {
+                operand2String = finalResult
+            }
+            
+            return finalResult
+        }
+        return "Error"
+    }
     func furtherOperate() -> String{
         
         operand1String = calculateIfPossible() ?? "Error"

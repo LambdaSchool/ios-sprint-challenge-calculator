@@ -41,8 +41,18 @@ class CalculatorViewController: UIViewController {
     @IBAction func equalTapped(_ sender: UIButton) {
         if let result = brain?.calculateIfPossible(){
             outputLabel.text = result
+            brain?.operatorType = nil
+            brain?.operand1String = result
+            brain?.operand2String = ""
         }
         
+    }
+    @IBAction func switchSignsTapped(_ sender: Any) {
+        if let currentNumber = outputLabel.text{
+            outputLabel.text = brain?.switchSign(currentNumberString: currentNumber)
+        }
+    }
+    @IBAction func percentTapped(_ sender: Any) {
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {

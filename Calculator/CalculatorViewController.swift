@@ -30,7 +30,9 @@ class CalculatorViewController: UIViewController {
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
+        var operandResult: String = ""
         outputLabel.text = outputLabel.text! + String(sender.tag)
+        operandResult = String(outputLabel.text!)
         }
     
     
@@ -49,6 +51,6 @@ class CalculatorViewController: UIViewController {
     // MARK: - Private
     
     private func clearTransaction() {
-        
+        outputLabel.text = " "
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class CalculatorViewController: UIViewController {
-    
+    var brain = CalculatorBrain()
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
@@ -31,7 +31,8 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
-        
+        clearTransaction()
+        outputLabel = "0"
     }
     
     // MARK: - Private

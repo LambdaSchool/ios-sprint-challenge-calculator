@@ -25,7 +25,6 @@ class CalculatorViewController: UIViewController {
     @IBAction func operandTapped(_ sender: UIButton) {
        //display numbers
         if let digitString = sender.titleLabel?.text {
-            print(digitString)
             outputLabel.text = brain?.addOperandDigit(digitString)
         }
         
@@ -40,12 +39,15 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
-        
+        clearTransaction()
+       
     }
     
     // MARK: - Private
-    
+    let reset = "0"
     private func clearTransaction() {
+        outputLabel.text = reset
+        //brain?.addOperandDigit(reset)
         
     }
 }

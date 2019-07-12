@@ -68,8 +68,17 @@ class CalculatorBrain {
             case .division:
                 result = operand1 / operand2
             }
-            return String(result)
+            return truncateEnd(result: String(result))
         }
         return nil
+    }
+    func truncateEnd(result: String) -> String{
+        var stringParts = result.split(separator: ".")
+        let numOfZero = stringParts[1].filter{$0 == "0"}.count
+        if stringParts[1].count == numOfZero {
+            return String(stringParts[0])
+        }else {
+            return result
+        }
     }
 }

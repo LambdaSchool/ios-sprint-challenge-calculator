@@ -24,7 +24,7 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operandTapped(_ sender: UIButton) {
         let operandButtonLabel: UILabel?
-        
+
         guard let addOperandDigit =  operandButtonLabel.text,
         let addOperand = String?(addOperandDigit) else { return }
         

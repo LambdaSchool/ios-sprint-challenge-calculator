@@ -21,7 +21,7 @@ class CalculatorBrain {
     var operatorType: OperatorType?
     
     func addOperandDigit(_ digit: String) -> String {
-       if operatorType
+       
     }
     
     func setOperator(_ operatorString: String) {
@@ -29,13 +29,18 @@ class CalculatorBrain {
     }
     
     func calculateIfPossible() -> String? {
-        let solve: String
-        
-        if operatorType == OperatorType.addition {
+        var solve: String
+        switch solve {
+        case: operatorType = OperatorType.addition
             solve = operand1String + operand2String
-        } else {
-            return "error"
+        case: operatorType = OperatorType.subtraction
+            solve = operand1String - operand2String
+        case: operatorType = OperatorType.multipication
+            solve = operand1String * operand2String
+        case: operatorType = OperatorType.division
+            solve = operand1String / operand2String
+        default:
+            error
         }
-       
     }
 }

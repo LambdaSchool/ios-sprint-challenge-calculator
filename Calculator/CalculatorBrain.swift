@@ -41,7 +41,7 @@ class CalculatorBrain {
         if operatorString == "+" {
             operatorType = .addition
             
-        } else if operatorString == "-" {
+        } else if operatorString == "−" {
             operatorType = .subtraction
             
         } else if operatorString == "×" {
@@ -85,6 +85,8 @@ class CalculatorBrain {
                 case .subtraction:
                     value = doubleOperand1String - doubleOperand2String
                     
+                default:
+                    return nil
                 }
                 
                 

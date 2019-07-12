@@ -22,7 +22,7 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operandTapped(_ sender: UIButton) {
         
-        var digitString: String = "0"
+        var digitString: String = ""
         if let unwrappedDigit = sender.titleLabel?.text {
             digitString = unwrappedDigit
         }

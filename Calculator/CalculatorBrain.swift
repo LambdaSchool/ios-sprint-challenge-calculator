@@ -20,15 +20,15 @@ class CalculatorBrain {
     var operand2String = ""
     var operatorType: OperatorType?
     
-    func addOperandDigit(_ digit: String) -> String {
-        
-    }
-    
-    func setOperator(_ operatorString: String) {
-        
-    }
-    
-    func calculateIfPossible() -> String? {
-        
-    }
+//    func addOperandDigit(_ digit: String) -> String {
+//
+//    }
+//
+//    func setOperator(_ operatorString: String) {
+//
+//    }
+//
+//    func calculateIfPossible() -> String? {
+//
+//    }
 }

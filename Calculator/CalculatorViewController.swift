@@ -10,33 +10,54 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
     
+    var brian: CalculatorBrain?
+    
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        brian = CalculatorBrain()
     }
     
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
+        if let digit = sender.titleLabel?.text {
+            outputLabel.text = brian?.addOperandDigit(digit)
+        }
         
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        
+        if let buttonText = sender.titleLabel?.text {
+            brian?.setOperator(buttonText)
+        }
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        if let equals = brian?.calculateIfPossible() {
+            outputLabel.text = equals
+            clearTransaction()
+        }
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
-        
+        clearTransaction()
+        outputLabel.text = "0"
     }
     
     // MARK: - Private
     
     private func clearTransaction() {
-        
+        brian = CalculatorBrain()
     }
+   
+}
+extension Formatter {
+    static let withSeparator: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.groupingSeparator = " "
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
 }

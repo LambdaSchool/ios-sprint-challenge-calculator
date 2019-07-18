@@ -51,4 +51,13 @@ class CalculatorViewController: UIViewController {
     private func clearTransaction() {
         brian = CalculatorBrain()
     }
+   
+}
+extension Formatter {
+    static let withSeparator: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.groupingSeparator = " "
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
 }

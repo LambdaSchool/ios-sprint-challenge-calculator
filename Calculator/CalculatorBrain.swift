@@ -25,10 +25,8 @@ class CalculatorBrain {
         if let _ = operatorType {
             // we should be in the second operand if operatorType has a value
 //            print("adding input to op2")
-            if digit == "." {
-                if operand2String.contains(".") {
-                    result = operand2String
-                }
+            if digit == "." && operand2String.contains(".") {
+                result = operand2String
             } else {
                 operand2String += digit
                 result = operand2String
@@ -47,7 +45,7 @@ class CalculatorBrain {
         return result
     }
     
-    func setOperator(_ operatorString: String) {
+    func setOperator(_ operatorString: String) -> String {
         // if another number and operator have already been entered,
         // we want to calculate the result and set that as the new
         // operand1String before setting the new operator
@@ -73,11 +71,37 @@ class CalculatorBrain {
         default:
             operatorType = nil
         }
+        return operand1String
         
     }
     
     func calculateIfPossible() -> String? {
-        return "Calculation"
+        guard operand1String != "",
+            operand2String != "",
+            let op = operatorType,
+            let left = Double(operand1String),
+            let right = Double(operand2String)
+        else {
+            return nil
+        }
+        
+        var result: String? = nil
+        let formatter = NumberFormatter()
+        formatter.minimumIntegerDigits = 1
+        formatter.minimumFractionDigits = 0
+        
+        switch op {
+        case .addition:
+            result = formatter.string(for: left + right)
+        case .subtraction:
+            result = formatter.string(for: left - right)
+        case .multiplication:
+            result = formatter.string(for: left * right)
+        case .division:
+            result = formatter.string(for: left / right)
+        }
+        
+        return result
     }
     
     func clear() {

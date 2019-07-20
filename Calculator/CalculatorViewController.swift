@@ -39,7 +39,7 @@ class CalculatorViewController: UIViewController {
         
         if !wasSelected {
             sender.isSelected = true
-            brain.setOperator(op)
+            outputLabel.text = brain.setOperator(op)
         }
     }
     

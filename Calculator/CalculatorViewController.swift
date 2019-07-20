@@ -24,11 +24,15 @@ class CalculatorViewController: UIViewController {
             self.calculatorBrain = brain
         }
     }
-   
-    // MARK: - Action Handlers
+    
+    // MARK: - Outlets
+    
+    
+    
+   // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        
+           
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {

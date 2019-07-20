@@ -6,45 +6,6 @@
 //  Copyright © 2019 Lambda School. All rights reserved.
 //
 
-//class DepartureBoard {
-//    var departureFlights: String
-//    var currentAirport: String
-//    private (set) var flights: [JFKAirports]
-//
-//    init(departureFlights: String, currentAirport: String) {
-//        self.departureFlights = departureFlights
-//        self.currentAirport = currentAirport
-//        self.flights = []
-//
-//    }
-//
-//    func alertPassengers() {
-//        for flight in flights {
-//            if flight.terminal == nil {
-//                "TBD"
-//            } else {
-//                switch flight.flightStatus {
-//                case .canceled:
-//                    print("We're sorry your flight to \(flight.destination) was canceled, here is a $500 voucher")
-//                case .boarding:
-//                    print("Your flight is boarding, please head to terminal: \(flight.terminal!) immediately. The doors are closing soon.")
-//                case .scheduled:
-//                    print("Your flight to \(flight.destination) is scheduled to depart at \(flight.departureTime!) from terminal: \(flight.terminal!)")
-//                case .delayed:
-//                    print("Im sorry your flight was delayed")
-//                case .enRoute:
-//                    print("Your flight is En Route, YAY!")
-//                }
-//            }
-//        }
-//    }
-//
-//
-//    func add(flight: JFKAirports) {
-//        flights.append(flight)
-//    }
-//}
-//
 
 
 import Foundation
@@ -67,19 +28,34 @@ class CalculatorBrain {
         self.operatorType = OperatorType(rawValue: operatorType)
     }
     func addOperandDigit(_ digit: String) -> String {
-        for 
-       
-        
-        
-        
-        CalculatorBrain(operand1String: "", operand2String: "", operatorType: "\(OperatorType.self)")
+        if operatorType != nil
+        {
+            operand1String.append(contentsOf: digit)
+            return operand1String
+
+        } else {
+            operand2String.append(contentsOf: digit)
+            return operand2String
+        }
     }
     
     func setOperator(_ operatorString: String) {
         
+        switch operatorString {
+            
+        case "+": operatorType = .addition
+        case "-": operatorType = .subtraction
+        case "*": operatorType = .multiplaction
+        case "/": operatorType = .division
+        
+        default: ""
+        }
     }
-    
+}
+
     func calculateIfPossible() -> String? {
        
     }
-}
+
+
+

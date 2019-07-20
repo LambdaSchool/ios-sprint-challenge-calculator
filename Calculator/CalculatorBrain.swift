@@ -17,45 +17,55 @@ enum OperatorType: String {
     case division = "/"
 }
 
+
 class CalculatorBrain {
     var operand1String = ""
     var operand2String = ""
     var operatorType: OperatorType?
     
-    init(operand1String: String, operand2String: String, operatorType: String) {
-        self.operand1String = operand1String
-        self.operand2String = operand2String
-        self.operatorType = OperatorType(rawValue: operatorType)
+init(operand1String: String, operand2String: String, operatorType: String) {
+    self.operand1String = operand1String
+    self.operand2String = operand2String
+    self.operatorType = OperatorType(rawValue: operatorType)
     }
-    func addOperandDigit(_ digit: String) -> String {
-        if operatorType != nil
-        {
-            operand1String.append(contentsOf: digit)
+    
+func addOperandDigit(_ digit: String) -> String {
+    if operatorType != nil
+    {
+        operand1String.append(contentsOf: digit)
             return operand1String
 
-        } else {
-            operand2String.append(contentsOf: digit)
+    } else {
+        operand2String.append(contentsOf: digit)
             return operand2String
         }
     }
     
-    func setOperator(_ operatorString: String) {
+func setOperator(_ operatorString: String) {
         
-        switch operatorString {
+    switch operatorString {
             
         case "+": operatorType = .addition
         case "-": operatorType = .subtraction
         case "*": operatorType = .multiplaction
         case "/": operatorType = .division
+        default: ()
+        }
+    }
+
+
+func calculateIfPossible() -> String? {
+   
+    let operatorTapped = operatorType
+    let operand1 = Double(operand1String)!
+    let operand2 = Double(operand2String)!
+    switch operatorTapped {
         
-        default: ""
+        case .addition?: return String(operand1 + operand2)
+        case .subtraction?: return String(operand1 - operand2)
+        case .multiplaction?: return String(operand1 * operand2)
+        case .division?: return String(operand1 / operand2)
+        default: ()
         }
     }
 }
-
-    func calculateIfPossible() -> String? {
-       
-    }
-
-
-

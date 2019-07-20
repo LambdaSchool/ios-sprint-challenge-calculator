@@ -45,7 +45,7 @@ class CalculatorViewController: UIViewController {
                 operandCalculated = false
         }
         
-        outputLabel.text = outputLabel.text! + String(sender.tag-1)
+        outputLabel.text = outputLabel.text! ?? + String(sender.tag-1)
         
         operandOnScreen = Double(outputLabel.text!)!
     }
@@ -78,26 +78,9 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        if sender.tag == 16
-        {
-            if operators == 12
-            {
-                outputLabel.text = String(previousNumber / operandOnScreen)
-            }
-            else if operators == 13
-            {
-                outputLabel.text = String(previousNumber * operandOnScreen)
-            }
-            else if operators == 14
-            {
-                outputLabel.text = String(previousNumber - operandOnScreen)
-            }
-            else if operators == 15
-            {
-                outputLabel.text = String(previousNumber + operandOnScreen)
-            }
-        }
-        else if sender.tag == 11
+   
+        
+         if sender.tag == 11
         {
             outputLabel = nil
             previousNumber = 0
@@ -112,12 +95,12 @@ class CalculatorViewController: UIViewController {
             operandOnScreen = 0
         }
     }
-    
+
     // MARK: - Private
     
     private func clearTransaction() {
         
     }
+
+
 }
-
-

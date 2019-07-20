@@ -37,7 +37,7 @@ class CalculatorBrain {
     
     func calculateIfPossible() -> String? {
         
-        if operand1String != "" {
+        if operand1String != "", operand2String != "" {
         
             guard let operatorType = operatorType else { return nil }
             

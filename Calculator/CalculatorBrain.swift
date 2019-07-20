@@ -24,18 +24,26 @@ class CalculatorBrain {
         var result = ""
         if let _ = operatorType {
             // we should be in the second operand if operatorType has a value
-//            print("adding input to op2")
-            if digit == "." && operand2String.contains(".") {
-                result = operand2String
+
+            if digit == "." {
+                if operand2String.contains(".") {
+                    result = operand2String
+                } else if operand2String == "" {
+                    operand2String = "0."
+                    result = operand2String
+                }
             } else {
                 operand2String += digit
                 result = operand2String
             }
         } else {
-//            print("adding input to op1")
-            if digit == "." && operand1String.contains(".") {
+            if digit == "." {
+                if operand1String.contains(".") {
                     result = operand1String
-//                    print("already has a decimal")
+                } else if operand1String == "" {
+                    operand1String = "0."
+                    result = operand1String
+                }
             } else {
                 operand1String += digit
                 result = operand1String
@@ -52,9 +60,9 @@ class CalculatorBrain {
         
         if let _ = operatorType {
             if operand1String != "" && operand2String != "" {
-                if let result = calculateIfPossible() {
-                    operand1String = result
-                    operand2String = ""
+                if let _ = calculateIfPossible() {
+//                    operand1String = result
+//                    operand2String = ""
                 }
             }
         }
@@ -88,7 +96,11 @@ class CalculatorBrain {
         var result: String? = nil
         let formatter = NumberFormatter()
         formatter.minimumIntegerDigits = 1
-        formatter.minimumFractionDigits = 0
+        formatter.minimumFractionDigits = 1
+        formatter.maximumFractionDigits = 5
+        formatter.usesSignificantDigits = true
+        formatter.minimumSignificantDigits = 1
+        
         
         switch op {
         case .addition:
@@ -98,9 +110,19 @@ class CalculatorBrain {
         case .multiplication:
             result = formatter.string(for: left * right)
         case .division:
-            result = formatter.string(for: left / right)
+            if right == 0 {
+                result = "Error"
+                operand1String = ""
+                operand2String = ""
+                operatorType = nil
+                
+            } else {
+                result = formatter.string(for: left / right)
+            }
         }
-        
+        operatorType = nil
+        operand1String = result ?? ""
+        operand2String = ""
         return result
     }
     

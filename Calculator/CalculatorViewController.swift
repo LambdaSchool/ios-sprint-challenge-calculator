@@ -17,6 +17,7 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var btnAdd: UIButton!
     
     private let brain = CalculatorBrain()
+    private var equalBtnLassedPressed = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +27,17 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operandTapped(_ sender: UIButton) {
         guard let operand = sender.titleLabel?.text else { return }
-//        print(operand)
+
         noOpsSelected()
+        
+        if equalBtnLassedPressed {
+            // if the last button pressed was = and the user
+            // starts entering another number, we want to start fresh
+            brain.clear()
+        }
+        
         outputLabel.text = brain.addOperandDigit(operand)
+        equalBtnLassedPressed = false
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
@@ -40,16 +49,27 @@ class CalculatorViewController: UIViewController {
         if !wasSelected {
             sender.isSelected = true
             outputLabel.text = brain.setOperator(op)
+            if outputLabel.text == "Error" {
+                noOpsSelected()
+                brain.clear()
+            }
         }
+        
+        equalBtnLassedPressed = false
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        if !equalBtnLassedPressed {
+            if let newOutput = brain.calculateIfPossible() {
+                outputLabel.text = newOutput
+            }
+        }
+        equalBtnLassedPressed = true
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
         clearTransaction()
-
+        equalBtnLassedPressed = false
     }
     
     // MARK: - Private
@@ -66,4 +86,6 @@ class CalculatorViewController: UIViewController {
         btnSubtract.isSelected = false
         btnAdd.isSelected = false
     }
+    
+    
 }

@@ -29,18 +29,23 @@ class CalculatorViewController: UIViewController {
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        if let buttonPressed = sender.title(for: .normal) {
-            outputLabel.text = brain?.addOperandDigit(buttonPressed)
+        if let numberPressed = sender.title(for: .normal) {
+            outputLabel.text = brain?.addOperandDigit(numberPressed)
         }
         
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        
+        if let operatorPressed = sender.title(for: .normal) {
+            print(operatorPressed)
+            brain?.setOperator(operatorPressed)
+        }
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        if let result = brain?.calculateIfPossible() {
+            outputLabel.text = result
+        }
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {

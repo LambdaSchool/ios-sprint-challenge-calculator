@@ -13,7 +13,7 @@ enum OperatorType: String {
     case substraction = "−"
     case multiplication = "×"
     case division = "÷"
-    case percentage = "%"
+    
 }
 
 class CalculatorBrain {
@@ -22,8 +22,23 @@ class CalculatorBrain {
     var operatorType: OperatorType?
     
     func addOperandDigit(_ digit: String) -> String {
-        let placeholderString: String = ""
-        return placeholderString
+        switch digit {
+        case "+":
+            operatorType = .addition
+        case "-":
+            operatorType = .substraction
+        case "×":
+            operatorType = .multiplication
+        case "÷":
+            operatorType = .division
+            
+        default:
+            ""
+        }
+        
+        operand1String.append(digit)
+        
+        return operand1String
     }
     
     func setOperator(_ operatorString: String) {

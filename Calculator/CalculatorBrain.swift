@@ -22,7 +22,20 @@ class CalculatorBrain {
     var operatorType: OperatorType?
     
     func addOperandDigit(_ digit: String) -> String {
-        switch digit {
+        
+        if operatorType != nil {
+            operand1String.append(contentsOf: digit)
+            return operand1String
+        } else {
+            operand2String.append(contentsOf: digit)
+            return operand2String
+        }
+        
+    }
+    
+    func setOperator(_ operatorString: String) {
+        
+        switch operatorString {
         case "+":
             operatorType = .addition
         case "-":
@@ -35,18 +48,30 @@ class CalculatorBrain {
         default:
             ""
         }
-        
-        operand1String.append(digit)
-        
-        return operand1String
-    }
-    
-    func setOperator(_ operatorString: String) {
-       
     }
     
     func calculateIfPossible() -> String? {
-        let placeholderString: String = ""
-        return placeholderString
+        guard let operatorPressed = operatorType,
+            let operand1 = Double(operand1String),
+            let operand2 = Double(operand2String) else {
+                return nil }
+        
+        switch operatorPressed {
+        case .addition:
+            return String(operand1 + operand2)
+        case .substraction:
+            return String(operand1 - operand2)
+        case .multiplication:
+            return String(operand1 * operand2)
+        case .division:
+            if operand2 != 0 {
+                return String(operand2 / operand1)
+            } else {
+                return "Error"
+            }
+        }
     }
 }
+
+
+

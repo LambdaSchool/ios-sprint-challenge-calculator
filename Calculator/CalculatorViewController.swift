@@ -31,11 +31,16 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        
+        if let operatorPressed = sender.titleLabel?.text {
+            brain?.setOperator(operatorPressed)
+        }
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        if let calculate = brain?.calculateIfPossible() {
+            outputLabel.text = calculate
+            clearTransaction()
+        }
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {

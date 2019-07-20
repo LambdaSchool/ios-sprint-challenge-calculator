@@ -31,6 +31,7 @@ class CalculatorViewController: UIViewController {
                 let output = brain.addOperandDigit(operand)
                 outputLabel.text = output
             }
+            
         }
     }
     
@@ -57,6 +58,12 @@ class CalculatorViewController: UIViewController {
     @IBAction func clearTapped(_ sender: UIButton) {
         clearTransaction()
         outputLabel.text = "0"
+    }
+    
+    // TODO: - Add plus/minus
+    
+    @IBAction func plusMinusTapped(_ sender: UIButton) {
+        
     }
     
     // MARK: - Private

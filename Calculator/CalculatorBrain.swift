@@ -42,8 +42,8 @@ class CalculatorBrain {
             if let operand1Double = Double(operand1String), let operand2Double = Double(operand2String) {
                 switch operatorType {
                 case .addition:
-                    let total = String(operand1Double + operand2Double)
-                    return total
+                    return String(operand1Double + operand2Double)
+                    
                 case .subtraction:
                     return String(operand1Double - operand2Double)
                     
@@ -60,8 +60,6 @@ class CalculatorBrain {
             }
             
         }
-        
         return "Error"
-        
     }
 }

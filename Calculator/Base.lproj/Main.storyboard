@@ -313,6 +313,17 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="decimal" destination="nJt-6I-8i7" id="Hke-WR-Iu7"/>
+                        <outlet property="number0" destination="quu-aJ-s53" id="qEj-Rs-bVo"/>
+                        <outlet property="number1" destination="MkY-da-amI" id="Swy-5T-Ow4"/>
+                        <outlet property="number2" destination="Toa-Nt-egq" id="4SQ-Aw-owb"/>
+                        <outlet property="number3" destination="3mI-4y-c7D" id="Vur-wG-sRh"/>
+                        <outlet property="number4" destination="3B2-Tk-tD1" id="jFZ-io-s7y"/>
+                        <outlet property="number5" destination="zf0-mx-Vhe" id="Jpc-Lo-ke6"/>
+                        <outlet property="number6" destination="28A-R7-JFc" id="b4B-91-mDl"/>
+                        <outlet property="number7" destination="kzT-Ds-vbM" id="CuN-pM-Nu7"/>
+                        <outlet property="number8" destination="wxe-YO-Gop" id="dso-BV-f2h"/>
+                        <outlet property="number9" destination="NFD-Ph-Ao4" id="fhl-gI-EgK"/>
                         <outlet property="outputLabel" destination="Hia-YG-WK6" id="CvC-hV-gVd"/>
                     </connections>
                 </viewController>

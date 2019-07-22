@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,309 +15,466 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="CalculatorViewController" customModule="Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hia-YG-WK6">
-                                <rect key="frame" x="0.0" y="40" width="355" height="72"/>
+                                <rect key="frame" x="39" y="223" width="355" height="72"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzy-Ax-enH">
-                                <rect key="frame" x="0.0" y="112" width="94" height="111"/>
-                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="20" y="323" width="80" height="80"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="eBP-qh-Dgx"/>
+                                    <constraint firstAttribute="width" constant="80" id="fi2-VD-We1"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <state key="normal" title="C">
+                                <state key="normal" title="AC">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="clearButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8XO-1S-aSz"/>
                                     <action selector="clearTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xT4-MD-1ML"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yiV-1n-cBi">
-                                <rect key="frame" x="94" y="112" width="93.5" height="111"/>
-                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="119" y="323" width="80" height="80"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="PJT-eP-Dp8"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <state key="normal" title="+/-">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="posNegButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Da0-pN-mev"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CN3-UU-Yg4">
-                                <rect key="frame" x="187.5" y="112" width="94" height="111"/>
-                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CN3-UU-Yg4">
+                                <rect key="frame" x="217" y="323" width="80" height="80"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="eR3-4E-fwX"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <state key="normal" title="%">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="percentButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="raj-k3-yVp"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUh-gN-rnS">
-                                <rect key="frame" x="281.5" y="112" width="93.5" height="111"/>
-                                <color key="backgroundColor" red="0.99215686274509807" green="0.51764705882352935" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="36"/>
+                                <rect key="frame" x="314" y="323" width="80" height="80"/>
+                                <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="36"/>
+                                <color key="tintColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="÷">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="divideButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mg3-sP-I4u"/>
                                     <action selector="operatorTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WFd-cP-RcJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kzT-Ds-vbM">
-                                <rect key="frame" x="0.0" y="223" width="94" height="111"/>
-                                <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <rect key="frame" x="20" y="426" width="80" height="80"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="rqK-xU-gTc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
                                 <state key="normal" title="7">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="operandTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N96-Gr-WbZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxe-YO-Gop">
-                                <rect key="frame" x="94" y="223" width="93.5" height="111"/>
-                                <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <rect key="frame" x="119" y="426" width="80" height="80"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
                                 <state key="normal" title="8">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="operandTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T9m-gs-6PU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NFD-Ph-Ao4">
-                                <rect key="frame" x="187.5" y="223" width="94" height="111"/>
-                                <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <rect key="frame" x="217" y="426" width="80" height="80"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
                                 <state key="normal" title="9">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="operandTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CQl-eL-3wx"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f71-ED-BNb">
-                                <rect key="frame" x="281.5" y="223" width="93.5" height="111"/>
-                                <color key="backgroundColor" red="0.99215686274509807" green="0.51764705882352935" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="36"/>
+                                <rect key="frame" x="314" y="426" width="80" height="80"/>
+                                <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="36"/>
                                 <state key="normal" title="×">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="multiplyButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Z7C-RS-Ztl"/>
                                     <action selector="operatorTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Sb-sU-qYZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3B2-Tk-tD1">
-                                <rect key="frame" x="0.0" y="334" width="94" height="111"/>
-                                <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <rect key="frame" x="20" y="530" width="80" height="80"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="Tqc-Sl-a2m"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
                                 <state key="normal" title="4">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="operandTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QtR-tl-knu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zf0-mx-Vhe">
-                                <rect key="frame" x="94" y="334" width="93.5" height="111"/>
-                                <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <rect key="frame" x="119" y="530" width="80" height="80"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
                                 <state key="normal" title="5">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="operandTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OKv-w8-CaV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="28A-R7-JFc">
-                                <rect key="frame" x="187.5" y="334" width="94" height="111"/>
-                                <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <rect key="frame" x="217" y="530" width="80" height="80"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
                                 <state key="normal" title="6">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="operandTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LY3-l8-QKB"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MoP-Ww-Y4E">
-                                <rect key="frame" x="281.5" y="334" width="93.5" height="111"/>
-                                <color key="backgroundColor" red="0.99215686274509807" green="0.51764705882352935" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="36"/>
+                                <rect key="frame" x="314" y="530" width="80" height="80"/>
+                                <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="36"/>
                                 <state key="normal" title="−">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="operatorTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="v4b-KZ-kcw"/>
+                                    <action selector="subtractButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MJX-5C-9CX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MkY-da-amI">
-                                <rect key="frame" x="0.0" y="445" width="94" height="111"/>
-                                <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <rect key="frame" x="20" y="634" width="80" height="80"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="gJk-wC-O2U"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
                                 <state key="normal" title="1">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="operandTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ypF-c3-Xe1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Toa-Nt-egq">
-                                <rect key="frame" x="94" y="445" width="93.5" height="111"/>
-                                <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <rect key="frame" x="119" y="634" width="80" height="80"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
                                 <state key="normal" title="2">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="operandTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fwi-mO-QZI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mI-4y-c7D">
-                                <rect key="frame" x="187.5" y="445" width="94" height="111"/>
-                                <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <rect key="frame" x="217" y="634" width="80" height="80"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
                                 <state key="normal" title="3">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="operandTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pvx-MB-Gyf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oQq-kD-HUk">
-                                <rect key="frame" x="281.5" y="445" width="93.5" height="111"/>
-                                <color key="backgroundColor" red="0.99215686274509807" green="0.51764705882352935" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="36"/>
+                                <rect key="frame" x="314" y="634" width="80" height="80"/>
+                                <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="36"/>
                                 <state key="normal" title="+">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="addButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R0n-kb-5sT"/>
                                     <action selector="operatorTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9KC-JI-wZ0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="quu-aJ-s53">
-                                <rect key="frame" x="0.0" y="556" width="187.5" height="111"/>
-                                <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <state key="normal" title="0">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="operandTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="42H-gm-gd4"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJt-6I-8i7">
-                                <rect key="frame" x="187.5" y="556" width="94" height="111"/>
-                                <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <rect key="frame" x="217" y="739" width="80" height="80"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
                                 <state key="normal" title=".">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="operandTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nGX-DS-2lX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2PK-LC-JM8">
-                                <rect key="frame" x="281.5" y="556" width="93.5" height="111"/>
-                                <color key="backgroundColor" red="0.99215686274509807" green="0.51764705882352935" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="36"/>
+                                <rect key="frame" x="314" y="739" width="80" height="80"/>
+                                <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="36"/>
                                 <state key="normal" title="=">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="equalButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gSs-v5-rbI"/>
                                     <action selector="equalTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MgU-Dl-1Ov"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="quu-aJ-s53">
+                                <rect key="frame" x="20" y="739" width="180" height="80"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="98" maxY="0.0"/>
+                                <state key="normal" title="0">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="operandTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="42H-gm-gd4"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
-                            <constraint firstItem="f71-ED-BNb" firstAttribute="leading" secondItem="NFD-Ph-Ao4" secondAttribute="trailing" id="0Mj-uf-3sr"/>
-                            <constraint firstItem="Toa-Nt-egq" firstAttribute="leading" secondItem="MkY-da-amI" secondAttribute="trailing" id="0SG-PK-JI1"/>
-                            <constraint firstItem="hzy-Ax-enH" firstAttribute="top" secondItem="Hia-YG-WK6" secondAttribute="bottom" id="0WP-fD-fYc"/>
-                            <constraint firstItem="28A-R7-JFc" firstAttribute="height" secondItem="NFD-Ph-Ao4" secondAttribute="height" id="1UD-Im-ayN"/>
-                            <constraint firstItem="2PK-LC-JM8" firstAttribute="height" secondItem="oQq-kD-HUk" secondAttribute="height" id="1Ug-j9-Feg"/>
-                            <constraint firstItem="Hia-YG-WK6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="3Ti-bD-aCs"/>
-                            <constraint firstItem="MkY-da-amI" firstAttribute="width" secondItem="Toa-Nt-egq" secondAttribute="width" id="58v-BJ-gvZ"/>
-                            <constraint firstItem="2PK-LC-JM8" firstAttribute="top" secondItem="oQq-kD-HUk" secondAttribute="bottom" id="5aQ-oA-5SC"/>
-                            <constraint firstItem="hzy-Ax-enH" firstAttribute="height" secondItem="kzT-Ds-vbM" secondAttribute="height" id="6J3-VE-2Nw"/>
-                            <constraint firstItem="28A-R7-JFc" firstAttribute="width" secondItem="MoP-Ww-Y4E" secondAttribute="width" id="70V-3R-G1p"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dUh-gN-rnS" secondAttribute="trailing" id="8P8-QT-ZY1"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oQq-kD-HUk" secondAttribute="trailing" id="8QT-VA-Owd"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="f71-ED-BNb" secondAttribute="trailing" id="8af-HU-BXg"/>
-                            <constraint firstItem="CN3-UU-Yg4" firstAttribute="top" secondItem="Hia-YG-WK6" secondAttribute="bottom" id="A6q-C8-zyZ"/>
-                            <constraint firstItem="MkY-da-amI" firstAttribute="height" secondItem="quu-aJ-s53" secondAttribute="height" id="BnT-qP-41H"/>
-                            <constraint firstItem="2PK-LC-JM8" firstAttribute="leading" secondItem="nJt-6I-8i7" secondAttribute="trailing" id="Cd6-tA-vAd"/>
-                            <constraint firstItem="NFD-Ph-Ao4" firstAttribute="leading" secondItem="wxe-YO-Gop" secondAttribute="trailing" id="CjQ-r4-CIv"/>
-                            <constraint firstItem="NFD-Ph-Ao4" firstAttribute="top" secondItem="CN3-UU-Yg4" secondAttribute="bottom" id="DP9-0j-BsG"/>
-                            <constraint firstItem="nJt-6I-8i7" firstAttribute="leading" secondItem="quu-aJ-s53" secondAttribute="trailing" id="Dn7-fI-aRH"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nJt-6I-8i7" secondAttribute="bottom" id="EMn-mZ-vQb"/>
-                            <constraint firstItem="3mI-4y-c7D" firstAttribute="leading" secondItem="Toa-Nt-egq" secondAttribute="trailing" id="Fs3-Qy-8bw"/>
-                            <constraint firstItem="28A-R7-JFc" firstAttribute="top" secondItem="NFD-Ph-Ao4" secondAttribute="bottom" id="Hs1-eL-F1p"/>
-                            <constraint firstItem="quu-aJ-s53" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="L8J-gW-2ny"/>
-                            <constraint firstItem="wxe-YO-Gop" firstAttribute="leading" secondItem="kzT-Ds-vbM" secondAttribute="trailing" id="Ney-Ii-QVh"/>
-                            <constraint firstItem="28A-R7-JFc" firstAttribute="leading" secondItem="zf0-mx-Vhe" secondAttribute="trailing" id="OB2-1l-Qwm"/>
-                            <constraint firstItem="Toa-Nt-egq" firstAttribute="width" secondItem="3mI-4y-c7D" secondAttribute="width" id="OOh-g4-O6s"/>
-                            <constraint firstItem="3B2-Tk-tD1" firstAttribute="height" secondItem="MkY-da-amI" secondAttribute="height" id="Ol5-nM-vXb"/>
-                            <constraint firstItem="kzT-Ds-vbM" firstAttribute="width" secondItem="wxe-YO-Gop" secondAttribute="width" id="PL2-Ie-yhU"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="quu-aJ-s53" secondAttribute="bottom" id="QNV-7a-Ii4"/>
-                            <constraint firstItem="3mI-4y-c7D" firstAttribute="top" secondItem="28A-R7-JFc" secondAttribute="bottom" id="Rxs-fV-VmL"/>
-                            <constraint firstItem="Toa-Nt-egq" firstAttribute="top" secondItem="zf0-mx-Vhe" secondAttribute="bottom" id="Vmj-jK-ZCW"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Hia-YG-WK6" secondAttribute="trailing" constant="20" id="W9A-qP-fGS"/>
-                            <constraint firstItem="yiV-1n-cBi" firstAttribute="top" secondItem="Hia-YG-WK6" secondAttribute="bottom" id="WCO-AX-YtB"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2PK-LC-JM8" secondAttribute="trailing" id="WHK-kE-d4T"/>
-                            <constraint firstItem="dUh-gN-rnS" firstAttribute="top" secondItem="Hia-YG-WK6" secondAttribute="bottom" id="Wqo-UN-vJi"/>
-                            <constraint firstItem="zf0-mx-Vhe" firstAttribute="width" secondItem="28A-R7-JFc" secondAttribute="width" id="ZLd-i4-sYt"/>
-                            <constraint firstItem="kzT-Ds-vbM" firstAttribute="top" secondItem="hzy-Ax-enH" secondAttribute="bottom" id="ZrZ-ti-ZLQ"/>
-                            <constraint firstItem="MoP-Ww-Y4E" firstAttribute="height" secondItem="f71-ED-BNb" secondAttribute="height" id="aUQ-5b-zAy"/>
-                            <constraint firstItem="hzy-Ax-enH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bIK-IO-0Am"/>
-                            <constraint firstItem="yiV-1n-cBi" firstAttribute="leading" secondItem="hzy-Ax-enH" secondAttribute="trailing" id="bMj-gV-IBm"/>
-                            <constraint firstItem="quu-aJ-s53" firstAttribute="width" secondItem="nJt-6I-8i7" secondAttribute="width" multiplier="2" id="cce-7S-jr3"/>
-                            <constraint firstItem="nJt-6I-8i7" firstAttribute="height" secondItem="3mI-4y-c7D" secondAttribute="height" id="crG-YM-k4Y"/>
-                            <constraint firstItem="wxe-YO-Gop" firstAttribute="height" secondItem="yiV-1n-cBi" secondAttribute="height" id="dME-w1-7uZ"/>
-                            <constraint firstItem="oQq-kD-HUk" firstAttribute="top" secondItem="MoP-Ww-Y4E" secondAttribute="bottom" id="ebU-03-x0I"/>
-                            <constraint firstItem="quu-aJ-s53" firstAttribute="height" secondItem="Toa-Nt-egq" secondAttribute="height" id="edW-Kz-aO5"/>
-                            <constraint firstItem="MoP-Ww-Y4E" firstAttribute="top" secondItem="f71-ED-BNb" secondAttribute="bottom" id="f8a-wP-Brs"/>
-                            <constraint firstItem="MkY-da-amI" firstAttribute="top" secondItem="3B2-Tk-tD1" secondAttribute="bottom" id="fAw-Mv-k8x"/>
-                            <constraint firstItem="Hia-YG-WK6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gYp-I1-9kv"/>
-                            <constraint firstItem="zf0-mx-Vhe" firstAttribute="leading" secondItem="3B2-Tk-tD1" secondAttribute="trailing" id="gfO-HP-zp3"/>
-                            <constraint firstItem="3mI-4y-c7D" firstAttribute="width" secondItem="oQq-kD-HUk" secondAttribute="width" id="gz4-kq-S2U"/>
-                            <constraint firstItem="3B2-Tk-tD1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hJe-ur-QMi"/>
-                            <constraint firstItem="MkY-da-amI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hPg-4R-dab"/>
-                            <constraint firstItem="NFD-Ph-Ao4" firstAttribute="width" secondItem="f71-ED-BNb" secondAttribute="width" id="hRt-qL-cTb"/>
-                            <constraint firstItem="quu-aJ-s53" firstAttribute="top" secondItem="MkY-da-amI" secondAttribute="bottom" id="hXw-r4-BBL"/>
-                            <constraint firstItem="3mI-4y-c7D" firstAttribute="height" secondItem="28A-R7-JFc" secondAttribute="height" id="j6A-Ws-bjY"/>
-                            <constraint firstItem="f71-ED-BNb" firstAttribute="top" secondItem="dUh-gN-rnS" secondAttribute="bottom" id="jOa-Iy-E8r"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2PK-LC-JM8" secondAttribute="bottom" id="kqH-iL-7Gi"/>
-                            <constraint firstItem="nJt-6I-8i7" firstAttribute="top" secondItem="3mI-4y-c7D" secondAttribute="bottom" id="lj4-2h-mer"/>
-                            <constraint firstItem="NFD-Ph-Ao4" firstAttribute="height" secondItem="CN3-UU-Yg4" secondAttribute="height" id="lyf-vI-Mih"/>
-                            <constraint firstItem="CN3-UU-Yg4" firstAttribute="leading" secondItem="yiV-1n-cBi" secondAttribute="trailing" id="mbi-yX-d4f"/>
-                            <constraint firstItem="zf0-mx-Vhe" firstAttribute="height" secondItem="wxe-YO-Gop" secondAttribute="height" id="n4h-aM-gc5"/>
-                            <constraint firstItem="oQq-kD-HUk" firstAttribute="height" secondItem="MoP-Ww-Y4E" secondAttribute="height" id="nV4-rv-Xs5"/>
-                            <constraint firstItem="zf0-mx-Vhe" firstAttribute="top" secondItem="wxe-YO-Gop" secondAttribute="bottom" id="ofJ-om-nwI"/>
-                            <constraint firstItem="MoP-Ww-Y4E" firstAttribute="leading" secondItem="28A-R7-JFc" secondAttribute="trailing" id="qTZ-cQ-ley"/>
-                            <constraint firstItem="oQq-kD-HUk" firstAttribute="leading" secondItem="3mI-4y-c7D" secondAttribute="trailing" id="qW7-Jz-YTg"/>
-                            <constraint firstItem="hzy-Ax-enH" firstAttribute="width" secondItem="yiV-1n-cBi" secondAttribute="width" id="rWW-1t-JNQ"/>
-                            <constraint firstItem="3B2-Tk-tD1" firstAttribute="width" secondItem="zf0-mx-Vhe" secondAttribute="width" id="tRE-fV-FBX"/>
-                            <constraint firstItem="Toa-Nt-egq" firstAttribute="height" secondItem="zf0-mx-Vhe" secondAttribute="height" id="ubW-hn-prA"/>
-                            <constraint firstItem="3B2-Tk-tD1" firstAttribute="top" secondItem="kzT-Ds-vbM" secondAttribute="bottom" id="usV-HX-IBv"/>
-                            <constraint firstItem="wxe-YO-Gop" firstAttribute="width" secondItem="NFD-Ph-Ao4" secondAttribute="width" id="vUK-J5-VYL"/>
-                            <constraint firstItem="f71-ED-BNb" firstAttribute="height" secondItem="dUh-gN-rnS" secondAttribute="height" id="vWH-ZS-WEj"/>
-                            <constraint firstItem="kzT-Ds-vbM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vfe-4w-PR1"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MoP-Ww-Y4E" secondAttribute="trailing" id="wk8-3G-qKF"/>
-                            <constraint firstItem="nJt-6I-8i7" firstAttribute="width" secondItem="2PK-LC-JM8" secondAttribute="width" id="xlV-dO-u9N"/>
-                            <constraint firstItem="CN3-UU-Yg4" firstAttribute="width" secondItem="dUh-gN-rnS" secondAttribute="width" id="yGo-Gc-GZQ"/>
-                            <constraint firstItem="dUh-gN-rnS" firstAttribute="leading" secondItem="CN3-UU-Yg4" secondAttribute="trailing" id="z86-4Q-c6t"/>
-                            <constraint firstItem="kzT-Ds-vbM" firstAttribute="height" secondItem="3B2-Tk-tD1" secondAttribute="height" id="zIq-fF-zzJ"/>
-                            <constraint firstItem="yiV-1n-cBi" firstAttribute="width" secondItem="CN3-UU-Yg4" secondAttribute="width" id="zki-o5-T6P"/>
-                            <constraint firstItem="wxe-YO-Gop" firstAttribute="top" secondItem="yiV-1n-cBi" secondAttribute="bottom" id="zsp-4H-3hc"/>
+                            <constraint firstItem="CN3-UU-Yg4" firstAttribute="bottom" secondItem="dUh-gN-rnS" secondAttribute="bottom" id="03k-8p-ZRE"/>
+                            <constraint firstItem="3B2-Tk-tD1" firstAttribute="trailing" secondItem="MkY-da-amI" secondAttribute="trailing" id="0fm-u0-9y2"/>
+                            <constraint firstItem="MkY-da-amI" firstAttribute="top" secondItem="3B2-Tk-tD1" secondAttribute="bottom" constant="24" id="0jY-5g-CPQ"/>
+                            <constraint firstItem="NFD-Ph-Ao4" firstAttribute="trailing" secondItem="28A-R7-JFc" secondAttribute="trailing" id="5Vu-Fw-4cm"/>
+                            <constraint firstItem="Toa-Nt-egq" firstAttribute="top" secondItem="3mI-4y-c7D" secondAttribute="top" id="5eI-1c-cqe"/>
+                            <constraint firstItem="28A-R7-JFc" firstAttribute="leading" secondItem="3mI-4y-c7D" secondAttribute="leading" id="6Ao-xg-JFp"/>
+                            <constraint firstItem="yiV-1n-cBi" firstAttribute="leading" secondItem="hzy-Ax-enH" secondAttribute="trailing" constant="19" id="6bl-Bq-bn0"/>
+                            <constraint firstItem="yiV-1n-cBi" firstAttribute="baseline" secondItem="CN3-UU-Yg4" secondAttribute="firstBaseline" id="78z-e6-SZL"/>
+                            <constraint firstItem="quu-aJ-s53" firstAttribute="top" secondItem="MkY-da-amI" secondAttribute="bottom" constant="25" id="7Ha-QJ-NMO"/>
+                            <constraint firstItem="3mI-4y-c7D" firstAttribute="baseline" secondItem="Toa-Nt-egq" secondAttribute="firstBaseline" id="7Oo-WB-er8"/>
+                            <constraint firstItem="yiV-1n-cBi" firstAttribute="trailing" secondItem="wxe-YO-Gop" secondAttribute="trailing" id="7gW-Ak-17u"/>
+                            <constraint firstItem="yiV-1n-cBi" firstAttribute="top" secondItem="CN3-UU-Yg4" secondAttribute="top" id="7jW-D4-RV7"/>
+                            <constraint firstItem="NFD-Ph-Ao4" firstAttribute="bottom" secondItem="f71-ED-BNb" secondAttribute="bottom" id="8Hx-Yt-2Ta"/>
+                            <constraint firstItem="wxe-YO-Gop" firstAttribute="leading" secondItem="zf0-mx-Vhe" secondAttribute="leading" id="98d-3G-OV7"/>
+                            <constraint firstItem="3B2-Tk-tD1" firstAttribute="top" secondItem="kzT-Ds-vbM" secondAttribute="bottom" constant="24" id="9Hh-Ys-t9M"/>
+                            <constraint firstItem="yiV-1n-cBi" firstAttribute="leading" secondItem="wxe-YO-Gop" secondAttribute="leading" id="Anp-Si-2rj"/>
+                            <constraint firstItem="3mI-4y-c7D" firstAttribute="trailing" secondItem="nJt-6I-8i7" secondAttribute="trailing" id="Cq0-wh-btN"/>
+                            <constraint firstItem="MoP-Ww-Y4E" firstAttribute="trailing" secondItem="oQq-kD-HUk" secondAttribute="trailing" id="Cuw-Uy-Y6C"/>
+                            <constraint firstItem="kzT-Ds-vbM" firstAttribute="top" secondItem="hzy-Ax-enH" secondAttribute="bottom" constant="23" id="DSL-2X-mSh"/>
+                            <constraint firstItem="Hia-YG-WK6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="179" id="EH6-hc-Xoe"/>
+                            <constraint firstItem="hzy-Ax-enH" firstAttribute="trailing" secondItem="kzT-Ds-vbM" secondAttribute="trailing" id="FZj-s6-qwO"/>
+                            <constraint firstItem="nJt-6I-8i7" firstAttribute="top" secondItem="2PK-LC-JM8" secondAttribute="top" id="Fq1-SE-4di"/>
+                            <constraint firstItem="NFD-Ph-Ao4" firstAttribute="leading" secondItem="28A-R7-JFc" secondAttribute="leading" id="GCE-md-C4x"/>
+                            <constraint firstItem="kzT-Ds-vbM" firstAttribute="baseline" secondItem="wxe-YO-Gop" secondAttribute="baseline" id="Gyj-g0-86W"/>
+                            <constraint firstItem="28A-R7-JFc" firstAttribute="top" secondItem="MoP-Ww-Y4E" secondAttribute="top" id="HgP-du-o2F"/>
+                            <constraint firstItem="28A-R7-JFc" firstAttribute="bottom" secondItem="MoP-Ww-Y4E" secondAttribute="bottom" id="Hla-KZ-Eg0"/>
+                            <constraint firstItem="dUh-gN-rnS" firstAttribute="trailing" secondItem="f71-ED-BNb" secondAttribute="trailing" id="IR3-NU-KwM"/>
+                            <constraint firstItem="dUh-gN-rnS" firstAttribute="leading" secondItem="f71-ED-BNb" secondAttribute="leading" id="JO2-af-9Qg"/>
+                            <constraint firstItem="MkY-da-amI" firstAttribute="leading" secondItem="quu-aJ-s53" secondAttribute="leading" id="KDg-0h-v8L"/>
+                            <constraint firstItem="kzT-Ds-vbM" firstAttribute="trailing" secondItem="3B2-Tk-tD1" secondAttribute="trailing" id="LO9-Dh-EgC"/>
+                            <constraint firstItem="hzy-Ax-enH" firstAttribute="top" secondItem="Hia-YG-WK6" secondAttribute="bottom" constant="28" id="LU7-2q-1lf"/>
+                            <constraint firstItem="3B2-Tk-tD1" firstAttribute="baseline" secondItem="zf0-mx-Vhe" secondAttribute="baseline" id="M5j-Vh-M0v"/>
+                            <constraint firstItem="quu-aJ-s53" firstAttribute="top" secondItem="nJt-6I-8i7" secondAttribute="top" id="M63-A6-SUF"/>
+                            <constraint firstItem="NFD-Ph-Ao4" firstAttribute="top" secondItem="f71-ED-BNb" secondAttribute="top" id="MFv-Lw-rMG"/>
+                            <constraint firstItem="wxe-YO-Gop" firstAttribute="trailing" secondItem="zf0-mx-Vhe" secondAttribute="trailing" id="MUP-OF-XDp"/>
+                            <constraint firstItem="nJt-6I-8i7" firstAttribute="bottom" secondItem="2PK-LC-JM8" secondAttribute="bottom" id="Mb6-2b-OWE"/>
+                            <constraint firstItem="kzT-Ds-vbM" firstAttribute="top" secondItem="wxe-YO-Gop" secondAttribute="top" id="N3b-Ba-9yV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="quu-aJ-s53" secondAttribute="bottom" constant="43" id="OYO-dt-i9s"/>
+                            <constraint firstItem="MkY-da-amI" firstAttribute="top" secondItem="Toa-Nt-egq" secondAttribute="top" id="P7k-ry-g6n"/>
+                            <constraint firstItem="3mI-4y-c7D" firstAttribute="leading" secondItem="nJt-6I-8i7" secondAttribute="leading" id="Prf-Q5-8Wu"/>
+                            <constraint firstItem="Hia-YG-WK6" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Q3A-NF-Gxi"/>
+                            <constraint firstItem="Toa-Nt-egq" firstAttribute="baseline" secondItem="3mI-4y-c7D" secondAttribute="firstBaseline" id="RUr-hh-RyP"/>
+                            <constraint firstItem="wxe-YO-Gop" firstAttribute="top" secondItem="NFD-Ph-Ao4" secondAttribute="top" id="S1F-di-mLg"/>
+                            <constraint firstItem="hzy-Ax-enH" firstAttribute="leading" secondItem="kzT-Ds-vbM" secondAttribute="leading" id="SQh-SU-NtA"/>
+                            <constraint firstItem="Hia-YG-WK6" firstAttribute="trailing" secondItem="dUh-gN-rnS" secondAttribute="trailing" id="Ss4-S0-TiD"/>
+                            <constraint firstItem="CN3-UU-Yg4" firstAttribute="leading" secondItem="NFD-Ph-Ao4" secondAttribute="leading" id="T8s-JQ-SlE"/>
+                            <constraint firstItem="CN3-UU-Yg4" firstAttribute="baseline" secondItem="yiV-1n-cBi" secondAttribute="firstBaseline" id="TQ2-Bq-7B7"/>
+                            <constraint firstItem="CN3-UU-Yg4" firstAttribute="leading" secondItem="yiV-1n-cBi" secondAttribute="trailing" constant="18" id="VAW-AM-236"/>
+                            <constraint firstItem="28A-R7-JFc" firstAttribute="trailing" secondItem="3mI-4y-c7D" secondAttribute="trailing" id="VDy-mC-Zb4"/>
+                            <constraint firstItem="3B2-Tk-tD1" firstAttribute="leading" secondItem="MkY-da-amI" secondAttribute="leading" id="VlN-fi-TjG"/>
+                            <constraint firstItem="kzT-Ds-vbM" firstAttribute="leading" secondItem="3B2-Tk-tD1" secondAttribute="leading" id="XJH-EQ-wKb"/>
+                            <constraint firstItem="zf0-mx-Vhe" firstAttribute="baseline" secondItem="28A-R7-JFc" secondAttribute="firstBaseline" id="Xg5-Yu-fce"/>
+                            <constraint firstItem="hzy-Ax-enH" firstAttribute="baseline" secondItem="yiV-1n-cBi" secondAttribute="baseline" id="Y4j-km-UGY"/>
+                            <constraint firstItem="hzy-Ax-enH" firstAttribute="top" secondItem="yiV-1n-cBi" secondAttribute="top" id="YeG-6R-ZAl"/>
+                            <constraint firstItem="dUh-gN-rnS" firstAttribute="leading" secondItem="CN3-UU-Yg4" secondAttribute="trailing" constant="17" id="aBg-bg-WL1"/>
+                            <constraint firstItem="3mI-4y-c7D" firstAttribute="bottom" secondItem="oQq-kD-HUk" secondAttribute="bottom" id="aXd-XM-C8M"/>
+                            <constraint firstItem="MkY-da-amI" firstAttribute="baseline" secondItem="Toa-Nt-egq" secondAttribute="baseline" id="brN-K8-iw0"/>
+                            <constraint firstItem="quu-aJ-s53" firstAttribute="baseline" secondItem="nJt-6I-8i7" secondAttribute="firstBaseline" id="cZY-2G-cAA"/>
+                            <constraint firstItem="wxe-YO-Gop" firstAttribute="baseline" secondItem="NFD-Ph-Ao4" secondAttribute="firstBaseline" id="d75-1D-e7J"/>
+                            <constraint firstItem="zf0-mx-Vhe" firstAttribute="trailing" secondItem="Toa-Nt-egq" secondAttribute="trailing" id="dAS-Sd-JUc"/>
+                            <constraint firstItem="CN3-UU-Yg4" firstAttribute="top" secondItem="dUh-gN-rnS" secondAttribute="top" id="db0-cc-P62"/>
+                            <constraint firstItem="oQq-kD-HUk" firstAttribute="trailing" secondItem="2PK-LC-JM8" secondAttribute="trailing" id="fSR-zR-dEO"/>
+                            <constraint firstItem="NFD-Ph-Ao4" firstAttribute="baseline" secondItem="wxe-YO-Gop" secondAttribute="firstBaseline" id="fta-DP-dSg"/>
+                            <constraint firstItem="zf0-mx-Vhe" firstAttribute="leading" secondItem="Toa-Nt-egq" secondAttribute="leading" id="hRD-4n-Hmc"/>
+                            <constraint firstItem="zf0-mx-Vhe" firstAttribute="top" secondItem="28A-R7-JFc" secondAttribute="top" id="hT5-Fg-PuK"/>
+                            <constraint firstItem="3B2-Tk-tD1" firstAttribute="top" secondItem="zf0-mx-Vhe" secondAttribute="top" id="jh4-pg-U3q"/>
+                            <constraint firstItem="hzy-Ax-enH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="kds-as-xDY"/>
+                            <constraint firstItem="Hia-YG-WK6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="39" id="kuT-NL-F9Y"/>
+                            <constraint firstItem="CN3-UU-Yg4" firstAttribute="trailing" secondItem="NFD-Ph-Ao4" secondAttribute="trailing" id="mTj-35-l4g"/>
+                            <constraint firstItem="3mI-4y-c7D" firstAttribute="top" secondItem="oQq-kD-HUk" secondAttribute="top" id="rOB-j9-lXj"/>
+                            <constraint firstItem="f71-ED-BNb" firstAttribute="trailing" secondItem="MoP-Ww-Y4E" secondAttribute="trailing" id="sBE-0p-yfw"/>
+                            <constraint firstItem="28A-R7-JFc" firstAttribute="baseline" secondItem="zf0-mx-Vhe" secondAttribute="firstBaseline" id="u2J-qm-OCx"/>
+                            <constraint firstItem="nJt-6I-8i7" firstAttribute="leading" secondItem="quu-aJ-s53" secondAttribute="trailing" constant="17" id="ucs-HA-pUI"/>
+                            <constraint firstItem="f71-ED-BNb" firstAttribute="leading" secondItem="MoP-Ww-Y4E" secondAttribute="leading" id="wSD-oY-cn3"/>
+                            <constraint firstItem="MoP-Ww-Y4E" firstAttribute="leading" secondItem="oQq-kD-HUk" secondAttribute="leading" id="yDG-Ju-gRx"/>
+                            <constraint firstItem="oQq-kD-HUk" firstAttribute="leading" secondItem="2PK-LC-JM8" secondAttribute="leading" id="zU3-1R-QVZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="addButton" destination="oQq-kD-HUk" id="QNP-zu-EA5"/>
+                        <outlet property="clearButton" destination="hzy-Ax-enH" id="cfC-FL-8J5"/>
+                        <outlet property="decimalButton" destination="nJt-6I-8i7" id="CSc-vh-yy9"/>
+                        <outlet property="divideButton" destination="dUh-gN-rnS" id="S6G-ee-mOv"/>
+                        <outlet property="equalsButton" destination="2PK-LC-JM8" id="1ge-53-tlw"/>
+                        <outlet property="multiplyButton" destination="f71-ED-BNb" id="bDs-R3-rw7"/>
                         <outlet property="outputLabel" destination="Hia-YG-WK6" id="CvC-hV-gVd"/>
+                        <outlet property="subtractButton" destination="MoP-Ww-Y4E" id="Yjv-Ph-hpi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="60.869565217391312" y="26.116071428571427"/>
         </scene>
     </scenes>
 </document>

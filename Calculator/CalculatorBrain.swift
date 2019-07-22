@@ -50,7 +50,8 @@ class CalculatorBrain {
     
     func calculateIfPossible() -> String? {
         
-        guard let operand1 = Double(operand1String), let operand2 = Double(operand2String) else { return nil }
+        guard let operand1 = Double(operand1String),
+                let operand2 = Double(operand2String) else { return nil }
         guard let operatorType = operatorType else { return nil}
         
         switch  operatorType {

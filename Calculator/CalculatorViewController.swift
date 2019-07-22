@@ -39,7 +39,13 @@ class CalculatorViewController: UIViewController {
             outputLabel.text = "ERROR"
             return
         }
-        outputLabel.text = result
+        
+        let doubleValue = Double(result)
+        if doubleValue?.truncatingRemainder(dividingBy: 1.0) == 0 {
+            outputLabel.text = String(format: "%0.f", doubleValue!)
+        } else {
+            outputLabel.text = result
+        }
         clearTransaction()
         brain?.operand1String = outputLabel.text ?? ""
     }

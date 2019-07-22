@@ -29,6 +29,7 @@ class CalculatorViewController: UIViewController {
         if let operandTapped = sender.titleLabel?.text {
             
             let buttonDoesntContainDecimal = !operandTapped.contains(".")
+            
             let buttonContainsDecimalWithNoCurrentDecimal = operandTapped.contains(".") && !(outputLabel.text?.contains(".") ?? false)
             
             
@@ -42,8 +43,7 @@ class CalculatorViewController: UIViewController {
         
         // Takes in the value of the operator tapped
         if let operatorValueTapped = sender.titleLabel?.text {
-            
-            let unwrappedNumber = String(outputLabel.text ?? "")
+             let unwrappedNumber = String(outputLabel.text ?? "")
             outputLabel.text = String("\(unwrappedNumber) \(operatorValueTapped)")
             brain?.setOperator(operatorValueTapped)
             

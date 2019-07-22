@@ -326,6 +326,24 @@
                                     <action selector="operatorTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9KC-JI-wZ0"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="quu-aJ-s53">
+                                <rect key="frame" x="20" y="739" width="180" height="80"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="98" maxY="0.0"/>
+                                <state key="normal" title="0">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="operandTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="42H-gm-gd4"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJt-6I-8i7">
                                 <rect key="frame" x="217" y="739" width="80" height="80"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -361,30 +379,26 @@
                                     <action selector="equalTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MgU-Dl-1Ov"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="quu-aJ-s53">
-                                <rect key="frame" x="20" y="739" width="180" height="80"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
-                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="98" maxY="0.0"/>
-                                <state key="normal" title="0">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="40"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="operandTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="42H-gm-gd4"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Previous Answer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUT-ih-8AE">
+                                <rect key="frame" x="20" y="70" width="145" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxd-as-Y66">
+                                <rect key="frame" x="20" y="99" width="94" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="CN3-UU-Yg4" firstAttribute="bottom" secondItem="dUh-gN-rnS" secondAttribute="bottom" id="03k-8p-ZRE"/>
                             <constraint firstItem="3B2-Tk-tD1" firstAttribute="trailing" secondItem="MkY-da-amI" secondAttribute="trailing" id="0fm-u0-9y2"/>
                             <constraint firstItem="MkY-da-amI" firstAttribute="top" secondItem="3B2-Tk-tD1" secondAttribute="bottom" constant="24" id="0jY-5g-CPQ"/>
+                            <constraint firstItem="yxd-as-Y66" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="55" id="3Ha-a1-0ki"/>
                             <constraint firstItem="NFD-Ph-Ao4" firstAttribute="trailing" secondItem="28A-R7-JFc" secondAttribute="trailing" id="5Vu-Fw-4cm"/>
                             <constraint firstItem="Toa-Nt-egq" firstAttribute="top" secondItem="3mI-4y-c7D" secondAttribute="top" id="5eI-1c-cqe"/>
                             <constraint firstItem="28A-R7-JFc" firstAttribute="leading" secondItem="3mI-4y-c7D" secondAttribute="leading" id="6Ao-xg-JFp"/>
@@ -447,6 +461,7 @@
                             <constraint firstItem="NFD-Ph-Ao4" firstAttribute="baseline" secondItem="wxe-YO-Gop" secondAttribute="firstBaseline" id="fta-DP-dSg"/>
                             <constraint firstItem="zf0-mx-Vhe" firstAttribute="leading" secondItem="Toa-Nt-egq" secondAttribute="leading" id="hRD-4n-Hmc"/>
                             <constraint firstItem="zf0-mx-Vhe" firstAttribute="top" secondItem="28A-R7-JFc" secondAttribute="top" id="hT5-Fg-PuK"/>
+                            <constraint firstItem="yxd-as-Y66" firstAttribute="leading" secondItem="hzy-Ax-enH" secondAttribute="leading" id="hW2-4w-KAm"/>
                             <constraint firstItem="3B2-Tk-tD1" firstAttribute="top" secondItem="zf0-mx-Vhe" secondAttribute="top" id="jh4-pg-U3q"/>
                             <constraint firstItem="hzy-Ax-enH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="kds-as-xDY"/>
                             <constraint firstItem="Hia-YG-WK6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="39" id="kuT-NL-F9Y"/>
@@ -469,6 +484,8 @@
                         <outlet property="equalsButton" destination="2PK-LC-JM8" id="1ge-53-tlw"/>
                         <outlet property="multiplyButton" destination="f71-ED-BNb" id="bDs-R3-rw7"/>
                         <outlet property="outputLabel" destination="Hia-YG-WK6" id="CvC-hV-gVd"/>
+                        <outlet property="previousAnswerLabel" destination="yxd-as-Y66" id="J4u-kr-YEN"/>
+                        <outlet property="previousAnswerTitle" destination="lUT-ih-8AE" id="b7c-2g-l5s"/>
                         <outlet property="subtractButton" destination="MoP-Ww-Y4E" id="Yjv-Ph-hpi"/>
                     </connections>
                 </viewController>

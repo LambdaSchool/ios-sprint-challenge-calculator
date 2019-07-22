@@ -26,12 +26,18 @@ class CalculatorViewController: UIViewController {
     
     @IBOutlet weak var clearButton: UIButton!
     
+    @IBOutlet weak var previousAnswerLabel: UILabel!
+    
+    @IBOutlet weak var previousAnswerTitle: UILabel!
+    
     var brain: CalculatorBrain?
     let xYValue = 0.75
     let durationTime = 0.15
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        previousAnswerLabel.text = nil
+        previousAnswerTitle.text = nil
         brain = CalculatorBrain()
     }
     
@@ -87,6 +93,8 @@ class CalculatorViewController: UIViewController {
         })
         // Calculates the answer and sets it to the value 'answer'
         if let answer = brain!.calculateIfPossible() {
+            previousAnswerLabel.text = answer
+            previousAnswerTitle.text = "Previous Answer"
             outputLabel.text = answer
         }
         
@@ -103,6 +111,13 @@ class CalculatorViewController: UIViewController {
                             })
         })
         // Clears the calculation when tapped
+        
+        if outputLabel.text == "0" {
+            clearTransaction()
+            previousAnswerTitle.text = ""
+            previousAnswerLabel.text = ""
+        }
+        
         clearTransaction()
         outputLabel.text = "0"
     }
@@ -157,9 +172,12 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func subtractButtonPressed(_ sender: Any) {
+        
+        // Set color for button pressed
         subtractButton.backgroundColor = .white
         subtractButton.setTitleColor(.black, for: .normal)
         
+        // Set default colors back
         divideButton.backgroundColor = .green
         divideButton.setTitleColor(.white, for: .normal)
         multiplyButton.backgroundColor = .green
@@ -172,9 +190,12 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func divideButtonPressed(_ sender: Any) {
+        
+        // Set color for button pressed
         divideButton.backgroundColor = .white
         divideButton.setTitleColor(.black, for: .normal)
         
+        // Set default colors back
         subtractButton.backgroundColor = .green
         subtractButton.setTitleColor(.white, for: .normal)
         multiplyButton.backgroundColor = .green
@@ -186,9 +207,12 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func multiplyButtonPressed(_ sender: Any) {
+        
+        // Set color for button pressed
         multiplyButton.backgroundColor = .white
         multiplyButton.setTitleColor(.black, for: .normal)
         
+        // Set default colors back
         subtractButton.backgroundColor = .green
         subtractButton.setTitleColor(.white, for: .normal)
         divideButton.backgroundColor = .green
@@ -200,9 +224,12 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func addButtonPressed(_ sender: Any) {
+        
+        // Set color for button pressed
         addButton.backgroundColor = .white
         addButton.setTitleColor(.black, for: .normal)
         
+        // Set default colors back
         subtractButton.backgroundColor = .green
         subtractButton.setTitleColor(.white, for: .normal)
         multiplyButton.backgroundColor = .green
@@ -214,9 +241,12 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func equalButtonPressed(_ sender: Any) {
+        
+        // Set color for button pressed
         equalsButton.backgroundColor = .white
         equalsButton.setTitleColor(.black, for: .normal)
         
+        // Set default colors back
         subtractButton.backgroundColor = .green
         subtractButton.setTitleColor(.white, for: .normal)
         multiplyButton.backgroundColor = .green
@@ -228,6 +258,8 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func clearButtonPressed(_ sender: Any) {
+        
+        // Default all colors when clear button pressed
         equalsButton.backgroundColor = .green
         equalsButton.setTitleColor(.white, for: .normal)
         subtractButton.backgroundColor = .green

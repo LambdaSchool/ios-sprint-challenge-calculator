@@ -32,17 +32,20 @@ class CalculatorBrain {
     }
     
     func setOperator(_ operatorString: String) {
-        switch operatorString {
-        case "+":
-            operatorType = .addition
-        case "-":
-            operatorType = .subtraction
-        case "×":
-            operatorType = .multiplication
-        case "÷":
-            operatorType = .division
-        default:
-            operatorType = nil
+        
+        if let operatorSymbol: OperatorType = OperatorType(rawValue: operatorString) {
+            switch operatorSymbol {
+            case .addition:
+                operatorType = .addition
+            case .subtraction:
+                operatorType = .subtraction
+            case .multiplication:
+                operatorType = .multiplication
+            case .division:
+                operatorType = .division
+            default:
+                operatorType = nil
+            }
         }
     }
     
@@ -53,7 +56,7 @@ class CalculatorBrain {
             guard let operand2 = Double(operand2String) else { return nil }
             
             switch operatorType {
-            case .addition?:
+            case .addition?: // I don't understand why these are optional
                 return String(operand1 + operand2)
             case .subtraction?:
                 return String(operand1 - operand2)

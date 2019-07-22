@@ -60,11 +60,16 @@ class CalculatorViewController: UIViewController {
                 let result: String = String(operand1 * operand2)
                 outputLabel.text = result
             case .division?:
-                
-                let result: String = String(operand1 / operand2)
-                outputLabel.text = result
+                if operand2 == 0 {
+                    let result: String = "Error"
+                    outputLabel.text = result
+                    print("Error: Division by zero")
+                } else {
+                    let result: String = String(operand1 / operand2)
+                    outputLabel.text = result
+                }
             default:
-                let result: String = "0"
+                let result: String = ""
                 outputLabel.text = result
             }
         }

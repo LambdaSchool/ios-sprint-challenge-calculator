@@ -23,11 +23,13 @@ class CalculatorBrain {
     func addOperandDigit(_ digit: String) -> String {
         switch operatorType {
         case nil:
+            if digit == "." && operand1String == "" {operand1String = "0"}
             operand1String = operand1String + digit
             return operand1String
         default:
+            if digit == "." && operand2String == "" {operand2String = "0"}
             operand2String = operand2String + digit
-            return digit
+            return operand2String
         }
     }
     

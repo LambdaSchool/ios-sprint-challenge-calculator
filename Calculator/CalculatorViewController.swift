@@ -13,6 +13,7 @@ class CalculatorViewController: UIViewController {
     var brain: CalculatorBrain?
     
     @IBOutlet weak var outputLabel: UILabel!
+    @IBOutlet weak var decimalButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +24,13 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operandTapped(_ sender: UIButton) {
         guard let value = sender.titleLabel?.text else { return }
+        if value == "." { decimalButton.isEnabled = false }
         outputLabel.text = brain?.addOperandDigit(value)
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
         guard let value = sender.titleLabel?.text else { return }
+        decimalButton.isEnabled = true
         brain?.setOperator(value)
     }
     
@@ -37,11 +40,14 @@ class CalculatorViewController: UIViewController {
             return
         }
         outputLabel.text = result
+        clearTransaction()
+        brain?.operand1String = outputLabel.text ?? ""
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
         clearTransaction()
         outputLabel.text = "0"
+        decimalButton.isEnabled = true
     }
     
     // MARK: - Private

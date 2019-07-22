@@ -63,4 +63,25 @@ class CalculatorViewController: UIViewController {
         brain?.operand2String = ""
         brain?.operatorType = nil
     }
+    
+    @IBAction func valueSwitch() {
+        switch brain?.operatorType {
+        case nil:
+            if brain?.operand1String == "" {
+                break
+            } else {
+                let currentValue = brain?.operand1String
+                brain?.operand1String = ("-" + currentValue!)
+                outputLabel.text = brain?.operand1String
+            }
+        default:
+            if brain?.operand2String == "" {
+                break
+            } else {
+                let currentValue = brain?.operand2String
+                brain?.operand2String = ("-" + currentValue!)
+                outputLabel.text = brain?.operand2String
+            }
+        }
+    }
 }

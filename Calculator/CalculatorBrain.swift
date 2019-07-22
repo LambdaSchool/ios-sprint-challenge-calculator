@@ -21,15 +21,12 @@ class CalculatorBrain {
     var operatorType: OperatorType?
     
     func addOperandDigit(_ digit: String) -> String {
-        print("digitSelected: \(digit)")
         switch operatorType {
         case nil:
             operand1String = operand1String + digit
-            print("operand1String: \(operand1String)")
             return operand1String
         default:
             operand2String = operand2String + digit
-            print("operand2String: \(operand2String)")
             return digit
         }
     }

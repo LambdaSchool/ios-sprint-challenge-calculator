@@ -22,10 +22,28 @@ class CalculatorBrain {
     
     func addOperandDigit(_ digit: String) -> String {
         if operatorType == nil {
+            if operand1String.contains(".") && digit == "." {
+                return operand1String
+            }
             operand1String.append(digit)
+        
+            // if the first character is . add 0
+            if operand1String == "." {
+                operand1String = "0."
+            }
+
             return operand1String
         } else {
+            if operand2String.contains(".") && digit == "." {
+                return operand2String
+            }
             operand2String.append(digit)
+            
+            // if the first character is . add 0
+            if operand2String == "." {
+                operand2String = "0."
+            }
+            
             return operand2String
         }
     }
@@ -37,12 +55,14 @@ class CalculatorBrain {
     }
     
     func calculateIfPossible() -> String? {
+        // check if two operands are not empty
         if !(operand1String.isEmpty || operand2String.isEmpty) {
             if let op = self.operatorType {
                 guard let number1 = Double(operand1String) else { return nil }
                 guard let number2 = Double(operand2String) else { return nil }
                 var result: Double
                 
+                // check operator
                 switch op {
                 case .addition:
                     result = number1 + number2

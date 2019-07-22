@@ -57,6 +57,7 @@ class CalculatorBrain {
             
             switch operatorType {
             case .addition?: // I don't understand why these are optional
+                
                 return String(operand1 + operand2)
             case .subtraction?:
                 return String(operand1 - operand2)

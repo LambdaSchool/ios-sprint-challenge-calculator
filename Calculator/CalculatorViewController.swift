@@ -30,6 +30,10 @@ class CalculatorViewController: UIViewController {
         if let operand: String = brain.addOperandDigit(sender.currentTitle ?? "0") {
             outputLabel.text = operand
         }
+        
+        if sender.currentTitle == "." {
+            
+        }
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
@@ -48,34 +52,6 @@ class CalculatorViewController: UIViewController {
         if let calculation = brain.calculateIfPossible() {
             outputLabel.text = calculation
         }
-//        if brain.operand1String != "", brain.operand2String != "", (brain.operatorType != nil) {
-//            guard let operand1 = Double(brain.operand1String) else { return }
-//            guard let operand2 = Double(brain.operand2String) else { return }
-//
-//            switch brain.operatorType {
-//            case .addition?:
-//                let result: String = String(operand1 + operand2)
-//                outputLabel.text = result
-//            case .subtraction?:
-//                let result: String = String(operand1 - operand2)
-//                outputLabel.text = result
-//            case .multiplication?:
-//                let result: String = String(operand1 * operand2)
-//                outputLabel.text = result
-//            case .division?:
-//                if operand2 == 0 {
-//                    let result: String = "Error"
-//                    outputLabel.text = result
-//                    print("Error: Division by zero")
-//                } else {
-//                    let result: String = String(operand1 / operand2)
-//                    outputLabel.text = result
-//                }
-//            default:
-//                let result: String = ""
-//                outputLabel.text = result
-//            }
-//        }
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {

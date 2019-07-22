@@ -13,12 +13,12 @@ enum OperatorType: String {
 }
 
 class CalculatorBrain {
-    var operand1String = ""
-    var operand2String = ""
+    var operand1String = "?"
+    var operand2String = "*"
     var operatorType: OperatorType?
     
     func addOperandDigit(_ digit: String) -> String {
-        
+        let brain = String?
     }
     
     func setOperator(_ operatorString: String) {

@@ -58,7 +58,7 @@ class CalculatorBrain {
                     finalAnswer = String(firstOperandNumber * secondOperandNumber)
                 case .division? :
                     if secondOperandNumber == 0 {
-                        return "You know you can't do that :)"
+                        return "Nice try ;)"
                     } else {
                         finalAnswer = String(firstOperandNumber / secondOperandNumber)
                     }
@@ -70,6 +70,9 @@ class CalculatorBrain {
                 return nil
                 
             }
+            
+            operand1String = finalAnswer
+            operand2String = ""
             return finalAnswer
         }
     }

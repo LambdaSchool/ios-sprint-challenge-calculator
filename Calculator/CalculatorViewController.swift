@@ -25,7 +25,6 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operandTapped(_ sender: UIButton) {
         
-        // case 1 - can call operan
         // Takes in the value of the operand tapped
         if let operandTapped = sender.titleLabel?.text {
             

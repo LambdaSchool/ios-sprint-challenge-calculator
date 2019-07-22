@@ -90,4 +90,15 @@ class CalculatorBrain {
     func isInteger(number: Double) -> Bool {
         return number.truncatingRemainder(dividingBy: 1) == 0
     }
+    
+    // toggle positive/negative
+    func toggleNumber() -> String {
+        if operatorType == nil {
+            operand1String.insert("-", at: operand1String.startIndex)
+            return operand1String
+        } else {
+            operand2String.insert("-", at: operand2String.startIndex)
+            return operand2String
+        }
+    }
 }

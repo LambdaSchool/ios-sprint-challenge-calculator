@@ -43,6 +43,10 @@ class CalculatorViewController: UIViewController {
         clearTransaction()
     }
     
+    @IBAction func posnegTapped(_ sender: UIButton) {
+        outputLabel.text = self.brain?.toggleNumber()
+    }
+    
     // MARK: - Private
     
     private func clearTransaction() {

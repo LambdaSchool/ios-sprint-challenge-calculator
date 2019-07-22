@@ -14,6 +14,9 @@ class CalculatorViewController: UIViewController {
     
     @IBOutlet weak var outputLabel: UILabel!
     
+    
+    @IBOutlet weak var pickerView: UIPickerView!
+    
     var brain: CalculatorBrain?
     
     override func viewDidLoad() {
@@ -29,9 +32,7 @@ class CalculatorViewController: UIViewController {
         if let operandTapped = sender.titleLabel?.text {
             
             let buttonDoesntContainDecimal = !operandTapped.contains(".")
-            
             let buttonContainsDecimalWithNoCurrentDecimal = operandTapped.contains(".") && !(outputLabel.text?.contains(".") ?? false)
-            
             
             if buttonDoesntContainDecimal || buttonContainsDecimalWithNoCurrentDecimal {
                 outputLabel.text = brain?.addOperandDigit(operandTapped)

@@ -69,6 +69,8 @@ class CalculatorBrain {
             default:
                 return nil
             }
+        } else {
+            return nil
         }
     }
 }

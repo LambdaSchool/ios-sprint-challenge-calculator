@@ -47,6 +47,28 @@ class CalculatorBrain {
     }
     
     func calculateIfPossible() -> String? {
-        return "Calculation Failed"
+        
+        if operand1String != "", operand2String != "", (operatorType != nil) {
+            guard let operand1 = Double(operand1String) else { return nil }
+            guard let operand2 = Double(operand2String) else { return nil }
+            
+            switch operatorType {
+            case .addition?:
+                return String(operand1 + operand2)
+            case .subtraction?:
+                return String(operand1 - operand2)
+            case .multiplication?:
+                return String(operand1 * operand2)
+            case .division?:
+                if operand2 == 0 {
+                    print("Error: Division by zero")
+                    return "Error"
+                } else {
+                    return String(operand1 / operand2)
+                }
+            default:
+                return nil
+            }
+        }
     }
 }

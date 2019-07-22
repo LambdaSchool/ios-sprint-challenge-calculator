@@ -25,11 +25,11 @@ class CalculatorBrain {
     //i still dont get how it knows to ORDER these numbers I just kind of got it to work at this point with a lot of stack overflow
     func addOperandDigit(_ digit: String) -> String {
         if operatorType != nil {
-            operand1String.append(digit)
-            return operand2String
-        } else {
             operand2String.append(digit)
             return operand1String
+        } else {
+            operand1String.append(digit)
+            return operand2String
         }
     }
     

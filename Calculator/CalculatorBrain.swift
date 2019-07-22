@@ -17,15 +17,19 @@ class CalculatorBrain {
     var operand2String = ""
     var operatorType: OperatorType?
     
+    init(operand1String: String, operand2String: String) {
+        self.operand1String = operand1String
+        self.operand2String = operand2String
+        self.operatorType = OperatorType.addition
+    }
+    
+    
     func addOperandDigit(_ digit: String) -> String {
-        
+
     }
     
     func setOperator(_ operatorString: String) {
-        
+
     }
-    
-    func calculateIfPossible() -> String? {
-        
-    }
+
 }

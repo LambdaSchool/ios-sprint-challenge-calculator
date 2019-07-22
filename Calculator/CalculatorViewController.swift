@@ -8,18 +8,22 @@
 
 import UIKit
 
+var brain: CalculatorBrain?
+
 class CalculatorViewController: UIViewController {
     
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        brain = CalculatorBrain.init(operand1String: "", operand2String: "")
     }
     
+
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        
+
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {

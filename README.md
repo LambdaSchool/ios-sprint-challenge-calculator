@@ -84,5 +84,6 @@ After finishing your required elements, you can push your work further. These go
 
 * Preventing multiple decimal points: operands should only allow a single decimal point to be entered. If the decimal button is tapped more than once per operand, the subsequent taps should be ignored.
 * Truncating decimal and trailing zeros: if the solution to the arithmetic expression is an integer, the display should not show the decimal point or any trailing zeros (1 + 2 = 3 rather than 3.0).
-* Implement `+/-` button: when tapped, the button should toggle positive/negative for the current operand.
+* Implement ```Swift+/-` button: when tapped, the button should toggle positive/negative for the current operand.
 * Implement `%` button: when tapped, the current operand should have its decimal place moved 2 spaces to the left (50 becomes 0.5).
+

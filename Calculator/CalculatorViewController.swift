@@ -61,7 +61,14 @@ class CalculatorViewController: UIViewController {
     //8: changes the output label back to zero
     outputLabel.text = "0"
 }
-
+    @IBAction func percentButtonTapped(_ sender: Any) {
+        if var percentageNumber = Double(outputLabel.text ?? "") {
+            percentageNumber = (percentageNumber / 100)
+            outputLabel.text = String(percentageNumber)
+            brain.operand1String = String(percentageNumber)
+        }
+    }
+    
 // MARK: - Private
 
 private func clearTransaction() {

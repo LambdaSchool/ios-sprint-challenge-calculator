@@ -385,7 +385,7 @@
                                     <action selector="equalTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MgU-Dl-1Ov"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Previous Answer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUT-ih-8AE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Previous Answer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUT-ih-8AE">
                                 <rect key="frame" x="20" y="70" width="145" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -450,13 +450,13 @@
                             <constraint firstItem="hzy-Ax-enH" firstAttribute="leading" secondItem="kzT-Ds-vbM" secondAttribute="leading" id="SQh-SU-NtA"/>
                             <constraint firstItem="WOg-RI-MY8" firstAttribute="leading" secondItem="yxd-as-Y66" secondAttribute="leading" id="SdL-yo-lps"/>
                             <constraint firstItem="Hia-YG-WK6" firstAttribute="trailing" secondItem="dUh-gN-rnS" secondAttribute="trailing" id="Ss4-S0-TiD"/>
+                            <constraint firstItem="lUT-ih-8AE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="26" id="T3N-ES-TW1"/>
                             <constraint firstItem="CN3-UU-Yg4" firstAttribute="leading" secondItem="NFD-Ph-Ao4" secondAttribute="leading" id="T8s-JQ-SlE"/>
                             <constraint firstItem="CN3-UU-Yg4" firstAttribute="baseline" secondItem="yiV-1n-cBi" secondAttribute="firstBaseline" id="TQ2-Bq-7B7"/>
                             <constraint firstItem="CN3-UU-Yg4" firstAttribute="leading" secondItem="yiV-1n-cBi" secondAttribute="trailing" constant="18" id="VAW-AM-236"/>
                             <constraint firstItem="28A-R7-JFc" firstAttribute="trailing" secondItem="3mI-4y-c7D" secondAttribute="trailing" id="VDy-mC-Zb4"/>
                             <constraint firstItem="3B2-Tk-tD1" firstAttribute="leading" secondItem="MkY-da-amI" secondAttribute="leading" id="VlN-fi-TjG"/>
                             <constraint firstItem="kzT-Ds-vbM" firstAttribute="leading" secondItem="3B2-Tk-tD1" secondAttribute="leading" id="XJH-EQ-wKb"/>
-                            <constraint firstItem="WOg-RI-MY8" firstAttribute="leading" secondItem="lUT-ih-8AE" secondAttribute="leading" id="XZa-rP-nzv"/>
                             <constraint firstItem="zf0-mx-Vhe" firstAttribute="baseline" secondItem="28A-R7-JFc" secondAttribute="firstBaseline" id="Xg5-Yu-fce"/>
                             <constraint firstItem="hzy-Ax-enH" firstAttribute="baseline" secondItem="yiV-1n-cBi" secondAttribute="baseline" id="Y4j-km-UGY"/>
                             <constraint firstItem="hzy-Ax-enH" firstAttribute="top" secondItem="yiV-1n-cBi" secondAttribute="top" id="YeG-6R-ZAl"/>
@@ -475,6 +475,7 @@
                             <constraint firstItem="3B2-Tk-tD1" firstAttribute="top" secondItem="zf0-mx-Vhe" secondAttribute="top" id="jh4-pg-U3q"/>
                             <constraint firstItem="hzy-Ax-enH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="kds-as-xDY"/>
                             <constraint firstItem="Hia-YG-WK6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="39" id="kuT-NL-F9Y"/>
+                            <constraint firstItem="lUT-ih-8AE" firstAttribute="leading" secondItem="yxd-as-Y66" secondAttribute="leading" id="lxa-C4-27B"/>
                             <constraint firstItem="CN3-UU-Yg4" firstAttribute="trailing" secondItem="NFD-Ph-Ao4" secondAttribute="trailing" id="mTj-35-l4g"/>
                             <constraint firstItem="3mI-4y-c7D" firstAttribute="top" secondItem="oQq-kD-HUk" secondAttribute="top" id="rOB-j9-lXj"/>
                             <constraint firstItem="f71-ED-BNb" firstAttribute="trailing" secondItem="MoP-Ww-Y4E" secondAttribute="trailing" id="sBE-0p-yfw"/>

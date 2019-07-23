@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CE5FC8FF229F4C7A00BE719B /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE5FC8FF229F4C7A00BE719B /* CalculatorThomasDye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalculatorThomasDye.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5FC902229F4C7A00BE719B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5FC904229F4C7A00BE719B /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		CE5FC907229F4C7A00BE719B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -48,7 +48,7 @@
 		CE5FC900229F4C7A00BE719B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CE5FC8FF229F4C7A00BE719B /* Calculator.app */,
+				CE5FC8FF229F4C7A00BE719B /* CalculatorThomasDye.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,9 +70,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CE5FC8FE229F4C7A00BE719B /* Calculator */ = {
+		CE5FC8FE229F4C7A00BE719B /* CalculatorThomasDye */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CE5FC911229F4C7B00BE719B /* Build configuration list for PBXNativeTarget "Calculator" */;
+			buildConfigurationList = CE5FC911229F4C7B00BE719B /* Build configuration list for PBXNativeTarget "CalculatorThomasDye" */;
 			buildPhases = (
 				CE5FC8FB229F4C7A00BE719B /* Sources */,
 				CE5FC8FC229F4C7A00BE719B /* Frameworks */,
@@ -82,9 +82,9 @@
 			);
 			dependencies = (
 			);
-			name = Calculator;
+			name = CalculatorThomasDye;
 			productName = Calculator;
-			productReference = CE5FC8FF229F4C7A00BE719B /* Calculator.app */;
+			productReference = CE5FC8FF229F4C7A00BE719B /* CalculatorThomasDye.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +102,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CE5FC8FA229F4C7A00BE719B /* Build configuration list for PBXProject "Calculator" */;
+			buildConfigurationList = CE5FC8FA229F4C7A00BE719B /* Build configuration list for PBXProject "CalculatorThomasDye" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +115,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CE5FC8FE229F4C7A00BE719B /* Calculator */,
+				CE5FC8FE229F4C7A00BE719B /* CalculatorThomasDye */,
 			);
 		};
 /* End PBXProject section */
@@ -293,7 +293,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Thomas-Dye.Calculator";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Thomas-Dye.CalculatorThomasDye";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -311,7 +311,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Thomas-Dye.Calculator";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Thomas-Dye.CalculatorThomasDye";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -321,7 +321,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CE5FC8FA229F4C7A00BE719B /* Build configuration list for PBXProject "Calculator" */ = {
+		CE5FC8FA229F4C7A00BE719B /* Build configuration list for PBXProject "CalculatorThomasDye" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CE5FC90F229F4C7B00BE719B /* Debug */,
@@ -330,7 +330,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CE5FC911229F4C7B00BE719B /* Build configuration list for PBXNativeTarget "Calculator" */ = {
+		CE5FC911229F4C7B00BE719B /* Build configuration list for PBXNativeTarget "CalculatorThomasDye" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CE5FC912229F4C7B00BE719B /* Debug */,

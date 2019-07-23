@@ -1,9 +1,9 @@
 //
-//  ViewController.swift
+//  CalculatorBrain.swift
 //  Calculator
 //
-//  Created by Ben Gohlke on 5/29/19.
-//  Copyright © 2019 Lambda School. All rights reserved.
+//  Created by Thomas Dye on 5/30/19.
+//  Copyright © 2019 Thomas Dye. All rights reserved.
 //  Casualty
 
 import UIKit
@@ -33,8 +33,8 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var copyButton: UIButton!
     
     var brain: CalculatorBrain?
-    let xYValue = 0.75
-    let durationTime = 0.15
+    let xYValue = 0.95
+    let durationTime = 0.125
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -282,6 +282,8 @@ class CalculatorViewController: UIViewController {
     @IBAction func copyButtonPressed(_ sender: Any) {
         outputLabel.text = previousAnswerLabel.text
         brain?.operand1String = previousAnswerLabel.text ?? ""
+        let pasteBoard = UIPasteboard.general
+        pasteBoard.string = outputLabel.text
     }
     
 }

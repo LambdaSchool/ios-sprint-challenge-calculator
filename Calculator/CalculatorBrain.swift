@@ -2,8 +2,8 @@
 //  CalculatorBrain.swift
 //  Calculator
 //
-//  Created by Ben Gohlke on 5/30/19.
-//  Copyright © 2019 Lambda School. All rights reserved.
+//  Created by Thomas Dye on 5/30/19.
+//  Copyright © 2019 Thomas Dye. All rights reserved.
 //  Casualty
 
 import Foundation
@@ -64,7 +64,7 @@ class CalculatorBrain {
                     finalAnswer = String(firstOperandNumber * secondOperandNumber)
                 case .division? :
                     if secondOperandNumber == 0 {
-                        return "Nice try ;)"
+                        return "Nice try"
                     } else {
                         finalAnswer = String(firstOperandNumber / secondOperandNumber)
                     }

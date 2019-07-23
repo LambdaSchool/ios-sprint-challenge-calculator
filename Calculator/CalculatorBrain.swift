@@ -56,8 +56,6 @@ class CalculatorBrain {
                     calculatedAnswer = String(num1 * num2)
                 case .division? :
                     calculatedAnswer = String(num1 / num2)
-                case .percent? :
-                    calculatedAnswer = String(num1 / 100)
                 default :
                     return nil}} else {
                 return nil

@@ -63,7 +63,7 @@ class CalculatorViewController: UIViewController {
 }
     //this states whenever the percentage icon is tapped, that it makes a optional variable called percentButtonTapped and unwraps it if it equals a Double in the form of an output label text. else it put an empty string.
     
-    //IF it is a double. It unwraps percentageNumber as itself divided by 100. which it is whatever is in the output label! Then it changes the output label to the percent numbers string output, and then brains first string operand is assigned the number that was equated from percentage! 
+    //IF it is a double. It unwraps percentageNumber as itself divided by 100. which it is whatever is in the output label! Then it changes the output label to the percent numbers string output, and then brains first string operand is assigned the number that was equated from percentage!
     @IBAction func percentButtonTapped(_ sender: Any) {
         if var percentageNumber = Double(outputLabel.text ?? "") {
             percentageNumber = (percentageNumber / 100)
@@ -71,6 +71,16 @@ class CalculatorViewController: UIViewController {
             brain.operand1String = String(percentageNumber)
         }
     }
+    
+    @IBAction func negPosButtonPressed(_ sender: Any) {
+        if var negativeNumber = Double(outputLabel.text ?? "") {
+            negativeNumber = (negativeNumber * -1)
+            outputLabel.text = String(Int(negativeNumber))
+            brain.operand1String = String(negativeNumber)
+        }
+    }
+    
+    
     
 // MARK: - Private
 

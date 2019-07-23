@@ -43,6 +43,11 @@ class CalculatorBrain {
         
         // Calculation for .addition, .subtraction, .multiplication, . division
                 // Checking to see if oprand1String or operand2String are empty
+        let numberFormatting = NumberFormatter()
+        numberFormatting.usesGroupingSeparator = true
+        numberFormatting.numberStyle = .decimal
+        numberFormatting.locale = Locale.current
+        
         if operand1String.isEmpty, operand2String.isEmpty, operatorType == nil {
             return "0"
         } else {

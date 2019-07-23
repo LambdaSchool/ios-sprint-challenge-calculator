@@ -29,6 +29,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxd-as-Y66">
+                                <rect key="frame" x="20" y="99" width="94" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzy-Ax-enH">
                                 <rect key="frame" x="20" y="323" width="80" height="80"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -379,19 +385,21 @@
                                     <action selector="equalTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MgU-Dl-1Ov"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Previous Answer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUT-ih-8AE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Previous Answer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUT-ih-8AE">
                                 <rect key="frame" x="20" y="70" width="145" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxd-as-Y66">
-                                <rect key="frame" x="20" y="99" width="94" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOg-RI-MY8">
+                                <rect key="frame" x="20" y="147" width="36" height="30"/>
+                                <state key="normal" title="Copy">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="copyButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o9o-yw-fgx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
@@ -440,6 +448,7 @@
                             <constraint firstItem="Toa-Nt-egq" firstAttribute="baseline" secondItem="3mI-4y-c7D" secondAttribute="firstBaseline" id="RUr-hh-RyP"/>
                             <constraint firstItem="wxe-YO-Gop" firstAttribute="top" secondItem="NFD-Ph-Ao4" secondAttribute="top" id="S1F-di-mLg"/>
                             <constraint firstItem="hzy-Ax-enH" firstAttribute="leading" secondItem="kzT-Ds-vbM" secondAttribute="leading" id="SQh-SU-NtA"/>
+                            <constraint firstItem="WOg-RI-MY8" firstAttribute="leading" secondItem="yxd-as-Y66" secondAttribute="leading" id="SdL-yo-lps"/>
                             <constraint firstItem="Hia-YG-WK6" firstAttribute="trailing" secondItem="dUh-gN-rnS" secondAttribute="trailing" id="Ss4-S0-TiD"/>
                             <constraint firstItem="CN3-UU-Yg4" firstAttribute="leading" secondItem="NFD-Ph-Ao4" secondAttribute="leading" id="T8s-JQ-SlE"/>
                             <constraint firstItem="CN3-UU-Yg4" firstAttribute="baseline" secondItem="yiV-1n-cBi" secondAttribute="firstBaseline" id="TQ2-Bq-7B7"/>
@@ -447,6 +456,7 @@
                             <constraint firstItem="28A-R7-JFc" firstAttribute="trailing" secondItem="3mI-4y-c7D" secondAttribute="trailing" id="VDy-mC-Zb4"/>
                             <constraint firstItem="3B2-Tk-tD1" firstAttribute="leading" secondItem="MkY-da-amI" secondAttribute="leading" id="VlN-fi-TjG"/>
                             <constraint firstItem="kzT-Ds-vbM" firstAttribute="leading" secondItem="3B2-Tk-tD1" secondAttribute="leading" id="XJH-EQ-wKb"/>
+                            <constraint firstItem="WOg-RI-MY8" firstAttribute="leading" secondItem="lUT-ih-8AE" secondAttribute="leading" id="XZa-rP-nzv"/>
                             <constraint firstItem="zf0-mx-Vhe" firstAttribute="baseline" secondItem="28A-R7-JFc" secondAttribute="firstBaseline" id="Xg5-Yu-fce"/>
                             <constraint firstItem="hzy-Ax-enH" firstAttribute="baseline" secondItem="yiV-1n-cBi" secondAttribute="baseline" id="Y4j-km-UGY"/>
                             <constraint firstItem="hzy-Ax-enH" firstAttribute="top" secondItem="yiV-1n-cBi" secondAttribute="top" id="YeG-6R-ZAl"/>
@@ -468,6 +478,7 @@
                             <constraint firstItem="CN3-UU-Yg4" firstAttribute="trailing" secondItem="NFD-Ph-Ao4" secondAttribute="trailing" id="mTj-35-l4g"/>
                             <constraint firstItem="3mI-4y-c7D" firstAttribute="top" secondItem="oQq-kD-HUk" secondAttribute="top" id="rOB-j9-lXj"/>
                             <constraint firstItem="f71-ED-BNb" firstAttribute="trailing" secondItem="MoP-Ww-Y4E" secondAttribute="trailing" id="sBE-0p-yfw"/>
+                            <constraint firstItem="Hia-YG-WK6" firstAttribute="top" secondItem="WOg-RI-MY8" secondAttribute="bottom" constant="46" id="sxh-go-2Bv"/>
                             <constraint firstItem="28A-R7-JFc" firstAttribute="baseline" secondItem="zf0-mx-Vhe" secondAttribute="firstBaseline" id="u2J-qm-OCx"/>
                             <constraint firstItem="nJt-6I-8i7" firstAttribute="leading" secondItem="quu-aJ-s53" secondAttribute="trailing" constant="17" id="ucs-HA-pUI"/>
                             <constraint firstItem="f71-ED-BNb" firstAttribute="leading" secondItem="MoP-Ww-Y4E" secondAttribute="leading" id="wSD-oY-cn3"/>
@@ -479,6 +490,7 @@
                     <connections>
                         <outlet property="addButton" destination="oQq-kD-HUk" id="QNP-zu-EA5"/>
                         <outlet property="clearButton" destination="hzy-Ax-enH" id="cfC-FL-8J5"/>
+                        <outlet property="copyButton" destination="WOg-RI-MY8" id="xAv-kF-bfA"/>
                         <outlet property="decimalButton" destination="nJt-6I-8i7" id="CSc-vh-yy9"/>
                         <outlet property="divideButton" destination="dUh-gN-rnS" id="S6G-ee-mOv"/>
                         <outlet property="equalsButton" destination="2PK-LC-JM8" id="1ge-53-tlw"/>

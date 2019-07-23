@@ -30,6 +30,8 @@ class CalculatorViewController: UIViewController {
     
     @IBOutlet weak var previousAnswerTitle: UILabel!
     
+    @IBOutlet weak var copyButton: UIButton!
+    
     var brain: CalculatorBrain?
     let xYValue = 0.75
     let durationTime = 0.15
@@ -93,10 +95,13 @@ class CalculatorViewController: UIViewController {
         })
         // Calculates the answer and sets it to the value 'answer'
         if let answer = brain!.calculateIfPossible() {
+            copyButton.setTitleColor(.green, for: .normal)
             previousAnswerLabel.text = answer
             previousAnswerTitle.text = "Previous Answer"
             outputLabel.text = answer
+            
         }
+        
         
     }
     
@@ -114,8 +119,9 @@ class CalculatorViewController: UIViewController {
         
         if outputLabel.text == "0" {
             clearTransaction()
-            previousAnswerTitle.text = ""
-            previousAnswerLabel.text = ""
+            copyButton.setTitleColor(.black, for: .normal)
+            previousAnswerTitle.text = nil
+            previousAnswerLabel.text = nil
         }
         
         clearTransaction()
@@ -257,6 +263,7 @@ class CalculatorViewController: UIViewController {
         divideButton.setTitleColor(.white, for: .normal)
     }
     
+    
     @IBAction func clearButtonPressed(_ sender: Any) {
         
         // Default all colors when clear button pressed
@@ -271,4 +278,10 @@ class CalculatorViewController: UIViewController {
         divideButton.backgroundColor = .green
         divideButton.setTitleColor(.white, for: .normal)
     }
+    
+    @IBAction func copyButtonPressed(_ sender: Any) {
+        outputLabel.text = previousAnswerLabel.text
+        brain?.operand1String = previousAnswerLabel.text ?? ""
+    }
+    
 }

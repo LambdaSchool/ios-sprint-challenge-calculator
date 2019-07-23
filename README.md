@@ -1,3 +1,3 @@
 # Completed App
 
-<img src="Calculator 2.gif" height="500px">
+<img src="CalculatorApp.gif" height="500px">

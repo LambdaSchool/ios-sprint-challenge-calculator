@@ -50,6 +50,7 @@ class CalculatorViewController: UIViewController {
 @IBAction func equalTapped(_ sender: UIButton) {
    //I feel I am having a major issue with advanced optionals.
     if let displayAnswer = brain.calculateIfPossible() {
+        
        // i finished this with trial and error on this part but i know its taking the optional and filling it in
         outputLabel.text = displayAnswer
     }

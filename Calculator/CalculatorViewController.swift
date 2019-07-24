@@ -24,7 +24,7 @@ class CalculatorViewController: UIViewController {
     @IBAction func operandTapped(_ sender: UIButton) {
         if let pressedOperand = sender.titleLabel?.text {
             if let brain = brain {
-           outputLabel.text = brain.addOperandDigit(pressedOperand)
+                outputLabel.text = brain.addOperandDigit(digit: pressedOperand)
             }
         }
     }
@@ -38,8 +38,8 @@ class CalculatorViewController: UIViewController {
     }
 
     @IBAction func equalTapped(_ sender: UIButton) {
-            if let brain = brain?.calculateIfPossible() {
-                outputLabel.text = brain
+            if let result = brain?.calculateIfPossible() {
+                outputLabel.text = result
             }
         }
 

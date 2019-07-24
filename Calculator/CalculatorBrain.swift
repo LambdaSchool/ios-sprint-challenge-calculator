@@ -24,7 +24,7 @@ class CalculatorBrain {
     var operatorType: OperatorType?
     
 
-func addOperandDigit(_ digit: String) -> String {
+func addOperandDigit(digit: String) -> String {
     if operatorType != nil
     {
         operand1String.append(contentsOf: digit)
@@ -41,9 +41,9 @@ func setOperator(_ operatorString: String) {
     switch operatorString {
             
         case "+": operatorType = .addition
-        case "-": operatorType = .subtraction
-        case "*": operatorType = .multiplaction
-        case "/": operatorType = .division
+        case "−": operatorType = .subtraction
+        case "×": operatorType = .multiplaction
+        case "÷": operatorType = .division
         default: ()
         }
     }

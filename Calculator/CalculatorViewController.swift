@@ -48,11 +48,15 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operatorTapped(_ sender: UIButton) {
         
-        guard let brain = brain else { return }
+        if let brain = brain, let operatorType = sender.currentTitle {
+            brain.setOperator(operatorType)
+        }
         
-        guard let operatorType: String = sender.currentTitle else { return }
-
-        brain.setOperator(operatorType)
+//        guard let brain = brain else { return }
+//
+//        guard let operatorType: String = sender.currentTitle else { return }
+//
+//        brain.setOperator(operatorType)
         
     }
     
@@ -62,6 +66,8 @@ class CalculatorViewController: UIViewController {
         if let calculation = brain.calculateIfPossible() {
             outputLabel.text = calculation
         }
+//        brain.operand1String.removeAll()
+//        brain.operand2String.removeAll()
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
@@ -88,7 +94,12 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func positiveNegativeTapped(_ sender: UIButton) {
+        guard let outputString: String = outputLabel.text else { return }
+        guard let output = Double(outputString) else { return }
         
+        if output > 0, positiveNegativeButton.isTouchInside {
+            
+        }
     }
 }
 

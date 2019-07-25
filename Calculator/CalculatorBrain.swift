@@ -13,6 +13,8 @@ enum OperatorType: String {
     case subtraction = "−"
     case multiplication = "×"
     case division = "÷"
+//    case percent = "%"
+//    case positiveNegative = "+/-"
 }
 
 class CalculatorBrain {
@@ -44,8 +46,10 @@ class CalculatorBrain {
                 operatorType = .multiplication
             case .division:
                 operatorType = .division
-            default:
-                operatorType = nil
+//            case .percent:
+//                operatorType = .percent
+//            case .positiveNegative:
+//                operatorType = .positiveNegative
             }
         }
     }

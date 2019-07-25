@@ -62,17 +62,17 @@ class CalculatorBrain {
             
             switch operatorType {
             case .addition?: // I don't understand why these are optional
-                return String(operand1 + operand2)
+                return String(format: "%g", operand1 + operand2)
             case .subtraction?:
-                return String(operand1 - operand2)
+                return String(format: "%g", operand1 - operand2)
             case .multiplication?:
-                return String(operand1 * operand2)
+                return String(format: "%g", operand1 * operand2)
             case .division?:
                 if operand2 == 0 {
                     print("Error: Division by zero")
                     return "Error"
                 } else {
-                    return String(operand1 / operand2)
+                    return String(format: "%g", operand1 / operand2)
                 }
             default:
                 return nil

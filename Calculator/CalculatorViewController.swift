@@ -89,7 +89,7 @@ class CalculatorViewController: UIViewController {
         let answer = output * 100.0
         
         if percentButton.isTouchInside {
-            outputLabel.text = "\(answer)%"
+            outputLabel.text = String(format: "%g", answer)
         }
     }
     
@@ -99,10 +99,10 @@ class CalculatorViewController: UIViewController {
         
         if output > 0, positiveNegativeButton.isTouchInside {
             let newOutput = output - (output * 2)
-            outputLabel.text = "\(newOutput)"
+            outputLabel.text = String(format: "%g", newOutput)
         } else {
             let newOutput = output + (output * 2)
-            outputLabel.text = "\(newOutput)"
+            outputLabel.text = String(format: "%g", newOutput)
         }
     }
 }

@@ -98,7 +98,11 @@ class CalculatorViewController: UIViewController {
         guard let output = Double(outputString) else { return }
         
         if output > 0, positiveNegativeButton.isTouchInside {
-            
+            let newOutput = output - (output * 2)
+            outputLabel.text = "\(newOutput)"
+        } else {
+            let newOutput = output + (output * 2)
+            outputLabel.text = "\(newOutput)"
         }
     }
 }

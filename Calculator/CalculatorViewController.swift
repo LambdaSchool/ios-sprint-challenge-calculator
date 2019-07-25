@@ -46,6 +46,21 @@ class CalculatorViewController: UIViewController {
         //outputLabel.text = brain?.addOperandDigit(sender.currentTitle ?? "0")
     }
     
+    @IBAction func decimal(_ sender: UIButton) {
+        if outputLabel.text!.isEmpty
+        {
+            outputLabel.text = "0."
+            //preformingMath = false
+        }
+        else
+        {
+            if !outputLabel.text!.contains(".") {
+                outputLabel.text = outputLabel.text! + "."
+            }
+        }
+        outputLabel.text = brain?.addOperandDigit(outputLabel.text!)
+    }
+    
     @IBAction func operatorTapped(_ sender: UIButton) {
         
         if let brain = brain, let operatorType = sender.currentTitle {

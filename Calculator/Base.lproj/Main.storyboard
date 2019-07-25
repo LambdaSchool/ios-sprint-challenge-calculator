@@ -314,6 +314,8 @@
                     </view>
                     <connections>
                         <outlet property="outputLabel" destination="Hia-YG-WK6" id="CvC-hV-gVd"/>
+                        <outlet property="percentButton" destination="CN3-UU-Yg4" id="Gje-QF-Lah"/>
+                        <outlet property="positiveNegativeButton" destination="yiV-1n-cBi" id="6Ma-oW-Zz1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

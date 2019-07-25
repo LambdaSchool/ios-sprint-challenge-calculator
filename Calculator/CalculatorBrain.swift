@@ -10,7 +10,7 @@ import Foundation
 
 enum OperatorType: String {
     case addition = "+"
-    case subtraction = "-"
+    case subtraction = "−"
     case multiplication = "×"
     case division = "÷"
 }
@@ -21,6 +21,7 @@ class CalculatorBrain {
     var operatorType: OperatorType?
     
     func addOperandDigit(_ digit: String) -> String {
+        
         if operatorType == nil {
             operand1String.append(digit)
             return operand1String
@@ -57,7 +58,6 @@ class CalculatorBrain {
             
             switch operatorType {
             case .addition?: // I don't understand why these are optional
-                
                 return String(operand1 + operand2)
             case .subtraction?:
                 return String(operand1 - operand2)
@@ -77,4 +77,11 @@ class CalculatorBrain {
             return nil
         }
     }
+    
+//    func pointTapped() -> Bool {
+//        if (outputLabel.text?.contains(".")) != nil {
+//            return false
+//        }
+//        return true
+//    }
 }

@@ -24,7 +24,7 @@ class CalculatorBrain {
     
     func addOperandDigit(_ digit: String) -> String {
         
-        if operatorType == nil {
+        if operatorType == nil {  //, !operand1String.contains(".")
             operand1String.append(digit)
             return operand1String
         } else {
@@ -36,21 +36,21 @@ class CalculatorBrain {
     
     func setOperator(_ operatorString: String) {
         
-        if let operatorSymbol: OperatorType = OperatorType(rawValue: operatorString) {
-            switch operatorSymbol {
-            case .addition:
-                operatorType = .addition
-            case .subtraction:
-                operatorType = .subtraction
-            case .multiplication:
-                operatorType = .multiplication
-            case .division:
-                operatorType = .division
+        switch operatorString {
+        case "+":
+            operatorType = .addition
+        case "−":
+            operatorType = .subtraction
+        case "×":
+            operatorType = .multiplication
+        case "÷":
+            operatorType = .division
+        default:
+            operatorType = nil
 //            case .percent:
 //                operatorType = .percent
 //            case .positiveNegative:
 //                operatorType = .positiveNegative
-            }
         }
     }
     

@@ -219,7 +219,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="operandTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nGX-DS-2lX"/>
+                                    <action selector="decimal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DyC-ym-MGJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2PK-LC-JM8">

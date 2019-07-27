@@ -57,8 +57,28 @@ class CalculatorBrain {
     func calculateIfPossible() -> String? {
         
         if operand1String != "", operand2String != "", (operatorType != nil) {
-            guard let operand1 = Double(operand1String) else { return nil }
-            guard let operand2 = Double(operand2String) else { return nil }
+//            guard let operand1 = Double(operand1String) else { return nil }
+//            guard let operand2 = Double(operand2String) else { return nil }
+//
+            var operand1: Double = 0
+            var operand2: Double = 0
+            
+            if operand1String.contains("−") {
+                operand1String.remove(at: operand1String.startIndex)
+                operand1 = Double(operand1String) ?? 0.0
+                operand1 = -operand1
+            } else {
+                operand1 = Double(operand1String) ?? 0.0
+            }
+            
+            if operand2String.contains("−") {
+                operand2String.remove(at: operand2String.startIndex)
+                operand2 = Double(operand2String) ?? 0.0
+                operand2 = -operand2
+            } else {
+                operand2 = Double(operand2String) ?? 0.0
+            }
+            
             
             switch operatorType {
             case .addition?: // I don't understand why these are optional
@@ -82,6 +102,25 @@ class CalculatorBrain {
         }
     }
     
+    func switchSign() -> String {
+        if operatorType == nil {
+            if operand1String.contains("−") {
+                operand1String.remove(at: operand1String.startIndex)
+                return operand1String
+            } else {
+                operand1String = "−" + operand1String
+                return operand1String
+            }
+        } else {
+            if operand2String.contains("−") {
+                operand2String.remove(at: operand2String.startIndex)
+                return operand2String
+            } else {
+                operand2String = "−" + operand2String
+                return operand2String
+            }
+        }
+    }
 //    func pointTapped() -> Bool {
 //        if (outputLabel.text?.contains(".")) != nil {
 //            return false

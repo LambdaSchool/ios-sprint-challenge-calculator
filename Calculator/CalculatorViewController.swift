@@ -15,7 +15,7 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var percentButton: UIButton!
     
     var brain: CalculatorBrain?
-    var equalTapped: Bool = false
+    //var equalTapped: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +29,7 @@ class CalculatorViewController: UIViewController {
     @IBAction func operandTapped(_ sender: UIButton) {
         
         if let brain = brain, let digit = sender.currentTitle {
-            if !equalTapped {
-                outputLabel.text = brain.addOperandDigit(digit)
-            } else {
-                clearTransaction()
-                //outputLabel.text = brain.addOperandDigit(digit)
-            }
+            outputLabel.text = brain.addOperandDigit(digit)
         } else {
             // Alert user
         }
@@ -42,9 +37,9 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func decimal(_ sender: UIButton) {
 
-        if outputLabel.text!.isEmpty
+        if outputLabel.text == "0"
         {
-            outputLabel.text = "0."
+            outputLabel.text = brain?.addOperandDigit("0.")
         }
         else
         {
@@ -67,20 +62,20 @@ class CalculatorViewController: UIViewController {
         if let calculation = brain.calculateIfPossible() {
             outputLabel.text = calculation
         }
-        
-        equalTapped = true
+        clearTransaction()
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
-        clearTransaction()
         outputLabel.text = "0"
+        clearTransaction()
     }
     
     // MARK: - Private
     
     private func clearTransaction() {
+        let lastCalculation = outputLabel.text
         brain = CalculatorBrain()
-        equalTapped = false
+        outputLabel.text = lastCalculation
     }
     
     @IBAction func percentTapped(_ sender: UIButton) {
@@ -96,16 +91,25 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func positiveNegativeTapped(_ sender: UIButton) {
-        guard let outputString: String = outputLabel.text else { return }
-        guard let output = Double(outputString) else { return }
         
-        if output > 0, positiveNegativeButton.isTouchInside {
-            let newOutput = output - (output * 2)
-            outputLabel.text = String(format: "%g", newOutput)
-        } else {
-            let newOutput = output + (output * 2)
-            outputLabel.text = String(format: "%g", newOutput)
-        }
+        outputLabel.text = brain?.switchSign()
+        
+//        if let outputString = outputLabel.text, outputString.contains("-") {
+//
+//        } else {
+//            let outputString = "-" + outputLabel.text ?? "0"
+//
+//        }
+//
+//        guard let output = Double(outputString) else { return }
+//
+//        if output > 0, positiveNegativeButton.isTouchInside {
+//            let newOutput = output - (output * 2)
+//            outputLabel.text = String(format: "%g", newOutput)
+//        } else {
+//            let newOutput = output + (output * 2)
+//            outputLabel.text = String(format: "%g", newOutput)
+//        }
     }
 }
 

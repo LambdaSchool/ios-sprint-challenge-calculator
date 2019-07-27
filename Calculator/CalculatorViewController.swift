@@ -15,6 +15,7 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var percentButton: UIButton!
     
     var brain: CalculatorBrain?
+    var equalTapped: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,22 +29,15 @@ class CalculatorViewController: UIViewController {
     @IBAction func operandTapped(_ sender: UIButton) {
         
         if let brain = brain, let digit = sender.currentTitle {
-            outputLabel.text = brain.addOperandDigit(digit)
+            if !equalTapped {
+                outputLabel.text = brain.addOperandDigit(digit)
+            } else {
+                clearTransaction()
+                //outputLabel.text = brain.addOperandDigit(digit)
+            }
         } else {
-            // Alert User
+            // Alert user
         }
-        
-//        guard let brain = brain else { return }
-//
-//        if let operand: String = brain.addOperandDigit(sender.currentTitle ?? "0") {
-//            outputLabel.text = operand
-//        }
-//
-//        if sender.currentTitle == "." {
-//
-//        }
-
-        //outputLabel.text = brain?.addOperandDigit(sender.currentTitle ?? "0")
     }
     
     @IBAction func decimal(_ sender: UIButton) {
@@ -73,19 +67,20 @@ class CalculatorViewController: UIViewController {
         if let calculation = brain.calculateIfPossible() {
             outputLabel.text = calculation
         }
-//        brain.operand1String.removeAll()
-//        brain.operand2String.removeAll()
+        
+        equalTapped = true
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
         clearTransaction()
+        outputLabel.text = "0"
     }
     
     // MARK: - Private
     
     private func clearTransaction() {
-        outputLabel.text = "0"
         brain = CalculatorBrain()
+        equalTapped = false
     }
     
     @IBAction func percentTapped(_ sender: UIButton) {

@@ -60,6 +60,7 @@ class CalculatorBrain {
             guard let operand1 = Double(operand1String) else { return nil }
             guard let operand2 = Double(operand2String) else { return nil }
 
+// Used only when minus sign is Unicode
 //            var operand1: Double = 0
 //            var operand2: Double = 0
             

@@ -6,6 +6,11 @@
 //  Copyright © 2019 Lambda School. All rights reserved.
 //
 
+
+//Note to the teacher reviewing. I did not finish any stretch goals YET. I plan on getting them done and continuouslly updating this app as I go with the funcitonality of my other Calculator on my github repo!
+
+
+
 import Foundation
 
 

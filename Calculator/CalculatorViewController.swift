@@ -8,26 +8,42 @@
 
 import UIKit
 
-var brain: CalculatorBrain?
-
 class CalculatorViewController: UIViewController {
+    
+    // 1. create a property called brain of type CalculatorBrain \ no initial value \ optional
+    var brain: CalculatorBrain? = nil
     
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        brain = CalculatorBrain.init(operand1String: "", operand2String: "")
+        
+        // 2. initialize a new CalculatorBrain object and assign to above property
+        brain = CalculatorBrain(operand1String: "", operand2String: "")
+        
     }
     
 
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
+        
+//        if let button = sender as? UIButton {}
+        if let buttonText = sender.titleLabel?.text {
+            outputLabel.text = brain?.addOperandDigit(buttonText)
+        }
+        
+        
+        
+//        button.isSelected.toggle
 
+        
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        
+        if let buttonText = sender.titleLabel?.text {
+            brain?.setOperator(buttonText)
+        }
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
@@ -35,12 +51,15 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
-        
+        clearTransaction()
+        outputLabel.text = "0"
     }
     
     // MARK: - Private
     
     private func clearTransaction() {
+        brain = nil
         
+        brain = CalculatorBrain(operand1String: "", operand2String: "")
     }
 }

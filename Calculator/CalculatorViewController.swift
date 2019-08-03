@@ -9,35 +9,29 @@
 import UIKit
 
 class CalculatorViewController: UIViewController {
+
+    // MARK: - Properties
     
-    // 1. create a property called brain of type CalculatorBrain \ no initial value \ optional
     var brain: CalculatorBrain? = nil
+    
+    // MARK: - IBOutlets
     
     @IBOutlet weak var outputLabel: UILabel!
     
+    // MARK: - Func
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // 2. initialize a new CalculatorBrain object and assign to above property
-        brain = CalculatorBrain(operand1String: "", operand2String: "")
-        
+        brain = CalculatorBrain(operand1String: "", operand2String: "")        
     }
-    
 
-    // MARK: - Action Handlers
-    
+    // MARK: - IBAction
+
     @IBAction func operandTapped(_ sender: UIButton) {
         
-//        if let button = sender as? UIButton {}
         if let buttonText = sender.titleLabel?.text {
             outputLabel.text = brain?.addOperandDigit(buttonText)
         }
-        
-        
-        
-//        button.isSelected.toggle
-
-        
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
@@ -47,7 +41,7 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        outputLabel.text = brain?.calculateIfPossible()
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
@@ -58,8 +52,7 @@ class CalculatorViewController: UIViewController {
     // MARK: - Private
     
     private func clearTransaction() {
-        brain = nil
-        
+        brain = nil        
         brain = CalculatorBrain(operand1String: "", operand2String: "")
     }
 }

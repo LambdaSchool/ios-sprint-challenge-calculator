@@ -11,52 +11,55 @@ import UIKit
 class CalculatorViewController: UIViewController {
     
     @IBOutlet weak var outputLabel: UILabel!
-    
-    struct brain {
-        var CalculatorBrain: Double?
-        
-        func addOperandDigit(Brain: Double) -> String {
-           return ("0, 1, 2, 3, 4, 5, 6, 7, 8, 9")
-        }
-    
-    }
+
+    var brain: CalculatorBrain?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let CalculatorBrain = brain.self
-        
-        }
-    
-    // MARK: - Action Handlers
-    
+         brain = CalculatorBrain()
+    }
+
     @IBAction func operandTapped(_ sender: UIButton) {
         
-        guard let button = sender as? String else { return }
+        guard let button = sender.titleLabel?.text,
+        let brain = brain
+        else {return}
         
+        outputLabel.text = brain.addOperandDigit(button)
+
     }
-    
+
     @IBAction func operatorTapped(_ sender: UIButton) {
         
+        guard let button = sender.titleLabel?.text,
+        let brain = brain
+        else {return}
+        
+        outputLabel.text = brain.addOperandDigit(button)
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
         
+        guard let _ = sender.titleLabel?.text,
+        let brain = brain
+        else {return}
+        
+        outputLabel.text = brain.calculateIfPossible()
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
-        outputLabel.text = ""
+        outputLabel.text = "0"
         clearTransaction()
             
         }
-        
-    }
+
     
     // MARK: - Private
     
     private func clearTransaction() {
-        brain.self = ""
-        clearTransaction()
+        brain = nil
+        brain = CalculatorBrain()
         
     }
-
+}

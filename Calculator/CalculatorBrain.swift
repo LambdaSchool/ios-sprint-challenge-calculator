@@ -34,7 +34,7 @@ class CalculatorBrain {
         self.operatorType = operatorString
         
     }
-        
+    
         func calculateIfPossible() -> String? {
             
             guard let operand1 = Double(operand1String),

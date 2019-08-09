@@ -75,7 +75,7 @@ class CalculatorBrain {
             case "+" :
                 operatorType = .addition
                 outputDisplay.append("+")
-            case "-" :
+            case "−" :
                 operatorType = .subtraction
                 outputDisplay.append ("−")
             case "÷" :
@@ -91,7 +91,32 @@ class CalculatorBrain {
     }
     
     func calculateIfPossible() -> String? {
-        return ""
+        guard self.operand1String != "", self.operand2String != "", self.operatorType != nil else {
+            return nil
+        }
+        var result:Double = 0.0
+        let op:OperatorType = self.operatorType!
+        guard let operand1 = Double(self.operand1String) else {return nil}
+        guard let operand2 = Double(self.operand2String) else {return nil}
+        switch op {
+        case .addition :
+            result = operand1 + operand2
+            break
+        case .subtraction :
+            result = operand1 - operand2
+            break
+        case .division :
+            if operand2 == 0.0 {return nil}
+            result = operand1 / operand2
+            break
+        case .multiplication :
+            result = operand1 * operand2
+            break
+        }
+        
+        self.outputDisplay.text = String(result)
+        self.operand1String = String(result)
+        return self.outputDisplay.text
     }
     
     func clear () {

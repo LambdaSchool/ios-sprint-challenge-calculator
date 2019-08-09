@@ -10,9 +10,9 @@ import Foundation
 
 enum OperatorType: String {
     case addition = "+"
-    case subtraction = "-"
-    case multipication = "*"
-    case division = "/"
+    case subtraction = "−"
+    case multipication = "×"
+    case division = "÷"
 }
 
 class CalculatorBrain {
@@ -50,7 +50,11 @@ class CalculatorBrain {
         case .multipication:
             solution = operand1 * operand2
         case .division:
+            if operand2 >= 1 {
             solution = operand1 / operand2
+            } else {
+            return "error"
+            }
         }
         return "\(solution)"
         

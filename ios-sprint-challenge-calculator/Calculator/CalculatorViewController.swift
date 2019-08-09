@@ -11,11 +11,13 @@ import UIKit
 class CalculatorViewController: UIViewController {
     
     @IBOutlet weak var outputLabel: UILabel!
+    @IBOutlet weak var decimalButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       
     }
     var calculatorBrain = CalculatorBrain()
     
@@ -25,11 +27,14 @@ class CalculatorViewController: UIViewController {
         guard let buttonText = sender.titleLabel?.text else {return}
         outputLabel.text = calculatorBrain.addOperandDigit(buttonText)
         
+//        if decimalButton.titleLabel?.text == "." {
+//        }
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
         guard let buttonText = sender.titleLabel?.text else {return}
         calculatorBrain.setOperator(buttonText)
+
         
     }
     

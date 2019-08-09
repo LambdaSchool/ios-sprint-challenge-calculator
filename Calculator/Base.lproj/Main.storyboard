@@ -323,6 +323,8 @@
                         <outlet property="button7" destination="kzT-Ds-vbM" id="PZr-AB-Zam"/>
                         <outlet property="button8" destination="wxe-YO-Gop" id="b3F-Gb-2tj"/>
                         <outlet property="button9" destination="NFD-Ph-Ao4" id="vDe-6g-sRj"/>
+                        <outlet property="buttonPoint" destination="nJt-6I-8i7" id="npO-RJ-kFH"/>
+                        <outlet property="buttonpoint" destination="nJt-6I-8i7" id="Mxi-nB-gLj"/>
                         <outlet property="outputLabel" destination="Hia-YG-WK6" id="CvC-hV-gVd"/>
                     </connections>
                 </viewController>

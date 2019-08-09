@@ -21,7 +21,13 @@ class CalculatorBrain {
     var operatorType: OperatorType?
     
     func addOperandDigit(_ digit: String) -> String {
-        
+        if let _ = operatorType {
+            operand2String += digit
+            return operand2String
+        } else {
+            operand1String += digit
+            return operand1String
+        }
     }
     
     func setOperator(_ operatorString: String) {

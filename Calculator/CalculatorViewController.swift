@@ -8,46 +8,52 @@
 
 import UIKit
 
-var brain: CalculatorBrain?
 
 class CalculatorViewController: UIViewController {
     
+    var brain: CalculatorBrain?
+    
     @IBOutlet weak var outputLabel: UILabel!
+   
     
     // In viewDidLoad, initialize a new CalculatorBrain object and assign it to the above property.
     override func viewDidLoad() {
 
         super.viewDidLoad()
-        
-        var CalculatorBrain = brain
+        brain = CalculatorBrain()
         
     }
     
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        sender.isSelected.toggle()
-        outputLabel.isEnabled = true
+        if let digit = sender.titleLabel?.text {
+            outputLabel.text = brain?.addOperandDigit(digit)
+        }
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        sender.isSelected.toggle()
-        outputLabel.isEnabled = true
+        setOperator()
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        sender.isSelected.toggle()
-        outputLabel.isEnabled = true
+        calculateIfPossible()
+        if let digit = sender.titleLabel?.text {
+            outputLabel.text = brain?.calculateIfPossible
+        }
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
-        sender.isSelected.toggle()
-        outputLabel.isEnabled = true
+        clearTransaction()
+        outputLabel.text = "0"
+        
     }
     
     // MARK: - Private
     
     private func clearTransaction() {
         
+        brain = nil
+        brain = CalculatorBrain()
     }
 }

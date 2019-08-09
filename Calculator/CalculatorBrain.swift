@@ -35,6 +35,6 @@ class CalculatorBrain {
     }
     
     func calculateIfPossible() -> String? {
-        return nil
+        
     }
 }

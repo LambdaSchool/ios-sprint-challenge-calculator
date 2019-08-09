@@ -26,15 +26,20 @@ class CalculatorViewController: UIViewController {
             let displayText = brain?.addOperandDigit(unwrappedText)
             outputLabel.text = displayText
         }
-        
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        
+        if let unwrappedText = sender.currentTitle {
+            brain?.setOperator(unwrappedText)
+        }
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        if let unwrappedBrainCalculator = brain?.calculateIfPossible() {
+            
+        } else {
+            return
+        }
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {

@@ -30,12 +30,12 @@ class CalculatorViewController: UIViewController {
 //            return
 //        }
 //        var chosenOperandText = brain?.addOperandDigit(chosenOperand)
-//
-//        guard case let outputLabel.text = chosenOperandText else { return }
+
         
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
+
         if let chosenOperator = sender.titleLabel?.text {
             brain?.setOperator(chosenOperator)
         } else { return }
@@ -54,7 +54,7 @@ class CalculatorViewController: UIViewController {
         if sender.isSelected == true {
             outputLabel.text = "0" } else { return }
         }
-        
+    
     
     
     // MARK: - Private
@@ -62,8 +62,7 @@ class CalculatorViewController: UIViewController {
     
     //Not sure about this at all
     private func clearTransaction() {
-        if brain == nil {
-            brain = nil
-        } else { return }
+        brain = CalculatorBrain()
+
     }
 }

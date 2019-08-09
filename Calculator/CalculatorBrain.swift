@@ -19,9 +19,11 @@ class CalculatorBrain {
     var operand1String = ""
     var operand2String = ""
     var operatorType: OperatorType?
+    
+    
     //May not be complete. only returns digit, may need to return all top declared vars. Also not sure about let before digit
     func addOperandDigit(_ digit: String) -> String {
-//        var digit = ""
+ //       var digit = ""
         if operatorType == nil {
             let digit = operand1String
         } else {
@@ -35,9 +37,6 @@ class CalculatorBrain {
     }
     
     func calculateIfPossible() -> String? {
-//        var operand1: Double
-//        var operand2: Double
-//        var theOperator: String
         
         
         guard let operand1 = Double(operand1String) else { return nil }
@@ -58,13 +57,13 @@ class CalculatorBrain {
             return "\(math)"
             
         case .division:
-            
-            let math = operand1 / operand2
+            if operand1 == 0, operand2 == 0 {
+                return "Error"
+            } else {
+                let math = operand1 / operand2
             return "\(math)"
-            
+            }
+
         }
-
-        
-
     }
 }

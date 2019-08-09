@@ -17,7 +17,6 @@ enum OperatorType: String {
     
 }
 
-
 class CalculatorBrain {
     var operand1String = ""
     var operand2String = ""

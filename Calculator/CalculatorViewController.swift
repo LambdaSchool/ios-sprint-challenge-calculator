@@ -44,7 +44,11 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func clearTapped(_ sender: UIButton) {
         clearTransaction()
-    }
+        if sender.isSelected == true {
+            outputLabel.text = "0" } else { return }
+        }
+        
+    
     
     // MARK: - Private
     

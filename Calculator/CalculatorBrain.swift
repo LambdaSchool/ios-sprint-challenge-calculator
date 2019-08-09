@@ -11,42 +11,63 @@ import Foundation
 enum OperatorType: String {
     case addition = "+"
     case subtraction = "−"
-    case multiplication = "×"
-    case division = "÷"
+    case multiplication = "*"
+    case division = "/"
+
     
 }
-let operatorAddition = OperatorType.addition
+
 
 class CalculatorBrain {
     var operand1String = ""
     var operand2String = ""
     var operatorType: OperatorType?
     
+    
     func addOperandDigit(_ digit: String) -> String {
         
-        switch OperatorType.addition {
-        case operatorAddition:
-            operand1String = digit
-        default:
-             operand2String = digit
+        if operatorType == nil {
+           operand1String = digit
+            
+       
+        } else {
+            operand2String = digit
         }
         
-        guard let operand1 = Int(operand1String) else {return}
-        guard let operand2 = Int(operand2String) else {return}
-        
-        let stringTotal = String(operand1 + operand2)
-        
-        return stringTotal
+        return digit
 
     }
 
     
     func setOperator(_ operatorString: String) {
-        
+        if let Type = OperatorType(rawValue: operatorString) {
+            operatorType = Type
+        }
+
     }
     
-//    func calculateIfPossible() -> String? {
-//
-//
-//    }
+    func calculateIfPossible() -> String? {
+        guard let operand1String = Double(operand1String) else {return ""}
+        guard let operand2String = Double(operand2String) else {return ""}
+        guard let operatorType = operatorType else {return ""}
+        
+        var solution: Double
+        switch operatorType {
+        case .addition:
+            solution = operand1String + operand2String
+        case .subtraction:
+            solution = operand1String - operand2String
+        case .multiplication:
+            solution = operand1String * operand2String
+        case .division:
+            if operand2String >= 1 {
+                solution = operand1String / operand2String
+            } else {
+                return "error"
+            }
+        }
+        return "\(solution)"
+
+
+    }
 }

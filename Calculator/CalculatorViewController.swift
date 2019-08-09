@@ -22,31 +22,23 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operandTapped(_ sender: UIButton) {
         guard let digit = sender.titleLabel?.text else {return}
-        var uwOutputLabel = outputLabel.text ?? ""
-        if uwOutputLabel == "0" { uwOutputLabel = "" }
-        outputLabel.text = uwOutputLabel + calculator.addOperandDigit(digit)
+        outputLabel.text = calculator.addOperandDigit(digit)
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
         guard let op = sender.titleLabel?.text else { return }
-        let uwOutputLabel = outputLabel.text ?? ""
-        if uwOutputLabel != "" {
-            if uwOutputLabel != "0" {
-                calculator.setOperator (op)
-                outputLabel.text = uwOutputLabel + op
-            } else {
-                calculator.addOperandDigit("0")
-                calculator.setOperator(op)
-            }
-        }
+        calculator.setOperator(op)
+        outputLabel.text = calculator.outputDisplay.text
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        guard let result = calculator.calculateIfPossible() else {
-            outputLabel.text = "Error"
-            return
-        }
-        outputLabel.text = result
+        if calculator.outputDisplay.text != "0" {
+            guard let result = calculator.calculateIfPossible() else {
+                outputLabel.text = "Error"
+                return
+            }
+            outputLabel.text = result
+            }
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
@@ -57,6 +49,6 @@ class CalculatorViewController: UIViewController {
     
     private func clearTransaction() {
         calculator.clear()
-        outputLabel.text = "0"
+        outputLabel.text = calculator.outputDisplay.text
     }
 }

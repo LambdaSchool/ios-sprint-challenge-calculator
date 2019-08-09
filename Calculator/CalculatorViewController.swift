@@ -34,10 +34,21 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operatorTapped(_ sender: UIButton) {
         
+        var unwrappedOperatorString = ""
+        
+        if let operatorString = sender.titleLabel?.text {
+            unwrappedOperatorString = operatorString
+        }
+        brain?.setOperator(unwrappedOperatorString)
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
         
+        var unwrappedCalculation = ""
+        if let calculationString = brain?.calculateIfPossible() {
+            unwrappedCalculation = calculationString
+        }
+        outputLabel.text = unwrappedCalculation
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {

@@ -55,6 +55,14 @@ class CalculatorViewController: UIViewController {
         clearTransaction()
     }
     
+    @IBAction func percentTapped(_ sender: UIButton) {
+        return
+    }
+    
+    @IBAction func positiveNegativePressed(_ sender: Any) {
+        return
+    }
+    
     // MARK: - Private
     
     private func clearTransaction() {

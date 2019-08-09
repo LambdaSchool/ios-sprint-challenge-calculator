@@ -16,39 +16,45 @@ class CalculatorViewController: UIViewController {
 
 	@IBOutlet weak var zeroButton: UIButton!
 
+	var brain: CalculatorBrain?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		let brainOfCalculator = brain
+
+		brain = CalculatorBrain()
     }
     
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
+
 		if let operandString = sender.titleLabel?.text {
 			outputLabel.text = brain?.addOperandDigit(operandString)
 		} else {
 			print("Not a valid value")
 		}
     }
-    
+
+
     @IBAction func operatorTapped(_ sender: UIButton) {
-        
+		if let operatorPressed = sender.titleLabel?.text {
+			brain?.setOperator(operatorPressed)
+		}
     }
-    
+
     @IBAction func equalTapped(_ sender: UIButton) {
         
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
         clearTransaction()
-		outputLabel.text == "0"
+		outputLabel.text = "0"
     }
     
     // MARK: - Private
     
     private func clearTransaction() {
 		// need to reset the brain
-
+		brain = CalculatorBrain()
     }
 }

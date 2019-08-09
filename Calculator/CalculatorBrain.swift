@@ -12,10 +12,10 @@ enum OperatorType: String {
     case addition = "+"
 	case subtraction = "−"
 	case multiplication = "×"
-	case divistion = "÷"
+	case division = "÷"
 }
 
-var operatorType: OperatorType?
+
 
 class CalculatorBrain {
     var operand1String = ""
@@ -23,20 +23,52 @@ class CalculatorBrain {
     var operatorType: OperatorType?
     
     func addOperandDigit(_ digit: String) -> String {
-		if operatorType == nil {
+
+		if operatorType != nil {
 			operand1String.append(contentsOf: digit)
 			return operand1String
 		} else {
 			operand2String.append(contentsOf: digit)
 			return operand2String
 		}
-    }
+	}
+
     
     func setOperator(_ operatorString: String) {
-        
+		switch operatorString {
+		case "+":
+			operatorType = .addition
+		case "-":
+			operatorType = .subtraction
+		case "×":
+			operatorType = .multiplication
+		case "÷":
+			operatorType = .division
+
+		default:
+			""
+		}
     }
     
     func calculateIfPossible() -> String? {
-        return("")
-    }
+		guard let operatorPressed = operatorType,
+			let firstNumber = Double(operand1String),
+			let secondNumber = Double(operand2String) else { return nil }
+
+		switch operatorPressed {
+		case .addition:
+			return String(firstNumber + secondNumber)
+		case .subtraction:
+			return String(firstNumber - secondNumber)
+		case .multiplication:
+			return String(firstNumber * secondNumber)
+		case .division:
+			if secondNumber != 0 {
+				return String(secondNumber / firstNumber)
+			} else {
+				return ("Error")
+			}
+	
+		}
+}
 }

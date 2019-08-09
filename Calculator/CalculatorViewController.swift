@@ -28,6 +28,7 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
+        calcBrain?.setOperator(<#T##operatorString: String##String#>)
         
     }
     

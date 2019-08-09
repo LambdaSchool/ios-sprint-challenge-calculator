@@ -8,8 +8,13 @@
 
 import Foundation
 
+var operatorSelected = false
+
 enum OperatorType: String {
     case addition = "+"
+    case subtraction = "-"
+    case multiplication = "×"
+    case division = "/"
 }
 
 class CalculatorBrain {
@@ -18,14 +23,55 @@ class CalculatorBrain {
     var operatorType: OperatorType?
     
     func addOperandDigit(_ digit: String) -> String {
-        
+        if (operatorSelected) {
+            operand2String += digit
+            return operand2String
+        }
+        else {
+            operand1String += digit
+            return operand1String
+        }
     }
     
     func setOperator(_ operatorString: String) {
-        
+        if (operatorString == "+") {
+            operatorType = .addition
+            operatorSelected = true
+        } else if (operatorString == "-") {
+            operatorType = .subtraction
+            operatorSelected = true
+        } else if (operatorString == "×" || operatorString == "x") {
+            operatorType = .multiplication
+            operatorSelected = true
+        } else if (operatorString == "÷" || operatorString == "/") {
+            operatorType = .division
+            operatorSelected = true
+        } else {
+            operatorType = nil
+        }
     }
     
     func calculateIfPossible() -> String? {
-        
+        var calcuation: Double = 0
+        if (operatorSelected) {
+            guard let operand1: Double = Double(operand1String), let operand2: Double = Double(operand2String) else {
+                return "Error: (004) Invalid operands"
+            }
+            calcuation = operand1
+            if (operatorType == .addition) {
+                calcuation += operand2
+            } else if (operatorType == .subtraction) {
+                calcuation -= operand2
+            } else if (operatorType == .multiplication) {
+                calcuation *= operand2
+            } else if (operatorType == .division) {
+                calcuation /= operand2
+            } else {
+                return "Error: (006) operator undefined"
+            }
+            return "\(calcuation)"
+        } else {
+            return "Error: (005) No operator selected"
+        }
     }
 }

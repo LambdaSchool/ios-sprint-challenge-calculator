@@ -22,11 +22,16 @@ class CalculatorViewController: UIViewController {
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        guard let chosenOperand = sender.titleLabel?.text else {
-            return
-        }
-        brain?.addOperandDigit(chosenOperand)
-        print(chosenOperand)
+        if let chosenOperand = sender.titleLabel?.text {
+            outputLabel.text = brain?.addOperandDigit(chosenOperand)
+        } else { return }
+//        guard let chosenOperand = sender.titleLabel?.text else {
+//            return
+//        }
+//        var chosenOperandText = brain?.addOperandDigit(chosenOperand)
+//
+//        guard case let outputLabel.text = chosenOperandText else { return }
+        
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {

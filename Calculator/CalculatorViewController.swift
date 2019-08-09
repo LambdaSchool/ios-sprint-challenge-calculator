@@ -10,16 +10,24 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
     
+    var brain: CalculatorBrain?
+    
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
+        
+        var theBrain = brain
+        
+            }
     
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
         
+        if let buttonText = sender.titleLabel?.text {
+            outputLabel.text = brain?.addOperandDigit(buttonText)
+        }
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
@@ -31,12 +39,15 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
-        
+        clearTransaction()
     }
     
     // MARK: - Private
     
     private func clearTransaction() {
+        let defaultValue = "0"
+        outputLabel.text = defaultValue
         
     }
+   
 }

@@ -8,16 +8,16 @@
 
 import UIKit
 
-var brain: CalculatorBrain?
+
 
 class CalculatorViewController: UIViewController {
-    
+    var brain: CalculatorBrain?
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var b: CalculatorBrain?
+        brain = CalculatorBrain()
         
     }
     
@@ -26,8 +26,8 @@ class CalculatorViewController: UIViewController {
     //Extract text property from button
     @IBAction func operandTapped(_ sender: UIButton) {
         if let thisNumberString = sender.titleLabel?.text {
-            sender.titleLabel?.text = thisNumberString
-            print("\(thisNumberString)")
+            outputLabel.text = brain?.addOperandDigit(thisNumberString)
+                print("\(thisNumberString)")
             
         }
         
@@ -49,6 +49,8 @@ class CalculatorViewController: UIViewController {
     
     // MARK: - Private
     
+    //Reset the brain
     private func clearTransaction() {
-        self = brain    }
+        brain = nil
+}
 }

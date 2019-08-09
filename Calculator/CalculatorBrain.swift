@@ -20,20 +20,21 @@ class CalculatorBrain {
     var operand2String = ""
     var operatorType: OperatorType?
     
-    
-    //May not be complete. only returns digit, may need to return all top declared vars. Also not sure about let before digit
     func addOperandDigit(_ digit: String) -> String {
- //       var digit = ""
-        if operatorType == nil {
-            let digit = operand1String
+ 
+        if let _ = operatorType {
+            operand2String += digit
+            return operand2String
         } else {
-            let digit = operand2String
+            operand1String += digit
+            return operand1String
         }
-        return digit
     }
-    //Don't think this is complete, turned var to _
+
     func setOperator(_ operatorString: String) {
-        _ = OperatorType.self
+        if let type = OperatorType(rawValue: operatorString) {
+            operatorType = type
+        }
     }
     
     func calculateIfPossible() -> String? {
@@ -43,7 +44,7 @@ class CalculatorBrain {
         guard let operand2 = Double(operand2String) else { return nil }
         guard let operatorType = operatorType else { return nil }
 
-        switch  operatorType{
+        switch  operatorType {
         case .addition :
             let math = operand1 + operand2
             return "\(math)"
@@ -63,6 +64,7 @@ class CalculatorBrain {
                 let math = operand1 / operand2
             return "\(math)"
             }
+            
 
         }
     }

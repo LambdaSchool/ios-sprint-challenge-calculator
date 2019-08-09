@@ -25,11 +25,7 @@ class CalculatorViewController: UIViewController {
     @IBAction func operandTapped(_ sender: UIButton) {
         if let chosenOperand = sender.titleLabel?.text {
             outputLabel.text = brain?.addOperandDigit(chosenOperand)
-        } else { return }
-//        guard let chosenOperand = sender.titleLabel?.text else {
-//            return
-//        }
-//        var chosenOperandText = brain?.addOperandDigit(chosenOperand)
+        }
 
         
     }
@@ -38,30 +34,29 @@ class CalculatorViewController: UIViewController {
 
         if let chosenOperator = sender.titleLabel?.text {
             brain?.setOperator(chosenOperator)
-        } else { return }
+        }
 
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        let equasionAnswer = brain?.calculateIfPossible()
-        if equasionAnswer == nil {
+        if let equasionAnswer = brain?.calculateIfPossible() {
             outputLabel.text = equasionAnswer
-        } else { return }
+            clearTransaction()
+        }
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
         clearTransaction()
-        if sender.isSelected == true {
-            outputLabel.text = "0" } else { return }
-        }
+            outputLabel.text = "0"
+    }
+        
     
     
     
     // MARK: - Private
     
-    
-    //Not sure about this at all
     private func clearTransaction() {
+        brain = nil
         brain = CalculatorBrain()
 
     }

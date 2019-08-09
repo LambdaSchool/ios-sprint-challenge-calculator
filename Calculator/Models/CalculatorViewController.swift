@@ -25,40 +25,21 @@ class CalculatorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        brain = CalculatorBrain(operand1String: "", operand2String: "", operatortype: nil)
 
     }
-let brain = CalculatorBrain(operand1String: "", operand2String: "", operatortype: nil)
+    var brain:CalculatorBrain?
     
     
     // MARK: - Action Handlers
-    
+  
     @IBAction func operandTapped(_ sender: UIButton) {
-        var operand: String? = nil
-        if case button1.isSelected = true {
-            operand = "1"
-        } else if case button2.isSelected = true {
-            operand = "2"
-        } else if case button3.isSelected = true {
-            operand = "3"
-        } else if case button4.isSelected = true {
-            operand = "4"
-        } else if case button5.isSelected = true {
-            operand = "5"
-        } else if case button6.isSelected = true {
-            operand = "6"
-        } else if case button7.isSelected = true {
-            operand = "7"
-        } else if case button8.isSelected = true {
-            operand = "8"
-        } else if case button9.isSelected = true {
-            operand = "9"
-        } else if case button0.isSelected = true {
-            operand = "0"
-        } else if case buttonPoint.isSelected = true {
-            operand = "."
+        if let buttonOutput = sender.titleLabel?.text {
+        toOutputLabel.text = brain?.addOperandDigit(buttonOutput)
         }
-        brain.addOperandDigit("\(operand)")
-    }
+  
+
+ }
 
     
 //operatorTapped function
@@ -69,7 +50,13 @@ let brain = CalculatorBrain(operand1String: "", operand2String: "", operatortype
 
 // equalTappedFunction
     
+    
     @IBAction func equalTapped(_ sender: UIButton) {
+        if let equalOutput = sender.titleLabel?.text {
+        toOutputLabel.text = brain?.calculateIf
+            
+        }
+        
 //    brain.calculateIfPossible()
 //    outputLabel.text
     }

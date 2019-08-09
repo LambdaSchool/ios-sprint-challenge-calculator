@@ -31,10 +31,34 @@ class CalculatorBrain {
     }
     
     func setOperator(_ operatorString: String) {
-        
+        operatorType = OperatorType(rawValue: operatorString)
     }
     
     func calculateIfPossible() -> String? {
+        if operand1String == "" && operand2String == "" {
+            return nil
+        }
         
+        guard let unwrappedOperatorType = operatorType else {
+            return nil
+        }
+        
+        guard let doubleOperand1 = Double(operand1String), let doubleOperand2 = Double(operand2String) else {
+            return nil
+        }
+        
+        switch unwrappedOperatorType {
+        case .addition:
+            return String(doubleOperand1 + doubleOperand2)
+        case .subtraction:
+            return String(doubleOperand1 - doubleOperand2)
+        case .multiplication:
+            return String(doubleOperand1 * doubleOperand2)
+        case .division:
+            if doubleOperand2 == 0.0 {
+                return "Error"
+            }
+            return String(doubleOperand1 / doubleOperand2)
+        }
     }
 }

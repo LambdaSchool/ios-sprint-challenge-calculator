@@ -23,6 +23,12 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operandTapped(_ sender: UIButton) {
         if let unwrappedText = sender.currentTitle {
+            guard let doesHaveDecimal = outputLabel.text?.contains(".") else {
+                return
+            }
+            if doesHaveDecimal && unwrappedText == "." {
+                return
+            }
             let displayText = brain?.addOperandDigit(unwrappedText)
             outputLabel.text = displayText
         }
@@ -35,10 +41,10 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        if let unwrappedBrainCalculator = brain?.calculateIfPossible() {
+        if sender.currentTitle != nil {
+            let displayEqualText = brain?.calculateIfPossible()
+            outputLabel.text = displayEqualText
             
-        } else {
-            return
         }
     }
     

@@ -14,7 +14,10 @@ class CalculatorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
+let brain = CalculatorBrain(operand1String: "", operand2String: "", operatortype: nil)
+    
     
     // MARK: - Action Handlers
     
@@ -27,7 +30,7 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+    calculateif
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {

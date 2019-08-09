@@ -7,6 +7,7 @@
 //
 
 import Foundation
+//operand enum
 
 enum OperatorType: String {
     case addition = "+"
@@ -15,20 +16,33 @@ enum OperatorType: String {
     case division = "/"
 }
 
+// calculator brain class
+
 class CalculatorBrain {
     var operand1String = ""
     var operand2String = ""
     var operatorType: OperatorType?
+    init(operand1String: String, operand2String: String, operatortype: OperatorType?) {
+        
+    }
+// addOperandDigit function
     
     func addOperandDigit(_ digit: String) -> String {
         
     }
+
+// setOperator function
     
     func setOperator(_ operatorString: String) {
         
+        
     }
+// calculateIfPossible function
     
     func calculateIfPossible() -> String? {
         
     }
+
 }
+
+

@@ -26,32 +26,39 @@ class CalculatorViewController: UIViewController {
             outputLabel.text = unwrappedBrain.addOperandDigit(senderTitle)
             
         } else {
-            outputLabel.text = "Error: (001) Clear and try again."
+            outputLabel.text = "Error: (001) Invalid button"
+            sleep(3)
+            clearTransaction()
         }
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        if let unwrappedBrain = brain, let title = sender.currentTitle {
-            outputLabel.text = unwrappedBrain.addOperandDigit(title)
-        } else {
-            outputLabel.text = "Error: (002) Clear and try again."
+        guard let unwrappedBrain = brain, let title = sender.currentTitle, let text = outputLabel.text else {
+            outputLabel.text = "Error: (002) Invalid button."
+            sleep(3)
+            clearTransaction()
+            return
         }
+        outputLabel.text = "\(text) \(title)"
+        unwrappedBrain.setOperator(title)
+        
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
         if let unwrappedBrain = brain {
             outputLabel.text = unwrappedBrain.calculateIfPossible()
+            unwrappedBrain.operatorSelected = false
         }
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
-        brain = CalculatorBrain()
-        outputLabel.text = "0"
+        clearTransaction()
     }
     
     // MARK: - Private
     
     private func clearTransaction() {
-        
+        brain = CalculatorBrain()
+        outputLabel.text = "0"
     }
 }

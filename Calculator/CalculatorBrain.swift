@@ -8,8 +8,6 @@
 
 import Foundation
 
-var operatorSelected = false
-
 enum OperatorType: String {
     case addition = "+"
     case subtraction = "-"
@@ -21,14 +19,17 @@ class CalculatorBrain {
     var operand1String = ""
     var operand2String = ""
     var operatorType: OperatorType?
+    var operatorSelected = false
     
     func addOperandDigit(_ digit: String) -> String {
         if (operatorSelected) {
             operand2String += digit
+            print("operand2String: \(operand2String)")
             return operand2String
         }
         else {
             operand1String += digit
+            print("operand1String: \(operand1String)")
             return operand1String
         }
     }

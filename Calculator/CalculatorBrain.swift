@@ -22,14 +22,34 @@ class CalculatorBrain {
     var operatorSelected = false
     
     func addOperandDigit(_ digit: String) -> String {
+        var hasDecimal = false
         if (operatorSelected) {
-            operand2String += digit
-            print("operand2String: \(operand2String)")
+            if (digit == ".") {
+                for c in operand2String {
+                    if (c == ".") {
+                        hasDecimal = true
+                    }
+                }
+            }
+            if (!hasDecimal) {
+                operand2String += digit
+            }
+            
+//            print("operand2String: \(operand2String)")
             return operand2String
         }
         else {
-            operand1String += digit
-            print("operand1String: \(operand1String)")
+            if (digit == ".") {
+                for c in operand1String {
+                    if (c == ".") {
+                        hasDecimal = true
+                    }
+                }
+            }
+            if (!hasDecimal) {
+                operand1String += digit
+            }
+//            print("operand1String: \(operand1String)")
             return operand1String
         }
     }
@@ -38,13 +58,13 @@ class CalculatorBrain {
         if (operatorString == "+") {
             operatorType = .addition
             operatorSelected = true
-        } else if (operatorString == "-") {
+        } else if (operatorString == "−") {
             operatorType = .subtraction
             operatorSelected = true
-        } else if (operatorString == "×" || operatorString == "x") {
+        } else if (operatorString == "×") {
             operatorType = .multiplication
             operatorSelected = true
-        } else if (operatorString == "÷" || operatorString == "/") {
+        } else if (operatorString == "÷") {
             operatorType = .division
             operatorSelected = true
         } else {
@@ -54,6 +74,7 @@ class CalculatorBrain {
     
     func calculateIfPossible() -> String? {
         var calcuation: Double = 0
+        
         if (operatorSelected) {
             guard let operand1: Double = Double(operand1String), let operand2: Double = Double(operand2String) else {
                 return "Error: (004) Invalid operands"
@@ -70,6 +91,9 @@ class CalculatorBrain {
             } else {
                 return "Error: (006) operator undefined"
             }
+            operand1String = "\(calcuation)"
+            operand2String = ""
+            operatorSelected = false
             return "\(calcuation)"
         } else {
             return "Error: (005) No operator selected"

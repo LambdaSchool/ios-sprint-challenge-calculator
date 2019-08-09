@@ -11,6 +11,7 @@ import UIKit
 class CalculatorViewController: UIViewController {
     
     @IBOutlet weak var outputLabel: UILabel!
+    
     var brain: CalculatorBrain?
     
     override func viewDidLoad() {
@@ -35,11 +36,17 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
+        if let chosenOperator = sender.titleLabel?.text {
+            brain?.setOperator(chosenOperator)
+        } else { return }
 
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        let equasionAnswer = brain?.calculateIfPossible()
+        if equasionAnswer == nil {
+            outputLabel.text = equasionAnswer
+        } else { return }
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
@@ -52,7 +59,11 @@ class CalculatorViewController: UIViewController {
     
     // MARK: - Private
     
+    
+    //Not sure about this at all
     private func clearTransaction() {
-        
+        if brain == nil {
+            brain = nil
+        } else { return }
     }
 }

@@ -29,47 +29,42 @@ class CalculatorBrain {
         }
         return digit
     }
-    //Don't think this is complete
+    //Don't think this is complete, turned var to _
     func setOperator(_ operatorString: String) {
-        var operatorString = OperatorType.self
+        _ = OperatorType.self
     }
     
     func calculateIfPossible() -> String? {
-        var operand1: Double
-        var operand2: Double
-        var theOperator: String
+//        var operand1: Double
+//        var operand2: Double
+//        var theOperator: String
         
-        if operand1String != "" {
-            operand1 = Double(operand1String) as! Double
-        }
-        if operand2String != "" {
-            let operand2 = Double(operand2String)
-        }
-        if operatorType != nil {
-            let theOperator = operatorType!.rawValue
-        }
         
-        if theOperator == "+" {
+        guard let operand1 = Double(operand1String) else { return nil }
+        guard let operand2 = Double(operand2String) else { return nil }
+        guard let operatorType = operatorType else { return nil }
+
+        switch  operatorType{
+        case .addition :
             let math = operand1 + operand2
-        }
-        if theOperator == "-" {
+            return "\(math)"
+            
+        case .subtraction:
             let math = operand1 - operand2
-        }
-        if theOperator == "×" {
+            return "\(math)"
+            
+        case .multiplication:
             let math = operand1 * operand2
+            return "\(math)"
+            
+        case .division:
+            
+            let math = operand1 / operand2
+            return "\(math)"
+            
         }
-        if theOperator == "÷"{
-                let math = operand1 / operand2
-        }
+
         
-//        for symbol in operatorType {
-//            switch symbol {
-//            case "+", "-", "×", "÷":
-//                if
-//            }
-//        }
-        
- return ""
 
     }
 }

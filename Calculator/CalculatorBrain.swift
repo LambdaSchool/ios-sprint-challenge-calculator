@@ -31,21 +31,31 @@ class CalculatorBrain {
     }
     
     func setOperator(_ operatorString: String) {
-        switch operatorString {
-        case: "+"
-            operatorType = .addition
-        case: "−"
-            operatorType = .subtraction
-        case: "×"
-            operatorType = .multiplication
-        case: "÷"
-            operatorType = .division
+        
+        let math = OperatorType(rawValue: operatorString)
+        operatorType = math
+
+    }
+    
+    func calculateIfPossible() -> String? {
+        guard let calculate = operatorType,
+            let firstNum = Double(operand1String),
+            let secondNum = Double(operand2String) else { return }
+        
+        switch calculate {
+        case OperatorType.addition:
+        return String(firstNum + secondNum)
+        case OperatorType.subtraction:
+        return String(firstNum - secondNum)
+        case OperatorType.multiplication:
+        return String(firstNum * secondNum)
+        case OperatorType.division:
+        return String(firstNum / secondNum)
         default:
             break
         }
     }
-    
-    func calculateIfPossible() -> String? {
-        
-    }
 }
+
+
+

@@ -17,7 +17,7 @@ class CalculatorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var B = brain
+        var theBrain = brain
             }
     
     // MARK: - Action Handlers
@@ -25,7 +25,8 @@ class CalculatorViewController: UIViewController {
     @IBAction func operandTapped(_ sender: UIButton) {
         
         if let digitString = sender.titleLabel?.text {
-            outputLabel.text = brain?.addOperandDigit(digitString)
+            guard let unwrappedBrain = brain else { return }
+            outputLabel.text = unwrappedBrain.addOperandDigit(digitString)
         }
     }
     
@@ -37,7 +38,10 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        ifcalculateIfPossible()    }
+        if let equal = brain?.calculateIfPossible() {
+        outputLabel.text = brain?.calculateIfPossible(equal)
+        
+    }
     
     @IBAction func clearTapped(_ sender: UIButton) {
         clearTransaction()

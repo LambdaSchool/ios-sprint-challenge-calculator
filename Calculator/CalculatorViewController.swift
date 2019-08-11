@@ -34,7 +34,7 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operatorTapped(_ sender: UIButton) {
         guard let unwrappedBrain = brain, let title = sender.currentTitle, let text = outputLabel.text else {
-            outputLabel.text = "Error: (002) Invalid button."
+            outputLabel.text = "Error: (002) Invalid button"
             sleep(3)
             clearTransaction()
             return
@@ -56,11 +56,51 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func percentTapped(_ sender: UIButton) {
-        return
+        if let unwrappedBrain = brain {
+            if (unwrappedBrain.operatorSelected) {
+                guard let operand2: Double = Double(unwrappedBrain.operand2String) else { return }
+                unwrappedBrain.operand2String = "\(operand2 / 100)"
+            } else {
+                guard let operand1: Double = Double(unwrappedBrain.operand1String) else { return }
+                unwrappedBrain.operand1String = "\(operand1 / 100)"
+            }
+            if let _ = unwrappedBrain.operatorType {
+                outputLabel.text = "\(unwrappedBrain.operand2String)"
+            } else {
+                outputLabel.text = "\(unwrappedBrain.operand1String)"
+            }
+        }
     }
     
     @IBAction func positiveNegativePressed(_ sender: Any) {
-        return
+        if let unwrappedBrain = brain {
+            if (unwrappedBrain.operatorSelected) {
+                if (unwrappedBrain.operand2String.isEmpty) {
+                    return
+                } else {
+                    if (unwrappedBrain.operand2String[unwrappedBrain.operand2String.startIndex] == "-") {
+                        unwrappedBrain.operand2String.remove(at: unwrappedBrain.operand2String.startIndex)
+                    } else {
+                        unwrappedBrain.operand2String = "-\(unwrappedBrain.operand2String)"
+                    }
+                }
+            } else {
+                if (unwrappedBrain.operand1String.isEmpty) {
+                    return
+                } else {
+                    if (unwrappedBrain.operand1String[unwrappedBrain.operand1String.startIndex] == "-") {
+                        unwrappedBrain.operand1String.remove(at: unwrappedBrain.operand1String.startIndex)
+                    } else {
+                        unwrappedBrain.operand1String = "-\(unwrappedBrain.operand1String)"
+                    }
+                }
+            }
+            if let _ = unwrappedBrain.operatorType {
+                outputLabel.text = "\(unwrappedBrain.operand2String)"
+            } else {
+                outputLabel.text = "\(unwrappedBrain.operand1String)"
+            }
+        }
     }
     
     // MARK: - Private

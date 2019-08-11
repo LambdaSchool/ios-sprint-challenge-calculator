@@ -89,14 +89,20 @@ class CalculatorBrain {
             } else if (operatorType == .division) {
                 calcuation /= operand2
             } else {
-                return "Error: (006) operator undefined"
+                return "Error: (006) Operator undefined"
             }
             operand1String = "\(calcuation)"
             operand2String = ""
             operatorSelected = false
-            return "\(calcuation)"
+            
+            if (operand1String.hasSuffix(".0")) {
+                operand1String.remove(at: String.Index(utf16Offset: operand1String.count-1, in: operand1String))
+                operand1String.remove(at: String.Index(utf16Offset: operand1String.count-1, in: operand1String))
+            }
+            
+            return operand1String
         } else {
-            return "Error: (005) No operator selected"
+            return operand1String
         }
     }
 }

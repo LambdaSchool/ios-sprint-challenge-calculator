@@ -60,13 +60,10 @@ class CalculatorViewController: UIViewController {
             if (unwrappedBrain.operatorSelected) {
                 guard let operand2: Double = Double(unwrappedBrain.operand2String) else { return }
                 unwrappedBrain.operand2String = "\(operand2 / 100)"
+                outputLabel.text = "\(unwrappedBrain.operand2String)"
             } else {
                 guard let operand1: Double = Double(unwrappedBrain.operand1String) else { return }
                 unwrappedBrain.operand1String = "\(operand1 / 100)"
-            }
-            if let _ = unwrappedBrain.operatorType {
-                outputLabel.text = "\(unwrappedBrain.operand2String)"
-            } else {
                 outputLabel.text = "\(unwrappedBrain.operand1String)"
             }
         }
@@ -84,6 +81,7 @@ class CalculatorViewController: UIViewController {
                         unwrappedBrain.operand2String = "-\(unwrappedBrain.operand2String)"
                     }
                 }
+                outputLabel.text = "\(unwrappedBrain.operand2String)"
             } else {
                 if (unwrappedBrain.operand1String.isEmpty) {
                     return
@@ -94,10 +92,6 @@ class CalculatorViewController: UIViewController {
                         unwrappedBrain.operand1String = "-\(unwrappedBrain.operand1String)"
                     }
                 }
-            }
-            if let _ = unwrappedBrain.operatorType {
-                outputLabel.text = "\(unwrappedBrain.operand2String)"
-            } else {
                 outputLabel.text = "\(unwrappedBrain.operand1String)"
             }
         }

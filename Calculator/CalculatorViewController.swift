@@ -12,6 +12,7 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
     var brain: CalculatorBrain?
+   
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
@@ -26,9 +27,9 @@ class CalculatorViewController: UIViewController {
     //Extract text property from button
     @IBAction func operandTapped(_ sender: UIButton) {
         if let thisNumberString = sender.titleLabel?.text {
-            outputLabel.text = brain?.addOperandDigit(thisNumberString)
-                print("\(thisNumberString)")
-            
+            brain?.addOperandDigit(thisNumberString)
+            print(thisNumberString)
+            outputLabel.text = thisNumberString
         }
         
         
@@ -36,13 +37,13 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operatorTapped(_ sender: UIButton) {
         if let thisOperator = sender.titleLabel?.text {
-             brain?.setOperator(thisOperator)
+            brain?.setOperator(thisOperator)
         }
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
         if let equalTap = sender.titleLabel?.text {
-           outputLabel.text = calculateIfPossible()
+           outputLabel.text = brain?.calculateIfPossible()
             print("\(equalTap)")
         }
     }

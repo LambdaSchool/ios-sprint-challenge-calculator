@@ -15,11 +15,17 @@ enum OperatorType: String {
     case division = "/"
 }
 
+struct PreviousCalc {
+    let lastOperator: OperatorType
+    let lastOperand: Double
+}
+
 class CalculatorBrain {
     var operand1String = ""
     var operand2String = ""
     var operatorType: OperatorType?
     var operatorSelected = false
+    var lastOp: PreviousCalc?
     
     func addOperandDigit(_ digit: String) -> String {
         var hasDecimal = false
@@ -73,25 +79,30 @@ class CalculatorBrain {
     }
     
     func calculateIfPossible() -> String? {
-        var calcuation: Double = 0
+        var calculation: Double = 0
+        
+        
         
         if (operatorSelected) {
             guard let operand1: Double = Double(operand1String), let operand2: Double = Double(operand2String) else {
                 return "Error: (004) Invalid operands"
             }
-            calcuation = operand1
+            calculation = operand1
             if (operatorType == .addition) {
-                calcuation += operand2
+                calculation += operand2
             } else if (operatorType == .subtraction) {
-                calcuation -= operand2
+                calculation -= operand2
             } else if (operatorType == .multiplication) {
-                calcuation *= operand2
+                calculation *= operand2
             } else if (operatorType == .division) {
-                calcuation /= operand2
+                calculation /= operand2
             } else {
                 return "Error: (006) Operator undefined"
             }
-            operand1String = "\(calcuation)"
+            operand1String = "\(calculation)"
+            while (operand1String.count > 10) {
+                operand1String.remove(at: String.Index(utf16Offset: operand1String.count-1, in: operand1String))
+            }
             operand2String = ""
             operatorSelected = false
             
@@ -99,10 +110,36 @@ class CalculatorBrain {
                 operand1String.remove(at: String.Index(utf16Offset: operand1String.count-1, in: operand1String))
                 operand1String.remove(at: String.Index(utf16Offset: operand1String.count-1, in: operand1String))
             }
-            
+            if let operatorType = operatorType {
+                lastOp = PreviousCalc(lastOperator: operatorType, lastOperand: operand2)
+            }
             return operand1String
         } else {
-            return operand1String
+            if (!operand1String.isEmpty && lastOp != nil) {
+                guard let operand1 = Double(operand1String), let lastOp = lastOp else {
+                    return "Error or smth"
+                }
+                calculation = operand1
+                if (operatorType == .addition) {
+                    calculation += lastOp.lastOperand
+                } else if (operatorType == .subtraction) {
+                    calculation -= lastOp.lastOperand
+                } else if (operatorType == .multiplication) {
+                    calculation *= lastOp.lastOperand
+                } else if (operatorType == .division) {
+                    calculation /= lastOp.lastOperand
+                } else {
+                    return "Error: (006) Operator undefined"
+                }
+                operand1String = "\(calculation)"
+                while (operand1String.count > 10) {
+                    operand1String.remove(at: String.Index(utf16Offset: operand1String.count-1, in: operand1String))
+                }
+                operand2String = ""
+                return "\(calculation)"
+            } else {
+                return operand1String
+            }
         }
     }
 }

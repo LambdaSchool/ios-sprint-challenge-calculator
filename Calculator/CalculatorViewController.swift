@@ -61,9 +61,19 @@ class CalculatorViewController: UIViewController {
                 guard let operand2: Double = Double(unwrappedBrain.operand2String) else { return }
                 unwrappedBrain.operand2String = "\(operand2 / 100)"
                 outputLabel.text = "\(unwrappedBrain.operand2String)"
+                if (unwrappedBrain.operand2String.hasSuffix(".0")) {
+                    unwrappedBrain.operand2String.remove(at: String.Index(utf16Offset: unwrappedBrain.operand2String.count-1, in: unwrappedBrain.operand2String))
+                    unwrappedBrain.operand2String.remove(at: String.Index(utf16Offset: unwrappedBrain.operand2String.count-1, in: unwrappedBrain.operand2String))
+                }
+                outputLabel.text = "\(unwrappedBrain.operand2String)"
             } else {
                 guard let operand1: Double = Double(unwrappedBrain.operand1String) else { return }
                 unwrappedBrain.operand1String = "\(operand1 / 100)"
+                outputLabel.text = "\(unwrappedBrain.operand1String)"
+                if (unwrappedBrain.operand1String.hasSuffix(".0")) {
+                    unwrappedBrain.operand1String.remove(at: String.Index(utf16Offset: unwrappedBrain.operand1String.count-1, in: unwrappedBrain.operand1String))
+                    unwrappedBrain.operand1String.remove(at: String.Index(utf16Offset: unwrappedBrain.operand1String.count-1, in: unwrappedBrain.operand1String))
+                }
                 outputLabel.text = "\(unwrappedBrain.operand1String)"
             }
         }

@@ -18,13 +18,12 @@ class CalculatorViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
         guard let buttonString = sender.titleLabel?.text else {return}
-        brain.setOperator(buttonString)
         outputLabel.text = brain.addOperandDigit(buttonString)
-        
         
     }
     
@@ -32,7 +31,6 @@ class CalculatorViewController: UIViewController {
     @IBAction func operatorTapped(_ sender: UIButton) {
         guard let buttonString = sender.titleLabel?.text else {return}
         brain.setOperator(buttonString)
-        
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {

@@ -21,8 +21,9 @@ class CalculatorBrain {
     var operatorType: OperatorType?
     
     func addOperandDigit(_ digit: String) -> String {
+        
         if operatorType != nil {
-          operand2String.append(contentsOf: digit)
+            operand2String.append(contentsOf: digit)
             return operand2String
         } else {
             operand1String.append(contentsOf: digit)
@@ -31,31 +32,35 @@ class CalculatorBrain {
     }
     
     func setOperator(_ operatorString: String) {
-        
-        let math = OperatorType(rawValue: operatorString)
-        operatorType = math
-
-    }
-    
-    func calculateIfPossible() -> String? {
-        guard let calculate = operatorType,
-            let firstNum = Double(operand1String),
-            let secondNum = Double(operand2String) else { return }
-        
-        switch calculate {
-        case OperatorType.addition:
-        return String(firstNum + secondNum)
-        case OperatorType.subtraction:
-        return String(firstNum - secondNum)
-        case OperatorType.multiplication:
-        return String(firstNum * secondNum)
-        case OperatorType.division:
-        return String(firstNum / secondNum)
-        default:
-            break
+        if operatorType == nil {
+            operatorType = OperatorType(rawValue: operatorString)
         }
     }
+        
+        func calculateIfPossible() -> String? {
+            if let operatorType = operatorType {
+                if operand2String.isEmpty {
+                    operand2String = operand1String
+                }
+                
+                guard let firstNum = Double(operand1String),
+                    let secondNum = Double(operand2String) else { return nil }
+                
+                var answer: String
+                
+                switch operatorType {
+                case .addition:
+                    answer = "\(firstNum + secondNum)"
+                case .subtraction:
+                    answer = "\(firstNum - secondNum)"
+                case .multiplication:
+                    answer = "\(firstNum * secondNum)"
+                case .division:
+                    answer = "\(firstNum / secondNum)"
+                    }
+                
+                return answer
+                }
+            return nil
+            }
 }
-
-
-

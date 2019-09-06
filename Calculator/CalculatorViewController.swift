@@ -11,6 +11,7 @@ import UIKit
 class CalculatorViewController: UIViewController {
     
     var brain: CalculatorBrain?
+    var lastButtonPressWasEquals = false
     
     @IBOutlet weak var outputLabel: UILabel!
     
@@ -22,10 +23,10 @@ class CalculatorViewController: UIViewController {
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        if brain?.lastButtonPressWasEquals ?? false {
+        if lastButtonPressWasEquals {
             clearTransaction()
         }
-        brain?.lastButtonPressWasEquals = false
+        lastButtonPressWasEquals = false
         
         guard let operandString = sender.titleLabel!.text else {
             print("Unable to get string from button title.")
@@ -38,7 +39,7 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        brain?.lastButtonPressWasEquals = false
+        lastButtonPressWasEquals = false
         
         guard let operatorString = sender.titleLabel!.text else {
             print("Unable to get string from button title.")
@@ -49,21 +50,35 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        brain?.lastButtonPressWasEquals = true
+        lastButtonPressWasEquals = true
         if let result = brain?.calculateIfPossible() {
-            if result.suffix(2) == ".0" {
-                outputLabel.text = String(result.dropLast(2))
-            } else {
-                outputLabel.text = result
-            }
+            outputString(result)
             brain?.operand1String = result
         }
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
-        brain?.lastButtonPressWasEquals = false
+        lastButtonPressWasEquals = false
         clearTransaction()
         outputLabel.text = "0"
+    }
+    
+    @IBAction func negateTapped(_ sender: UIButton) {
+        if brain?.operatorType == nil || lastButtonPressWasEquals {
+            if brain?.operand1String.prefix(1) != "-" {
+                brain?.operand1String = "-\(brain?.operand1String ?? "")"
+            } else {
+                brain?.operand1String = String((brain?.operand1String.dropFirst())!)
+            }
+            outputString(brain!.operand1String)
+        } else {
+            if brain?.operand2String.prefix(1) != "-" {
+                brain?.operand2String = "-\(brain?.operand2String ?? "")"
+            } else {
+                brain?.operand2String = String((brain?.operand2String.dropFirst())!)
+            }
+            outputString(brain!.operand2String)
+        }
     }
     
     // MARK: - Private
@@ -72,5 +87,13 @@ class CalculatorViewController: UIViewController {
         brain?.operand1String = ""
         //brain?.operand2String = ""
         brain?.operatorType = nil
+    }
+    
+    private func outputString(_ string: String) {
+        if string.suffix(2) == ".0" {
+            outputLabel.text = String(string.dropLast(2))
+        } else {
+            outputLabel.text = string
+        }
     }
 }

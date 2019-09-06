@@ -17,9 +17,10 @@ class CalculatorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        initializing A New Calculator Brain, assign to above property
-      let brain = CalculatorBrain()
+      
 
     }
+    var calulatorBrain = CalculatorBrain()
     // MARK: - Action Handlers
     
 //     The function operandTapped is  extracting the Physical Text from the button that is tapped. using a if let statement helps with when the button is being tapped because it says If this button is pressed then this will happen.
@@ -40,9 +41,7 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        if let equalTap = sender.titleLabel?.text{
-            outputLabel.text = brain?.calculateIfPossible()
-            print("\(equalTap)")
+        
         }
     }
     // MARK: - Private

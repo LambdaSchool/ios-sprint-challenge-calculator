@@ -23,17 +23,17 @@ class CalculatorBrain {
     
     func addOperandDigit(_ digit: String) -> String {
         if operatorType == nil {
-            operand1String.append(contentsOf: digit)
+            operand1String.append(digit)
             return operand1String
         } else {
-            operand2String.append(contentsOf: digit)
+            operand2String.append(digit)
             return operand2String
         }
     }
     
     func setOperator(_ operatorString: String) {
-        if let operatorSet = OperatorType(rawValue: operatorString) {
-            operatorType = operatorSet
+        if let operatorSetType = OperatorType(rawValue: operatorString) {
+            operatorType = operatorSetType
         }
     }
 
@@ -44,7 +44,6 @@ class CalculatorBrain {
             let operatorType = operatorType else {
             return ""}
         var answer: Double
-        
             switch operatorType {
             case .addition:
                 answer = storedValue + storedValue2
@@ -56,7 +55,7 @@ class CalculatorBrain {
                 answer = storedValue * storedValue2
             default:
                 return "error"
-            }
+    }
             return "\(answer)"
     }
 }

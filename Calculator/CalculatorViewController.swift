@@ -9,53 +9,48 @@
 import UIKit
 
 class CalculatorViewController: UIViewController {
-//    creating a property called Brain
-    var brain: CalculatorBrain?
-
+    //    creating a property called Brain
+    //    var brain: CalculatorBrain?
+    
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        initializing A New Calculator Brain, assign to above property
-      
-
+        
     }
+    //        initializing A New Calculator Brain, assign to above property
     var calculatorBrain = CalculatorBrain()
+    
+    
+    
     // MARK: - Action Handlers
     
-//     The function operandTapped is  extracting the Physical Text from the button that is tapped. using a if let statement helps with when the button is being tapped because it says If this button is pressed then this will happen.
+    //     The function operandTapped is  extracting the Physical Text from the button that is tapped. using a if let statement helps with when the button is being tapped because it says If this button is pressed then this will happen.
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        if let thisNumberString = sender.titleLabel?.text {
-            brain?.addOperandDigit(thisNumberString)
-            print(thisNumberString)
-            outputLabel.text = thisNumberString
-        }
+        guard let buttonText = sender.titleLabel?.text else {return}
+        outputLabel.text = calculatorBrain.addOperandDigit(buttonText)
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
         guard  let  buttonText = sender.titleLabel?.text else {return}
-        outputLabel.text = calculatorBrain.addOperandDigit(buttonText)
-        }
-        }
-
+       calculatorBrain.setOperator(buttonText)
+    }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
-        }
-    // MARK: - Private
-//The function created will reset the transaction to 0 once clear transaction function is called 
-//    creating a function looks like line 50
-     func clearTransaction() {
-//        calling a function looks like line 53
-        clearTransaction()
-//        the output text of this function will look like line 55
-            outputLabel.text = "0"
+        outputLabel.text = calculatorBrain.calculateIfPossible()
     }
-// Instructions when the clear button is tapped. brain will be nil or it will hold the value of operator string 1 and 2 and an operand symbol .
-    
+    // Instructions when the clear button is tapped. brain will be nil or it will hold the value of operator string 1 and 2 and an operand symbol .
     @IBAction func clearButtonTapped(_ sender: UIButton) {
-        brain = nil
-        brain = CalculatorBrain()
+        clearTransaction()
+        outputLabel.text = "0"
     }
-
+    
+    //      MARK: - PRIVATE
+    //The function created will reset the transaction to 0 once clear transaction function is called
+    //    creating a function looks like line 52
+   private func clearTransaction() {
+        //        calling a function looks like left side of 54 , calling function looks like right side of 54
+        calculatorBrain = CalculatorBrain()
+    }
+}

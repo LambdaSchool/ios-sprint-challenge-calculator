@@ -9,6 +9,8 @@
 import UIKit
 
 class CalculatorViewController: UIViewController {
+
+    var calculator = CalculatorBrain()
     
     @IBOutlet weak var outputLabel: UILabel!
     
@@ -19,24 +21,35 @@ class CalculatorViewController: UIViewController {
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        
+        guard let digit = sender.titleLabel?.text else {return}
+        outputLabel.text = calculator.addOperandDigit(digit)
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        
+        guard let op = sender.titleLabel?.text else { return }
+        calculator.setOperator(op)
+        outputLabel.text = calculator.outputDisplay.text
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        if calculator.outputDisplay.text != "0" {
+            guard let result = calculator.calculateIfPossible() else {
+                outputLabel.text = "Error"
+                return
+            }
+            outputLabel.text = result
+        }
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
-        
+        clearTransaction()
     }
     
     // MARK: - Private
     
     private func clearTransaction() {
-        
+        calculator.clear()
+        outputLabel.text = calculator.outputDisplay.text
     }
 }
+

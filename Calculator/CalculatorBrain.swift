@@ -54,6 +54,7 @@ class CalculatorBrain {
     
     func calculateIfPossible() -> String? {
         var solution: String? = nil
+        var isInteger = false
         if operand1String != "" && operand2String != "" {
             if let operator_ = operatorType {
                 if let operand1 = Double(operand1String), let operand2 = Double(operand2String) {
@@ -74,6 +75,32 @@ class CalculatorBrain {
                 }
             }
         }
+        
+        // Truncating decimal (first solution)
+//        if let solutionString = solution {
+//            if let solutionDouble = Double(solutionString) {
+//                if solutionDouble == floor(solutionDouble){
+//                    solution = "\(Int(solutionDouble))"
+//                }
+//            }
+//        }
+        
+        // Truncation decimal and trailing zeros
+        if let solutionString = solution {
+            if let solutionDouble = Double(solutionString) {
+                solution = removeZerosFromEnd(numberDouble: solutionDouble)
+            }
+        }
+        
         return solution
     }
+}
+
+// from https://stackoverflow.com/questions/29560743/swift-remove-trailing-zeros-from-double
+func removeZerosFromEnd(numberDouble: Double) -> String {
+    let formatter = NumberFormatter()
+    let number = NSNumber(value: numberDouble)
+    formatter.minimumFractionDigits = 0
+    formatter.maximumFractionDigits = 14 //maximum digits in Double after dot (maximum precision)
+    return String(formatter.string(from: number) ?? "")
 }

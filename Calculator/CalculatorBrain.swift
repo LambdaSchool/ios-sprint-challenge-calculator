@@ -13,7 +13,6 @@ enum OperatorType: String {
     case subtraction = "-"
     case division = "/"
     case multiplication = "*"
-    case percent = "%"
 }
 
 class CalculatorBrain {
@@ -23,39 +22,42 @@ class CalculatorBrain {
     
     func addOperandDigit(_ digit: String) -> String {
         if operatorType == nil {
-            operand1String.append(digit)
+            operand1String.append(contentsOf: digit)
             return operand1String
         } else {
-            operand2String.append(digit)
+            operand2String.append(contentsOf: digit)
             return operand2String
         }
     }
     
     func setOperator(_ operatorString: String) {
-        if let operatorSetType = OperatorType(rawValue: operatorString) {
-            operatorType = operatorSetType
+        if let opType = OperatorType(rawValue: operatorString) {
+            operatorType = opType
         }
+        
     }
 
     func calculateIfPossible() -> String? {
 //        the answer will be a double , setting the answer variable of type default in the func
-        guard let storedValue = Double(operand1String),
-        let storedValue2 = Double(operand2String),
-            let operatorType = operatorType else {
-            return ""}
-        var answer: Double
+        guard let operand1 = Double(operand1String),
+            let operand2 = Double(operand2String),
+            let operatorType = operatorType else {return ""}
+            var answer: Double
             switch operatorType {
             case .addition:
-                answer = storedValue + storedValue2
+                answer = operand1 + operand2
             case .subtraction:
-                answer = storedValue - storedValue2
-            case .division:
-                answer = storedValue / storedValue2
+                answer = operand1 - operand2
             case .multiplication:
-                answer = storedValue * storedValue2
-            default:
+                answer = operand1 * operand2
+            case .division:
+                if  operand2 >= 1 {
+                    answer = operand1 / operand2
+                } else {
                 return "error"
     }
+        }
             return "\(answer)"
+        
     }
 }

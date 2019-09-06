@@ -10,13 +10,13 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
     //    creating a property called Brain
-    //    var brain: CalculatorBrain?
+        
     
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        CalculatorBrain()
     }
     //        initializing A New Calculator Brain, assign to above property
     var calculatorBrain = CalculatorBrain()
@@ -33,9 +33,9 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        guard  let  buttonText = sender.titleLabel?.text else {return}
-       calculatorBrain.setOperator(buttonText)
-    }
+        guard let buttonText = sender.titleLabel?.text else {return}
+        calculatorBrain.setOperator(buttonText)        }
+    
     
     @IBAction func equalTapped(_ sender: UIButton) {
         outputLabel.text = calculatorBrain.calculateIfPossible()
@@ -45,12 +45,14 @@ class CalculatorViewController: UIViewController {
         clearTransaction()
         outputLabel.text = "0"
     }
-    
     //      MARK: - PRIVATE
     //The function created will reset the transaction to 0 once clear transaction function is called
-    //    creating a function looks like line 52
+    //    creating a function looks like line 50
    private func clearTransaction() {
-        //        calling a function looks like left side of 54 , calling function looks like right side of 54
+        //        calling a function looks like left side of 52 , calling function looks like right side of 52
         calculatorBrain = CalculatorBrain()
     }
+
 }
+    
+

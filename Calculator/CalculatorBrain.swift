@@ -10,7 +10,7 @@ import Foundation
 
 enum OperatorType: String {
     case addition = "+"
-    case subtraction = "-"
+    case subtraction = "−"
     case multiplication = "×"
     case division = "÷"
 }
@@ -31,11 +31,43 @@ class CalculatorBrain {
     }
     
     func setOperator(_ operatorString: String) {
-        
+        switch operatorString {
+        case "+":
+            operatorType = .addition
+        case "−":
+            operatorType = .subtraction
+        case "×":
+            operatorType = .multiplication
+        case "÷":
+            operatorType = .division
+        default:
+            operatorType = nil
+            print("func setOperator :: invalid operatorString")
+        }
     }
     
     func calculateIfPossible() -> String? {
-        if brain?.operand1String != "" && brain?.operatorType != nil && brain?.operand2String != ""
-        return ""
+        var solution: String? = nil
+        if operand1String != "" && operand2String != "" {
+            if let operator_ = operatorType {
+                if let operand1 = Double(operand1String), let operand2 = Double(operand2String) {
+                    switch operator_ {
+                    case .addition:
+                        solution = "\(operand1 + operand2)"
+                    case .subtraction:
+                        solution = "\(operand1 - operand2)"
+                    case .multiplication:
+                        solution = "\(operand1 * operand2)"
+                    case .division:
+                        if operand2 != 0 {
+                            solution = "\(operand1 / operand2)"
+                        } else {
+                            solution = "ERROR"
+                        }
+                    }
+                }
+            }
+        }
+        return solution
     }
 }

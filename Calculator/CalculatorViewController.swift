@@ -42,16 +42,17 @@ class CalculatorViewController: UIViewController {
         } else {
             print("func equalTapped :: coud not unwrap solutionString")
         }
+        clearTransaction()
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
+        outputLabel.text = "0"
         clearTransaction()
     }
     
     // MARK: - Private
     
     private func clearTransaction() {
-        outputLabel.text = "0"
         brain?.operand1String = ""
         brain?.operand2String = ""
         brain?.operatorType = nil

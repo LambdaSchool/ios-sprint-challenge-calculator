@@ -23,7 +23,7 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operandTapped(_ sender: UIButton) {
         guard let operandString = sender.titleLabel!.text else {
-            print("Unable to get string from buttom title.")
+            print("Unable to get string from button title.")
             return
         }
         
@@ -33,11 +33,18 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
+        guard let operatorString = sender.titleLabel!.text else {
+            print("Unable to get string from button title.")
+            return
+        }
         
+        brain?.setOperator(operatorString)
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        if let result = brain?.calculateIfPossible() {
+            outputLabel.text = result
+        }
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {

@@ -19,6 +19,7 @@ class CalculatorBrain {
     var operand1String = ""
     var operand2String = ""
     var operatorType: OperatorType?
+    var lastButtonPressWasEquals = false
     
     func addOperandDigit(_ digit: String) -> String {
         if operatorType == nil {

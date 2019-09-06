@@ -22,6 +22,11 @@ class CalculatorViewController: UIViewController {
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
+        if brain?.lastButtonPressWasEquals ?? false {
+            clearTransaction()
+        }
+        brain?.lastButtonPressWasEquals = false
+        
         guard let operandString = sender.titleLabel!.text else {
             print("Unable to get string from button title.")
             return
@@ -33,6 +38,8 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
+        brain?.lastButtonPressWasEquals = false
+        
         guard let operatorString = sender.titleLabel!.text else {
             print("Unable to get string from button title.")
             return
@@ -42,12 +49,15 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
+        brain?.lastButtonPressWasEquals = true
         if let result = brain?.calculateIfPossible() {
             outputLabel.text = result
+            brain?.operand1String = result
         }
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
+        brain?.lastButtonPressWasEquals = false
         clearTransaction()
         outputLabel.text = "0"
     }

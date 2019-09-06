@@ -24,7 +24,7 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operandTapped(_ sender: UIButton) {
         if let unwrappedText = sender.titleLabel?.text {
-           var response =  brain?.addOperandDigit(unwrappedText)
+            let response =  brain?.addOperandDigit(unwrappedText)
             print(response)
         }
     }

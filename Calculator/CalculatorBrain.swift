@@ -20,6 +20,7 @@ class CalculatorBrain {
     var operand2String = ""
     var operatorType: OperatorType?
     
+    // maybe remove 0 if the input is 0123
     func addOperandDigit(_ digit: String) -> String {
         if operatorType == nil {
             if operand1String.contains(".") && digit == "." {
@@ -81,6 +82,26 @@ class CalculatorBrain {
         return nil
     }
     
+    func convertPercentage(_ numberString:String) -> String? {
+        guard var number = Double(numberString) else {
+            return nil
+        }
+        if operand1String == "" && operand2String == "" && operatorType == nil {
+            number /= 100.0
+        } else if operatorType == nil {
+            if let operand1 = Double(operand1String) {
+                number = operand1 / 100.0
+                operand1String = "\(number)"
+            }
+        } else {
+            if let operand2 = Double(operand2String) {
+                number = operand2 / 100.0
+                operand2String = "\(number)"
+            }
+        }
+        return "\(number)"
+    }
+    
     func calculateIfPossible() -> String? {
         var solution: String? = nil
         if operand1String != "" && operand2String != "" {
@@ -103,15 +124,6 @@ class CalculatorBrain {
                 }
             }
         }
-        
-        // Truncating decimal (first solution)
-//        if let solutionString = solution {
-//            if let solutionDouble = Double(solutionString) {
-//                if solutionDouble == floor(solutionDouble){
-//                    solution = "\(Int(solutionDouble))"
-//                }
-//            }
-//        }
         
         // Truncation decimal and trailing zeros
         if let solutionString = solution {

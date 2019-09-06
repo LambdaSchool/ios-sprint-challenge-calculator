@@ -24,7 +24,7 @@ class CalculatorViewController: UIViewController {
         if let operandString = sender.title(for: .normal) {
             outputLabel.text = brain?.addOperandDigit(operandString)
         } else {
-            print("func operandTapped :: coud not unwrap operandString")
+            print("func operandTapped :: could not unwrap operandString")
         }
     }
     
@@ -32,7 +32,7 @@ class CalculatorViewController: UIViewController {
         if let operatorString = sender.title(for: .normal) {
             brain?.setOperator(operatorString)
         } else {
-            print("func operatorTapped :: coud not unwrap operatorString")
+            print("func operatorTapped :: could not unwrap operatorString")
         }
     }
     
@@ -40,7 +40,7 @@ class CalculatorViewController: UIViewController {
         if let solutionString = brain?.calculateIfPossible() {
             outputLabel.text = solutionString
         } else {
-            print("func equalTapped :: coud not unwrap solutionString")
+            print("func equalTapped :: could not unwrap solutionString")
         }
         clearTransaction()
     }
@@ -54,7 +54,15 @@ class CalculatorViewController: UIViewController {
         if let operand = brain?.setOperandSign(){
             outputLabel.text = operand
         } else {
-            print("func positiveNegativeTapped :: coud not unwrap operand")
+            print("func positiveNegativeTapped :: could not unwrap operand")
+        }
+    }
+    
+    @IBAction func percentTapped(_ sender: UIButton) {
+        if let outputString = outputLabel.text{
+            outputLabel.text = brain?.convertPercentage(outputString)
+        } else {
+            print("func percentTapped :: could not unwrap outputString")
         }
     }
     

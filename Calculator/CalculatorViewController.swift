@@ -20,7 +20,7 @@ class CalculatorViewController: UIViewController {
       
 
     }
-    var calulatorBrain = CalculatorBrain()
+    var calculatorBrain = CalculatorBrain()
     // MARK: - Action Handlers
     
 //     The function operandTapped is  extracting the Physical Text from the button that is tapped. using a if let statement helps with when the button is being tapped because it says If this button is pressed then this will happen.
@@ -34,16 +34,15 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        if let thisOperator = sender.titleLabel?.text {
-            brain?.setOperator(thisOperator)
+        guard  let  buttonText = sender.titleLabel?.text else {return}
+        outputLabel.text = calculatorBrain.addOperandDigit(buttonText)
         }
-        
-    }
+        }
+
     
     @IBAction func equalTapped(_ sender: UIButton) {
         
         }
-    }
     // MARK: - Private
 //The function created will reset the transaction to 0 once clear transaction function is called 
 //    creating a function looks like line 50
@@ -51,7 +50,7 @@ class CalculatorViewController: UIViewController {
 //        calling a function looks like line 53
         clearTransaction()
 //        the output text of this function will look like line 55
-        outputLabel.text = "0"
+            outputLabel.text = "0"
     }
 // Instructions when the clear button is tapped. brain will be nil or it will hold the value of operator string 1 and 2 and an operand symbol .
     
@@ -59,5 +58,4 @@ class CalculatorViewController: UIViewController {
         brain = nil
         brain = CalculatorBrain()
     }
-}
 

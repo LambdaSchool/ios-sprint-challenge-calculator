@@ -64,20 +64,8 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func negateTapped(_ sender: UIButton) {
-        if brain?.operatorType == nil || lastButtonPressWasEquals {
-            if brain?.operand1String.prefix(1) != "-" {
-                brain?.operand1String = "-\(brain?.operand1String ?? "")"
-            } else {
-                brain?.operand1String = String((brain?.operand1String.dropFirst())!)
-            }
-            outputString(brain!.operand1String)
-        } else {
-            if brain?.operand2String.prefix(1) != "-" {
-                brain?.operand2String = "-\(brain?.operand2String ?? "")"
-            } else {
-                brain?.operand2String = String((brain?.operand2String.dropFirst())!)
-            }
-            outputString(brain!.operand2String)
+        if let negatedNumber = brain?.negate(lastButtonPressWasEquals) {
+            outputString(negatedNumber)
         }
     }
     

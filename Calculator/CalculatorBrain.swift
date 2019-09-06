@@ -83,4 +83,25 @@ class CalculatorBrain {
         
         return result
     }
+    
+    func negate(_ lastButtonPressWasEquals: Bool = false) -> String {
+        let negatedNumber: String
+        if operatorType == nil || lastButtonPressWasEquals {
+            if operand1String.prefix(1) != "-" {
+                operand1String = "-\(operand1String)"
+            } else {
+                operand1String = String((operand1String.dropFirst()))
+            }
+            negatedNumber = operand1String
+        } else {
+            if operand2String.prefix(1) != "-" {
+                operand2String = "-\(operand2String)"
+            } else {
+                operand2String = String((operand2String.dropFirst()))
+            }
+            negatedNumber = operand2String
+        }
+        
+        return negatedNumber
+    }
 }

@@ -22,10 +22,16 @@ class CalculatorBrain {
     
     func addOperandDigit(_ digit: String) -> String {
         if operatorType == nil {
-            operand1String.append(digit)
+            if operand1String.contains(".") && digit == "." {
+            } else {
+                operand1String.append(digit)
+            }
             return operand1String
         } else {
-            operand2String.append(digit)
+            if operand2String.contains(".") && digit == "." {
+            } else {
+                operand2String.append(digit)
+            }
             return operand2String
         }
     }

@@ -15,8 +15,10 @@ import UIKit
  
  In viewDidLoad, initialize a new CalculatorBrain object and assign it to the above property.  <>
  
- In operandTapped, go to the storyboard to see what buttons this action is connected to. Since it is connected to multiple buttons, you'll need to extract the text property from the button. It's likely going to require using the if-let technique to unwrap an optional. You should end up with a String which contains the text displayed on the button. This is the digit you need to add to your transaction.
- Once you have the digit string, call addOperandDigit on your brain and pass in the digit string. That method returns the string you need to display on the screen, so assign the return value from that method to the text property of the outputLabel.
+ In operandTapped, go to the storyboard to see what buttons this action is connected to. Since it is connected to multiple buttons, you'll need to extract the text property from the button. It's likely going to require using the if-let technique to unwrap an optional. You should end up with a String which contains the text displayed on the button. This is the digit you need to add to your transaction. <>
+ 
+ Once you have the digit string, call addOperandDigit on your brain and pass in the digit string. That method returns the string you need to display on the screen, so assign the return value from that method to the text property of the outputLabel.<>
+ 
  In clearTapped, the user is requesting to start over with a brand new transaction, so the two following steps need to be added to "clear" your calculator:
  Call the clearTransaction method.
  The outputLabel needs to be reset. What would be a good "default" value for the calculator screen (look at Apple's built-in calculator app or a real calculator for help)?
@@ -33,7 +35,8 @@ class CalculatorViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        var newBrain = brain
+        let brandNewBrain = CalculatorBrain()
+        brain = brandNewBrain
         
         super.viewDidLoad()
     }
@@ -45,12 +48,15 @@ class CalculatorViewController: UIViewController {
     @IBAction func operandTapped(_ sender: UIButton) {
         
         if let buttonTitle = sender.currentTitle {
-            print(buttonTitle)
+            outputLabel.text = brain?.addOperandDigit(buttonTitle)
+            
+            //print(buttonTitle)
         }
         
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
+        
         
     }
     
@@ -60,11 +66,16 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func clearTapped(_ sender: UIButton) {
         
+        clearTransaction()
+        outputLabel.text = "0"
+        
     }
     
     // MARK: - Private
     
     private func clearTransaction() {
         
+        brain = nil
+        brain = CalculatorBrain()
     }
 }

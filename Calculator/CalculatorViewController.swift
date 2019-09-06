@@ -46,15 +46,14 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func clearTapped(_ sender: UIButton) {
         clearTransaction()
-        outputLabel.text = "0"
-        brain?.operand1String = ""
-        brain?.operand2String = ""
-        brain?.operatorType = nil
     }
     
     // MARK: - Private
     
     private func clearTransaction() {
-        
+        outputLabel.text = "0"
+        brain?.operand1String = ""
+        brain?.operand2String = ""
+        brain?.operatorType = nil
     }
 }

@@ -50,6 +50,14 @@ class CalculatorViewController: UIViewController {
         clearTransaction()
     }
     
+    @IBAction func positiveNegativeTapped(_ sender: UIButton) {
+        if let operand = brain?.setOperandSign(){
+            outputLabel.text = operand
+        } else {
+            print("func positiveNegativeTapped :: coud not unwrap operand")
+        }
+    }
+    
     // MARK: - Private
     
     private func clearTransaction() {

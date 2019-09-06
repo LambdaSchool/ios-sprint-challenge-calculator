@@ -52,9 +52,37 @@ class CalculatorBrain {
         }
     }
     
+    func setOperandSign() -> String? {
+        if operatorType == nil {
+            if let operand1 = Double(operand1String){
+                if operand1 == 0 {
+                    return operand1String
+                } else if operand1 > 0 {
+                    operand1String = "-" + operand1String
+                    return operand1String
+                } else {
+                    operand1String.remove(at: operand1String.startIndex)
+                    return operand1String
+                }
+            }
+        } else {
+            if let operand2 = Double(operand2String){
+                if operand2 == 0 {
+                    return operand2String
+                } else if operand2 > 0 {
+                    operand2String = "-" + operand2String
+                    return operand2String
+                } else {
+                    operand2String.remove(at: operand2String.startIndex)
+                    return operand2String
+                }
+            }
+        }
+        return nil
+    }
+    
     func calculateIfPossible() -> String? {
         var solution: String? = nil
-        var isInteger = false
         if operand1String != "" && operand2String != "" {
             if let operator_ = operatorType {
                 if let operand1 = Double(operand1String), let operand2 = Double(operand2String) {

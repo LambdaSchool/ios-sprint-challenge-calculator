@@ -70,18 +70,8 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func percentTapped(_ sender: UIButton) {
-        if brain?.operatorType == nil || lastButtonPressWasEquals {
-            guard let operand1 = Double(brain!.operand1String) else {
-                return
-            }
-            brain?.operand1String = String(operand1 / 100.0)
-            outputString(brain!.operand1String)
-        } else {
-            guard let operand2 = Double(brain!.operand2String) else {
-                return
-            }
-            brain?.operand2String = String(operand2 / 100.0)
-            outputString(brain!.operand2String)
+        if let percent = brain?.percent(lastButtonPressWasEquals) {
+            outputString(percent)
         }
     }
     

@@ -84,7 +84,7 @@ class CalculatorBrain {
         return result
     }
     
-    func negate(_ lastButtonPressWasEquals: Bool = false) -> String {
+    func negate(_ lastButtonPressWasEquals: Bool) -> String {
         let negatedNumber: String
         if operatorType == nil || lastButtonPressWasEquals {
             if operand1String.prefix(1) != "-" {
@@ -103,5 +103,24 @@ class CalculatorBrain {
         }
         
         return negatedNumber
+    }
+    
+    func percent(_ lastButtonPressWasEquals: Bool) -> String {
+        let percent: String
+        if operatorType == nil || lastButtonPressWasEquals {
+            guard let operand1 = Double(operand1String) else {
+                return ""
+            }
+            operand1String = String(operand1 / 100.0)
+            percent = operand1String
+        } else {
+            guard let operand2 = Double(operand2String) else {
+                return ""
+            }
+            operand2String = String(operand2 / 100.0)
+            percent = operand2String
+        }
+        
+        return percent
     }
 }

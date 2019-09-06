@@ -9,92 +9,56 @@
 import UIKit
 
 class CalculatorViewController: UIViewController {
-//    var brain : CalculatorBrain!
-    let Add = 10
-    let minus = 11
-    let mulptiply = 12
-    let divide = 13 
-    
-  
+//    creating a property called Brain
+    var brain: CalculatorBrain?
+
     @IBOutlet weak var outputLabel: UILabel!
-    
-    var firstnumber = 0
-    var secondNumber = 0
-    var operand = 0
-    var answer : Double = 0.0
-    
-    var theNumber : String = "0"
-    
-    func saveFirstNumber() {
-        firstnumber = Int(theNumber)!
-        theNumber = "0"
-        printNumber()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-   printNumber()
+//        initializing A New Calculator Brain, assign to above property
+      let brain = CalculatorBrain()
+
     }
-    
-    func printNumber () {
-        outputLabel.text = theNumber
-    }
-    
     // MARK: - Action Handlers
     
+//     The function operandTapped is  extracting the Physical Text from the button that is tapped. using a if let statement helps with when the button is being tapped because it says If this button is pressed then this will happen.
+    
     @IBAction func operandTapped(_ sender: UIButton) {
-        if sender.tag >= 0 && sender.tag <= 9 {
-            theNumber += String(sender.tag)
-            printNumber()
+        if let thisNumberString = sender.titleLabel?.text {
+            brain?.addOperandDigit(thisNumberString)
+            print(thisNumberString)
+            outputLabel.text = thisNumberString
         }
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        if sender.tag >= 10 && sender.tag <= 13 {
-            operand = sender.tag
-            saveFirstNumber()
+        if let thisOperator = sender.titleLabel?.text {
+            brain?.setOperator(thisOperator)
         }
-        if sender.tag == -3 {
-            theNumber = "0"
-            printNumber()
-        }
+        
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        secondNumber = Int(theNumber) ?? 0
-        
-        if operand == Add {
-        answer = Double(firstnumber + secondNumber)
+        if let equalTap = sender.titleLabel?.text{
+            outputLabel.text = brain?.calculateIfPossible()
+            print("\(equalTap)")
+        }
     }
-        if operand == minus {
-            answer = Double(firstnumber - secondNumber)
-        }
-        if operand == mulptiply {
-            answer = Double(firstnumber * secondNumber)
-        }
-        if operand == divide {
-        
-            answer = Double(firstnumber) / Double(secondNumber)
-        
-        }
-        
-        firstnumber = 0
-        secondNumber = 0
-        operand = Add
-        theNumber = String(answer)
-        printNumber()
-        
-        answer = 0.0
-        theNumber = "0"
-        
-        func clearTapped(_ sender: UIButton) {
-        
-    }
-    
     // MARK: - Private
-    
+//The function created will reset the transaction to 0 once clear transaction function is called 
+//    creating a function looks like line 50
      func clearTransaction() {
+//        calling a function looks like line 53
+        clearTransaction()
+//        the output text of this function will look like line 55
+        outputLabel.text = "0"
+    }
+// Instructions when the clear button is tapped. brain will be nil or it will hold the value of operator string 1 and 2 and an operand symbol .
+    
+    @IBAction func clearButtonTapped(_ sender: UIButton) {
+        brain = nil
+        brain = CalculatorBrain()
     }
 }
-}
+

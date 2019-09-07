@@ -223,8 +223,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="equalTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZaV-kU-MQk"/>
-                                    <action selector="operandTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Ka-Ze-5Ym"/>
+                                    <action selector="equalTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nLH-vf-4dk"/>
                                 </connections>
                             </button>
                         </subviews>

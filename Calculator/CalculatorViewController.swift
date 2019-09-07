@@ -10,13 +10,13 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
     //    creating a property called Brain
-        
+    var brain: CalculatorBrain?
     
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        CalculatorBrain()
+//        brain = CalculatorBrain()
     }
     //        initializing A New Calculator Brain, assign to above property
     var calculatorBrain = CalculatorBrain()
@@ -29,17 +29,20 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operandTapped(_ sender: UIButton) {
         guard let buttonText = sender.titleLabel?.text else {return}
-        outputLabel.text = calculatorBrain.addOperandDigit(buttonText)
+            outputLabel.text = calculatorBrain.addOperandDigit(buttonText)
     }
-    
     @IBAction func operatorTapped(_ sender: UIButton) {
         guard let buttonText = sender.titleLabel?.text else {return}
-        calculatorBrain.setOperator(buttonText)        }
-    
+            calculatorBrain.setOperator(buttonText)
+    }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        outputLabel.text = calculatorBrain.calculateIfPossible()
+        if sender.currentTitle != nil {
+        let equalDisplayText = calculatorBrain.calculateIfPossible()
+            outputLabel.text = equalDisplayText
     }
+    }
+        
     // Instructions when the clear button is tapped. brain will be nil or it will hold the value of operator string 1 and 2 and an operand symbol .
     @IBAction func clearButtonTapped(_ sender: UIButton) {
         clearTransaction()
@@ -55,4 +58,5 @@ class CalculatorViewController: UIViewController {
 
 }
     
+
 

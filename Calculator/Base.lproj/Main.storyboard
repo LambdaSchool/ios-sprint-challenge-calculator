@@ -205,7 +205,7 @@
                                     <action selector="operandTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="42H-gm-gd4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJt-6I-8i7">
+                            <button opaque="NO" tag="123" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJt-6I-8i7">
                                 <rect key="frame" x="187.5" y="556" width="94" height="111"/>
                                 <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
@@ -313,6 +313,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="decimalButton" destination="nJt-6I-8i7" id="wxE-ws-dwY"/>
                         <outlet property="outputLabel" destination="Hia-YG-WK6" id="CvC-hV-gVd"/>
                     </connections>
                 </viewController>

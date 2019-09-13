@@ -30,11 +30,31 @@ class CalculatorBrain {
         }
     }
     
-//    func setOperator(_ operatorString: String) {
-//        
-//    }
-//    
-//    func calculateIfPossible() -> String? {
-//        
-//    }
+    func setOperator(_ operatorString: String) {
+        if let operatorType = OperatorType(rawValue: operatorString) {
+            self.operatorType = operatorType
+        }
+    }
+    
+    func calculateIfPossible() -> String? {
+        if !operand1String.isEmpty, !operand2String.isEmpty, let opType = operatorType, let op1 = Double(operand1String), let op2 = Double(operand2String) {
+            
+            switch opType {
+            case .addition:
+                return String(op1 + op2)
+            case .subtraction:
+                return String(op1 - op2)
+            case .multiplication:
+                return String(op1 * op2)
+            case .division:
+                if op2 != 0 {
+                    return String(op1 / op2)
+                } else {
+                    return "Error!"
+                }
+            }
+            
+        }
+        return nil
+    }
 }

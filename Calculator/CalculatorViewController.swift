@@ -38,14 +38,13 @@ class CalculatorViewController: UIViewController {
             return
         }
         brain?.setOperator(operand)
-        //outputLabel.text = operand
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
         let resultOfCalculation = brain?.calculateIfPossible()
         outputLabel.text = resultOfCalculation
         brain?.operatorType = nil
-        brain?.operand1String = ""
+        brain?.operand1String = outputLabel.text ?? "0"
         brain?.operand2String = ""
        
 

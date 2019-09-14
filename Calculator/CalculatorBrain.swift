@@ -78,7 +78,7 @@ class CalculatorBrain {
             return "error"
         }
         
-        let calculationString = String(calculation)
+        let calculationString = String(format: "%g", calculation)
         return calculationString
     }
 }

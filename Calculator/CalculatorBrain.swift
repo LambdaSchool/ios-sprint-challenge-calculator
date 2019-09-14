@@ -42,11 +42,27 @@ class CalculatorBrain {
             operatorType = .division
         default:
             operatorType = nil
-            <#code#>
         }
     }
 
     func calculateIfPossible() -> String? {
-
+        guard let number1 = Double(operand1String) else { return nil }
+        guard let number2 = Double(operand2String) else { return nil }
+        guard let operatorType = operatorType else { return nil }
+        
+        switch operatorType {
+        case .addition:
+            return "\(number1 + number2)"
+        case .subtraction:
+            return "\(number1 - number2)"
+        case .multiplication:
+            return "\(number1 * number2)"
+        case .division:
+            if number2 != 0 {
+                return "\(number1 / number2)"
+            } else {
+                return "error"
+            }
+        }
     }
 }

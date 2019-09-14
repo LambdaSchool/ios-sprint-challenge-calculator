@@ -13,7 +13,7 @@ class CalculatorViewController: UIViewController {
     
     var brain: CalculatorBrain?
     var fromAddOperand: String = ""
-//    var fromOperatorTapped: String = ""
+
     
     @IBOutlet weak var outputLabel: UILabel!
     
@@ -43,7 +43,7 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        outputLabel.text = brain?.calculateIfPossible()
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
@@ -53,7 +53,7 @@ class CalculatorViewController: UIViewController {
     // MARK: - Private
     
     private func clearTransaction() {
- //       brain?.addOperandDigit("0")
+
         outputLabel.text = "0"
     }
 }

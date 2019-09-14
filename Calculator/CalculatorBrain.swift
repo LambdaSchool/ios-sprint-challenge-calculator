@@ -37,13 +37,13 @@ class CalculatorBrain {
         
         switch operatorString{
         case "+":
-            operatorType = OperatorType.addition
+            operatorType = .addition
         case "−":
-            operatorType = OperatorType.subtraction
+            operatorType = .subtraction
         case "×":
-            operatorType = OperatorType.multiplication
+            operatorType = .multiplication
         case "÷":
-            operatorType = OperatorType.division
+            operatorType = .division
         default:
             return
         }
@@ -52,8 +52,25 @@ class CalculatorBrain {
 
     
     func calculateIfPossible() -> String? {
-        var intCalculation = Int(operand1String); +operatorType?.rawValue! + Int(operand2String)
-        var calculation = String(intCalculation)
-        return calculation
+        var calculation: Double = 0.0
+        guard let num1 = Double(operand1String), let num2 = Double(operand2String) else{
+            return ""
+        }
+        
+        switch operatorType?.rawValue{
+        case "+" :
+            calculation = num1 + num2
+        case "-" :
+            calculation = num1 - num2
+        case "*" :
+            calculation = num1 * num2
+        case "/" :
+            calculation = num1 / num2
+        default:
+            return ""
+        }
+        
+        let calculationString = String(calculation)
+        return calculationString
     }
 }

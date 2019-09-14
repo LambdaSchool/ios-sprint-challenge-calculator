@@ -26,7 +26,7 @@ class CalculatorViewController: UIViewController {
     @IBAction func operandTapped(_ sender: UIButton) {
         
         if let outputLabelString = outputLabel.label {
-         print("\(unwrapped.text)")
+         print("\(unwrapped.text)")  //not sure what to unwrap
         }
     }
     

@@ -27,18 +27,18 @@ class CalculatorViewController: UIViewController {
     @IBAction func plusMinusButtonTapped(_ sender: Any) {
     }
     
-    @IBAction func percentageButtonTapped(_ sender: Any) {
-        
-        guard let numString = outputLabel.text else {
-            return
-        }
-        guard let convertedNumFromString = Double(numString) else { return  }
-        let percentageNum = convertedNumFromString/100
-        let percentString = String(percentageNum)
-        brain?.operand1String = ""
-        fromPercentageButton = brain?.addOperandDigit(percentString) ?? "0"
-            outputLabel.text = fromPercentageButton
-    }
+//    @IBAction func percentageButtonTapped(_ sender: Any) {
+//        
+//        guard let numString = outputLabel.text else {
+//            return
+//        }
+//        guard let convertedNumFromString = Double(numString) else { return  }
+//        let percentageNum = convertedNumFromString/100
+//        let percentString = String(percentageNum)
+//        //brain?.operand1String = ""
+//        fromPercentageButton = brain?.addOperandDigit(percentString) ?? "0"
+//            //outputLabel.text = fromPercentageButton
+//    }
     
     @IBAction func operandTapped(_ sender: UIButton) {
         

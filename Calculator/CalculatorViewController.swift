@@ -14,15 +14,53 @@ class CalculatorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        class CalculatorBrain {
+            var brain: Int?
+            
+            init(brain: Int?) {
+                self.brain = brain
+            }
+        }
+
     }
     
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
         
+        
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
+        
+//        if sender == \/ { //Divide
+//
+//            button.text = "/";
+//
+//        }
+//
+//        if sender == \* { //Multiply
+//
+//            button.text = "x";
+//
+//        }
+//
+//        if sender == \- { //Subtract
+//
+//            button.text = "-";
+//
+//        }
+//
+//        if sender == \+ { //Add
+//
+//            button.text = "+";
+//
+//        } else if sender == ""{
+//
+//            button.text = ""
+//
+        
         
     }
     
@@ -40,3 +78,6 @@ class CalculatorViewController: UIViewController {
         
     }
 }
+
+
+

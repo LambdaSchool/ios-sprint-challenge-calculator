@@ -17,20 +17,22 @@ class CalculatorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         brain = CalculatorBrain()
-        }
     }
-
     
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        
-        if let outputLabelString = outputLabel.label {
-         print("\(unwrapped.text)")  //not sure what to unwrap
+        //connected to 0...9 & .
+        if let digit = sender.titleLabel?.text {
+            print(addOperandDigit(digit))
         }
+        
+        let brain = addOperandDigit.self
+        outputLabel.text = "\(String(describing: brain))"
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
+        //connected to + - / *
         
     }
     
@@ -46,5 +48,9 @@ class CalculatorViewController: UIViewController {
     
     private func clearTransaction() {
         
+    }
+    
+    func addOperandDigit(_ digit: String) -> String {
+        return digit
     }
 }

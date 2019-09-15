@@ -18,14 +18,14 @@ class CalculatorBrain {
     var operatorType: OperatorType?
     
     func addOperandDigit(_ digit: String) -> String {
-        
+        return digit
     }
     
     func setOperator(_ operatorString: String) {
         
     }
     
-    func calculateIfPossible() -> String? {
-        
-    }
+//    func calculateIfPossible() -> String? {
+//        
+//    }
 }

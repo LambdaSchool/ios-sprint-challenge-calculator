@@ -14,6 +14,7 @@ class CalculatorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        brain = CalculatorBrain()
     }
     
     // MARK: - Action Handlers
@@ -35,6 +36,7 @@ class CalculatorViewController: UIViewController {
     }
     
     // MARK: - Private
+    var brain: CalculatorBrain? = nil
     
     private func clearTransaction() {
         

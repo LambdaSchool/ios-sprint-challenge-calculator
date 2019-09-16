@@ -20,7 +20,14 @@ class CalculatorViewController: UIViewController {
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        
+        if let currentTitle: String = sender.titleLabel?.text {
+            let buttonTapped: String = brain?.addOperandDigit(currentTitle) ?? "0"
+            if outputLabel.text == "0" {
+            outputLabel?.text = buttonTapped
+        } else {
+            outputLabel?.text = (outputLabel.text ?? "") + buttonTapped
+            }
+        }
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {

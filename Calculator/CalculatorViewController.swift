@@ -17,16 +17,19 @@ class CalculatorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var currentBrain = brain
     }
     
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
         
+        // Gets the number symbol on the button to pass to the brain
+        
         guard let currentNumber = sender.titleLabel?.text else {
             return
         }
+        
+        // Passes the number to the brain and displays the result in the output label
         
         if let textToPrint = brain?.addOperandDigit(currentNumber) {
             outputLabel.text = textToPrint
@@ -37,6 +40,8 @@ class CalculatorViewController: UIViewController {
  }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
+        
+        // Gets the operation symbol on the button to pass to the brain
         
         guard let currentOperater = sender.titleLabel?.text else {
             return
@@ -51,11 +56,22 @@ class CalculatorViewController: UIViewController {
                 brain?.operand1String = newOperand1
             }
         }
+        
+        // The following if let replaced the code commented out after it.
+        // I wanted brain to be not be an optional for this segment.
+        
+        if let brain1 = brain {
+            brain1.setOperator(currentOperater)
+        } else {
+            outputLabel.text = "error"
+            return
+        }
+/*
         guard let passedOperator = brain?.setOperator(currentOperater) else {
             outputLabel.text = "error"
             return
         }
-        
+  */
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
@@ -74,6 +90,8 @@ class CalculatorViewController: UIViewController {
     }
     
     // MARK: - Private
+    // Resetting the output label to a fresh "0" and creating a clear instance of
+    // CalculatorBrain().  This should reset everything I believe.
     
     private func clearTransaction() {
         outputLabel.text = "0"

@@ -20,22 +20,25 @@ class CalculatorViewController: UIViewController {
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        if let currentTitle: String = sender.titleLabel?.text {
+        if let userInput: String = sender.titleLabel?.text {
             if outputLabel.text == "0" {
-            outputLabel?.text = currentTitle
+            outputLabel?.text = userInput
         } else {
-            outputLabel?.text = (outputLabel.text ?? "") + currentTitle
+            outputLabel?.text = (outputLabel.text ?? "") + userInput
             }
         }
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        if let currentTitle: String = sender.titleLabel?.text {
-            brain?.setOperator(currentTitle)
+        if let userInput: String = sender.titleLabel?.text {
+            brain?.addOperandDigit(outputLabel.text ?? "0")
+            brain?.setOperator(userInput)
+            outputLabel.text = "0"
         }
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
+        brain?.addOperandDigit(outputLabel.text ?? "0")
         outputLabel?.text = brain?.calculateIfPossible()
         
     }

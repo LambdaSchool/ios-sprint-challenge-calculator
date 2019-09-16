@@ -22,10 +22,10 @@ class CalculatorBrain {
     
     func addOperandDigit(_ digit: String) -> String {
         if operatorType == nil {
-            operand1String.append(digit)
+            operand1String = digit
             return operand1String
             } else {
-            operand2String.append(digit)
+            operand2String = digit
             return operand2String
         }
     }
@@ -46,8 +46,10 @@ class CalculatorBrain {
     }
     
     func calculateIfPossible() -> String? {
-        if operand1String == "" || operand2String == "" {
-            return "Error 1"
+        if operand1String == "" {
+            return "Error 1a"
+        } else if operand2String == "" {
+            return "Error 1b"
         } else if operatorType == nil {
                 return "Error 2"
         } else {

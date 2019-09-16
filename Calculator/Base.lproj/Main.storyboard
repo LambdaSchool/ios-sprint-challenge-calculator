@@ -205,7 +205,7 @@
                                     <action selector="operandTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="42H-gm-gd4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJt-6I-8i7">
+                            <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJt-6I-8i7">
                                 <rect key="frame" x="187.5" y="556" width="94" height="111"/>
                                 <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
@@ -313,22 +313,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="decimalButton" destination="nJt-6I-8i7" id="zu8-6s-nVz"/>
-                        <outlet property="divideButton" destination="dUh-gN-rnS" id="bXi-qw-69R"/>
-                        <outlet property="eightButton" destination="wxe-YO-Gop" id="hKz-jg-7dm"/>
-                        <outlet property="fiveButton" destination="zf0-mx-Vhe" id="F0w-qK-zbT"/>
-                        <outlet property="fourButton" destination="3B2-Tk-tD1" id="fZo-cH-gE1"/>
-                        <outlet property="minusButton" destination="MoP-Ww-Y4E" id="RhF-Vw-Yr2"/>
-                        <outlet property="nineButton" destination="NFD-Ph-Ao4" id="yew-tb-hI6"/>
-                        <outlet property="oneButton" destination="MkY-da-amI" id="tH0-1p-O4G"/>
                         <outlet property="outputLabel" destination="Hia-YG-WK6" id="CvC-hV-gVd"/>
-                        <outlet property="plusButton" destination="oQq-kD-HUk" id="npF-7q-f7v"/>
-                        <outlet property="sevenButton" destination="kzT-Ds-vbM" id="3C9-GT-ebh"/>
-                        <outlet property="sixButton" destination="28A-R7-JFc" id="pFn-xr-4U6"/>
-                        <outlet property="threeButton" destination="3mI-4y-c7D" id="iBC-IE-pzD"/>
-                        <outlet property="timesButton" destination="f71-ED-BNb" id="YPx-cS-tIz"/>
-                        <outlet property="twoButton" destination="Toa-Nt-egq" id="WFO-Be-WEi"/>
-                        <outlet property="zeroButton" destination="quu-aJ-s53" id="78R-42-yQ4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

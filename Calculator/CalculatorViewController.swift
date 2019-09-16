@@ -42,6 +42,15 @@ class CalculatorViewController: UIViewController {
             return
         }
         
+        // This If statement checks to see if the user is pressing an operator immediately
+        // after pressing the equal button. This would then assume the user wants to
+        // use the result of the last equation as the first operand of the next equation.
+        
+        if brain?.operand2String != nil {
+            if let newOperand1 = outputLabel.text {
+                brain?.operand1String = newOperand1
+            }
+        }
         guard let passedOperator = brain?.setOperator(currentOperater) else {
             outputLabel.text = "error"
             return
@@ -52,6 +61,11 @@ class CalculatorViewController: UIViewController {
     @IBAction func equalTapped(_ sender: UIButton) {
         let textToPrint = brain?.calculateIfPossible()
         outputLabel.text = textToPrint
+        
+        // Reset the properities so the user is not forced to press the clear button.
+        brain?.operand1String = ""
+        brain?.operand2String = ""
+        brain?.operatorType = nil
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {

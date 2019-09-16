@@ -30,7 +30,9 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        brain?.addOperandDigit(outputLabel?.text ?? "0")
+        if let currentTitle: String = sender.titleLabel?.text {
+            brain?.setOperator(currentTitle)
+        }
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {

@@ -23,13 +23,21 @@ class CalculatorBrain {
     
     func addOperandDigit(_ digit: String) -> String {
         if operatorType == nil {
+            if operand1String.contains(".") && digit == "." {
+                return operand1String
+            } else {
             operand1String = operand1String + digit
             print("opOne \(operand1String)")
             return operand1String
+            }
         } else {
+            if operand2String.contains(".") && digit == "." {
+                return operand2String
+            } else {
             operand2String = operand2String + digit
             print("opTwo \(operand2String)")
             return operand2String
+            }
         }
     }
     
@@ -40,7 +48,7 @@ class CalculatorBrain {
     func calculateIfPossible() -> String? {
         guard let operand1 = Double(operand1String),
             let operand2 = Double(operand2String) else {
-            return nil
+            return "error"
         }
         
         var answer: Double = 0
@@ -53,16 +61,14 @@ class CalculatorBrain {
             case .multiplication:
                 answer = operand1 * operand2
             case .division:
+                if operand2 == 0 {
+                    return "error"
+                } else {
                 answer = operand1 / operand2
+                }
             }
         }
         return String(answer)
-        /*
-         this will be called by the equalTapped.
-         if the operator type is .addition then perform addition on operand1String and operand2Sting
-         if it's .division then perform division on the two strings
-         set the result equal to a variable and return the variable as a string
- */
        
     }
 }

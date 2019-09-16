@@ -68,7 +68,12 @@ class CalculatorBrain {
                 }
             }
         }
+        
+        if floor(answer) == answer {
+            let returnedAnswer = Int(answer)
+            return String(returnedAnswer)
+        } else {
         return String(answer)
-       
+        }
     }
 }

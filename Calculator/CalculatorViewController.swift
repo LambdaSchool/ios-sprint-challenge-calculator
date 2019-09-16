@@ -38,11 +38,11 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operatorTapped(_ sender: UIButton) {
         
-        guard let currentOperat = sender.titleLabel?.text else {
+        guard let currentOperater = sender.titleLabel?.text else {
             return
         }
         
-        guard let passedOperator = brain?.setOperator(currentOperat) else {
+        guard let passedOperator = brain?.setOperator(currentOperater) else {
             outputLabel.text = "error"
             return
         }
@@ -50,7 +50,7 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        let textToPrint = brain?.calculateIfPossible("1", "2", operator: "+")
+        let textToPrint = brain?.calculateIfPossible()
         outputLabel.text = textToPrint
     }
     

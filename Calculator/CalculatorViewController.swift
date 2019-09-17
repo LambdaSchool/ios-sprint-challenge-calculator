@@ -24,33 +24,35 @@ class CalculatorViewController: UIViewController {
     @IBAction func operandTapped(_ sender: UIButton) {
         //connected to 0...9 & .
         if let digit = sender.titleLabel?.text {
-            print(addOperandDigit(digit))
+            outputLabel.text = brain?.addOperandDigit(digit)
         }
         
-        let brain = addOperandDigit.self
-        outputLabel.text = "\(String(describing: brain))"
+        
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
         //connected to + - / *
-        
+        if let math = sender.titleLabel?.text {
+            brain?.setOperator(math)
+    }
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        guard let brain = brain else {
+            return }
+            outputLabel.text = brain.calculateIfPossible()
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
-        
+        clearTransaction()
+        outputLabel.text = "0"
     }
     
     // MARK: - Private
     
     private func clearTransaction() {
-        
-    }
-    
-    func addOperandDigit(_ digit: String) -> String {
-        return digit
-    }
+        brain = nil
+        brain = CalculatorBrain()
+    }    
 }
+

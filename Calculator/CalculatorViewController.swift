@@ -52,6 +52,7 @@ class CalculatorViewController: UIViewController {
             // i finished this with trial and error on this part but i know its taking the optional and filling it in
             outputLabel.text = displayAnswer
         }
+        brain.clear()
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
@@ -86,5 +87,6 @@ class CalculatorViewController: UIViewController {
     private func clearTransaction() {
         //9: Resetting the brain by calling clear when the clear button is tapped. which calls for the brain to go back to its normal state.
         brain = CalculatorBrain()
+        brain.clear()
     }
 }

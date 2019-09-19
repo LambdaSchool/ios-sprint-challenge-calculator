@@ -75,7 +75,14 @@ class CalculatorBrain {
             operand1String = calculatedAnswer
             operand2String = ""
             return calculatedAnswer
+           
         }
+        
+    }
+    func clear() {
+        operand1String = ""
+        operand2String = ""
+        operatorType = nil
     }
 }
 

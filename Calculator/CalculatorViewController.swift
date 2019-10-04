@@ -22,7 +22,7 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operandTapped(_ sender: UIButton) {
         guard let digit = sender.titleLabel?.text else { return }
-        guard let number = Double(calculatorBrain.addOperandDigit(digit)) else { return }
+        let number = calculatorBrain.addOperandDigit(digit)
         updateOutputLabel(with: number)
     }
     
@@ -44,7 +44,7 @@ class CalculatorViewController: UIViewController {
         
     }
     
-    func updateOutputLabel(with number: Double) {
-        
+    func updateOutputLabel(with number: String) {
+        outputLabel.text = number
     }
 }

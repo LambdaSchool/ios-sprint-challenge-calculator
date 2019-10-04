@@ -22,12 +22,18 @@ class CalculatorViewController: UIViewController {
     // MARK: - Custom Properties
     
     var brain: CalculatorBrain?
+    var solutionDisplayed: Bool = false
     
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        let operandDigit = sender.titleLabel?.text ?? "ERR-btnTxt"
-        outputLabel.text = brain?.addOperandDigit(operandDigit) ?? "ERR-brain"
+        // reset calculation if digit pressed when solution is displayed
+        if solutionDisplayed {
+            clearTransaction()
+        }
+        
+        let operandDigit = sender.titleLabel?.text ?? "ERROR"
+        outputLabel.text = brain?.addOperandDigit(operandDigit) ?? "ERROR"
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
@@ -50,5 +56,6 @@ class CalculatorViewController: UIViewController {
     
     private func clearTransaction() {
         brain = CalculatorBrain()
+        solutionDisplayed = false
     }
 }

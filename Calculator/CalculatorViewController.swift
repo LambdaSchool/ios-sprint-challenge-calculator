@@ -48,6 +48,7 @@ class CalculatorViewController: UIViewController {
     @IBAction func equalTapped(_ sender: UIButton) {
         let solution: String = brain?.calculateIfPossible() ?? "ERR-invOp"
         outputLabel.text = solution
+        solutionDisplayed = true
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
@@ -56,10 +57,16 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func toggleNegativeTapped(_ sender: UIButton) {
+        if solutionDisplayed {
+            solutionDisplayed = false
+        }
         outputLabel.text = brain?.toggleNegative()
     }
     
     @IBAction func percentButtonTapped(_ sender: UIButton) {
+        if solutionDisplayed {
+            solutionDisplayed = false
+        }
         outputLabel.text = brain?.operandToPercent(outputLabel.text ?? "ERROR")
     }
     

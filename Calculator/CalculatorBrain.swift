@@ -112,6 +112,7 @@ class CalculatorBrain {
         
         operand1String = solutionText // use solution as operand1 for next operator press
         operand2String = ""
+        operatorType = nil
         
         return solutionText
     }

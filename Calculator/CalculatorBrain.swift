@@ -21,17 +21,53 @@ class CalculatorBrain {
     var operatorType: OperatorType?
     
     func addOperandDigit(_ digit: String) -> String {
-        let cat = "maw"
-           return(cat)
+        if operatorType == nil {
+            if operand1String == digit {
+                return operand1String
+            } else {return operand2String}
+        }
+        return "STOP"
     }
     
     func setOperator(_ operatorString: String) {
+        switch operatorString {
+        case "+":
+            operatorType? = .addition
+        case "-":
+            operatorType? = .subtraction
+        case "×":
+            operatorType? = .multiplication
+        case "÷":
+            operatorType? = .division
+        default:
+            operatorType = nil
+        }
    
     }
     
     func calculateIfPossible() -> String? {
-        let dog = "baw"
-        return(dog)
-        
+        if operand1String == "" || operand2String == "" {
+            return "FAIL"
+        }
+        else {
+            let operand1Fixer = Double(operand1String) ?? 0.0
+            let operand2Fixer = Double(operand2String) ?? 0.0
+            switch operatorType {
+            case .addition:
+                return String(operand1Fixer + operand2Fixer)
+            case .subtraction:
+                return String(operand1Fixer - operand2Fixer)
+            case .multiplication:
+                return String(operand1Fixer * operand2Fixer)
+            case .division:
+                if operand1Fixer == 0 || operand2Fixer == 0 {
+                    return "CANNOT DO THAT"
+                } else {
+                    return String(operand1Fixer / operand2Fixer)
+                }
+            default:
+                return "NOPE"
+            }
+        }
     }
 }

@@ -27,22 +27,30 @@ class CalculatorViewController: UIViewController {
         if let unwrappyboi = sender.titleLabel?.text {
             if outputLabel.text == "0" {
                 outputLabel?.text = unwrappyboi
-            } else {
-//                outputLabel?.text = outputLabel?.text + unwrappyboi
-//            }
+            }
+            else {
+                outputLabel?.text = (outputLabel.text ?? "") + unwrappyboi
+            }
         }
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        
+        if let unwrappyOperator = sender.titleLabel?.text {
+            
+            brain?.setOperator(unwrappyOperator)
+            brain?.addOperandDigit(outputLabel.text ?? "0")
+            outputLabel.text = "0"
+        }
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
+        brain?.addOperandDigit(outputLabel.text ?? "0")
+        outputLabel?.text = brain?.calculateIfPossible()
         
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
-        
+        clearTransaction()
     }
     
     // MARK: - Private
@@ -51,5 +59,6 @@ class CalculatorViewController: UIViewController {
     
     private func clearTransaction() {
         outputLabel.text = "0"
+        brain = CalculatorBrain()
     }
 }

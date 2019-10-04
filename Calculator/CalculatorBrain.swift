@@ -66,7 +66,13 @@ class CalculatorBrain {
             return nil
         }
         
-        let solutionText = "\(solution)"
+        // display integer solution as integer
+        let solutionText: String
+        if floor(solution) == solution {
+            solutionText = "\(Int(solution))"
+        } else {
+            solutionText = "\(solution)"
+        }
         
         operand1String = solutionText // use solution as operand1 for next operator press
         operand2String = ""

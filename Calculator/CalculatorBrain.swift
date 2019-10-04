@@ -48,16 +48,25 @@ class CalculatorBrain {
             let operand2 = Double(operand2String)
             else { return ""}
         
-        var answer: String = ""
+        var answer: Double
+        var answerString: String
         
         switch operatorType {
-        case .addition: answer = String(operand1 + operand2)
-        case .subtraction: answer = String(operand1 - operand2)
-        case .multiplication: answer = String(operand1 * operand2)
-        case .division: answer = String(operand1 / operand2)
-        default: answer = ""
+        case .addition: answer = operand1 + operand2
+        case .subtraction: answer = operand1 - operand2
+        case .multiplication: answer = operand1 * operand2
+        case .division: answer = operand1 / operand2
+        case nil: return ""
+        }
+                
+        let answerInt = Int(answer)
+        
+        if Double(answerInt) == answer {
+            answerString = String(answerInt)
+        } else {
+            answerString = String(answer)
         }
         
-        return answer
+        return answerString
     }
 }

@@ -8,18 +8,29 @@
 
 import UIKit
 
+
+
 class CalculatorViewController: UIViewController {
     
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        brain = CalculatorBrain()
     }
+    
+    var brain: CalculatorBrain? = nil
     
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        
+        if let unwrappyboi = sender.titleLabel?.text {
+            if outputLabel.text == "0" {
+                outputLabel?.text = unwrappyboi
+            } else {
+//                outputLabel?.text = outputLabel?.text + unwrappyboi
+//            }
+        }
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
@@ -36,7 +47,9 @@ class CalculatorViewController: UIViewController {
     
     // MARK: - Private
     
+    
+    
     private func clearTransaction() {
-        
+        outputLabel.text = "0"
     }
 }

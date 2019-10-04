@@ -27,18 +27,24 @@ class CalculatorViewController: UIViewController {
     @IBAction func operandTapped(_ sender: UIButton) {
         
         if let numberInputText = sender.titleLabel?.text {
-            //print("we got \(numberInputText)")
             outputLabel.text = brain?.addOperandDigit(numberInputText)
-        } else { return}
+        } else {return}
         
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
         
+        if let operatorTextInput = sender.titleLabel?.text {
+             brain?.setOperator(operatorTextInput)
+        } else {return}
+        
+        
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        if let resultsToDisplay = brain?.calculateIfPossible() {
+            outputLabel.text = resultsToDisplay
+        } else {return}
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {

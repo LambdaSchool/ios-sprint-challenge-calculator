@@ -21,7 +21,9 @@ class CalculatorViewController: UIViewController {
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        print(sender.titleLabel?.text)
+        guard let digit = sender.titleLabel?.text else { return }
+        guard let number = Double(calculatorBrain.addOperandDigit(digit)) else { return }
+        updateOutputLabel(with: number)
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {

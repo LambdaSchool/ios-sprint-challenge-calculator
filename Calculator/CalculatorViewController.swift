@@ -40,7 +40,7 @@ class CalculatorViewController: UIViewController {
         {
             brain?.setOperator(unwrapper)
             if let unwrapper2 = outputLabel?.text {
-                brain?.operand1String = unwrapper2
+                brain?.operand1String = "\(unwrapper2)"
             outputLabel.text = "0"
         }
         }

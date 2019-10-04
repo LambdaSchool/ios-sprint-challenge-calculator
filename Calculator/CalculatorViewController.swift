@@ -23,7 +23,7 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operandTapped(_ sender: UIButton) {
         // Numbers
-        if let operand = sender.currentTitle {
+        if let operand = sender.currentTitle {            
             outputLabel.text = brain?.addOperandDigit(operand)
         }
         
@@ -40,6 +40,8 @@ class CalculatorViewController: UIViewController {
         if let _ = sender.currentTitle {
             if let calculate = brain?.calculateIfPossible() {
                 outputLabel.text = calculate
+                // Resetting the Brain so if the user presses another operand it starts fresh
+                clearTransaction()
             }
         }
     }

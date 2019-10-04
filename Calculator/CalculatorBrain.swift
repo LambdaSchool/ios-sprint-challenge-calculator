@@ -36,7 +36,7 @@ class CalculatorBrain {
     }
     
     func calculateIfPossible() -> String? {
-        var calculateString: String?
+        var calculateString: String? = nil
         
         if (!operand1String.isEmpty && !operand2String.isEmpty)
         {
@@ -48,6 +48,9 @@ class CalculatorBrain {
                 case .addition :
                     calculateString = String(operand1 + operand2)
                 case .division:
+                    if(operand1 == 0 || operand2 == 0 ) {
+                        return "Error"
+                    }
                     calculateString = String(operand1 / operand2)
                 case .multiplication:
                     calculateString = String(operand1 * operand2)
@@ -58,6 +61,7 @@ class CalculatorBrain {
                 }
             }
         }
+        // will return nil since set above
         return calculateString
     }
 }

@@ -59,6 +59,10 @@ class CalculatorViewController: UIViewController {
         outputLabel.text = brain?.toggleNegative()
     }
     
+    @IBAction func percentButtonTapped(_ sender: UIButton) {
+        outputLabel.text = brain?.operandToPercent(outputLabel.text ?? "ERROR")
+    }
+    
     // MARK: - Private
     
     private func clearTransaction() {

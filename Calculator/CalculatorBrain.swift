@@ -20,6 +20,7 @@ class CalculatorBrain {
     var operand2String = ""
     var operatorType: OperatorType?
     
+    // TODO: check displayed value instead of current operand value
     func addOperandDigit(_ digit: String) -> String {
         if operatorType == nil {
             if digit != "." || !operand1String.contains(".") {
@@ -59,6 +60,23 @@ class CalculatorBrain {
             }
             return operand2String
         }
+    }
+    
+    func operandToPercent(_ valueString: String) -> String {
+        guard let value: Double = Double(valueString) else {
+            return "ERROR"
+        }
+        
+        let valuePercent = value * 0.01
+        let valuePercentString = "\(valuePercent)"
+        
+        if operatorType == nil {
+            operand1String = valuePercentString
+        } else {
+            operand2String = valuePercentString
+        }
+        
+        return valuePercentString
     }
     
     func calculateIfPossible() -> String? {

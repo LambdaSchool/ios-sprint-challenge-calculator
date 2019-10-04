@@ -45,6 +45,9 @@ class CalculatorViewController: UIViewController {
         if let resultsToDisplay = brain?.calculateIfPossible() {
             outputLabel.text = resultsToDisplay
         } else {return}
+        brain?.operand1String = ""
+        brain?.operand2String = ""
+        brain?.operatorType = nil
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {

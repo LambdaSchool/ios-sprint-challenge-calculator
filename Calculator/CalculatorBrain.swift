@@ -23,6 +23,16 @@ class CalculatorBrain {
     
     func addOperandDigit(_ digit: String) -> String {
         
+        /* Use the presence or absence of an operator to decide where this digit belongs. Append the digit string to the end of either operand1String or operand2String and then return that string to the caller of this method. */
+        // (Updated syntax based on Xcode error fix) --> was originally !operatorType
+        
+        if !(operatorType != nil) {
+            operand1String.append(digit)
+            return operand1String
+        } else {
+            operand2String.append(digit)
+            return operand2String
+        }
     }
     
     func setOperator(_ operatorString: String) {

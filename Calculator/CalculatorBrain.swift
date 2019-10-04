@@ -59,7 +59,11 @@ class CalculatorBrain {
                     case .multiplication:
                         answer = "\(operand1String * operand2String)"
                     case .division:
-                        answer = "\(operand1String / operand2String)"
+                        if operand2String != 0 {
+                            answer = "\(operand1String / operand2String)"
+                        } else {
+                            answer = "Cannot ÷ by 0"
+                        }
                     }
                 }
             }
@@ -67,3 +71,4 @@ class CalculatorBrain {
         return answer
     }
 }
+

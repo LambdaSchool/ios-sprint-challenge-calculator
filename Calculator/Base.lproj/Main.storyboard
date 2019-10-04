@@ -313,18 +313,6 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="button0" destination="quu-aJ-s53" id="q4i-Jr-n6W"/>
-                        <outlet property="button1" destination="MkY-da-amI" id="tr3-DB-KA9"/>
-                        <outlet property="button2" destination="Toa-Nt-egq" id="D5d-92-9Bm"/>
-                        <outlet property="button3" destination="3mI-4y-c7D" id="hoF-Bk-HAD"/>
-                        <outlet property="button4" destination="3B2-Tk-tD1" id="H00-k6-X7A"/>
-                        <outlet property="button5" destination="zf0-mx-Vhe" id="vyb-4t-PCK"/>
-                        <outlet property="button6" destination="28A-R7-JFc" id="Fw1-qj-ER3"/>
-                        <outlet property="button7" destination="kzT-Ds-vbM" id="PZr-AB-Zam"/>
-                        <outlet property="button8" destination="wxe-YO-Gop" id="b3F-Gb-2tj"/>
-                        <outlet property="button9" destination="NFD-Ph-Ao4" id="vDe-6g-sRj"/>
-                        <outlet property="buttonPoint" destination="nJt-6I-8i7" id="npO-RJ-kFH"/>
-                        <outlet property="buttonpoint" destination="nJt-6I-8i7" id="Mxi-nB-gLj"/>
                         <outlet property="outputLabel" destination="Hia-YG-WK6" id="CvC-hV-gVd"/>
                     </connections>
                 </viewController>

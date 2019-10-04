@@ -13,7 +13,6 @@
 		CE5FC90A229F4C7B00BE719B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5FC909229F4C7B00BE719B /* Assets.xcassets */; };
 		CE5FC90D229F4C7B00BE719B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5FC90B229F4C7B00BE719B /* LaunchScreen.storyboard */; };
 		CEA635FD22A0C58700386A0E /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA635FC22A0C58700386A0E /* CalculatorBrain.swift */; };
-		E968580722FE05D200FE4BF8 /* CalculationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E968580622FE05D200FE4BF8 /* CalculationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +24,6 @@
 		CE5FC90C229F4C7B00BE719B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE5FC90E229F4C7B00BE719B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEA635FC22A0C58700386A0E /* CalculatorBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorBrain.swift; sourceTree = "<group>"; };
-		E968580622FE05D200FE4BF8 /* CalculationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,40 +56,15 @@
 		CE5FC901229F4C7A00BE719B /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				E968580522FE04F600FE4BF8 /* View Controller */,
-				E968580422FE04DA00FE4BF8 /* Model Controllers */,
-				E968580322FE04C800FE4BF8 /* Models */,
 				CE5FC902229F4C7A00BE719B /* AppDelegate.swift */,
+				CE5FC904229F4C7A00BE719B /* CalculatorViewController.swift */,
+				CEA635FC22A0C58700386A0E /* CalculatorBrain.swift */,
 				CE5FC906229F4C7A00BE719B /* Main.storyboard */,
 				CE5FC909229F4C7B00BE719B /* Assets.xcassets */,
 				CE5FC90B229F4C7B00BE719B /* LaunchScreen.storyboard */,
 				CE5FC90E229F4C7B00BE719B /* Info.plist */,
 			);
 			path = Calculator;
-			sourceTree = "<group>";
-		};
-		E968580322FE04C800FE4BF8 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				CE5FC904229F4C7A00BE719B /* CalculatorViewController.swift */,
-				CEA635FC22A0C58700386A0E /* CalculatorBrain.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		E968580422FE04DA00FE4BF8 /* Model Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				E968580622FE05D200FE4BF8 /* CalculationController.swift */,
-			);
-			path = "Model Controllers";
-			sourceTree = "<group>";
-		};
-		E968580522FE04F600FE4BF8 /* View Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "View Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,7 +139,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEA635FD22A0C58700386A0E /* CalculatorBrain.swift in Sources */,
-				E968580722FE05D200FE4BF8 /* CalculationController.swift in Sources */,
 				CE5FC905229F4C7A00BE719B /* CalculatorViewController.swift in Sources */,
 				CE5FC903229F4C7A00BE719B /* AppDelegate.swift in Sources */,
 			);

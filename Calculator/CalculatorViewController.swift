@@ -26,7 +26,11 @@ class CalculatorViewController: UIViewController {
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        
+        guard let operandText = sender.titleLabel?.text else {
+            print("ERROR with operand label text")
+            return
+        }
+        outputLabel.text = brain.addOperandDigit(operandText)
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {

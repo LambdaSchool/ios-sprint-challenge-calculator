@@ -43,6 +43,24 @@ class CalculatorBrain {
         operatorType = OperatorType(rawValue: operatorString) // oh wow, this is way easier than the way I had been doing it setting up a separate dictionary >_<
     }
     
+    func toggleNegative() -> String {
+        if operatorType == nil {
+            if operand1String.first == "-" {
+                operand1String.removeFirst()
+            } else {
+                operand1String = "-\(operand1String)"
+            }
+            return operand1String
+        } else {
+            if operand2String.first == "-" {
+                operand2String.removeFirst()
+            } else {
+                operand2String = "-\(operand2String)"
+            }
+            return operand2String
+        }
+    }
+    
     func calculateIfPossible() -> String? {
         if operand1String.isEmpty || operand2String.isEmpty { return nil }
         if operatorType == nil { return nil }

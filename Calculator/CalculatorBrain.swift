@@ -19,20 +19,44 @@ class CalculatorBrain {
     var operand1String = ""
     var operand2String = ""
     var operatorType: OperatorType?
+    var decimalPressed = false
     
     func addOperandDigit(_ digit: String) -> String {
         
         if let _ = operatorType {
-            operand2String += digit
+            
+            if (digit == "." && decimalPressed == false) {
+                decimalPressed = true
+                operand2String += digit
+            }
+            
+            if(decimalPressed && digit == ".") {
+                return(operand2String)
+            } else {
+                operand2String += digit
+            }
             return(operand2String)
         } else {
-            operand1String += digit
+            
+            if (digit == "." && decimalPressed == false) {
+                decimalPressed = true
+                operand1String += digit
+            }
+            
+            if(decimalPressed && digit == ".") {
+                return(operand1String)
+            } else {
+                operand1String += digit
+            }
             return(operand1String)
         }
     }
     
     func setOperator(_ operatorString: String) {
         operatorType = OperatorType(rawValue: operatorString)
+        
+        // resets the decimal pressed bool for the second operand string
+        decimalPressed = false
     }
     
     func calculateIfPossible() -> String? {
@@ -63,5 +87,15 @@ class CalculatorBrain {
         }
         // will return nil since set above
         return calculateString
+    }
+    
+    func checkMultipleDecimals(_ digit: String, _ operandString: String) -> String
+    {
+        if (digit == "." && decimalPressed == false) {
+            decimalPressed = true
+            let operand = operandString + digit
+            return operand
+        }
+        return(operandString)
     }
 }

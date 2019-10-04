@@ -21,7 +21,6 @@ class CalculatorBrain {
     var operatorType: OperatorType?
     
     func addOperandDigit(_ digit: String) -> String {
-        
         if operatorType == nil {
             operand1String = operand1String + digit
             return "\(operand1String)"
@@ -50,8 +49,8 @@ class CalculatorBrain {
     func calculateIfPossible() -> String? {
         if operand1String != "" && operand2String != "" && operatorType != nil {
             
-        guard var op1 = Double(operand1String) else {return ""}
-        guard var op2 = Double(operand2String) else {return ""}
+            guard let op1 = Double(operand1String) else { return ""}
+            guard let op2 = Double(operand2String) else { return ""}
             switch operatorType {
             case . addition:
                 return String(op1 + op2)
@@ -65,7 +64,7 @@ class CalculatorBrain {
                 }
             }
         else {
-            return ""
+            return operand1String
         }
     }
 }

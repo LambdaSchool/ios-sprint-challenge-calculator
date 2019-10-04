@@ -32,7 +32,8 @@ class CalculatorBrain {
     
     func setOperator(_ operatorString: String) {
         
-        //        if !operand2String.isEmpty { return }
+        if !operand2String.isEmpty { return }
+        
         switch operatorString {
         case "+": operatorType = .addition
         case "−": operatorType = .subtraction

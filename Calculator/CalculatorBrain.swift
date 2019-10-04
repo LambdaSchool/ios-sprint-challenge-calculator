@@ -43,29 +43,33 @@ class CalculatorBrain {
     }
     
     func calculateIfPossible() -> String? {
-        if operand1String == "" || operand2String == "" {
+        if operand1String.isEmpty || operand2String.isEmpty {
             return "FAIL"
         }
         else {
-            let operand1Fixer: Double? = Double(operand1String)
-            let operand2Fixer: Double? = Double(operand2String)
+            guard let operand1Fixer: Double = Double(operand1String) else { return nil }
+            guard let operand2Fixer: Double = Double(operand2String) else { return nil }
 
+            let answer: Double
+            
             switch operatorType {
             case .addition:
-                return String((operand1Fixer ?? 0.0) + (operand2Fixer ?? 0.0))
+                answer = operand1Fixer + operand2Fixer
             case .subtraction:
-                return String((operand1Fixer ?? 0.0) + (operand2Fixer ?? 0.0))
+                answer = operand1Fixer + operand2Fixer
             case .multiplication:
-                return String((operand1Fixer ?? 0.0) + (operand2Fixer ?? 0.0))
+                answer = operand1Fixer + operand2Fixer
             case .division:
                 if operand1Fixer == 0 || operand2Fixer == 0 {
                     return "CANNOT DO THAT"
                 } else {
-                    return String((operand1Fixer ?? 0.0) + (operand2Fixer ?? 0.0))
+                    answer = operand1Fixer + operand2Fixer
                 }
             default:
                 return "NOPE"
             }
+            let answerString: String = "\(answer)"
+            return answerString
         }
     }
 }

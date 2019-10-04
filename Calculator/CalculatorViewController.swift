@@ -38,13 +38,13 @@ class CalculatorViewController: UIViewController {
         if let unwrappyOperator = sender.titleLabel?.text {
             
             brain?.setOperator(unwrappyOperator)
-            brain?.addOperandDigit(outputLabel.text ?? "0")
+            brain?.addOperandDigit(outputLabel?.text)
             outputLabel.text = "0"
         }
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        brain?.addOperandDigit(outputLabel.text ?? "0")
+        brain?.addOperandDigit(outputLabel?.text)
         outputLabel?.text = brain?.calculateIfPossible()
         
     }

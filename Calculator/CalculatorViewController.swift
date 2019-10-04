@@ -17,30 +17,36 @@ class CalculatorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var newBrain = brain
+        brain = CalculatorBrain()
     }
     
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-//        guard let operandString = sender.titleLabel?.text else { return }
-//
-//        outputLabel.text = brain?.addOperandDigit(operandButton)
+        guard let operandString = sender.titleLabel?.text else { return }
+
+        outputLabel.text = brain?.addOperandDigit(operandString)
         
-        if let operandString = sender.titleLabel?.text {
-            outputLabel.text = brain?.addOperandDigit(operandString)
-        } else {
-            print("nothing")
-        }
+//        if let operandString = sender.titleLabel?.text {
+//            outputLabel.text = brain?.addOperandDigit(operandString)
+//        } else {
+//            print("nothing")
+//        }
         
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
         
+        guard let operatorButton = sender.titleLabel?.text else { return }
+        brain?.setOperator(operatorButton)
+        
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        guard let answer = brain?.calculateIfPossible() else { return }
+
+        outputLabel.text = answer
+
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {

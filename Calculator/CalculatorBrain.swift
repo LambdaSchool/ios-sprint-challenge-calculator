@@ -21,24 +21,21 @@ class CalculatorBrain {
     var operatorType: OperatorType?
     
     func addOperandDigit(_ digit: String) -> String {
-        if operatorType == nil {
-            if operand1String == digit {
+        if operatorType == nil && operand1String == digit {
                 return operand1String
             } else {return operand2String}
         }
-        return "STOP"
-    }
     
     func setOperator(_ operatorString: String) {
         switch operatorString {
         case "+":
-            operatorType? = .addition
+            operatorType = .addition
         case "-":
-            operatorType? = .subtraction
+            operatorType = .subtraction
         case "×":
-            operatorType? = .multiplication
+            operatorType = .multiplication
         case "÷":
-            operatorType? = .division
+            operatorType = .division
         default:
             operatorType = nil
         }
@@ -50,20 +47,21 @@ class CalculatorBrain {
             return "FAIL"
         }
         else {
-            let operand1Fixer = Double(operand1String) ?? 0.0
-            let operand2Fixer = Double(operand2String) ?? 0.0
+            let operand1Fixer: Double? = Double(operand1String)
+            let operand2Fixer: Double? = Double(operand2String)
+
             switch operatorType {
             case .addition:
-                return String(operand1Fixer + operand2Fixer)
+                return String((operand1Fixer ?? 0.0) + (operand2Fixer ?? 0.0))
             case .subtraction:
-                return String(operand1Fixer - operand2Fixer)
+                return String((operand1Fixer ?? 0.0) + (operand2Fixer ?? 0.0))
             case .multiplication:
-                return String(operand1Fixer * operand2Fixer)
+                return String((operand1Fixer ?? 0.0) + (operand2Fixer ?? 0.0))
             case .division:
                 if operand1Fixer == 0 || operand2Fixer == 0 {
                     return "CANNOT DO THAT"
                 } else {
-                    return String(operand1Fixer / operand2Fixer)
+                    return String((operand1Fixer ?? 0.0) + (operand2Fixer ?? 0.0))
                 }
             default:
                 return "NOPE"

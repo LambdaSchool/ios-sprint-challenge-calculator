@@ -19,6 +19,7 @@ class CalculatorBrain {
     
     func addOperandDigit(_ digit: String) -> String {
         
+        return (digit + operand1String)
     }
     
     func setOperator(_ operatorString: String) {
@@ -26,6 +27,6 @@ class CalculatorBrain {
     }
     
     func calculateIfPossible() -> String? {
-        
+        return ""
     }
 }

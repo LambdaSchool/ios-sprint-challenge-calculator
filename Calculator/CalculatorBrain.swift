@@ -35,9 +35,7 @@ class CalculatorBrain {
                 return operand1String
                 
             } else if digit == "%" {
-                
                 let operand1Double = Double(operand1String)
-                
                 if let operand1Double = operand1Double {
                     
                     operand1String = String(operand1Double / 100)
@@ -55,6 +53,16 @@ class CalculatorBrain {
                 return operand2String
             } else if digit == "+/-" {
                 operand2String.insert("-", at: operand2String.startIndex)
+                return operand2String
+            } else if digit == "%" {
+                
+                let operand2Double = Double(operand2String)
+                
+                if let operand2Double = operand2Double {
+                    
+                    operand2String = String(operand2Double / 100)
+                }
+                
                 return operand2String
             }
             

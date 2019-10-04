@@ -43,7 +43,20 @@ class CalculatorBrain {
     }
     
     func calculateIfPossible() -> String? {
+        guard let operand1 = Double(operand1String),
+            let operand2 = Double(operand2String)
+            else { return ""}
         
-        return ""
+        var answer: String = ""
+        
+        switch operatorType {
+        case .addition: answer = String(operand1 + operand2)
+        case .subtraction: answer = String(operand1 - operand2)
+        case .multiplication: answer = String(operand1 * operand2)
+        case .division: answer = String(operand1 / operand2)
+        default: answer = ""
+        }
+        
+        return answer
     }
 }

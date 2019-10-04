@@ -31,8 +31,12 @@ class CalculatorBrain {
     }
     
     func setOperator(_ operatorString: String) {
-        operatorType = OperatorType(rawValue: operatorString)
-        // oh wow, this is way easier than the way I had been doing it setting up a separate dictionary >_<
+        // treat 0 as operand1 if operator pressed without previous input
+        if operand1String.isEmpty {
+            operand1String = "0"
+        }
+        
+        operatorType = OperatorType(rawValue: operatorString) // oh wow, this is way easier than the way I had been doing it setting up a separate dictionary >_<
     }
     
     func calculateIfPossible() -> String? {

@@ -32,10 +32,38 @@ class CalculatorBrain {
     
     
     func setOperator(_ operatorString: String) {
-        
+        switch operatorString {
+        case "+":
+            operatorType = .addition
+        case "-":
+            operatorType = .subtraction
+        case "×":
+            operatorType = .multiplication
+        case "÷":
+            operatorType = .division
+        default:
+            operatorType = nil
+        }
     }
     
-    //func calculateIfPossible() -> String? {
-        
+    func calculateIfPossible() -> String? {
+        var answer: String?
+        if operand1String != "" && operand2String != "" {
+            if let operatorType = operatorType {
+                if let operand1String = Double(operand1String), let operand2String = Double(operand2String) {
+                    switch operatorType {
+                    case .addition:
+                        answer = "\(operand1String + operand2String)"
+                    case .subtraction:
+                        answer = "\(operand1String - operand2String)"
+                    case .multiplication:
+                        answer = "\(operand1String * operand2String)"
+                    case .division:
+                        answer = "\(operand1String / operand2String)"
+                    }
+                }
+            }
+        }
+        return answer
     }
-
+}

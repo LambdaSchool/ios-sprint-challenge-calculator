@@ -22,15 +22,41 @@ class CalculatorBrain {
     
     func addOperandDigit(_ digit: String) -> String {
         
-        operand1String = digit
+        if let operatorType = operatorType {
+            
+        }
+        
+        operand1String += digit
         return ("\(operand1String)")
     }
     
     func setOperator(_ operatorString: String) {
-        
+        operatorType = OperatorType(rawValue: operatorString)
     }
     
-    //func calculateIfPossible() -> String? {
+    func calculateIfPossible() -> String? {
+        var calculateString: String?
         
-    //}
+        if (!operand1String.isEmpty && !operand2String.isEmpty)
+        {
+            if let operatorType = operatorType {
+                let operand1 = Double(operand1String) ?? 0
+                let operand2 = Double(operand2String) ?? 0
+                
+                switch operatorType {
+                case .addition :
+                    calculateString = String(operand1 + operand2)
+                case .division:
+                    calculateString = String(operand1 / operand2)
+                case .multiplication:
+                    calculateString = String(operand1 * operand2)
+                case .subtraction:
+                    calculateString = String(operand1 - operand2)
+                //default:
+                    //return nil
+                }
+            }
+        }
+        return calculateString
+    }
 }

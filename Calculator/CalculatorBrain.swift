@@ -62,6 +62,11 @@ class CalculatorBrain {
             return nil
         }
         
-        return "\(solution)"
+        let solutionText = "\(solution)"
+        
+        operand1String = solutionText // use solution as operand1 for next operator press
+        operand2String = ""
+        
+        return solutionText
     }
 }

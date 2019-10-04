@@ -37,7 +37,10 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        let operatorText = sender.titleLabel?.text ?? "ERR-btnTxt"
+        if solutionDisplayed {
+            solutionDisplayed = false
+        }
+        let operatorText = sender.titleLabel?.text ?? "ERROR"
         brain?.setOperator(operatorText)
         outputLabel.text = operatorText
     }

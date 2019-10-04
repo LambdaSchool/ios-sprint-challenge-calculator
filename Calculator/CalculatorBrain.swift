@@ -10,6 +10,9 @@ import Foundation
 
 enum OperatorType: String {
     case addition = "+"
+    case subtraction = "-"
+    case multiplicaiton = "x"
+    case division = "÷"
 }
 
 class CalculatorBrain {
@@ -19,13 +22,24 @@ class CalculatorBrain {
     
     func addOperandDigit(_ digit: String) -> String {
         
+        for _ in digit {
+            if operatorType == nil {
+                var digit = operand1String
+                digit.append(operand1String)
+            } else {
+               var digit = operand2String
+                digit.append(operand2String)
+            }
+        }
+        return digit
+
     }
     
     func setOperator(_ operatorString: String) {
         
     }
     
-    func calculateIfPossible() -> String? {
-        
-    }
+//    func calculateIfPossible() -> String? {
+//
+//    }
 }

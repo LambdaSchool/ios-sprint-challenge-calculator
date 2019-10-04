@@ -29,13 +29,13 @@ class CalculatorViewController: UIViewController {
     @IBAction func operatorTapped(_ sender: UIButton) {
         guard let operatorString = sender.titleLabel?.text else { return }
         calculatorBrain.setOperator(operatorString)
-        updateOutputLabel(with: "0")
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
         
         if let answer = calculatorBrain.calculateIfPossible() {
             updateOutputLabel(with: answer)
+            clearTransaction()
         } else {
 
             updateOutputLabel(with: "error...")
@@ -47,6 +47,12 @@ class CalculatorViewController: UIViewController {
         updateOutputLabel(with: "0")
     }
     
+    // Mark: - Helper Functions
+    
+    func updateOutputLabel(with number: String) {
+        outputLabel.text = number
+    }
+        
     // MARK: - Private
     
     private func clearTransaction() {
@@ -55,7 +61,4 @@ class CalculatorViewController: UIViewController {
         calculatorBrain.operand2String = ""
     }
     
-    func updateOutputLabel(with number: String) {
-        outputLabel.text = number
-    }
 }

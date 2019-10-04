@@ -10,7 +10,7 @@ import Foundation
 
 enum OperatorType: String {
     case addition = "+"
-    case subtraction = "−"
+    case subtraction = "-"
     case multiplication = "×"
     case division = "÷"
 }

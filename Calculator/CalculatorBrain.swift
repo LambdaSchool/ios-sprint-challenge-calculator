@@ -46,7 +46,11 @@ class CalculatorBrain {
     func calculateIfPossible() -> String? {
         guard let operand1 = Double(operand1String),
             let operand2 = Double(operand2String)
-            else { return ""}
+            else { return "Error"}
+        
+        if operatorType == nil {
+            return "Error"
+        }
         
         var answer: Double
         var answerString: String
@@ -55,8 +59,12 @@ class CalculatorBrain {
         case .addition: answer = operand1 + operand2
         case .subtraction: answer = operand1 - operand2
         case .multiplication: answer = operand1 * operand2
-        case .division: answer = operand1 / operand2
-        case nil: return ""
+        case .division:
+            if operand2 == 0 {
+                return "Error"
+            }
+            answer = operand1 / operand2
+        case nil: return "Error"
         }
                 
         let answerInt = Int(answer)

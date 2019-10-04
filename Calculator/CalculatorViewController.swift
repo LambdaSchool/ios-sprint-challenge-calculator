@@ -27,12 +27,13 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operandTapped(_ sender: UIButton) {
         let operandDigit = sender.titleLabel?.text ?? "ERR-btnTxt"
-        
         outputLabel.text = brain?.addOperandDigit(operandDigit) ?? "ERR-brain"
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        
+        let operatorText = sender.titleLabel?.text ?? "ERR-btnTxt"
+        brain?.setOperator(operatorText)
+        outputLabel.text = operatorText
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {

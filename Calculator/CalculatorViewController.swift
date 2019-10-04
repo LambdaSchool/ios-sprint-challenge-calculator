@@ -10,11 +10,18 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
     
+    // MARK: - Default Properties/Methods
+    
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        brain = CalculatorBrain()
     }
+    
+    // MARK: - Custom Properties
+    
+    var brain: CalculatorBrain
     
     // MARK: - Action Handlers
     

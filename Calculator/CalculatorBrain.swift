@@ -8,8 +8,12 @@
 
 import Foundation
 
+// add the other three: subtraction, multiplication, and division
 enum OperatorType: String {
     case addition = "+"
+    case subtraction = "-"
+    case mutiplication = "×"
+    case division = "÷"
 }
 
 class CalculatorBrain {

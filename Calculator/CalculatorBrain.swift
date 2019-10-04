@@ -21,26 +21,49 @@ class CalculatorBrain {
     var operatorType: OperatorType?
     
     func addOperandDigit(_ digit: String) -> String {
-        
-        if let operator1 = operatorType {
+        if let _ = operatorType?.rawValue {
             operand2String.append(digit)
+            return operand2String
         } else {
-       operand1String.append(digit)
-        
-        
-        
+            operand1String.append(digit)
+            return operand1String
         }
-        return ""
-        
     }
     
     func setOperator(_ operatorString: String) {
-        
+        if let realOperator: OperatorType = OperatorType(rawValue: operatorString) {
+            operatorType = realOperator
+        }
     }
     
     func calculateIfPossible() -> String? {
-        return ""
+        guard let operand1Double = Double(operand1String) else { return nil }
+        guard let operand2Double = Double(operand2String) else { return nil }
+        
+        guard let theOperator = operatorType else { return nil }
+        
+       
+        switch theOperator {
+        case .addition:
+            let finalAnswerDouble = operand1Double + operand2Double
+             return String(finalAnswerDouble)
+        case .subtraction:
+            let finalAnswerDouble = operand1Double - operand2Double
+             return String(finalAnswerDouble)
+        case .multiplication:
+            let finalAnswerDouble = operand1Double * operand2Double
+             return String(finalAnswerDouble)
+        case .division:
+            if operand2Double != 0 {
+                let finalAnswerDouble = operand1Double / operand2Double
+                 return String(finalAnswerDouble)
+            } else {
+                return "Error"
+            }
+            
+       
+        }
+        
         
     }
-
 }

@@ -23,10 +23,10 @@ class CalculatorViewController: UIViewController {
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        var operandOutput: String? = nil
+     //   var _: String? = nil
         if let operandOutput = sender.titleLabel?.text {
-            brain?.addOperandDigit("\(operandOutput)")
-        }
+            outputLabel.text = brain?.addOperandDigit(operandOutput)
+        } 
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {

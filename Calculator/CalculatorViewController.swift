@@ -37,7 +37,8 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        let solution: String = brain?.calculateIfPossible() ?? "ERR-invOp"
+        outputLabel.text = solution
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {

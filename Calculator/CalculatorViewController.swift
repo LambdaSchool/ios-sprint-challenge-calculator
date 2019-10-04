@@ -37,7 +37,8 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
-        
+        clearTransaction()
+        updateOutputLabel(with: calculatorBrain.operand1String)
     }
     
     // MARK: - Private

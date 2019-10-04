@@ -21,16 +21,14 @@ class CalculatorViewController: UIViewController {
     
     // MARK: - Custom Properties
     
-    var brain: CalculatorBrain
+    var brain: CalculatorBrain?
     
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        guard let operandText = sender.titleLabel?.text else {
-            print("ERROR with operand label text")
-            return
-        }
-        outputLabel.text = brain.addOperandDigit(operandText)
+        let operandDigit = sender.titleLabel?.text ?? "ERR-btnTxt"
+        
+        outputLabel.text = (outputLabel.text ?? "") + (brain?.addOperandDigit(operandDigit) ?? "ERR-brain")
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {

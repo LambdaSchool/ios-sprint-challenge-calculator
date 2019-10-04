@@ -22,6 +22,7 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operandTapped(_ sender: UIButton) {
         guard let digit = sender.titleLabel?.text else { return }
+        
         let number = brain.addOperandDigit(digit)
         updateOutputLabel(with: number)
     }

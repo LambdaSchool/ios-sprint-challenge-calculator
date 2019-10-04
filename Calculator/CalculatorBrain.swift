@@ -26,6 +26,9 @@ class CalculatorBrain {
             
             if operand1String.contains(".") && digit == "." {
                 return operand1String
+            } else if digit == "+/-" {
+                operand1String.insert("-", at: operand1String.startIndex)
+                return operand1String
             }
             
             operand1String.append(digit)
@@ -34,6 +37,9 @@ class CalculatorBrain {
         } else {
             
             if operand2String.contains(".") && digit == "." {
+                return operand2String
+            } else if digit == "+/-" {
+                operand2String.insert("-", at: operand2String.startIndex)
                 return operand2String
             }
             

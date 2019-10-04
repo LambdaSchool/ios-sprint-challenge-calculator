@@ -25,9 +25,24 @@ class CalculatorBrain {
         if operatorType == nil {
             
             if operand1String.contains(".") && digit == "." {
+                
                 return operand1String
+                
             } else if digit == "+/-" {
+                
                 operand1String.insert("-", at: operand1String.startIndex)
+                
+                return operand1String
+                
+            } else if digit == "%" {
+                
+                let operand1Double = Double(operand1String)
+                
+                if let operand1Double = operand1Double {
+                    
+                    operand1String = String(operand1Double / 100)
+                }
+                
                 return operand1String
             }
             

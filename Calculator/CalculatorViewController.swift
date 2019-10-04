@@ -12,6 +12,8 @@ class CalculatorViewController: UIViewController {
     
     @IBOutlet weak var outputLabel: UILabel!
     
+    let calculatorBrain = CalculatorBrain()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -19,11 +21,11 @@ class CalculatorViewController: UIViewController {
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        
+        print(sender.titleLabel?.text)
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        
+        print(sender.titleLabel?.text)
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
@@ -37,6 +39,10 @@ class CalculatorViewController: UIViewController {
     // MARK: - Private
     
     private func clearTransaction() {
+        
+    }
+    
+    func updateOutputLabel(with number: Double) {
         
     }
 }

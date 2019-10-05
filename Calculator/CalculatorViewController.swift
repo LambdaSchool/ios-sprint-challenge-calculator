@@ -78,6 +78,16 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func plusMinusTapped(_ sender: UIButton) {
+        let path = Bundle.main.path(forResource: "VIBRATIONS.wav", ofType:nil)!
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+            YSBW = try AVAudioPlayer(contentsOf: url)
+            YSBW?.play()
+        } catch {
+            // couldn't load file :(
+        }
+        
         if plusMinusCounter == 0 {
         plusMinusCounter += 1
         outputLabel.text = "-" + (outputLabel.text ?? "")
@@ -92,9 +102,9 @@ class CalculatorViewController: UIViewController {
     @IBAction func percentageTapped(_ sender: UIButton) {
         
 //        var YSBW: AVAudioPlayer?
-        let path = Bundle.main.path(forResource: "YSBW.mp3", ofType:nil)!
+        let path = Bundle.main.path(forResource: "SIREN.wav", ofType:nil)!
         let url = URL(fileURLWithPath: path)
-        outputLabel.text = "💀"
+        outputLabel.text = "IRIE"
      
         do {
             YSBW = try AVAudioPlayer(contentsOf: url)
@@ -105,9 +115,19 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
+        let path = Bundle.main.path(forResource: "JAH.wav", ofType:nil)!
+        let url = URL(fileURLWithPath: path)
+        do {
+            YSBW = try AVAudioPlayer(contentsOf: url)
+            YSBW?.play()
+        } catch {
+            // couldn't load file :(
+        }
+        
         if let unwrapper = outputLabel?.text {
+
                 brain?.operand2String = "\(unwrapper)"
-                outputLabel.text = brain?.calculateIfPossible()
+                outputLabel.text = "420"
         }
     }
     

@@ -62,18 +62,15 @@ class CalculatorViewController: UIViewController {
 //        var YSBW: AVAudioPlayer?
         let path = Bundle.main.path(forResource: "YSBW.mp3", ofType:nil)!
         let url = URL(fileURLWithPath: path)
-
+        outputLabel.text = "💀"
+     
         do {
             YSBW = try AVAudioPlayer(contentsOf: url)
             YSBW?.play()
         } catch {
             // couldn't load file :(
         }
-
     }
-
-
-
     
     @IBAction func equalTapped(_ sender: UIButton) {
         if let unwrapper = outputLabel?.text {

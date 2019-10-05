@@ -51,6 +51,20 @@ class CalculatorViewController: UIViewController {
         outputLabel.text = "0"
     }
     
+    @IBAction func togglePosNegOperand(_ sender: UIButton) {
+        guard let outputText = outputLabel.text else { return }
+        if let outputNum = Double(outputText) {
+            if (outputNum > 0 || outputNum < 0) {
+                //print("can toggle")
+                let toggleNum = outputNum * -1
+                if(floor(toggleNum) == toggleNum) {
+                    outputLabel.text = String(Int(toggleNum))
+                } else {
+                    outputLabel.text = String(toggleNum)
+                }
+            }
+        }
+    }
     // MARK: - Private
     
     private func clearTransaction() {
@@ -59,4 +73,5 @@ class CalculatorViewController: UIViewController {
     }
     
     var brain: CalculatorBrain?
+
 }

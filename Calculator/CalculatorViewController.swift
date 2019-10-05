@@ -13,14 +13,16 @@ class CalculatorViewController: UIViewController {
     
     var brain: CalculatorBrain?
     var YSBW: AVAudioPlayer?
+    var plusMinusCounter = 0
     
 
     
     @IBOutlet weak var outputLabel: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         brain = CalculatorBrain()
+
     }
     // MARK: - Action Handlers
     
@@ -49,9 +51,10 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func plusMinusTapped(_ sender: UIButton) {
-
+        if plusMinusCounter == 0 {
+        plusMinusCounter += 1
         outputLabel.text = "-" + (outputLabel.text ?? "")
-        
+        }
 //        if plusMinus == false {
 //            if let unwrapper = outputLabel.text {
 //                outputLabel.text = outputLabel.text?.remove(at: outputLabel.text?.startIndex)
@@ -83,6 +86,7 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func clearTapped(_ sender: UIButton) {
         clearTransaction()
+        plusMinusCounter = 0
     }
     
     // MARK: - Private

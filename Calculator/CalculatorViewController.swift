@@ -46,6 +46,24 @@ class CalculatorViewController: UIViewController {
         }
     }
     
+    @IBAction func plusMinusTapped(_ sender: UIButton) {
+
+        outputLabel.text = "-" + (outputLabel.text ?? "")
+
+//        if plusMinus == false {
+//            if let unwrapper = outputLabel.text {
+//                outputLabel.text = outputLabel.text?.remove(at: outputLabel.text?.startIndex)
+//        }
+//        }
+    }
+    
+    @IBAction func percentageTapped(_ sender: UIButton) {
+        guard let outputLabel.text = Double((outputLabel.text ?? "")  )else { return }
+    }
+//    outputLabel.text = String(percenty * 0.1)
+}
+
+    
     @IBAction func equalTapped(_ sender: UIButton) {
         if let unwrapper = outputLabel?.text {
                 brain?.operand2String = "\(unwrapper)"

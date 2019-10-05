@@ -59,7 +59,7 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func percentageTapped(_ sender: UIButton) {
         
-        var YSBW: AVAudioPlayer?
+//        var YSBW: AVAudioPlayer?
         let path = Bundle.main.path(forResource: "YSBW.mp3", ofType:nil)!
         let url = URL(fileURLWithPath: path)
 

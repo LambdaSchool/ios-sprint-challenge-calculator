@@ -64,7 +64,7 @@ class CalculatorBrain {
                 }
             }
         else {
-            return operand1String
+            return String(operand1String + operand2String)
         }
     }
 }

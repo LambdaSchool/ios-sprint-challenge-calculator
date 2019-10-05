@@ -7,19 +7,19 @@
 //
 
 import UIKit
+import AVFoundation
 
 class CalculatorViewController: UIViewController {
     
     var brain: CalculatorBrain?
+    var YSBW: AVAudioPlayer?
     
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         brain = CalculatorBrain()
-        
     }
-    
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
@@ -58,10 +58,21 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func percentageTapped(_ sender: UIButton) {
-        guard let outputLabel.text = Double((outputLabel.text ?? "")  )else { return }
+        
+        var YSBW: AVAudioPlayer?
+        let path = Bundle.main.path(forResource: "YSBW.mp3", ofType:nil)!
+        let url = URL(fileURLWithPath: path)
+
+        do {
+            YSBW = try AVAudioPlayer(contentsOf: url)
+            YSBW?.play()
+        } catch {
+            // couldn't load file :(
+        }
+
     }
-//    outputLabel.text = String(percenty * 0.1)
-}
+
+
 
     
     @IBAction func equalTapped(_ sender: UIButton) {

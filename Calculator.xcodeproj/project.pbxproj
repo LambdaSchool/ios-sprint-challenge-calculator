@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F257FD32348F11C00E41D0A /* YSBW.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1F257FD22348F11C00E41D0A /* YSBW.mp3 */; };
 		CE5FC903229F4C7A00BE719B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5FC902229F4C7A00BE719B /* AppDelegate.swift */; };
 		CE5FC905229F4C7A00BE719B /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5FC904229F4C7A00BE719B /* CalculatorViewController.swift */; };
 		CE5FC908229F4C7A00BE719B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5FC906229F4C7A00BE719B /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F257FD22348F11C00E41D0A /* YSBW.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = YSBW.mp3; sourceTree = "<group>"; };
 		CE5FC8FF229F4C7A00BE719B /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5FC902229F4C7A00BE719B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5FC904229F4C7A00BE719B /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 				CEA635FC22A0C58700386A0E /* CalculatorBrain.swift */,
 				CE5FC906229F4C7A00BE719B /* Main.storyboard */,
 				CE5FC909229F4C7B00BE719B /* Assets.xcassets */,
+				1F257FD22348F11C00E41D0A /* YSBW.mp3 */,
 				CE5FC90B229F4C7B00BE719B /* LaunchScreen.storyboard */,
 				CE5FC90E229F4C7B00BE719B /* Info.plist */,
 			);
@@ -128,6 +131,7 @@
 				CE5FC90D229F4C7B00BE719B /* LaunchScreen.storyboard in Resources */,
 				CE5FC90A229F4C7B00BE719B /* Assets.xcassets in Resources */,
 				CE5FC908229F4C7A00BE719B /* Main.storyboard in Resources */,
+				1F257FD32348F11C00E41D0A /* YSBW.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

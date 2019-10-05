@@ -20,16 +20,19 @@ class CalculatorBrain {
     var operand2String = ""
     var operatorType: OperatorType?
     
-    func addOperandDigit(_ digit: String) -> String {
-        if operatorType == nil {
-            operand1String = operand1String + digit
-            return "\(operand1String)"
-            }
-        else {
-            operand2String = operand2String + digit
-            return "\(operand2String)"
-    }
-    }
+//    func addOperandDigit(_ digit: String) -> String {
+//        return ""
+////        var screenText: String
+////        return screenText
+////        if operatorType == nil {
+////            operand1String = operand1String + digit
+////            return "\(operand1String)"
+////            }
+////        else {
+////            operand2String = operand2String + digit
+////            return "\(operand2String)"
+////    }
+//    }
     
     func setOperator(_ operatorString: String) {
         switch operatorString {

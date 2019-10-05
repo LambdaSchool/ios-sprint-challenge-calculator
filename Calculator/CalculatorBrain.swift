@@ -28,10 +28,12 @@ class CalculatorBrain {
     func addOperandDigit(_ digit: String) -> String {
             if operatorType == nil {
                 operand1String.append(digit)
+                return operand1String
             } else {
-                _ = "\(operand2String)"
+                operand2String.append(digit)
+                return operand2String
             }
-         return digit
+        
         }
        
     

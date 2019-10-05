@@ -14,6 +14,7 @@ class CalculatorViewController: UIViewController {
     var brain: CalculatorBrain?
     var YSBW: AVAudioPlayer?
     var plusMinusCounter = 0
+    var decimalToggle = false
     
 
     
@@ -26,18 +27,44 @@ class CalculatorViewController: UIViewController {
     }
     // MARK: - Action Handlers
     
+    
+    
+    
+    
+    
+    
+    
     @IBAction func operandTapped(_ sender: UIButton) {
         if outputLabel?.text == "0"  {
             if let unwrapper = sender.titleLabel?.text {
+                
+            if unwrapper == "." && decimalToggle == false {
+                    decimalToggle = true
+                    outputLabel.text = unwrapper
+            } else if unwrapper == "." && decimalToggle == true {
+                outputLabel.text = outputLabel.text
+            } else {
                 outputLabel.text = unwrapper
             }
         }
+                
+//        else {
+//            if let unwrapper = sender.titleLabel?.text {
+//                outputLabel.text = (outputLabel.text ?? "") + unwrapper
+            }
         else {
             if let unwrapper = sender.titleLabel?.text {
                 outputLabel.text = (outputLabel.text ?? "") + unwrapper
-            }
-        }
+                
     }
+    }
+    }
+    
+        
+        
+        
+        
+        
         
     @IBAction func operatorTapped(_ sender: UIButton) {
         if let unwrapper = sender.titleLabel?.text

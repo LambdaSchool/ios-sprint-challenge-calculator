@@ -49,6 +49,9 @@ class CalculatorViewController: UIViewController {
         outputLabel.text = brain?.togglePosNeg()
     }
     
+    @IBAction func percentTapped(_ sender: Any) {
+        outputLabel.text = brain?.percent()
+    }
     
     // MARK: - Private
     

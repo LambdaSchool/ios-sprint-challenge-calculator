@@ -98,18 +98,42 @@ class CalculatorBrain {
         switch operatorType {
         case nil:
             operand1String = String((Double(operand1String) ?? 0) * -1)
-            let value = round((Double(operand1String) ?? 0) * 100000000) / 100000000
+            let value = makeNeat(operand1String)
             if value.rounded() == value {
                 return String(Int(value))
             }
             return operand1String
         default:
             operand2String = String((Double(operand2String) ?? 0) * -1)
-            let value = round((Double(operand2String) ?? 0) * 100000000) / 100000000
+            let value = makeNeat(operand2String)
             if value.rounded() == value {
                 return String(Int(value))
             }
             return operand2String
         }
+    }
+    
+    func percent() -> String {
+        switch operatorType {
+        case nil:
+            operand1String = String((Double(operand1String) ?? 0)/100)
+            let value = makeNeat(operand1String)
+            if value.rounded() == value {
+                return String(Int(value))
+            }
+            return String(value)
+        default:
+            operand2String = String((Double(operand2String) ?? 0)/100)
+            let value = makeNeat(operand2String)
+            if value.rounded() == value {
+                return String(Int(value))
+            }
+            return String(value)
+        }
+    }
+    
+    func makeNeat(_ value: String) -> Double {
+        let newValue = round((Double(value) ?? 0) * 100000000) / 100000000
+        return newValue
     }
 }

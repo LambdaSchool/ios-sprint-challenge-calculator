@@ -40,6 +40,6 @@ class CalculatorBrain {
     }
     
     func calculateIfPossible() -> String? {
-        
+        return String()
     }
 }

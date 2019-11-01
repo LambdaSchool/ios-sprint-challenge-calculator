@@ -16,6 +16,7 @@ class CalculatorViewController: UIViewController {
     
     override func viewDidLoad() {
         brain = CalculatorBrain()
+        
         super.viewDidLoad()
     }
     
@@ -31,6 +32,8 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operatorTapped(_ sender: UIButton) {
         
+        
+
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {

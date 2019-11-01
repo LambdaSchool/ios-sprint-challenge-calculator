@@ -37,9 +37,47 @@ class CalculatorBrain {
     
     func setOperator(_ operatorString: String) {
         
+        if operand1String.isEmpty {
+            operand1String = "0"
+        }
+        
+        operatorType = OperatorType(rawValue: operatorString)
+        
     }
     
     func calculateIfPossible() -> String? {
-        return String()
+        if operand1String.isEmpty || operand2String.isEmpty { return nil}
+        if operatorType == nil { return nil }
+        
+        guard let operand1: Double = Double(operand1String) else { return nil }
+        guard let operand2: Double = Double(operand2String) else { return nil }
+        
+        let solution: Double
+        
+        switch operatorType {
+        case .addition:
+            solution = operand1 + operand2
+        case .subtraction:
+            solution = operand1 - operand2
+        case .multiplication:
+            solution = operand1 * operand2
+        case .division:
+            if operand2 == 0 { return nil}
+            solution = operand1 / operand2
+        default:
+            return nil
+        }
+        let solutionString: String
+        if floor(solution) == solution {
+            solutionString = "\(Int(solution))"
+        } else {
+            solutionString = "\(solution)"
+        }
+        
+        operand1String = solutionString
+        operand2String = ""
+        operatorType = nil
+    
+        return solutionString
     }
 }

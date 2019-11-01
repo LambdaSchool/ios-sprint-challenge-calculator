@@ -58,6 +58,7 @@ class CalculatorViewController: UIViewController {
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Private
+    /// Private function to clear the transaction and begin a new one
     private func clearTransaction() {
         brain = CalculatorBrain()
     }

@@ -16,10 +16,16 @@ enum OperatorType: String {
 }
 
 class CalculatorBrain {
+    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Properties
     var operand1String = ""
     var operand2String = ""
     var operatorType: OperatorType?
     
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Instance Methods
+    /// Function to combined the numbers tapped into a value for calculation
     func addOperandDigit(_ digit: String) -> String {
         if operatorType != nil {
             operand2String += digit
@@ -30,6 +36,7 @@ class CalculatorBrain {
         }
     }
     
+    /// Function to set the operator for the expression based on the operator key tapped
     func setOperator(_ operatorString: String) {
         switch operatorString {
         case "+":
@@ -45,6 +52,7 @@ class CalculatorBrain {
         }
     }
     
+    /// Function to calculate the operands using the operator supplied if possible
     func calculateIfPossible() -> String? {
         if !operand1String.isEmpty && !operand2String.isEmpty {
             if let sign = operatorType {
@@ -65,6 +73,6 @@ class CalculatorBrain {
                 }
             }
         }
-        return ""
+        return nil
     }
 }

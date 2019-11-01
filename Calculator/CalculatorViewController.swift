@@ -35,11 +35,25 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        
+        guard let sign = sender.titleLabel?.text else { return }
+        switch sign {
+        case "+":
+            brain?.setOperator("+")
+        case "−":
+            brain?.setOperator("−")
+        case "×":
+            brain?.setOperator("×")
+        case "÷":
+            brain?.setOperator("÷")
+        default:
+            break
+        }
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        if let solution = brain?.calculateIfPossible() {
+            outputLabel.text = solution
+        }
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {

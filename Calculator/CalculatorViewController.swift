@@ -8,20 +8,22 @@
 
 import UIKit
 
-enum OperatorType: String {
+enum operatorType: String {
     case addition = "+"
     case subtraction = "-"
     case division = "÷"
     case multiplication = "×"
 }
 
-class CalculatorBrain {
+class calculatorBrain {
     var operand1String = ""
     var operand2String = ""
     var operatorType: OperatorType?
     
     func addOperandDigit(_ digit: String) -> String {
-        
+    //    if let _: OperatorType = .addition {
+            
+    //    }
     }
     
     func setOperator(_ operatorString: String) {
@@ -35,24 +37,35 @@ class CalculatorBrain {
 
 class CalculatorViewController: UIViewController {
     
-    var brain: CalculatorBrain?
+    var brain: calculatorBrain?
     var firstNumber: Double?
     var solution: Double?
     var performingMath = false
     
     @IBOutlet weak var outputLabel: UILabel!
     
-    override func viewDidLoad()/*(brain: CalculatorBrain?)*/ {
+    override func viewDidLoad() {
         super.viewDidLoad()
-//        init (brain: CalculatorBrain?)  {
-//            self.brain = brain
-//        }
+        
+        }
+   
+    init(brain: calculatorBrain?) {
+    self.brain = brain
+    
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+           
+
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
         switch sender.tag{
+            
+ //           brain = Double(label.text!)!
             
         case 1:
             outputLabel.text = "1"
@@ -76,22 +89,24 @@ class CalculatorViewController: UIViewController {
             outputLabel.text = "0"
         default:
             outputLabel.text = "0"
+            
         }
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
        // btn.showsButtonTappedWhenHighlighted = true
-         switch sender.tag{
+         
+        switch sender.tag {
              
-         case: OperatorType.addition
-            outputLabel.text = "+"
-         case: OperatorType.subtraction
+         case 10:
+             outputLabel.text = "+"
+         case 12:
              outputLabel.text = "-"
-         case: OperatorType.division
+         case 13:
              outputLabel.text = "÷"
-         case: OperatorType.multiplication
+         case 14:
              outputLabel.text = "×"
-        
+         
         }
     }
     
@@ -100,6 +115,8 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
+        clearTransaction()
+        
         
     }
     
@@ -108,4 +125,9 @@ class CalculatorViewController: UIViewController {
     private func clearTransaction() {
         
     }
+}
+
+
+func solutionString() {
+    
 }

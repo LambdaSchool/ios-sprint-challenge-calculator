@@ -44,16 +44,25 @@ class CalculatorBrain {
     
     func calculateIfPossible() -> String? {
         if operand1String != "" && operand2String != "" && operatorType != nil {
-            let doubleString1 = Double(operand1String)
-            let doubleString2 = Double(operand2String)
-            
-            switch operatorType {
-            case "+": doubleString1 + doubleString2
-            case "-": doubleString1 - doubleString2
-            case "×": doubleString1 * doubleString2
-            case "÷": doubleString1 / doubleString2
-                
-            }
+            if let unwrappedDoubleString1 = Double(operand1String) {
+                if let unwrappedDoubleString2 = Double(operand2String) {
+                    switch operatorType {
+                    case .addition: return String(unwrappedDoubleString1 + unwrappedDoubleString2)
+                    case .subtraction: return String(unwrappedDoubleString1 - unwrappedDoubleString2)
+                    case .multiplication: return String(unwrappedDoubleString1 * unwrappedDoubleString2)
+                    case .division:
+                        if Double(operand2String) != 0 {
+                            return String(unwrappedDoubleString1 / unwrappedDoubleString2)
+                        } else {
+                            return nil
+                        }
+                    case .none:
+                        return nil
+                    }
+                } else {return nil}
+            } else {return nil}
+        } else {
+            return nil
         }
     }
 }

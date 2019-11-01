@@ -13,9 +13,8 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
-        var brain = CalculatorBrain()
-        
         super.viewDidLoad()
+        brain = CalculatorBrain()
     }
     
     var brain: CalculatorBrain?
@@ -52,6 +51,7 @@ class CalculatorViewController: UIViewController {
     
     private func clearTransaction() {
         brain = nil
+        brain = CalculatorBrain()
     }
     
     

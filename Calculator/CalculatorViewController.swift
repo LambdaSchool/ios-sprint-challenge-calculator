@@ -13,6 +13,11 @@ class CalculatorViewController: UIViewController {
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Properties
     var brain: CalculatorBrain?
+    var numberFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Outlets
@@ -40,8 +45,8 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        if let solution = brain?.calculateIfPossible() {
-            outputLabel.text = solution
+        if let solution = brain?.calculateIfPossible(), let number = Double(solution) {
+            outputLabel.text = numberFormatter.string(from: NSNumber(value: number))
         }
         clearTransaction()
     }

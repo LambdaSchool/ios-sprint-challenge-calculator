@@ -136,4 +136,8 @@ class CalculatorBrain {
         let newValue = round((Double(value) ?? 0) * 100000000) / 100000000
         return newValue
     }
+    
+    func nextCalc(_ value: String) {
+        operand1String = value
+    }
 }

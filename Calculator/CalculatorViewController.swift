@@ -8,18 +8,28 @@
 
 import UIKit
 
-class CalculatorViewController: UIViewController {
+var brain: CalculatorBrain?
+
+class CalculatorViewController: UIViewController, CalculatorBrain {
     
     @IBOutlet weak var outputLabel: UILabel!
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
+        var calcBrain = brain
     }
     
     // MARK: - Action Handlers
     
-    @IBAction func operandTapped(_ sender: UIButton) {
-        
+    @IBAction func operandTapped(_ sender: UIButton)
+    {
+        if let number = sender.titleLabel?.text
+        {
+            let chosenNumber = Double(number) ?? 0.0
+            let convertedCalc = brain?.addOperandDigit(chosenNumber)
+            outputLabel.text = "\(convertedCalc)"
+        }
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {

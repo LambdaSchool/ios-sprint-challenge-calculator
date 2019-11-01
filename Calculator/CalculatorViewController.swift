@@ -26,9 +26,9 @@ class CalculatorViewController: UIViewController {
         if solutionDisplayed {
             clearTransaction()
         }
+        
         let operandDigit = sender.titleLabel?.text ?? "Error"
         outputLabel.text = brain?.addOperandDigit(operandDigit) ?? "Error"
-        
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
@@ -36,10 +36,10 @@ class CalculatorViewController: UIViewController {
         if solutionDisplayed {
             solutionDisplayed = false
         }
+        
         let operatorText = sender.titleLabel?.text ?? "Error"
         brain?.setOperator(operatorText)
         outputLabel.text = operatorText
-
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {

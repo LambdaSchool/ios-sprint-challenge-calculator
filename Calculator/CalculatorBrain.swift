@@ -27,6 +27,7 @@ class CalculatorBrain {
                 operand1String += digit
             }
             return operand1String
+            
         } else {
             if digit != "." || !operand2String.contains(".") {
                 operand2String += digit

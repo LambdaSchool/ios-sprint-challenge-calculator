@@ -46,6 +46,24 @@ class CalculatorBrain {
         
     }
     
+    func toggleNegative() -> String {
+        if operatorType == nil {
+            if operand1String.first == "-" {
+                operand1String.removeFirst()
+            } else {
+                operand1String = "-\(operand1String)"
+            }
+            return operand1String
+        } else {
+            if operand2String.first == "-" {
+                operand2String.removeFirst()
+            } else {
+                operand2String = "-\(operand2String)"
+            }
+            return operand2String
+        }
+    }
+    
     func calculateIfPossible() -> String? {
         if operand1String.isEmpty || operand2String.isEmpty { return nil}
         if operatorType == nil { return nil }
@@ -56,13 +74,13 @@ class CalculatorBrain {
         let solution: Double
         
         switch operatorType {
-        case .addition:
+        case .addition?:
             solution = operand1 + operand2
-        case .subtraction:
+        case .subtraction?:
             solution = operand1 - operand2
-        case .multiplication:
+        case .multiplication?:
             solution = operand1 * operand2
-        case .division:
+        case .division?:
             if operand2 == 0 { return nil}
             solution = operand1 / operand2
         default:

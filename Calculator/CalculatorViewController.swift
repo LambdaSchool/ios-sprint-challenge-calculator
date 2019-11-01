@@ -53,6 +53,13 @@ class CalculatorViewController: UIViewController {
         outputLabel.text = "0"
     }
     
+    @IBAction func toggleNegativeTapped(_ sender: Any) {
+        if solutionDisplayed {
+            solutionDisplayed = false
+        }
+        outputLabel.text = brain?.toggleNegative()
+    }
+    
     // MARK: - Private
     
     private func clearTransaction() {

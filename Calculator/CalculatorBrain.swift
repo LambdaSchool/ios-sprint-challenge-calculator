@@ -67,6 +67,13 @@ class CalculatorBrain {
         default:
             return nil
         }
-        return String(solution)
+        let solutionString: String
+        if floor(solution) == solution {
+            solutionString = "\(Int(solution))"
+        } else {
+            solutionString = "\(solution)"
+        }
+        
+        return solutionString
     }
 }

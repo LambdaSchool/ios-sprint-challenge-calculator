@@ -12,7 +12,7 @@ enum OperatorType: String {
     case addition = "+"
     case subtraction = "-"
     case division = "/"
-    case multiplication = "*"
+    case multiplication = "x"
 }
 
 class CalculatorBrain {
@@ -67,17 +67,6 @@ class CalculatorBrain {
         default:
             return nil
         }
-        let solutionString: String
-        if floor(solution) == solution {
-            solutionString = "\(Int(solution))"
-        } else {
-            solutionString = "\(solution)"
-        }
-        
-        operand1String = solutionString
-        operand2String = ""
-        operatorType = nil
-    
-        return solutionString
+        return String(solution)
     }
 }

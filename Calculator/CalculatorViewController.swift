@@ -9,6 +9,7 @@
 import UIKit
 
 var brain: CalculatorBrain?
+var solutionDisplayed: Bool = false
 
 class CalculatorViewController: UIViewController {
     
@@ -16,28 +17,35 @@ class CalculatorViewController: UIViewController {
     
     override func viewDidLoad() {
         brain = CalculatorBrain()
-        
         super.viewDidLoad()
     }
     
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        
-        guard let operandValue: String = sender.titleLabel?.text else {return}
-        
-        outputLabel.text = brain?.addOperandDigit(operandValue)
+        if solutionDisplayed {
+            clearTransaction()
+        }
+        let operandDigit = sender.titleLabel?.text ?? "Error"
+        outputLabel.text = brain?.addOperandDigit(operandDigit) ?? "Error"
         
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
         
-        
+        if solutionDisplayed {
+            solutionDisplayed = false
+        }
+        let operatorText = sender.titleLabel?.text ?? "Error"
+        brain?.setOperator(operatorText)
+        outputLabel.text = operatorText
 
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        let solution: String = brain?.calculateIfPossible() ?? "Error"
+        outputLabel.text = solution
+        solutionDisplayed = true
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
@@ -48,9 +56,7 @@ class CalculatorViewController: UIViewController {
     // MARK: - Private
     
     private func clearTransaction() {
-        
-    brain = nil
-    brain = CalculatorBrain()
-        
+        brain = CalculatorBrain()
+        solutionDisplayed = false
     }
 }

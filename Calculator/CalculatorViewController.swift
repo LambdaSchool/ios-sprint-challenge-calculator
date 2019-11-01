@@ -22,16 +22,31 @@ class CalculatorViewController: UIViewController {
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        guard let value = sender.titleLabel?.text else { return }
+        guard let value = sender.titleLabel?.text else {
+            return }
         outputLabel.text = brain?.addOperandDigit(value)
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        
+        guard let value = sender.titleLabel?.text else {
+            return }
+        brain?.setOperator(value)
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
+        guard let result = brain?.calculateIfPossible() else {
+            outputLabel.text = "Error"
+            return
+        }
         
+        let doubleValue = Double(result)
+        if doubleValue?.truncatingRemainder(dividingBy: 1.0) == 0 {
+            outputLabel.text = String(format: "%0.f", doubleValue!)
+        } else {
+            outputLabel.text = result
+        }
+        clearTransaction()
+        brain?.operand1String = outputLabel.text ?? ""
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {

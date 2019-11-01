@@ -10,6 +10,9 @@ import Foundation
 
 enum OperatorType: String {
     case addition = "+"
+    case subtraction = "-"
+    case multiplication = "x"
+    case division = "÷"
 }
 
 class CalculatorBrain {

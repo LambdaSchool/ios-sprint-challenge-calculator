@@ -28,23 +28,11 @@ class CalculatorBrain {
     }
     
     func setOperator(_ operatorString: String) {
-       let number = Double(operand1String)
-       let secondNumber = Double(operand2String)
+       
     }
     
     func calculateIfPossible() -> String? {
-        let number = Double(operand1String)
-        let secondNumber = Double(operand2String)
-        switch operatorType {
-        case .addition:
-            operand1String + operand2String
-        case .subtraction:
-            ("\(number - secondNumber")
-        case .multiply:
-            
-            
-        default:
-            <#code#>
-        }
+         
     }
 }
+

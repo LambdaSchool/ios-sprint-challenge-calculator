@@ -22,17 +22,17 @@ class CalculatorViewController: UIViewController {
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        let tag = (sender as! UIButton).tag
-        outputLabel.text = String(tag)
+        guard let tap = sender.titleLabel?.text else { return }
+        outputLabel.text = brain?.addOperandDigit(tap)
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        outputLabel.text = sender.currentTitle
-        
+        guard let oper = sender.titleLabel?.text else{ return }
+        outputLabel.text = brain?.setOperator(ope)
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        outputLabel.text = 
+         
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {

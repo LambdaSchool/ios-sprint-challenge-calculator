@@ -10,10 +10,24 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
     
+
+    class CalculatorBrain {
+        var operand1 = ""
+        var operand2 = ""
+
+        }
+    let Brain = CalculatorBrain()
+    
+    
+    
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
+        CalculatorBrain {
+            init(operand1)
+        }
         super.viewDidLoad()
+        
     }
     
     // MARK: - Action Handlers

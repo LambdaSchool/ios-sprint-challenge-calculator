@@ -18,8 +18,7 @@ class CalculatorViewController: UIViewController {
         super.viewDidLoad()
         brain = CalculatorBrain()
     }
-    
-    // MARK: - Action Handlers
+        // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
         guard let value = sender.titleLabel?.text else {
@@ -53,7 +52,6 @@ class CalculatorViewController: UIViewController {
         clearTransaction()
         outputLabel.text = "0"
     }
-    
     // MARK: - Private
     
     private func clearTransaction() {

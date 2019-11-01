@@ -36,18 +36,7 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operatorTapped(_ sender: UIButton) {
         guard let sign = sender.titleLabel?.text else { return }
-        switch sign {
-        case "+":
-            brain?.setOperator("+")
-        case "−":
-            brain?.setOperator("−")
-        case "×":
-            brain?.setOperator("×")
-        case "÷":
-            brain?.setOperator("÷")
-        default:
-            break
-        }
+        brain?.setOperator(sign)
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {

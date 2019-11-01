@@ -10,9 +10,9 @@ import Foundation
 
 enum OperatorType: String {
     case addition = "+"
-    case subtraction = "-"
-    case multiplication = "*"
-    case division = "/"
+    case subtraction = "−"
+    case multiplication = "×"
+    case division = "÷"
 }
 
 class CalculatorBrain {
@@ -31,10 +31,29 @@ class CalculatorBrain {
     }
     
     func setOperator(_ operatorString: String) {
+        switch operatorString {
+        case "+": operatorType = OperatorType(rawValue: "+")
+        case "-": operatorType = OperatorType(rawValue: "-")
+        case "×": operatorType = OperatorType(rawValue: "×")
+        case "÷": operatorType = OperatorType(rawValue: "÷")
+        default: operatorType = nil
+        }
+        //revisit this after submitting
         
-    }
+    }//In setOperator, convert the operatorString into an instance of your OperatorType enum, and then assign it to your operatorType property.
     
     func calculateIfPossible() -> String? {
-        
+        if operand1String != "" && operand2String != "" && operatorType != nil {
+            let doubleString1 = Double(operand1String)
+            let doubleString2 = Double(operand2String)
+            
+            switch operatorType {
+            case "+": doubleString1 + doubleString2
+            case "-": doubleString1 - doubleString2
+            case "×": doubleString1 * doubleString2
+            case "÷": doubleString1 / doubleString2
+                
+            }
+        }
     }
 }

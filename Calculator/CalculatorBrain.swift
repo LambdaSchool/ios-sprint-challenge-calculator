@@ -91,4 +91,25 @@ class CalculatorBrain {
         }
         return nil
     }
+    
+   
+    
+    func togglePosNeg() -> String {
+        switch operatorType {
+        case nil:
+            operand1String = String((Double(operand1String) ?? 0) * -1)
+            let value = round((Double(operand1String) ?? 0) * 100000000) / 100000000
+            if value.rounded() == value {
+                return String(Int(value))
+            }
+            return operand1String
+        default:
+            operand2String = String((Double(operand2String) ?? 0) * -1)
+            let value = round((Double(operand2String) ?? 0) * 100000000) / 100000000
+            if value.rounded() == value {
+                return String(Int(value))
+            }
+            return operand2String
+        }
+    }
 }

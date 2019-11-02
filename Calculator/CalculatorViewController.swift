@@ -13,7 +13,7 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
-        brain = CalculatorBrain() 
+        brain = CalculatorBrain()
         super.viewDidLoad()
     }
     
@@ -25,6 +25,10 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
+        guard let sign = sender.titleLabel?.text else {return}
+        var op = OperatorType(rawValue:sign)
+        brain?.operatorType = op 
+        
         
     }
     

@@ -9,17 +9,19 @@
 import UIKit
 
 class CalculatorViewController: UIViewController {
-    
+    var brain: CalculatorBrain?
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
+        brain = CalculatorBrain() 
         super.viewDidLoad()
     }
     
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        
+        guard let operand = sender.titleLabel?.text else { return }
+        outputLabel.text = brain?.addOperandDigit(operand)
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {

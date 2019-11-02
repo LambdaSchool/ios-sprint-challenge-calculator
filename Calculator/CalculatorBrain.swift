@@ -114,19 +114,21 @@ class CalculatorBrain {
             
         case "÷":
             if let var1 = Double(operand1String), let var2 = Double(operand2String){
+                if var1 != 0 && var2 != 0 {
                                       return String(var1 / var2)}
+                else { return "Divide By Zero Error"}}
                        
             
             
         default:
-            return "Continue"
+            return "Error"
             
             
             
             
             
         }
-        return "Continue"}
+        return "Error"}
 
     
 }

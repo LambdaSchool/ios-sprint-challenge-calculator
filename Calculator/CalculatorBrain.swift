@@ -25,7 +25,42 @@ class CalculatorBrain {
             operand1String = operand1String + digit
             return operand1String}
             
-            operand2String = operand2String + digit
+            //operand2String = operand2String + digit
+            //return operand2String
+        
+        // add digit notation here
+        if operatorType == nil && digit == "." && operand1String == ""{
+                operand1String = operand1String + digit
+                return operand1String
+            }
+             
+            if operatorType == nil && operand1String != "" && operand1String != "."{
+                operand1String = operand1String + digit
+                return operand1String
+                
+            
+                
+            }
+            
+            
+            
+            
+            
+            if operatorType != nil && operand2String  == "" && digit == "." {
+                 operand2String = operand2String + digit
+                 return operand1String
+            }
+             
+            if operatorType != nil && operand2String == "" && digit != "."{
+                operand2String = operand2String + digit
+                return operand2String}
+                
+          
+            if operatorType != nil && operand2String != ""{
+                          operand2String = operand2String + digit
+                          return operand2String
+                      }
+            
             return operand2String
         }
     
@@ -37,7 +72,7 @@ class CalculatorBrain {
         var mul = OperatorType.multiplication.rawValue
         var sub = OperatorType.subtraction.rawValue
         switch operatorString{
-        case "x":
+        case "×":
             operatorType = OperatorType.multiplication
         
         case "÷":

@@ -8,126 +8,130 @@
 
 import UIKit
 
-enum operatorType: String {
+/* enum operatorType: String {
     case addition = "+"
     case subtraction = "-"
     case division = "÷"
     case multiplication = "×"
-}
+} */
 
 class calculatorBrain {
     var operand1String = ""
     var operand2String = ""
-    var operatorType: OperatorType?
+    var operatorType: String?
+    
+    init() {
+           print("Hello")
+           self.operatorType = nil
+           
+       }
     
     func addOperandDigit(_ digit: String) -> String {
-    //    if let _: OperatorType = .addition {
-            
-    //    }
+        if operatorType == nil {
+        operand1String += digit
+        return(operand1String)
+        } else { operand2String += digit
+        return(operand2String)
+        }
+        
     }
     
     func setOperator(_ operatorString: String) {
-        
+        operatorType = operatorString
+        return
+
     }
     
     func calculateIfPossible() -> String? {
-        
+        var solution: String = ""
+        print(operatorType)
+        if operatorType == "+" { print("1"); solution = String( (Int(operand1String) ?? 0) + (Int(operand2String) ?? 0)) }
+        else if operatorType == "−" { print("2"); solution = String( (Int(operand1String) ?? 0) - (Int(operand2String) ?? 0)) }
+        else if operatorType == "÷" { print("3"); solution = String( (Int(operand1String) ?? 0) / (Int(operand2String) ?? 0)) }
+        else if operatorType == "×" { print("4"); solution = String( (Int(operand1String) ?? 0) * (Int(operand2String) ?? 0)) }
+        print(solution)
+        return(solution)
+
+    }
+    
+    func clear () {
+       operand1String = ""
+       operand2String = ""
+        operatorType = nil
     }
 }
-
 class CalculatorViewController: UIViewController {
     
-    var brain: calculatorBrain?
-    var firstNumber: Double?
-    var solution: Double?
-    var performingMath = false
+    var brain: calculatorBrain? // This object will hold the                                         information related to the current                                calculation.
+
     
     @IBOutlet weak var outputLabel: UILabel!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        }
-   
-    init(brain: calculatorBrain?) {
-    self.brain = brain
-    
+        brain = calculatorBrain()
+        print(brain?.operand1String ?? 0)
+        outputLabel.text = "0"
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-           
-
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        switch sender.tag{
-            
- //           brain = Double(label.text!)!
-            
-        case 1:
-            outputLabel.text = "1"
-        case 2:
-            outputLabel.text = "2"
-        case 3:
-            outputLabel.text = "3"
-        case 4:
-            outputLabel.text = "4"
-        case 5:
-            outputLabel.text = "5"
-        case 6:
-            outputLabel.text = "6"
-        case 7:
-            outputLabel.text = "7"
-        case 8:
-            outputLabel.text = "8"
-        case 9:
-            outputLabel.text = "9"
-        case 0:
-            outputLabel.text = "0"
-        default:
-            outputLabel.text = "0"
-            
+     //   print(sender.currentTitle ?? 0)
+        outputLabel.text = brain?.addOperandDigit(sender.currentTitle ?? "0")
+        
+/*        if let text = sender.currentTitle {
+            if outputLabel.text == "0" {
+                outputLabel.text = text
+            } else {
+            outputLabel.text! += text
+              }
         }
-    }
+ */   }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-       // btn.showsButtonTappedWhenHighlighted = true
-         
-        switch sender.tag {
+ 
+        if let text = sender.currentTitle {
+      //   outputLabel.text == "0"
+         outputLabel.text = "0"
+            sender.alpha = 0.5
+            brain?.setOperator(sender.currentTitle ?? "")
+            
+ /*       switch (sender.tag) {
              
-         case 10:
+         case Int("+"):
              outputLabel.text = "+"
-         case 12:
+         case Int("-"):
              outputLabel.text = "-"
-         case 13:
+         case Int("÷"):
              outputLabel.text = "÷"
-         case 14:
+         case Int("×"):
              outputLabel.text = "×"
-         
-        }
+         default: ""
+  */      }
+     
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
+        
+        outputLabel.text = brain?.calculateIfPossible()
         
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
         clearTransaction()
-        
-        
     }
     
     // MARK: - Private
     
     private func clearTransaction() {
-        
+        outputLabel.text = "0"
+        brain?.clear()
+  /*      operand1String = nil
+        operand2String = nil
+        operatorType: operatorType?
+   */
     }
 }
 
-
-func solutionString() {
-    
-}

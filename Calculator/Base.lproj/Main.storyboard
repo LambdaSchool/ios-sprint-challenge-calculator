@@ -202,7 +202,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="operandTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="42H-gm-gd4"/>
+                                    <action selector="operandTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UFJ-UO-2Tm"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJt-6I-8i7">
@@ -313,7 +313,18 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="dot" destination="nJt-6I-8i7" id="8yd-ML-aXr"/>
+                        <outlet property="eight" destination="wxe-YO-Gop" id="UQF-DS-uuw"/>
+                        <outlet property="five" destination="zf0-mx-Vhe" id="0AR-Zl-1Be"/>
+                        <outlet property="four" destination="3B2-Tk-tD1" id="hjC-6u-a2P"/>
+                        <outlet property="nine" destination="NFD-Ph-Ao4" id="bvx-vm-MFs"/>
+                        <outlet property="one" destination="MkY-da-amI" id="PBC-Va-vT8"/>
                         <outlet property="outputLabel" destination="Hia-YG-WK6" id="CvC-hV-gVd"/>
+                        <outlet property="seven" destination="kzT-Ds-vbM" id="mes-df-Xfn"/>
+                        <outlet property="six" destination="28A-R7-JFc" id="i3g-1N-PZ5"/>
+                        <outlet property="three" destination="3mI-4y-c7D" id="3lg-87-V2w"/>
+                        <outlet property="two" destination="Toa-Nt-egq" id="GNu-YO-S7Y"/>
+                        <outlet property="zero" destination="quu-aJ-s53" id="DBM-qZ-Rjw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

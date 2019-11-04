@@ -11,46 +11,49 @@ import UIKit
 class CalculatorViewController: UIViewController {
     
 
-    class CalculatorBrain {
-        var operand1 = ""
-        var operand2 = ""
+    var brain: CalculatorBrain?
 
-        }
-    let Brain = CalculatorBrain()
+    
     
 //    is this saying i made an change
 //    
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
-        CalculatorBrain {
-            init(operand1)
-        }
         super.viewDidLoad()
-        
+        brain = CalculatorBrain()
     }
     
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        
+        guard let tap = sender.titleLabel?.text else { return }
+        print(tap)
+        outputLabel.text = brain?.addOperandDigit(tap)
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
+        guard let operator1 = sender.titleLabel?.text else { return }
+        brain?.setOperator(operator1)
         
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        if let solution = brain?.calculateIfPossible() {
+        outputLabel.text = solution
+        clearTransaction()
+        }
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
-        
+        clearTransaction()
+        outputLabel.text = "0"
     }
     
     // MARK: - Private
     
     private func clearTransaction() {
-        
+        brain = nil
+        brain = CalculatorBrain()
     }
 }

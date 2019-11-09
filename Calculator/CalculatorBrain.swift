@@ -39,15 +39,40 @@ class CalculatorBrain {
     }
     
     func calculateIfPossible() -> String? {
+        if operand1String != "" && operand2String != "" {
+            guard let unwrappedOperator = operatorType else { return "Missing operator" }
+            guard let opera1 = Double(operand1String) else { return "Missing Operand 1" }
+            guard let opera2 = Double(operand2String) else { return "Missing operand 2" }
+       
+            switch unwrappedOperator {
+            case .addition:
+                return String(opera1 + opera2)
+            case .division:
+                if opera2 == 0 { return "Not possible to divide by zero"}
+                else { return String(opera1 / opera2) }
+            case .multiplication:
+                return String(opera1 * opera2)
+            case .subtraction:
+                return String(opera1 - opera2)
+            }
+        
+        }
+        return nil
     }
 }
 
-//In setOperator, convert the operatorString passed into this method into an instance of your OperatorType enum, and then assign it to your operatorType property.=====done
-//In calculateIfPossible, hopefully you can calculate an answer based on the data you've stored so far in the brain.
-//Start by checking that the two operand strings are not empty, as "" wouldn't turn into a valid number.
-//Then, check that the operatorType variable isn't nil, since you need a valid operator to perform the arithmetic.
-//Convert the two operand strings into Doubles.
-//With all that setup done, use the type you found in step 2 to decide which kind of arithmetic you'll perform on the operands. Since you have several possible codepaths and only want to execute one of them at runtime, a switch is likely a good choice here. 😉
+//
+//Stretch Problems (Optional)
+//
+//After finishing your required elements, you can push your work further. These goals may or may not be things you have learned in this module but they build on the material you just studied. Time allowing, stretch your limits and see if you can deliver on the following optional goals:
+//
+//Preventing multiple decimal points: operands should only allow a single decimal point to be entered. If the decimal button is tapped more than once per operand, the subsequent taps should be ignored.
+//Truncating decimal and trailing zeros: if the solution to the arithmetic expression is an integer, the display should not show the decimal point or any trailing zeros (1 + 2 = 3 rather than 3.0).
+//Implement +/- button: when tapped, the button should toggle positive/negative for the current operand.
+//Implement % button: when tapped, the current operand should have its decimal place moved 2 spaces to the left (50 becomes 0.5).
+
+
+
 //For each kind of arithmetic, use your two operand Doubles to perform either addition, subtraction, multiplication, or division (remember you can't divide-by-zero, so make sure to check for that before actually doing the math to avoid the app crashing. If you do encounter that, simply return "Error" for your answer).
 //Whatever your result is from the above arithmetic, return the answer as a String.
 //If you can't do the calculation because you're missing some piece of data, return nil.

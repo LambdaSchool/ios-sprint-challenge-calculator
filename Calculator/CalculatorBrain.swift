@@ -68,6 +68,30 @@ class CalculatorBrain {
         return result
     }
     
+    func changeSign() -> String {
+        var result: String!
+        if let _ = operatorType {
+            // We have an operator
+            if var doubleString = Double(operand2String) {
+                doubleString.negate()
+                result = String(doubleString)
+                operand2String = ""
+                operand2String.append(result)
+            }
+            
+        } else {
+            // We don't have an operator yet
+            if var doubleString = Double(operand1String) {
+                doubleString.negate()
+                result = String(doubleString)
+                operand1String = ""
+                operand1String.append(result)
+            }
+        }
+        return result
+        
+    }
+    
     func calculateIfPossible() -> String? {
         if operand1String != "" && operand2String != "" {
             if let operatorType = operatorType {

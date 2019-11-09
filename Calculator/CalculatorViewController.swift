@@ -59,6 +59,11 @@ class CalculatorViewController: UIViewController {
         outputLabel.text = brain.moveDecimal()
     }
     
+    @IBAction func signTapped(_ sender: UIButton) {
+        outputLabel.text = brain.changeSign()
+    }
+    
+    
     // MARK: - Private
     
     private func clearTransaction() {

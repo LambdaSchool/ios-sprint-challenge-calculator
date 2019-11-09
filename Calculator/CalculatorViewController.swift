@@ -29,10 +29,17 @@ class CalculatorViewController: UIViewController {
         }
         
     }
+//
+//    operatorTapped follows virtually the same flow as the operandTapped method. Go to the storyboard to see how this action is wired up as well. Unlike the IBAction method for operands, you'll need to call setOperator on your brain object. Note, that method doesn't return anything.
+
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        
+        if let operatorT = sender.titleLabel?.text {
+            brain?.setOperator(operatorT)
+        }
     }
+    
+    //    In equalTapped, hopefully the user has entered everything they need to complete a mathematical expression. From here, you'll need to call calculateIfPossible on your brain object. That method will return a solution string to be displayed in your outputLabel, but if you look at the return type, it's actually a String?. Meaning you'll need to use another if-let to ensure the value returned isn't nil before displaying it in the label.
     
     @IBAction func equalTapped(_ sender: UIButton) {
         
@@ -48,7 +55,9 @@ class CalculatorViewController: UIViewController {
     
     // MARK: - Private
     
+//    In clearTransaction, you need to reset the brain object. Meaning you need to throw away the existing transaction data and create a space for a new transaction to be stored. Look at the declaration of this property at the top of your class. What would be the most efficient way to "discard" and initialize a new calculation?
+    
     private func clearTransaction() {
-        
+    brain = nil
     }
 }

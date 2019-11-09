@@ -21,7 +21,15 @@ class CalculatorBrain {
     var operatorType: OperatorType?
     
     func addOperandDigit(_ digit: String) -> String {
-        
+        if let _ = operatorType {
+            // We have an operator
+            operand2String.append(digit)
+            return operand2String
+        } else {
+            // We don't have an opeator yet
+            operand1String.append(digit)
+            return operand1String
+        }
     }
     
     func setOperator(_ operatorString: String) {
@@ -29,6 +37,6 @@ class CalculatorBrain {
     }
     
     func calculateIfPossible() -> String? {
-        
+        return nil
     }
 }

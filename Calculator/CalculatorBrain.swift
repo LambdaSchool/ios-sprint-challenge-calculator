@@ -26,7 +26,7 @@ class CalculatorBrain {
             operand2String.append(digit)
             return operand2String
         } else {
-            // We don't have an opeator yet
+            // We don't have an operator yet
             operand1String.append(digit)
             return operand1String
         }
@@ -45,6 +45,27 @@ class CalculatorBrain {
         default:
             operatorType = nil
         }
+    }
+    
+    func moveDecimal() -> String {
+        var result: String!
+        if let _ = operatorType {
+            // We have an operator
+            if let doubleString = Double(operand2String) {
+                result = String(doubleString / 100.0)
+                operand2String = ""
+                operand2String.append(result)
+            }
+            
+        } else {
+            // We don't have an operator yet
+            if let doubleString = Double(operand1String) {
+                result = String(doubleString / 100.0)
+                operand1String = ""
+                operand1String.append(result)
+            }
+        }
+        return result
     }
     
     func calculateIfPossible() -> String? {

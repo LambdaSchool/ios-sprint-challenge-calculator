@@ -55,6 +55,9 @@ class CalculatorViewController: UIViewController {
         outputLabel.text = "0"
         
     }
+    @IBAction func percentTapped(_ sender: UIButton) {
+        outputLabel.text = brain.moveDecimal()
+    }
     
     // MARK: - Private
     

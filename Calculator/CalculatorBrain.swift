@@ -50,28 +50,54 @@ class CalculatorBrain {
     func calculateIfPossible() -> String? {
         if operand1String != "" && operand2String != "" {
             if let operatorType = operatorType {
-                // We have an operator
-                if let operand1 = Double(operand1String),
-                    let operand2 = Double(operand2String) {
-                    // We have doubles for our operands
-                    switch operatorType {
-                    case .addition:
-                        return String(operand1 + operand2)
-                    case .subtraction:
-                        return String(operand1 - operand2)
-                    case .multiplication:
-                        return String(operand1 * operand2)
-                    case .division:
-                        if operand2 == 0 {
-                            return "Error"
-                        } else {
-                            return String(operand1 / operand2)
+                if operand1String.contains(".") || operand2String.contains(".") {
+                    // We have an operator
+                            if let operand1 = Double(operand1String),
+                                let operand2 = Double(operand2String) {
+                                // We have doubles for our operands
+                                switch operatorType {
+                                case .addition:
+                                    return String(operand1 + operand2)
+                                case .subtraction:
+                                    return String(operand1 - operand2)
+                                case .multiplication:
+                                    return String(operand1 * operand2)
+                                case .division:
+                                    if operand2 == 0 {
+                                        return "Error"
+                                    } else {
+                                        return String(operand1 / operand2)
+                                    }
+                                }
+                            
+                            }
+                } else {
+                    // No decimal point
+                    
+                    // We have an operator
+                    if let operand1 = Int(operand1String),
+                        let operand2 = Int(operand2String) {
+                        // We have integers for our operands
+                        switch operatorType {
+                        case .addition:
+                            return String(operand1 + operand2)
+                        case .subtraction:
+                            return String(operand1 - operand2)
+                        case .multiplication:
+                            return String(operand1 * operand2)
+                        case .division:
+                            if operand2 == 0 {
+                                return "Error"
+                            } else {
+                                return String(operand1 / operand2)
+                            }
                         }
+                    
                     }
-                
                 }
-            } 
-        }
+                    }
+                }
+                
         return nil
     }
 }

@@ -68,12 +68,10 @@ class CalculatorBrain {
                             return String(operand1 / operand2)
                         }
                     }
-                } else {
-                    return nil
+                
                 }
-            } else {
-                return nil
-            }
+            } 
         }
+        return nil
     }
 }

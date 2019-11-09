@@ -52,7 +52,7 @@ class CalculatorBrain {
         if let _ = operatorType {
             // We have an operator
             if let doubleString = Double(operand2String) {
-                result = String(doubleString / 100.0)
+                result = (doubleString / 100.0).stringWithoutZeroFraction
                 operand2String = ""
                 operand2String.append(result)
             }
@@ -60,7 +60,7 @@ class CalculatorBrain {
         } else {
             // We don't have an operator yet
             if let doubleString = Double(operand1String) {
-                result = String(doubleString / 100.0)
+                result = (doubleString / 100.0).stringWithoutZeroFraction
                 operand1String = ""
                 operand1String.append(result)
             }
@@ -74,7 +74,7 @@ class CalculatorBrain {
             // We have an operator
             if var doubleString = Double(operand2String) {
                 doubleString.negate()
-                result = String(doubleString)
+                result = (doubleString).stringWithoutZeroFraction
                 operand2String = ""
                 operand2String.append(result)
             }
@@ -83,7 +83,7 @@ class CalculatorBrain {
             // We don't have an operator yet
             if var doubleString = Double(operand1String) {
                 doubleString.negate()
-                result = String(doubleString)
+                result = (doubleString).stringWithoutZeroFraction
                 operand1String = ""
                 operand1String.append(result)
             }
@@ -95,54 +95,33 @@ class CalculatorBrain {
     func calculateIfPossible() -> String? {
         if operand1String != "" && operand2String != "" {
             if let operatorType = operatorType {
-                if operand1String.contains(".") || operand2String.contains(".") {
-                    // We have an operator
-                            if let operand1 = Double(operand1String),
-                                let operand2 = Double(operand2String) {
-                                // We have doubles for our operands
-                                switch operatorType {
-                                case .addition:
-                                    return String(operand1 + operand2)
-                                case .subtraction:
-                                    return String(operand1 - operand2)
-                                case .multiplication:
-                                    return String(operand1 * operand2)
-                                case .division:
-                                    if operand2 == 0 {
-                                        return "Error"
-                                    } else {
-                                        return String(operand1 / operand2)
-                                    }
-                                }
-                            
-                            }
-                } else {
-                    // No decimal point
-                    
-                    // We have an operator
-                    if let operand1 = Int(operand1String),
-                        let operand2 = Int(operand2String) {
-                        // We have integers for our operands
-                        switch operatorType {
+                // We have an operator
+                if let operand1 = Double(operand1String),
+                    let operand2 = Double(operand2String) {
+                    // We have doubles for our operands
+                    switch operatorType {
                         case .addition:
-                            return String(operand1 + operand2)
+                            return (operand1 + operand2).stringWithoutZeroFraction
                         case .subtraction:
-                            return String(operand1 - operand2)
+                            return (operand1 - operand2).stringWithoutZeroFraction
                         case .multiplication:
-                            return String(operand1 * operand2)
+                            return (operand1 * operand2).stringWithoutZeroFraction
                         case .division:
                             if operand2 == 0 {
                                 return "Error"
                             } else {
-                                return String(operand1 / operand2)
+                                return (operand1 / operand2).stringWithoutZeroFraction
                             }
-                        }
-                    
                     }
                 }
-                    }
-                }
-                
+            }
+        }
         return nil
+    }
+}
+
+extension Double {
+    var stringWithoutZeroFraction: String {
+        return truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
     }
 }

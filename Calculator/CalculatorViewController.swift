@@ -42,7 +42,8 @@ class CalculatorViewController: UIViewController {
     //    In equalTapped, hopefully the user has entered everything they need to complete a mathematical expression. From here, you'll need to call calculateIfPossible on your brain object. That method will return a solution string to be displayed in your outputLabel, but if you look at the return type, it's actually a String?. Meaning you'll need to use another if-let to ensure the value returned isn't nil before displaying it in the label.
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        outputLabel.text = brain?.calculateIfPossible()
+        outputLabel.text =
+        brain?.calculateIfPossible()
     }
     
 //    n clearTapped, the user is requesting to start over with a brand new transaction, so the two following steps need to be added to "clear" your calculator:

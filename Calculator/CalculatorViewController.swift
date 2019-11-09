@@ -44,6 +44,7 @@ class CalculatorViewController: UIViewController {
     // MARK: - Private
     
     private func clearTransaction() {
-        
+        brain = nil
+        brain = CalculatorBrain()
     }
 }

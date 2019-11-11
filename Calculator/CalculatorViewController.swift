@@ -12,14 +12,19 @@ class CalculatorViewController: UIViewController {
     
     @IBOutlet weak var outputLabel: UILabel!
     
+    var brain: CalculatorBrain?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        brain = CalculatorBrain()
     }
     
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        
+        if let buttonTitle = self.title {
+            outputLabel.text = brain?.addOperandDigit(buttonTitle)
+        }
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {

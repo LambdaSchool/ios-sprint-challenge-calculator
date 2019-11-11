@@ -49,7 +49,8 @@ class CalculatorBrain {
             operatorType = .division
         case "x":
             operatorType = .multiplication
-        default
+        default:
+            break
             
         }
     }

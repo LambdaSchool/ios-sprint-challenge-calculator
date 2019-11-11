@@ -29,7 +29,25 @@ class CalculatorViewController: UIViewController {
     }
     @IBAction func operatorTapped(_ sender: UIButton) {
     
-       
+        guard let enteredValue = sender.titleLabel?.text else { return }
+        brain?.setOperator(enteredValue)
+        
+    }
+    
+    @IBAction func equalTapped(_ sender: UIButton) {
+        
+        guard let equationResult = brain?.calculateIfPossible() else {
+            outputLabel.text = ""
+            return
+        }
+        outputLabel.text = equationResult
+    }
+    
+    @IBAction func clearTapped(_ sender: UIButton) {
+        clearTransaction()
+        outputLabel.text = brain?.addOperandDigit("0")
+        
+    }
     
     // MARK: - Private
     

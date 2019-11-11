@@ -21,21 +21,21 @@ class CalculatorBrain {
     var operatorType: OperatorType?
     
     func addOperandDigit(_ digit: String) -> String {
-        if operatorType == nil {
-            operand1String = digit
-        } else {
-            operand2String = digit
+        guard operatorType == nil else {
+            operand2String.append(digit)
+            return operand2String
         }
-        return digit
+        operand1String.append(digit)
+        return operand1String
     }
     
     func setOperator(_ operatorString: String) {
         
     }
     
-//    func calculateIfPossible() -> String? {
-//
-//    }
+    func calculateIfPossible() -> String? {
+
+    }
     
 }
 

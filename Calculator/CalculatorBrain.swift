@@ -31,7 +31,7 @@ class CalculatorBrain {
     }
     
     func setOperator(_ operatorString: String) {
-        operatorType = operatorType(rawValue: operatorString)
+        operatorType = OperatorType(rawValue: operatorString)
         
     }
     

@@ -53,7 +53,7 @@ class CalculatorBrain {
                 case .division? : if secondOperand == 0 {
                     return "Error" // Can't divide by zero
                 } else {
-                    equation = String (firstOperand / secondOperand)
+                    equation = String(firstOperand / secondOperand)
                     }
                 default : return nil
                 }

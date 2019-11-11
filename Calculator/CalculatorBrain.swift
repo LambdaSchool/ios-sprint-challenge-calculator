@@ -72,6 +72,7 @@ class CalculatorBrain {
         }
         
         if result != nil {
+            result = removeDecimalIfInteger(result!)
             operand1String = result!
             operand2String = ""
             operatorType = nil
@@ -103,6 +104,7 @@ class CalculatorBrain {
         } else {
             return currentOperand
         }
+        result = removeDecimalIfInteger(result)
         
         if operatorType == nil {
             operand1String = result
@@ -111,6 +113,16 @@ class CalculatorBrain {
         }
         
         return result
+    }
+    
+    // MARK: - Private Helper Functions
+    
+    private func removeDecimalIfInteger(_ numericalString: String) -> String {
+        if numericalString.hasSuffix(".0") {
+            return String(numericalString.dropLast(2))
+        } else {
+            return numericalString
+        }
     }
     
 }

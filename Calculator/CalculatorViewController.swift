@@ -36,12 +36,13 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
-        
+        clearTransaction()
+        outputLabel.text = "0"
     }
     
     // MARK: - Private
     
     private func clearTransaction() {
-        
+        brain = CalculatorBrain()
     }
 }

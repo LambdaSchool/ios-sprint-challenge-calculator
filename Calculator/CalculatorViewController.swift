@@ -33,6 +33,16 @@ class CalculatorViewController: UIViewController {
         }
     }
     
+    @IBAction func unaryOperatorTapped(_ sender: UIButton) {
+        if let buttonTitle = sender.currentTitle, let result = brain?.calculateUnaryOperation(buttonTitle) {
+            if result.hasSuffix(".0") {
+                outputLabel.text = String(result.dropLast(2))
+            } else {
+                outputLabel.text = result
+            }
+        }
+    }
+    
     @IBAction func equalTapped(_ sender: UIButton) {
         if let result = brain?.calculateIfPossible() {
             if result.hasSuffix(".0") {

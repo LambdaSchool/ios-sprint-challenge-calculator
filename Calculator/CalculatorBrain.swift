@@ -15,6 +15,11 @@ enum OperatorType: String {
     case division = "÷"
 }
 
+enum UnaryOperatorType: String {
+    case negation = "+/-"
+    case percent = "%"
+}
+
 class CalculatorBrain {
     var operand1String = ""
     var operand2String = ""
@@ -59,6 +64,38 @@ class CalculatorBrain {
             }
         }
         return nil
+    }
+    
+    func calculateUnaryOperation(_ operationString: String) -> String {
+        var currentOperand: String
+        var result: String
+        
+        if operatorType == nil {
+            currentOperand = operand1String
+        } else {
+            currentOperand = operand2String
+        }
+        
+        guard currentOperand != "" else { return "0" }
+        
+        if let operand = Double(currentOperand) {
+            switch UnaryOperatorType(rawValue: operationString)! {
+            case .negation:
+                result = String(-operand)
+            case .percent:
+                result = String(operand / 100)
+            }
+        } else {
+            return currentOperand
+        }
+        
+        if operatorType == nil {
+            operand1String = result
+        } else {
+            operand2String = result
+        }
+        
+        return result
     }
     
 }

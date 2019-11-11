@@ -52,27 +52,29 @@ class CalculatorBrain {
             operand1String != "",
             operatorType != nil else {
                 print("No 1st/2nd operand or operator type")
-            return "Nothing to calculate"
+            return nil
         }
-        let operand1 = Double(operand1String)
-        let operand2 = Double(operand2String)
+      guard let operand1 = Double(operand1String),
+            let operand2 = Double(operand2String),
+            Double(operand2String) != 0 else {
+            
+            return "Error"
+        }
         
         switch operatorType {
         case .addition:
-            answer = operand1! + operand2!
+            answer = operand1 + operand2
         case .subtraction:
-            answer = operand1! - operand2!
+            answer = operand1 - operand2
         case .multiplication:
-            answer = operand1! * operand2!
+            answer = operand1 * operand2
         case .division:
-            answer = operand1! / operand2!
+            answer = operand1 / operand2
         default:
-            print("Cannot Compute")
+            return nil
         }
         
-        let result = String(answer)
-        
-     return result
+     return String(answer)
     }
     
 }

@@ -21,12 +21,13 @@ class CalculatorViewController: UIViewController {
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        let operandValuePressed = sender.titleLabel?.text ?? ""
-        outputLabel.text = brain?.addOperandDigit(operandValuePressed)
+        let operandValueTapped = sender.titleLabel?.text ?? ""
+        outputLabel.text = brain?.addOperandDigit(operandValueTapped)
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        
+        let operatorValueTapped = sender.titleLabel?.text ?? ""
+        brain?.setOperator(operatorValueTapped)
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {

@@ -17,7 +17,7 @@ class CalculatorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let newBrain: CalculatorBrain = brain else { return }
+        var newBrain = brain
         
             
         
@@ -27,13 +27,12 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operandTapped(_ sender: UIButton) {
         
-        brain?.operand1String = String(sender.tag)
-        outputLabel.text = brain?.addOperandDigit(brain!.operand1String)
         
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
         
+        brain?.setOperator(<#T##operatorString: String##String#>)
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {

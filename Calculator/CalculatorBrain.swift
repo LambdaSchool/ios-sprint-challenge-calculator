@@ -23,10 +23,6 @@ class CalculatorBrain {
     func addOperandDigit(_ digit: String) -> String {
         
         
-        
-        
-        
-        
         return digit
     }
     
@@ -35,6 +31,7 @@ class CalculatorBrain {
     }
     
     func calculateIfPossible() -> String? {
+        
         
     
     }

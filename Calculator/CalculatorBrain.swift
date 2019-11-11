@@ -30,15 +30,50 @@ class CalculatorBrain {
     }
     
     func setOperator(_ operatorString: String) {
-        
+
+        switch operatorString {
+        case OperatorType.addition.rawValue:
+            operatorType = .addition
+        case OperatorType.subtraction.rawValue:
+            operatorType = .subtraction
+        case OperatorType.multiplication.rawValue:
+        operatorType = .multiplication
+        case OperatorType.division.rawValue:
+            operatorType = .division
+        default:
+            print("Error setting operator")
+        }
     }
     
     func calculateIfPossible() -> String? {
-
+        var answer: Double = 0.00
+        
+        guard operand2String != "",
+            operand1String != "",
+            operatorType != nil else {
+                print("No 1st/2nd operand or operator type")
+            return "Nothing to calculate"
+        }
+        let operand1 = Double(operand1String)
+        let operand2 = Double(operand2String)
+        
+        switch operatorType {
+        case .addition:
+            answer = operand1! + operand2!
+        case .subtraction:
+            answer = operand1! - operand2!
+        case .multiplication:
+            answer = operand1! * operand2!
+        case .division:
+            answer = operand1! / operand2!
+        default:
+            print("Cannot Compute")
+        }
+        
+        let result = String(answer)
+        
+     return result
     }
     
 }
-
-
-
 

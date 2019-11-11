@@ -8,11 +8,15 @@
 
 import UIKit
 
+// Creating brain property of typee CalculatorBrain
+var brain: CalculatorBrain? = nil
+
 class CalculatorViewController: UIViewController {
     
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
+        var brainLoad = brain
         super.viewDidLoad()
     }
     
@@ -40,3 +44,6 @@ class CalculatorViewController: UIViewController {
         
     }
 }
+
+
+

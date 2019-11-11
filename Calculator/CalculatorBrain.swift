@@ -49,21 +49,35 @@ class CalculatorBrain {
         guard operand1String != "", operand2String != "" else { return nil }
         guard operatorType != nil else { return nil }
         
+        var result: String?
+        
         if let operand1 = Double(operand1String),
             let operand2 = Double(operand2String) {
             switch operatorType! {
             case .addition:
-                return String(operand1 + operand2)
+                result = String(operand1 + operand2)
             case .subtraction:
-                return String(operand1 - operand2)
+                result = String(operand1 - operand2)
             case .multiplication:
-                return String(operand1 * operand2)
+                result = String(operand1 * operand2)
             case .division:
-                guard operand2 != 0 else { return "Error" }
-                return String(operand1 / operand2)
+                guard operand2 != 0 else {
+                    operand1String = ""
+                    operand2String = ""
+                    operatorType = nil
+                    return "Error"
+                }
+                result = String(operand1 / operand2)
             }
         }
-        return nil
+        
+        if result != nil {
+            operand1String = result!
+            operand2String = ""
+            operatorType = nil
+        }
+        
+        return result
     }
     
     func calculateUnaryOperation(_ operationString: String) -> String {
@@ -76,6 +90,7 @@ class CalculatorBrain {
             currentOperand = operand2String
         }
         
+        guard currentOperand != "Error" else { return "Error" }
         guard currentOperand != "" else { return "0" }
         
         if let operand = Double(currentOperand) {

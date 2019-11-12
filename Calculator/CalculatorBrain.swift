@@ -53,12 +53,11 @@ class CalculatorBrain {
                         return "Error"
                     } else {
                         completedEquation = String(firstOperand / secondOperand)
-                    }
-                default :
+                    } default :
                     return nil
                 }
-                
             } else { return nil }
-            return completedEquation    }
+            return completedEquation
+        }
     }
 }

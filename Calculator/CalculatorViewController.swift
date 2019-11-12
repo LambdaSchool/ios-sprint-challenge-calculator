@@ -10,7 +10,7 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
     
-    var brain: CalculatorBrain?
+    var brain = CalculatorBrain()
     
     //Outlets
     @IBOutlet weak var outputLabel: UILabel!
@@ -20,23 +20,23 @@ class CalculatorViewController: UIViewController {
         
        brain = CalculatorBrain()
     }
-    var brainCalc = CalculatorBrain()
+    
     
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
         guard let goodNumber = sender.titleLabel?.text else  { return }
-            let number = brain?.addOperandDigit(goodNumber)
+            let number = brain.addOperandDigit(goodNumber)
             outputLabel.text = number
         }
 
     @IBAction func operatorTapped(_ sender: UIButton) {
         guard let goodNumber = sender.titleLabel?.text else { return }
-        brainCalc.setOperator(goodNumber)
+        brain.setOperator(goodNumber)
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        if let mathWorked = brain!.calculateIfPossible() {
+        if let mathWorked = brain.calculateIfPossible() {
             outputLabel.text = mathWorked
         }
     }

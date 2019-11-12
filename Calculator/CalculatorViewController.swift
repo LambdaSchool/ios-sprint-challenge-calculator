@@ -8,7 +8,6 @@
 
 import UIKit
 var brain: CalculatorBrain?
-
 class CalculatorViewController: UIViewController {
     
     @IBOutlet weak var outputLabel: UILabel!
@@ -22,25 +21,22 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operandTapped(_ sender: UIButton) {
         
-        guard let theNumber = sender.titleLabel?.text else {
+        outputLabel.text = ""
+        guard let theNumber = sender.titleLabel?.text! else {
             return
         }
-        print(theNumber)
+        outputLabel.text = outputLabel.text! + theNumber
         
-        if outputLabel.text == theNumber {
-            outputLabel.text = theNumber
-        } else if let text = String?(theNumber) {
-            outputLabel.text = ""
-            outputLabel.text = text
-        }
-        brain?.addOperandDigit(outputLabel.text!)
+    brain?.addOperandDigit(outputLabel.text!)
+        
+
         print(brain?.operand1String)
         print(brain?.operand2String)
     }
     
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-    
+        
         let theOperator = (sender.titleLabel?.text)!
         brain?.setOperator(theOperator)
         print(brain?.operatorType)
@@ -61,7 +57,7 @@ class CalculatorViewController: UIViewController {
         brain?.operand1String = ""
         brain?.operand2String = ""
         brain?.operatorType = OperatorType(rawValue: "")
-        outputLabel.text = ""
+        outputLabel.text = "0"
         
     }
     

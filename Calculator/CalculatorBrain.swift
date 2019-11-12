@@ -47,8 +47,8 @@ class CalculatorBrain {
     
     func calculateIfPossible() -> String? {
        
-        if operatorType != operatorType {
-            return ""
+        if brain == nil {
+            return "="
         } else {
         
         var doubleOperand1String = Double(operand1String)
@@ -63,8 +63,10 @@ class CalculatorBrain {
                 answer = doubleOperand1String! - doubleOperand2String!
             case .multiplication:
                 answer = doubleOperand1String! * doubleOperand2String!
-            default:
+            case .division:
                 answer = doubleOperand1String! / doubleOperand2String!
+            default:
+                answer = 0
             }
             let stringAnswer: String? = String(answer)
         return stringAnswer

@@ -49,8 +49,9 @@ class CalculatorBrain {
             return " "
         }
         
-        let doubleOperand1String = Double(operand1String)
-        let doubleOperand2String = Double(operand2String)
+        var doubleOperand1String = Double(operand1String)
+        var doubleOperand2String = Double(operand2String)
+        
         var answer: Double
             
             switch operatorType {

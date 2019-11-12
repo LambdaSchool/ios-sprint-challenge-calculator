@@ -16,6 +16,7 @@ class CalculatorViewController: UIViewController {
     
     override func viewDidLoad() {
         brain = CalculatorBrain()
+        outputLabel.text = " "
         super.viewDidLoad()
     }
     
@@ -57,10 +58,11 @@ class CalculatorViewController: UIViewController {
     // MARK: - Private
     
     private func clearTransaction() {
-        brain?.operand1String = " "
-        brain?.operand2String = " "
+        brain?.operand1String = ""
+        brain?.operand2String = ""
         brain?.operatorType = OperatorType(rawValue: "")
-        outputLabel.text = "0"
+        outputLabel.text = ""
+        
     }
     
 }

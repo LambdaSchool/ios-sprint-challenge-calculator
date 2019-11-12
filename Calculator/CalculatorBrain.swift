@@ -47,9 +47,9 @@ class CalculatorBrain {
     
     func calculateIfPossible() -> String? {
        
-        if operand1String == " " && operand2String == " " {
-            return " "
-        }
+        if operatorType != operatorType {
+            return ""
+        } else {
         
         var doubleOperand1String = Double(operand1String)
         var doubleOperand2String = Double(operand2String)
@@ -68,5 +68,6 @@ class CalculatorBrain {
             }
             let stringAnswer: String? = String(answer)
         return stringAnswer
+    }
     }
 }

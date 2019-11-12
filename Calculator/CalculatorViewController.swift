@@ -29,11 +29,10 @@ class CalculatorViewController: UIViewController {
         
         if outputLabel.text == theNumber {
             outputLabel.text = theNumber
-        } else if let text = outputLabel.text {
-            outputLabel.text = text + theNumber
-            outputLabel.text = outputLabel.text
+        } else if let text = String?(theNumber) {
+            outputLabel.text = ""
+            outputLabel.text = text
         }
-        
         brain?.addOperandDigit(outputLabel.text!)
         print(brain?.operand1String)
         print(brain?.operand2String)
@@ -62,7 +61,7 @@ class CalculatorViewController: UIViewController {
         brain?.operand1String = ""
         brain?.operand2String = ""
         brain?.operatorType = OperatorType(rawValue: "")
-        outputLabel.text = "0"
+        outputLabel.text = ""
         
     }
     

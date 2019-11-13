@@ -11,7 +11,9 @@ import UIKit
 class CalculatorViewController: UIViewController {
     /* Create a property called `brain` of type `CalculatorBrain`. This object will hold the information related to the current calculation. A basic calculation consists of 2 operands and an operator (e.g. 2, 4, and +, or 2 + 4). Set the variable to be optional and do _not_ give it an initial value. This variable will get set and re-set with each transaction, so it needs to be optional. */
     var brain: CalculatorBrain?
+    
     @IBOutlet weak var outputLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         /* In `viewDidLoad`, initialize a new `CalculatorBrain` object
@@ -20,11 +22,16 @@ class CalculatorViewController: UIViewController {
     }
 
     // MARK: - Action Handlers
-    @IBAction func operandTapped(_ sender: UIButton) {
+  @IBAction func operandTapped(_ sender: UIButton) {
         /* In `operandTapped`, go to the storyboard to see what buttons this action is connected to. Since it is connected to multiple buttons, you'll need to extract the `text` property from the button. It's likely going to require using the `if-let` technique to unwrap an optional. You should end up with a `String` which contains the text displayed on the button. This is the digit you need to add to your transaction. */
         if let operandString = sender.titleLabel?.text {
             /* Once you have the digit string, call `addOperandDigit` on your brain and pass in the digit string. That method returns the string you need to display on the screen, so assign the return value from that method to the `text` property of the `outputLabel`.*/
-             outputLabel.text = brain?.addOperandDigit(operandString)
+            /* Preventing multiple decimal points: operands should only allow a single decimal point to be entered. If the decimal button is tapped more than once per operand, the subsequent taps should be ignored. */
+            let outputLabelContainsDecimal = outputLabel.text?.contains(".")
+            let doubleDecimal: Bool! = (outputLabelContainsDecimal! && operandString == ".") ? true : false
+            if !doubleDecimal{
+                outputLabel.text = brain?.addOperandDigit(operandString)
+            }
         }
     }
     @IBAction func operatorTapped(_ sender: UIButton) {
@@ -36,8 +43,13 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func equalTapped(_ sender: UIButton) {
         /*  In `equalTapped`, hopefully the user has entered everything they need to complete a mathematical expression. From here, you'll need to call `calculateIfPossible` on your brain object. That method will return a solution string to be displayed in your `outputLabel`, but if you look at the return type, it's actually a `String?`. Meaning you'll need to use another `if-let` to ensure the value returned isn't `nil` before displaying it in the label. */
-        if let answerString = brain?.calculateIfPossible() {
-            outputLabel.text = answerString
+          if let result = brain?.calculateIfPossible(){
+            //account for chained calculations
+            clearTransaction()
+            outputLabel.text = result
+            //modify the operandString variables to chained calculations
+            brain?.operand1String += result
+            brain?.operand2String = ""
         }
     }
     

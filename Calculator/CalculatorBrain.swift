@@ -44,6 +44,14 @@ class CalculatorBrain {
             operatorType = selectedOperator
         }
     }
+    /*  Strech Goal: Truncating decimal and trailing zeros: if the solution to the arithmetic expression is an integer, the display should not show the decimal point or any trailing zeros (1 + 2 = 3 rather than 3.0).*/
+    func formatNumber(double: Double) -> String{
+        let roundedDouble = double.rounded(.towardZero)
+        if (double - roundedDouble) != 0{
+            return String(double)
+        }
+        return String(Int(double))
+    }
     /* In `calculateIfPossible`, hopefully you can calculate an answer based on the data you've stored so far in the brain.*/
     func calculateIfPossible() -> String? {
         /* Start by checking that the two operand strings are not empty, as `""` wouldn't turn into a valid number. Then, check that the `operatorType` variable isn't nil, since you need a valid operator to perform the arithmetic.*/
@@ -57,18 +65,18 @@ class CalculatorBrain {
             /* Whatever your result is from the above arithmetic, return the answer as a `String`.*/
             case .addition:
                let finalAnswerDouble = operand1Double + operand2Double
-               return String(finalAnswerDouble)
+               return formatNumber(double: finalAnswerDouble)
             case .subtraction:
                let finalAnswerDouble = operand1Double - operand2Double
-               return String(finalAnswerDouble)
+               return formatNumber(double: finalAnswerDouble)
             case .multiplication:
                let finalAnswerDouble = operand1Double * operand2Double
-               return String(finalAnswerDouble)
+               return formatNumber(double: finalAnswerDouble)
             case .division:
                 /* avoid dividing by zero*/
                 if operand2Double != 0 {
                     let finalAnswerDouble = operand1Double / operand2Double
-                    return String(finalAnswerDouble)
+                    return formatNumber(double: finalAnswerDouble)
                } else {
                     return "Error"
                }

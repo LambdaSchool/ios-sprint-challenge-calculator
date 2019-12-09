@@ -31,6 +31,18 @@ class Closures{
         guard operatorType == nil       else {return false}
         return true
     }
+    let missingOperand2: (String, String, OperatorType?) -> Bool = {
+        (operand1, operand2, selectedOperator) in
+        guard operand2 == "" else { return false }
+        if let op = selectedOperator{
+            if operand1 != ""{
+                return true
+                
+            }
+            
+        }
+        return false
+    }
     let operatorHasBeenSelected: (OperatorType?) -> Bool = {
           (selectedOperator) in
           if let _ = selectedOperator{

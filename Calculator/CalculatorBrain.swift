@@ -136,9 +136,9 @@ class CalculatorBrain: Closures {
     //calc
     func calculateIfPossible() -> String? {
         let result: String
-        let closures = Closures()
-        //case: "operand1","fn" // functions, coming soon
-        if closures.operand1AsFunctionX(operand1String, operand2String, selectedOperator, function){
+        let validCase: Bool = true
+        switch validCase{
+        case operand1AsFunctionX(operand1String, operand2String, selectedOperator, function):
             if var fn = function{
                 if fn.preview == true{
                 //use fn's last evaluatedresult as it's x (unless it's a y^x). Re-evaluate the total, update the function, return the result
@@ -149,16 +149,16 @@ class CalculatorBrain: Closures {
                     return "Error"
                 }
             }
-        }
-        //case: "1", "+"
-        if operand2String == "" && selectedOperator != nil{
-            //remove the last saved operator
+        //case: "operand1","fn" // functions, coming soon
+        case missingOperand2(operand1String, operand2String, selectedOperator):
             let op = expressionArray.removeLast()
             //and then use the expressionArray result as operand2
             operand2String = evaluate(expressionArray: expressionArray)
             //and then place back the operator
             expressionArray.append(op)
-        }
+        default:
+            break
+            }
         //the main job of =
         //1)is to place operand2 in expressionStack
         expressionArray.append(operand2String)

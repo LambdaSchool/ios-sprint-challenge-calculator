@@ -51,22 +51,21 @@ class CalculatorBrain: Closures {
         function = nil
     }
     func addOperandDigit(_ digit: String) -> String {
-        //case: Reset
-        if lastButtonPressedWasEqualButton(lastButtonPressed){
+        
+        let validTest: Bool = true
+        switch validTest{
+        case lastButtonPressedWasEqualButton(lastButtonPressed): //case: Reset
             softResetBrain()
-        }
-        //case: Add to operand1
-        if operatorHasBeenSelected(selectedOperator) {
+        case operatorHasBeenSelected(selectedOperator): //case: Add to operand2
             operand2String.append(digit)
             lastButtonPressed = .operandButtonForOperand2
             return operand2String
+        default:
+            break
         }
-        //case: Add to operand2
-        else{
-            operand1String.append(digit)
-            lastButtonPressed = .operandButtonForOperand1
-            return operand1String
-        }
+        operand1String.append(digit)    //add to operand1
+        lastButtonPressed = .operandButtonForOperand1
+        return operand1String
     }
     func updateExpression(){
         //update expressionString

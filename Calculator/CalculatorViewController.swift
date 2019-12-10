@@ -9,29 +9,42 @@
 import UIKit
 
 class CalculatorViewController: UIViewController {
+    var brain: CalculatorBrain?
+    
     
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        brain = CalculatorBrain()
+        
     }
     
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        
+        if let unwrappedText = sender.titleLabel?.text {
+            let response =  brain?.addOperandDigit(unwrappedText)
+            print(response)
+        }
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        
+        if let unwrappedText = sender.titleLabel?.text {
+            print(unwrappedText)
+        }
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        if let unwrappedText = sender.titleLabel?.text {
+            print(unwrappedText)
+        }
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
+        clearTransaction()
         
+        outputLabel.text = "0"
     }
     
     // MARK: - Private

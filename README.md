@@ -30,10 +30,11 @@ Here are the steps I took when working through the project:
 ### Operators:
 #### Displaying precedence total
 When there is a series of two operators used which have equal or less precedence, the precedence total will be displayed
-| Example       | Display           |
+
+| Example       | Result          |
 | ------------- |:-------------:| 
 | '1 + 1 +'      | Will display 2 at the + sig |
-| '1 x 2 x 2'      | Will display 2 at the second x sign |
+| '1 x 2 x 2'      | Will display 2 at the second x sign | |
 
 ### Operands:
 #### Resetting function previews.
@@ -41,7 +42,6 @@ When there is a series of two operators used which have equal or less precedence
 | ------------- |:-------------:| 
 | '5 + x^2'      | 30 |
 | '5 + x^2 + 5'      | 10 |
-
 ## Code
 1.  Language: Swift
 2.  Algorithms: To adhere to order or precedence, I used a Shunting Yards algorithm to evaluate a complete inputted expression
@@ -49,7 +49,7 @@ When there is a series of two operators used which have equal or less precedence
 
 ### Links:
 
-#### Studying the iPhone Calculator
+#### Studying the iPhone Calculator Bonus Work
 Inline-style: 
 ![alt text](<https://media.licdn.com/dms/image/C5622AQFy_s2oJD7Ksw/feedshare-shrink_2048_1536/0?e=1578528000&v=beta&t=AveDJE7Dqk0S2CVjnzwULdMP1tYuFIaHpTyxRiiZF_o>")
 

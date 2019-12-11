@@ -23,7 +23,7 @@ enum ButtonType{
 enum OperatorType: String {
     case addition = "+"
     case subtraction = "−"
-    case multiplication = "*"
+    case multiplication = "x"
     case division = "÷"
     var  precedence: Int {
           switch self{

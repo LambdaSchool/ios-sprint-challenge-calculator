@@ -8,16 +8,51 @@
 
 import UIKit
 
-class CalculatorViewController: UIViewController {
+class CalculatorViewController: UIViewController{
     // MARK: - IBOutlets
     @IBOutlet weak var outputLabel: UILabel!
+    @IBOutlet var buttonCollection: [UIButton]!
+    @IBOutlet var scientificCalculatorStackViews: [UIStackView]!
     
+    func updateButtons(){
+        for button in buttonCollection{
+//            button.frame.height = 50
+//            button.frame.width = 50
+            button.backgroundColor = .red
+        }
+    }
     var brain: CalculatorBrain?
     
     override func viewDidLoad() {
+        //force load in portrait
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
         super.viewDidLoad()
         brain = CalculatorBrain()
+        // Hide Scientific Calculator
+        hideScientificCalculator()
+        // Track orientation Change
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.adjustViewForOrientation), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
+//    deinit{
+//        NotificationCenter.default.removeObserver(
+//            self,
+//            name: UIDevice.orientationDidChangeNotification,
+//            object: nil)
+//    }
+    // Hide Scientific Calculator
+    @objc func hideScientificCalculator(){
+        for stackView in scientificCalculatorStackViews{
+            stackView.isHidden = true
+        }
+    }
+    // Hides scientific calculator buttons when in portrait orientaton
+//    @objc func adjustViewForOrientation(){
+//        let isInLandscapeOrientation = UIDevice.current.orientation.isLandscape
+//        for stackView in scientificCalculatorStackViews{
+//            stackView.isHidden = !isInLandscapeOrientation
+//        }
+//    }
 //Functions Coming Soon!
 //    @IBAction func functionTapped(_ sender: UIButton) {
 //        if let functionName = sender.titleLabel?.text {

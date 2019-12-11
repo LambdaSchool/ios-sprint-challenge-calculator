@@ -1,3 +1,59 @@
+# A Humble iPhone Calculator Rebuild
+#### Current version includes the Basic Calculator. Improvements and Scientific Calculator Feature coming to a repository in your browsing experiece soon!
+One of my favorite projects that I've worked on recently is a recreation of the iPhone Calculator by Apple. I was first tasked with building its basic solving logic for an assignment (below) from Lambda School, the programming school where I study iOS Development. I thought that it would be a great idea to work on the app some more. I thought it would be challenging but definitely doable, you know? A week in and all I can say is OH MY GOD!
+
+For this project, I shifted my focus from recreating the Apple's UI to mimicking Apple's logic in regards to the way the Calculator works and updates itself.
+
+Here are the steps I took when working through the project:
+
+## UI: Orientation, My First Focus
+* Orientation: I quickly schooled myself in Vary For Traits as I dove headfirst and into creating a grid of ~50 objects, all with constraints that update themselves. If that doesn't sound like a simple idea, that is completely right. With some ingenuity I was able to use a series of StackViews to create a seamless transition from Portrait Orientation to Landscape.
+
+## Scientific Buttons
+* After UI Buttons I went onto the scientific buttons, researching their formulas for evaluation
+
+## Studying the App
+* In order to recreate the App I spent a good deal of time creating test cases for each button. This is where the "OH MY GOD" part comes in because holy moly, was this an undertaking. Here is some of the iPhone Calculator logic/features I was able to reverse engineer through testing:
+### The '=' Button:
+
+| Case        | Example           | Result  |
+| ------------- |:-------------:| -----:|
+| Set Operand1 as Operand2      | '1 + =' | 2 |
+| Continue last calculation      | '1 + 2 ='      |   3 |
+|  |   '='    | 5   |
+|  |   '='    | 7  |
+|  |   '2x^2'    | 4   |
+|  |   '='    | 16   |
+|  |   '='    | 256  |
+| Act as closing parentheses      | '( 1 +2 + 3'      |   6 |
+
+### Operators:
+#### Displaying precedence total
+When there is a series of two operators used which have equal or less precedence, the precedence total will be displayed
+
+| Example       | Result          |
+| ------------- |:-------------:| 
+| '1 + 1 +'      | Will display 2 at the + sig |
+| '1 x 2 x 2'      | Will display 2 at the second x sign | |
+
+### Operands:
+#### Resetting function previews.
+| Example       | Result          |
+| ------------- |:-------------:| 
+| '5 + x^2'      | 30 |
+| '5 + x^2 + 5'      | 10 |
+## Code
+1.  Language: Swift
+2.  Algorithms: To adhere to order or precedence, I used a Shunting Yards algorithm to evaluate a complete inputted expression
+3.  Control Flow and Objects: Switch Cases, Closures, Enums, Classes and Structs are heavily used to organize the design of the code.  
+
+### Links:
+
+#### Studying the iPhone Calculator Bonus Work
+https://media.licdn.com/dms/image/C5622AQFy_s2oJD7Ksw/feedshare-shrink_2048_1536/0?e=1578528000&v=beta&t=AveDJE7Dqk0S2CVjnzwULdMP1tYuFIaHpTyxRiiZF_o
+
+Alt-Original README:
+======
 # Sprint Challenge: Swift Fundamentals - Calculator
 
 This challenge allows you to practice the concepts and techniques learned over the past week and apply them in a concrete project. This sprint provided an introduction to progamming in Swift. In your challenge this week, you will demonstrate proficiency by creating an application that performs basic arithmetic.

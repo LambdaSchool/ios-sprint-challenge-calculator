@@ -50,8 +50,7 @@ When there is a series of two operators used which have equal or less precedence
 ### Links:
 
 #### Studying the iPhone Calculator Bonus Work
-Inline-style: 
-![alt text](<https://media.licdn.com/dms/image/C5622AQFy_s2oJD7Ksw/feedshare-shrink_2048_1536/0?e=1578528000&v=beta&t=AveDJE7Dqk0S2CVjnzwULdMP1tYuFIaHpTyxRiiZF_o>")
+https://media.licdn.com/dms/image/C5622AQFy_s2oJD7Ksw/feedshare-shrink_2048_1536/0?e=1578528000&v=beta&t=AveDJE7Dqk0S2CVjnzwULdMP1tYuFIaHpTyxRiiZF_o
 
 Alt-Original README:
 ======

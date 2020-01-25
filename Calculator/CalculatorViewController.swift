@@ -33,6 +33,11 @@ class CalculatorViewController: UIViewController {
         }
     }
     
+    @IBAction func signTapped(_sender: UIButton) {
+        display = "\((Double.init(display) ?? 0.0) * -1)"
+        outputLabel.text = display
+    }
+    
     @IBAction func operatorTapped(_ sender: UIButton) {
         let button: String = sender.currentTitle ?? ""
         outputLabel.text = brain?.addOperandDigit(display)

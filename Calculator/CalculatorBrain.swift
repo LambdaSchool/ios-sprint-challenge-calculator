@@ -58,9 +58,9 @@ class CalculatorBrain {
         case .addition:
             result = (operand1 ?? 0.0) + (operand2 ?? 0.0)
         case .subtraction:
-            if operand2 !=0 {
+            if operand2 != 0 {
                 result = (operand1 ?? 0.0) - (operand2 ?? 0.0)
-            } else { return "Error"}
+            } else { return "Error" }
         case .multiplication:
             result = (operand1 ?? 0.0) * (operand2 ?? 0.0)
         case .division:

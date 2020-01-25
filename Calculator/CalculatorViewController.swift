@@ -25,7 +25,8 @@ class CalculatorViewController: UIViewController {
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        
+        if let OperatorType.addition
+        }
         
     }
     

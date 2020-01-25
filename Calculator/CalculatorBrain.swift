@@ -28,10 +28,10 @@ class CalculatorBrain {
             operand2String.append(contentsOf: digit)
             return operand2String
         }
-        
     }
     
     func setOperator(_ operatorString: String) {
+
         switch operatorString {
         case "+":
             operatorType = .addition
@@ -47,6 +47,31 @@ class CalculatorBrain {
     }
     
     func calculateIfPossible() -> String? {
+        
+        if !operand1String.isEmpty,
+            !operand2String.isEmpty,
+            let unwrapped1Operand = Double(operand1String),
+            let unwrapped2Operand = Double(operand2String),
+            let unwrappedOperatorType = operatorType {
+            
+            switch unwrappedOperatorType {
+            case .addition:
+                let additionAnswer = unwrapped1Operand + unwrapped2Operand
+                return String(additionAnswer)
+            case .subtraction:
+                let subtractionAnswer = unwrapped1Operand - unwrapped2Operand
+                return String(subtractionAnswer)
+            case .multiplication:
+                let multiplicationAnswer = unwrapped1Operand * unwrapped1Operand
+                return String(multiplicationAnswer)
+            case .division:
+                let divisionAnswer = unwrapped1Operand / unwrapped1Operand
+                return String(divisionAnswer)
+            }
+            
+        }
+        
+        
         return nil
     }
 }

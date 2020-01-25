@@ -40,11 +40,12 @@ class CalculatorViewController: UIViewController {
     @IBAction func operatorTapped(_ sender: UIButton) {
         if let unwrappedOperator = sender.titleLabel?.text {
             brain?.setOperator(unwrappedOperator)
+            outputLabel.text = unwrappedOperator
         }
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        outputLabel.text = brain?.calculateIfPossible()
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {

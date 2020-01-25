@@ -19,7 +19,7 @@ class CalculatorViewController: UIViewController {
     override func viewDidLoad() {
         brain = CalculatorBrain()
         super.viewDidLoad()
-        let anotherBrain = brain
+
     }
     
     // MARK: - Action Handlers

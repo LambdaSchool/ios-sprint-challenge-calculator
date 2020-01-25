@@ -25,11 +25,10 @@ class CalculatorViewController: UIViewController {
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        var text: String?
-        if let operand = text {
-            print(operand)
-        }
+        
+        
     }
+    
     
     @IBAction func operatorTapped(_ sender: UIButton) {
         

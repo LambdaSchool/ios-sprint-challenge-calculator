@@ -42,8 +42,6 @@ class CalculatorBrain {
     
     func calculateIfPossible() -> String? {
 
-        
-
         if !operand1String.isEmpty,
             !operand2String.isEmpty,
             let operatorType1 = operatorType,

@@ -51,6 +51,7 @@ class CalculatorViewController: UIViewController {
         if let answer = brain?.calculateIfPossible() {
 
             outputLabel.text = answer
+            // I think add something here to make the answer "operand1" also
         }
     }
     
@@ -61,6 +62,27 @@ class CalculatorViewController: UIViewController {
         outputLabel.text = "0"
         
     }
+    
+    @IBAction func percentTapped(_ sender: UIButton) {
+        if let outputLabelDouble = Double(outputLabel.text!) {
+            let percentDouble = outputLabelDouble * 0.01
+            let percentString = String(percentDouble)
+            clearTransaction()
+            return outputLabel.text = brain?.addOperandDigit(percentString)
+        }
+    }
+    
+  /*  @IBAction func signFlipperTapped(_ sender: UIButton) {
+     
+     //figure out input number name
+     // Multiply by negative
+     // replace input number
+     // update the output label
+     
+    }
+     
+     
+    */
     
     // MARK: - Private
     

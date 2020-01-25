@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class CalculatorViewController: UIViewController {
     
     @IBOutlet weak var outputLabel: UILabel!
@@ -15,14 +16,19 @@ class CalculatorViewController: UIViewController {
 
     
     //MARK: Life-Cycle
+    var brain: CalculatorBrain?
     override func viewDidLoad() {
-        super.viewDidLoad()
+        brain = CalculatorBrain()
+            super.viewDidLoad()
     }
     
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        
+        var text: String?
+        if let operand = text {
+            print(operand)
+        }
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {

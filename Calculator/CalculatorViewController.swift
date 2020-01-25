@@ -10,19 +10,17 @@ import UIKit
 
 
 
+
 class CalculatorViewController: UIViewController {
     
-    
-    
+
+    var brain: CalculatorBrain?
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let brain: CalculatorBrain?
         brain = CalculatorBrain()
-        
-        
         
     }
     
@@ -30,11 +28,14 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operandTapped(_ sender: UIButton) {
         
-        func getOperand() -> String {
-        if let unwrappedButtonTapped = title {
-            print(unwrappedButtonTapped)
-        }
-        }
+        if let unwrappedOperandTapped = sender.title(for: .normal) {
+            print(unwrappedOperandTapped)
+            brain?.addOperandDigit(unwrappedOperandTapped)
+        } else {
+            print("Not a valid operand")
+            }
+        
+
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {

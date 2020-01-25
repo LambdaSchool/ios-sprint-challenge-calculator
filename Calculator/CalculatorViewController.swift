@@ -24,6 +24,9 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operandTapped(_ sender: UIButton) {
         let button: String = sender.currentTitle ?? ""
+        if button == ".", display.contains(".") {
+            return
+        }
         if display == "" {
             display = "\(button)"
             outputLabel.text = display

@@ -25,14 +25,22 @@ class CalculatorBrain {
             if operand2String.contains("."), digit == "." {
                 return operand2String
             } else {
-                operand2String += digit
+                if digit == "+/-" {
+                   operand2String = changeNegPos(operand2String)
+                } else {
+                    operand2String += digit
+                }
                 return operand2String
             }
         } else {
             if operand1String.contains("."), digit == "." {
                 return operand1String
             } else {
-                operand1String += digit
+                if digit == "+/-" {
+                   operand1String = changeNegPos(operand1String)
+                } else {
+                    operand1String += digit
+                }
                 return operand1String
             }
         }
@@ -67,6 +75,15 @@ class CalculatorBrain {
             }
         } else {
             return nil
+        }
+    }
+    
+    func changeNegPos(_ number: String) -> String {
+        if var alternate = Double(number) {
+            alternate.negate()
+            return String(alternate)
+        } else {
+            return "Error"
         }
     }
 }

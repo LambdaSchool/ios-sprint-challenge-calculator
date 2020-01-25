@@ -47,16 +47,16 @@ class CalculatorBrain {
             if let operand1Double = Double(operand1String), let operand2Double = Double(operand2String) {
                 switch operatorType {
                 case .addition:
-                    return String(operand1Double + operand2Double)
+                    return String(format: "%g", (operand1Double + operand2Double))
                 case .subtraction:
-                    return String(operand1Double - operand2Double)
+                    return String(format: "%g", (operand1Double - operand2Double))
                 case .multiplication:
-                    return String(operand1Double * operand2Double)
+                    return String(format: "%g", (operand1Double * operand2Double))
                 case .division:
                     if operand2Double == 0 {
                         return "Error"
                     } else {
-                        return String(operand1Double / operand2Double)
+                        return String(format: "%g", (operand1Double / operand2Double))
                     }
                 default:
                     return nil

@@ -8,18 +8,33 @@
 
 import UIKit
 
+
+
 class CalculatorViewController: UIViewController {
+    
+    
     
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let brain: CalculatorBrain?
+        brain = CalculatorBrain()
+        
+        
+        
     }
     
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
         
+        func getOperand() -> String {
+        if let unwrappedButtonTapped = title {
+            print(unwrappedButtonTapped)
+        }
+        }
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {

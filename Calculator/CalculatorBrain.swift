@@ -13,7 +13,7 @@ enum OperatorType: String {
     case subtraction = "−"
     case multiplication = "×"
     case division = "÷"
-
+    
 }
 
 class CalculatorBrain {
@@ -22,50 +22,52 @@ class CalculatorBrain {
     var operatorType: OperatorType?
     
     func addOperandDigit(_ digit: String) -> String {
-        switch(operatorType){
-        case .addition:
-            operand2String.append(digit)
-        case .subtraction:
-            operand2String.append(digit)
-        case .multiplication:
-            operand2String.append(digit)
-        case .division:
-            operand2String.append(digit)
-        default:
+        if let mathOperator = operatorType {
             operand1String.append(digit)
+            return operand1String
+        } else {
+            operand2String.append(digit)
+            return operand2String
         }
-        return operand2String
+        
         
     }
     
     func setOperator(_ operatorString: String) {
-        operatorType = OperatorType(rawValue: operatorString)
+        if let sign = OperatorType(rawValue: operatorString) {
+            operatorType = sign
+            
+        }
     }
     
     func calculateIfPossible() -> String? {
-        var result: String
-        if operand1String != nil && operand2String != nil {
-            if operatorType != nil {
-                var num1 = Double(operand1String)
-                var num2 = Double(operand2String)
-                switch(operatorType) {
-                case .addition:
-                    result = num1 + num2
-                case .subtraction:
-                    result = num1 - num2
-                case .division:
-                    if let num2 == "0" {
-                        print("Error")
-                    } else {
-                    result = num1 / num2
-                    }
-                case .multiplication:
-                    result = num1 * num2
+        if operand1String != "", operand2String != "" {
+            guard let operatorType = operatorType, let num1 = Double(operand1String), let num2 = Double(operand2String) else { return "Error" }
+            switch(operatorType){
+            case .addition:
+                return String(num1+num2)
+            case .subtraction:
+                return String(round((num2-num1)*10)/10)
+            case .multiplication:
+                return String(num1*num2)
+            case .division:
+                if num1 == 0 {
+                    return "Error"
+                } else {
                     
+                    return String(num2/num1)
                 }
             }
-            
         }
-        return result
-    } 
+        return nil
+    }
+    
 }
+
+
+
+
+
+
+
+

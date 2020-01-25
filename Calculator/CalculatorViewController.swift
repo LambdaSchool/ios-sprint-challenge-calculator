@@ -28,27 +28,36 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operatorTapped(_ sender: UIButton) {
         if let operatorLabel = sender.titleLabel?.text {
-            outputLabel.text = brain?.setOperator(operatorLabel)
+            brain?.setOperator(operatorLabel)
         }
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        if let outputLabel.text != nil {
-            brain?.calculateIfPossible()
+        if let output = brain?.calculateIfPossible()  {
+            outputLabel.text = output
+            clearTransaction()
         }
+
+        
     }
+    
     
     @IBAction func clearTapped(_ sender: UIButton) {
         clearTransaction()
-               outputLabel.text = nil
-            
+        outputLabel.text = "0"
+        
+        
         
     }
     
     // MARK: - Private
     
     private func clearTransaction() {
-        brain = nil
+        brain = CalculatorBrain()
+        
+        
+        
+        
     }
     var brain: CalculatorBrain?
 }

@@ -71,6 +71,11 @@ class CalculatorBrain {
         operand1String = ""
         operand2String = ""
         operatorType = nil
-        return "\(result)"
+        result = (Double.rounded(result * 10000000)() / 10000000)
+        if "\(result)".hasSuffix(".0") {
+            return "\(Int.init(result))"
+        } else {
+            return "\(result)"
+        }
     }
 }

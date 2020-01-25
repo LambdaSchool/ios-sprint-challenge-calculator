@@ -42,7 +42,7 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func equalTapped(_ sender: UIButton) {
         display = brain?.addOperandDigit(display) ?? ""
-        outputLabel.text = (brain?.calculateIfPossible() ?? "0")
+        outputLabel.text = (brain?.calculateIfPossible() ?? display)
         display = ""
     }
     

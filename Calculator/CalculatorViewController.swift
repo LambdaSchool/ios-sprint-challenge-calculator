@@ -18,8 +18,8 @@ class CalculatorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let currentOperand = CalculatorBrain()
-        brain = currentOperand
+        brain = CalculatorBrain()
+
     }
     
     // MARK: - Action Handlers
@@ -39,7 +39,9 @@ class CalculatorViewController: UIViewController {
     @IBAction func operatorTapped(_ sender: UIButton) {
         guard let button = sender as? UIButton else { return }
         
-        brain?.setOperator(button.titleLabel?.text)
+        if let operatorText = button.titleLabel?.text {
+            brain?.setOperator(operatorText)
+        }
         
     }
     
@@ -61,5 +63,6 @@ class CalculatorViewController: UIViewController {
     private func clearTransaction() {
         brain?.operand1String = ""
         brain?.operand2String = ""
+        brain?.operatorType = nil
     }
 }

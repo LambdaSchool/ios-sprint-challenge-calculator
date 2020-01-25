@@ -22,11 +22,9 @@ class CalculatorBrain {
     
     func addOperandDigit(_ digit: String) -> String {
         if operatorType == nil {
-            operand1String.append(digit)
-            return operand1String
+            return operand1append(digit)
         } else {
-            operand2String.append(digit)
-            return operand2String
+            return operand2append(digit)
         }
     }
     
@@ -51,6 +49,24 @@ class CalculatorBrain {
         case .division:
             guard operand2 != 0 else { return "Error" }
             return "\(operand1 / operand2)"
+        }
+    }
+
+    func operand1append(_ digit: String) -> String {
+        if digit == "." && operand1String.contains(".") {
+            return operand1String
+        } else {
+            operand1String.append(digit)
+            return operand1String
+        }
+    }
+
+    func operand2append(_ digit: String) -> String {
+        if digit == "." && operand2String.contains(".") {
+            return operand2String
+        } else {
+            operand2String.append(digit)
+            return operand2String
         }
     }
 }

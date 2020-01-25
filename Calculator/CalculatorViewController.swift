@@ -38,6 +38,11 @@ class CalculatorViewController: UIViewController {
         outputLabel.text = display
     }
     
+    @IBAction func percentTapped(_ sender: UIButton) {
+        display = "\((Double.init(display) ?? 0.0) / 100)"
+        outputLabel.text = display
+    }
+    
     @IBAction func operatorTapped(_ sender: UIButton) {
         let button: String = sender.currentTitle ?? ""
         outputLabel.text = brain?.addOperandDigit(display)

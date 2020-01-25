@@ -67,6 +67,8 @@ class CalculatorBrain {
             case .division:
                 let divisionAnswer = unwrapped1Operand / unwrapped1Operand
                 return String(divisionAnswer)
+            default:
+                return "invalid"
             }
             
         }

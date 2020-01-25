@@ -31,7 +31,8 @@ class CalculatorBrain {
     }
     
     func setOperator(_ operatorString: String) {
-        
+        operatorType = OperatorType(rawValue: operatorString)
+        print(operatorType)
     }
     
     func calculateIfPossible() -> String? {

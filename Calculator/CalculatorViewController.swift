@@ -29,8 +29,9 @@ class CalculatorViewController: UIViewController {
     @IBAction func operandTapped(_ sender: UIButton) {
         
         if let unwrappedOperandTapped = sender.title(for: .normal) {
-            print(unwrappedOperandTapped)
+//            print(unwrappedOperandTapped)
             brain?.addOperandDigit(unwrappedOperandTapped)
+            outputLabel.text = unwrappedOperandTapped
         } else {
             print("Not a valid operand")
             }
@@ -47,12 +48,14 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
+        clearTransaction()
         
     }
     
     // MARK: - Private
     
     private func clearTransaction() {
-        
+        outputLabel.text = "_"
+        brain = CalculatorBrain()
     }
 }

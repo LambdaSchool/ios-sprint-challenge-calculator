@@ -28,19 +28,19 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operandTapped(_ sender: UIButton) {
         
-        if let unwrappedOperandTapped = sender.title(for: .normal) {
+        if let unwrappedOperandTapped = sender.titleLabel?.text {
 //            print(unwrappedOperandTapped)
-            brain?.addOperandDigit(unwrappedOperandTapped)
-            outputLabel.text = unwrappedOperandTapped
+//            brain?.addOperandDigit(unwrappedOperandTapped)
+            outputLabel.text = brain?.addOperandDigit(unwrappedOperandTapped)
         } else {
             print("Not a valid operand")
             }
-        
-
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        
+        if let unwrappedOperator = sender.titleLabel?.text {
+            brain?.setOperator(unwrappedOperator)
+        }
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {

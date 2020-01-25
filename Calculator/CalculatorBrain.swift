@@ -23,8 +23,12 @@ class CalculatorBrain {
     func addOperandDigit(_ digit: String) -> String {
         if operatorType == nil {
             operand1String.append(contentsOf: digit)
+            return operand1String
+        } else {
+            operand2String.append(contentsOf: digit)
+            return operand2String
         }
-        return ""
+        
     }
     
     func setOperator(_ operatorString: String) {

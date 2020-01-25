@@ -16,6 +16,8 @@ class CalculatorViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    var brain: CalculatorBrain = 
+    
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {

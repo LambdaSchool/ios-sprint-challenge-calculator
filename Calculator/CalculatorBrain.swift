@@ -12,7 +12,7 @@ enum OperatorType: String {
     case addition = "+"
     case subtraction = "-"
     case multiplication = "×"
-    case division = "/"
+    case division = "÷"
 }
 
 class CalculatorBrain {
@@ -43,15 +43,19 @@ class CalculatorBrain {
             var calculatedAnswer: String
             if let num1 = Double(operand1String), let num2 = Double(operand2String) {
                 // type-casting is done here
+                guard operatorType != nil else {
+                    print("0")
+                    return "0"
+                }
                 switch operatorType {
                 case .addition?:
                     calculatedAnswer = String(num1 + num2)
                 case .subtraction?:
-                    calculatedAnswer = String(num1 - num2)
+                    calculatedAnswer = String(num2 - num1)
                 case .multiplication?:
                     calculatedAnswer = String(num1 * num2)
                 case .division?:
-                    calculatedAnswer = String(num1 / num2)
+                    calculatedAnswer = String(num2 / num1)
                     
                 default: // I'm not gonna lie, I had nil } and had an error, so I tried that and it magically worked. Not sure if it's right? I've never seen that before.
                     

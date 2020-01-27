@@ -31,17 +31,8 @@ class CalculatorBrain {
     }
     
     func setOperator(_ operatorString: String) {
-        switch operatorString {
-        case "+":
-            operatorType = .addition
-        case "-":
-            operatorType = .subtract
-        case "÷":
-            operatorType = .divide
-        case "×":
-            operatorType = .multiple
-        default:
-            operatorType = nil
+        if let signs = OperatorType(rawValue: operatorString) {
+          return  operatorType = signs
         }
     }
 
@@ -54,8 +45,10 @@ class CalculatorBrain {
             return "\(operand1 + operand2)"
         case.subtract:
             return "\(operand1 - operand2)"
-        case.multiple
-            return "\(operand1 × operand2)"
+        case.multiple:
+            return "\(operand1 * operand2)"
+        case.divide:
+            return "\(operand1 / operand2 )"
         }
     }
 }

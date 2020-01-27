@@ -10,8 +10,8 @@ import Foundation
 
 enum OperatorType: String {
     case addition = "+"
-    case subtraction = "-"
-    case multiplication = "*"
+    case subtraction = "−"
+    case multiplication = "×"
     case division = "÷"
 }
 
@@ -33,7 +33,7 @@ class CalculatorBrain {
     }
     
     func setOperator(_ operatorString: String) -> String {
-        if operatorType != nil {
+        if operatorType == nil {
             switch OperatorType(rawValue: operatorString) {
             case .addition:
                 operatorType = OperatorType.addition

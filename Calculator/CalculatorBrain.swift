@@ -25,15 +25,15 @@ class CalculatorBrain {
         if operatorType == nil {
             operand1String = operand1String + digit
         } else if  operatorType != nil {
-                operand2String = operand2String + digit
-            }
+            operand2String = operand2String + digit
+        }
         let digitString = operand1String + "\(operatorType?.rawValue ?? "")" + operand2String
         
         return digitString
-        }
+    }
     
-    func setOperator(_ operatorString: String) -> String{
-        if operatorType == nil {
+    func setOperator(_ operatorString: String) -> String {
+        if operatorType != nil {
             switch OperatorType(rawValue: operatorString) {
             case .addition:
                 operatorType = OperatorType.addition

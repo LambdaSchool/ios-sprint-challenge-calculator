@@ -15,9 +15,8 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         brain = CalculatorBrain()
-        outputLabel.text = "0"
+        super.viewDidLoad()
     }
     
     // MARK: - Action Handlers
@@ -28,29 +27,31 @@ class CalculatorViewController: UIViewController {
         if brain.equal {
             clearTransaction()
         } else {
-       
-        outputLabel.text = brain.addOperandDigit(digit)
+            outputLabel.text = brain.addOperandDigit(digit)
             
         }
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        guard let operatorString = sender.titleLabel?.text else { return}
+        guard let operatorString = sender.titleLabel?.text else { return }
         outputLabel.text = brain?.setOperator(operatorString)
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        guard let _ = sender.currentTitle else { return }
+        brain?.equal = true
+        outputLabel.text = brain?.calculateIfPossible()
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
         clearTransaction()
-        outputLabel.text = "0"
     }
     
     // MARK: - Private
     
     private func clearTransaction() {
+        brain = nil
         outputLabel.text = "0"
+        brain = CalculatorBrain()
     }
 }

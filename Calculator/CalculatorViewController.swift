@@ -43,9 +43,14 @@ class CalculatorViewController: UIViewController {
         
     }
     
+clearTapped()
+
     // MARK: - Private
     
     private func clearTransaction() {
         
     }
+
+clearTransaction()
+
 }

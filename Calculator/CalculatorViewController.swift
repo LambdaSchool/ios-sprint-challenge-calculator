@@ -38,18 +38,33 @@ class CalculatorViewController: UIViewController {
         if oldValue != nil {
             brain?.operand1String = oldValue!
             oldValue = nil
-        } 
+        }
+        
+        if (sender.titleLabel?.text) != nil {
+            if let operandText1 = outputLabel.text {
+                brain?.operand1String = operandText1
+            }
+            brain?.setOperator((sender.titleLabel?.text ?? nil)!)
+        }
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        // call calculate if possible on brain object
+        if let equalValue = brain?.calculateIfPossible() {
+            outputLabel.text = equalValue
+            brain = CalculatorBrain()
+            if outputLabel.text == "0" {
+                oldValue = equalValue
+            } else {
+                oldValue = nil
+            }
+        }
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
         // call clearTransaction Method to initialize new calculation
         // reset outputLabel.text to blank
         clearTransaction()
-        oldValue = nil
         outputLabel.text = " "
     }
     

@@ -33,7 +33,7 @@ class CalculatorViewController: UIViewController {
 
     @IBAction func operatorTapped(_ sender: UIButton) {
         if let operatorText = sender.titleLabel?.text {
-             brain?.addOperandDigit(operatorText)
+            outputLabel.text = brain?.addOperandDigit(operatorText)
         }
         
     }

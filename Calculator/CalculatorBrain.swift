@@ -29,7 +29,7 @@ class CalculatorBrain {
         }
         return digit
     }
-
+//
 //    func setOperator(_ operatorString: String) {
 //        var operatorString = OperatorType.RawValue.self
 //            return operatorString

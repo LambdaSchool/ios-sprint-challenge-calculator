@@ -14,6 +14,8 @@ import UIKit
 class CalculatorViewController: UIViewController {
     
 
+    let button = UIButton(type: .system)
+    
     var brain: CalculatorBrain?
     @IBOutlet weak var outputLabel: UILabel!
     
@@ -21,6 +23,7 @@ class CalculatorViewController: UIViewController {
         super.viewDidLoad()
         
         brain = CalculatorBrain()
+        button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         
     }
     
@@ -28,7 +31,7 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operandTapped(_ sender: UIButton) {
         
-        if let unwrappedOperandTapped = sender.titleLabel?.text {
+        if let unwrappedOperandTapped = sender.currentTitle {
 //            print(unwrappedOperandTapped)
 //            brain?.addOperandDigit(unwrappedOperandTapped)
             outputLabel.text = brain?.addOperandDigit(unwrappedOperandTapped)
@@ -38,10 +41,14 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        if let unwrappedOperator = sender.titleLabel?.text {
+        if let unwrappedOperator = sender.currentTitle {
             brain?.setOperator(unwrappedOperator)
             outputLabel.text = unwrappedOperator
         }
+    }
+    
+    @objc func buttonTapped(_ button: UIButton) {
+        let title = button.currentTitle
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {

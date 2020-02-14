@@ -33,17 +33,18 @@ class CalculatorViewController: UIViewController {
 
     @IBAction func operatorTapped(_ sender: UIButton) {
         if let operatorText = sender.titleLabel?.text {
-             brain?.setOperator(operatorText)
+             brain?.addOperandDigit(operatorText)
         }
         
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-       
+      
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
        clearTransaction()
+        outputLabel.text = String(0)
     }
     
     // MARK: - Private

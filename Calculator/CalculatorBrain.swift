@@ -22,14 +22,20 @@ class CalculatorBrain {
     var operatorType: OperatorType?
     
     func addOperandDigit(_ digit: String) -> String {
+        if operatorType.self == OperatorType(rawValue: "") {
+            var digit = operand2String
+        } else {
+            var digit = operand1String
+        }
+        return digit
     }
-    
-    func setOperator(_ operatorString: String) {
-        var operatorString = OperatorType.RawValue.self
-            return operatorString 
-    }
-    
-    func calculateIfPossible() -> String? {
-        
-    }
+
+//    func setOperator(_ operatorString: String) {
+//        var operatorString = OperatorType.RawValue.self
+//            return operatorString
+//    }
+//    
+//    func calculateIfPossible() -> String? {
+//        
+//    }
 }

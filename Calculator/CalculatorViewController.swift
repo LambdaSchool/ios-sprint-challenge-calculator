@@ -12,18 +12,10 @@ class CalculatorViewController: UIViewController {
     
     // Outlets
     
-    
-    
-    
-    
-    
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
       
     }
     
@@ -43,6 +35,9 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operandTapped(_ sender: UIButton) {
         
+        let tag = (sender as! UIButton).tag
+        
+        outputLabel.text = String(tag - 1)
        
     }
     

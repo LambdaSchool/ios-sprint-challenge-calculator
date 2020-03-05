@@ -7,12 +7,15 @@
 //
 
 import Foundation
+import UIKit
+
 
 enum OperatorType: String {
     case addition = "+"
     case subtraction = "-"
     case multiplication = "*"
     case division = "/"
+    case notSelected
 }
 
 class CalculatorBrain {
@@ -35,7 +38,7 @@ class CalculatorBrain {
 //}
 //
 //func setOperator(_ operatorString: String) {
-//    
+//
 //}
 //
 //func calculateIfPossible() -> String? {

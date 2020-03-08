@@ -15,32 +15,61 @@ enum OperatorType: String {
     case subtraction = "-"
     case multiplication = "*"
     case division = "/"
-    case notSelected
 }
 
 class CalculatorBrain {
     var brain: Int?
     var operand1String = ""
     var operand2String = ""
+    var decimalIsSelected: Bool = false
     var operatorType: OperatorType?
+
+
+
     
-    init(brain: Int?, _ operand1String: String?, _ operand2String: String?, operatorType: OperatorType?) {
-        self.brain = brain
-        self.operand1String = operand1String!
-        self.operand2String = operand2String!
-        self.operatorType = operatorType
-    }
-    
+func addOperandDigit(_ digit: String) -> String {
+        if operatorType == nil {
+         if operand1String.contains(".") && digit == "." {
+             return operand1String
+         }
+         operand1String.append(digit)
+         return operand1String
+     } else {
+         if operand2String.contains(".") && digit == "." {
+             return operand2String
+         }
+         operand2String.append(digit)
+         return operand2String
+     }
 }
 
-//func addOperandDigit(_ digit: String) -> String {
-//    
-//}
-//
-//func setOperator(_ operatorString: String) {
-//
-//}
-//
-//func calculateIfPossible() -> String? {
-//
-//}
+func setOperator(_ operatorString: String) {
+    
+  operatorType = OperatorType(rawValue: operatorString)
+}
+
+    
+func calculateIfPossible() -> String? {
+    
+ if operatorType == nil || operand1String.isEmpty || operand2String.isEmpty {
+        return ""
+    } else {
+        var equation: String
+        if let firstOperand = Double(operand1String), let secondOperand = Double(operand2String) {
+            switch operatorType {
+                case .addition? : equation = String(firstOperand + secondOperand)
+                case .subtraction? : equation = String(firstOperand - secondOperand)
+                case .multiplication? : equation = String(firstOperand * secondOperand)
+                case .division? : if secondOperand == 0 {
+                    return "Error" // Can't divide by zero
+                } else {
+                    equation = String(firstOperand / secondOperand)
+                    }
+                default : return nil
+                }
+            } else { return nil}
+            return equation
+        }
+    }
+}
+

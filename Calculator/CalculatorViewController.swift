@@ -8,147 +8,80 @@
 
 import UIKit
 
+
 class CalculatorViewController: UIViewController {
     
     var brain: CalculatorBrain?
     
-    // Outlets
+    
     
     @IBOutlet weak var outputLabel: UILabel!
     
-    var outputLabelString: String = "0"
-    var operatorCurrentlySelected: OperatorType = .notSelected
-    var savedNum: Int = 0
-    var wasLastButtonSelectedOperator: Bool = false
-    
-    
-    func updateOutput() {
-        guard let labelInt: Int = Int(outputLabelString) else {
-            outputLabel.text = "0"
-            return
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        
-        if operatorCurrentlySelected == .notSelected {
-            savedNum = labelInt
-        }
-        
-        
-        let formatter: NumberFormatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        let num: NSNumber = NSNumber(value: labelInt)
-        
-        outputLabel.text = formatter.string(from: num)
+        self.brain = CalculatorBrain()
     }
+
     
     
+    @IBAction func positiveNegativeButtonTapped(_ sender: UIButton) {
+             switch brain?.operatorType {
+            case nil:
+                if brain?.operand1String == "" {
+                    break
+                } else {
+                let currentValue = brain?.operand1String
+                brain?.operand1String = ("-" + currentValue!)
+                outputLabel.text = brain?.operand1String
+            }
+            default: if brain?.operand2String == "" {
+                break
+            } else {
+                let currentValue = brain?.operand2String
+                brain?.operand2String = ("-" + currentValue!)
+                outputLabel.text = brain?.operand2String
+                }
+            }
+        }
     
-    func newOperatorSelected(newOperator: OperatorType) {
-           if savedNum == 0 {
-               return
-           }
-        
-        operatorCurrentlySelected = newOperator
-        wasLastButtonSelectedOperator = true
-    
-    }
-    
+ 
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        
-//        let tagToOperand = sender.tag - 1
-//
-//        guard let stringValue: String = String(tagToOperand) else {
-//                outputLabel.text = "0"
-//                return
-//            }
-//
-//            if wasLastButtonSelectedOperator {
-//                wasLastButtonSelectedOperator = false
-//                outputLabelString = "0"
-//            }
-//
-//            outputLabelString = outputLabelString.appending(stringValue)
-//            updateOutput()
-        
-        
-        guard let stringValue: String = sender.titleLabel?.text else {
-            outputLabel.text = "0"
-            return
+        if let operand = sender.titleLabel?.text {
+            outputLabel.text = brain?.addOperandDigit(operand)
         }
-        
-        if wasLastButtonSelectedOperator {
-            wasLastButtonSelectedOperator = false
-            outputLabelString = "0"
-        }
-        
-        outputLabelString = outputLabelString.appending(stringValue)
-        updateOutput()
-       
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
         
-        let tag = sender.tag
-        
-        if tag == 12 {
-            operatorCurrentlySelected = .division
-        } else if tag == 13 {
-            operatorCurrentlySelected = .multiplication
-        } else if tag == 14{
-            operatorCurrentlySelected = .subtraction
-        } else if tag == 15 {
-            operatorCurrentlySelected = .addition
+        if let operatorTypeTapped = sender.titleLabel?.text {
+            brain?.setOperator(operatorTypeTapped)
         }
-
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
-        guard let labelInt: Int = Int(outputLabelString) else {
-            outputLabel.text = "0"
-            return
+        if let calculatedResult = brain?.calculateIfPossible() {
+            outputLabel.text = calculatedResult
+        } else {
+            outputLabel.text = "Error"
         }
-        
-        if operatorCurrentlySelected == .notSelected || wasLastButtonSelectedOperator == true {
-            return
-        }
-        
-        if operatorCurrentlySelected == .addition {
-            savedNum += labelInt
-        } else if operatorCurrentlySelected == .subtraction {
-            savedNum -= labelInt
-        } else if operatorCurrentlySelected == .multiplication {
-            savedNum *= labelInt
-        } else if operatorCurrentlySelected == .division {
-            savedNum /= labelInt
-        }
-        
-        operatorCurrentlySelected = .notSelected
-        outputLabelString = "\(savedNum)"
-        updateOutput()
-        wasLastButtonSelectedOperator = true
-        
-    }
+}
+    
+
     
     @IBAction func clearTapped(_ sender: UIButton) {
         clearTransaction()
-        
+        outputLabel.text = "0"
     }
     
     // MARK: - Private
     
     private func clearTransaction() {
-        outputLabelString = "0"
-        operatorCurrentlySelected = .notSelected
-        savedNum = 0
-        wasLastButtonSelectedOperator = false
-        outputLabel.text = "0"
         
+        brain = nil
+        brain = CalculatorBrain()
+        outputLabel.text = "0"
     }
+
 }
-
-
-
-
-

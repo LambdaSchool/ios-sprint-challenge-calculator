@@ -12,9 +12,9 @@ import UIKit
 
 enum OperatorType: String {
     case addition = "+"
-    case subtraction = "-"
-    case multiplication = "*"
-    case division = "/"
+    case subtraction = "−"
+    case multiplication = "×"
+    case division = "÷"
 }
 
 class CalculatorBrain {
@@ -55,17 +55,22 @@ func calculateIfPossible() -> String? {
         return ""
     } else {
         var equation: String
-        if let firstOperand = Double(operand1String), let secondOperand = Double(operand2String) {
-            switch operatorType {
-                case .addition? : equation = String(firstOperand + secondOperand)
-                case .subtraction? : equation = String(firstOperand - secondOperand)
-                case .multiplication? : equation = String(firstOperand * secondOperand)
-                case .division? : if secondOperand == 0 {
-                    return "Error" // Can't divide by zero
+            if let firstOperand = Double(operand1String), let secondOperand = Double(operand2String) {
+                switch operatorType {
+                case .addition?:
+                    equation = String(firstOperand + secondOperand)
+                case .subtraction?:
+                    equation = String(firstOperand - secondOperand)
+                case .multiplication?:
+                    equation = String(firstOperand * secondOperand)
+                case .division?:
+                    if secondOperand == 0 {
+                    return "Error"
                 } else {
                     equation = String(firstOperand / secondOperand)
                     }
-                default : return nil
+                case .none:
+                    return nil
                 }
             } else { return nil}
             return equation

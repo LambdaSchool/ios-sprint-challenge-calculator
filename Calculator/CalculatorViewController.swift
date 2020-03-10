@@ -11,16 +11,14 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
     
-    var brain: CalculatorBrain?
-    
-    
-    
+
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.brain = CalculatorBrain()
+        let brain1 = CalculatorBrain()
+        brain = brain1
     }
 
     
@@ -61,11 +59,24 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        if let calculatedResult = brain?.calculateIfPossible() {
-            outputLabel.text = calculatedResult
-        } else {
-            outputLabel.text = "Error"
+        
+        if let _ = sender.titleLabel?.text {
+            if let calculate = brain?.calculateIfPossible() {
+                outputLabel.text = calculate
+                
+                clearTransaction()
+            }
         }
+        
+        
+        
+        
+        
+//        if let calculatedResult = brain?.calculateIfPossible() {
+//            outputLabel.text = calculatedResult
+//        } else {
+//            outputLabel.text = "Error"
+//        }
 }
     
 
@@ -81,7 +92,7 @@ class CalculatorViewController: UIViewController {
         
         brain = nil
         brain = CalculatorBrain()
-        outputLabel.text = "0"
+    
     }
-
+    var brain: CalculatorBrain?
 }

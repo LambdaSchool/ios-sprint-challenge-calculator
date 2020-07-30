@@ -42,6 +42,9 @@
                                 <state key="normal" title="+/-">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="posNegTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FMy-95-eEI"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CN3-UU-Yg4">
                                 <rect key="frame" x="187.5" y="112" width="94" height="111"/>
@@ -313,6 +316,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="btnAdd" destination="oQq-kD-HUk" id="4qP-Pp-FZn"/>
+                        <outlet property="btnDivide" destination="dUh-gN-rnS" id="D8G-m2-UG2"/>
+                        <outlet property="btnMultiply" destination="f71-ED-BNb" id="7Uf-Wy-mQs"/>
+                        <outlet property="btnSubtract" destination="MoP-Ww-Y4E" id="UAJ-gb-bu3"/>
                         <outlet property="outputLabel" destination="Hia-YG-WK6" id="CvC-hV-gVd"/>
                     </connections>
                 </viewController>

@@ -11,32 +11,51 @@ import UIKit
 class CalculatorViewController: UIViewController {
     
     @IBOutlet weak var outputLabel: UILabel!
-    
+	@IBOutlet weak var clearBtn: UIButton!
+	
+	var calculatorBrain: CalculatorBrain?
+//	var isOperatorSelected = false
+	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		calculatorBrain = CalculatorBrain()
     }
     
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
-        
+		guard let selectedOperand = sender.titleLabel?.text else { return }
+		
+		outputLabel.text = calculatorBrain?.addOperandDigit(selectedOperand)
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        
+		guard let selectedOperator = sender.titleLabel?.text else { return }
+        calculatorBrain?.setOperator(selectedOperator)
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+		guard let answer = calculatorBrain?.calculateIfPossible() else { return }
+		outputLabel.text = answer
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
-        
+        clearTransaction()
     }
-    
+	
+	@IBAction func invertTapped(_ sender: UIButton) {
+		outputLabel.text = calculatorBrain?.invertNumber()
+	}
+	
+	@IBAction func percentTapped(_ sender: UIButton) {
+		outputLabel.text = calculatorBrain?.convertToPercentage()
+	}
+	
     // MARK: - Private
     
     private func clearTransaction() {
-        
+		calculatorBrain = CalculatorBrain()
+		outputLabel.text = "0"
     }
 }

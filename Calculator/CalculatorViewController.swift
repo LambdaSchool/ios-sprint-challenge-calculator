@@ -10,33 +10,84 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
     
+    var brain: CalculatorBrain?
+    var lastButtonPressWasEquals = false
+    
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        brain = CalculatorBrain()
     }
     
     // MARK: - Action Handlers
     
     @IBAction func operandTapped(_ sender: UIButton) {
+        if lastButtonPressWasEquals {
+            clearTransaction()
+        }
+        lastButtonPressWasEquals = false
         
+        guard let operandString = sender.titleLabel!.text else {
+            print("Unable to get string from button title.")
+            return
+        }
+        
+        let outputText = brain?.addOperandDigit(operandString)
+        
+        outputLabel.text = outputText
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
+        lastButtonPressWasEquals = false
         
+        guard let operatorString = sender.titleLabel!.text else {
+            print("Unable to get string from button title.")
+            return
+        }
+        
+        brain?.setOperator(operatorString)
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        lastButtonPressWasEquals = true
+        if let result = brain?.calculateIfPossible() {
+            outputString(result)
+            brain?.operand1String = result
+        }
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
-        
+        lastButtonPressWasEquals = false
+        clearTransaction()
+        outputLabel.text = "0"
+    }
+    
+    @IBAction func negateTapped(_ sender: UIButton) {
+        if let negatedNumber = brain?.negate(lastButtonPressWasEquals) {
+            outputString(negatedNumber)
+        }
+    }
+    
+    @IBAction func percentTapped(_ sender: UIButton) {
+        if let percent = brain?.percent(lastButtonPressWasEquals) {
+            outputString(percent)
+        }
     }
     
     // MARK: - Private
     
     private func clearTransaction() {
-        
+        brain?.operand1String = ""
+        //brain?.operand2String = ""
+        brain?.operatorType = nil
+    }
+    
+    private func outputString(_ string: String) {
+        if string.suffix(2) == ".0" {
+            outputLabel.text = String(string.dropLast(2))
+        } else {
+            outputLabel.text = string
+        }
     }
 }

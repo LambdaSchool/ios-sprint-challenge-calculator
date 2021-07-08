@@ -9,34 +9,54 @@
 import UIKit
 
 class CalculatorViewController: UIViewController {
+    //    creating a property called Brain
+    var brain: CalculatorBrain?
     
     @IBOutlet weak var outputLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        brain = CalculatorBrain()
     }
+    //        initializing A New Calculator Brain, assign to above property
+    var calculatorBrain = CalculatorBrain()
+    
+    
     
     // MARK: - Action Handlers
     
-    @IBAction func operandTapped(_ sender: UIButton) {
-        
-    }
+    //     The function operandTapped is  extracting the Physical Text from the button that is tapped. using a if let statement helps with when the button is being tapped because it says If this button is pressed then this will happen.
     
+    @IBAction func operandTapped(_ sender: UIButton) {
+        guard let buttonText = sender.titleLabel?.text else {return}
+            outputLabel.text = calculatorBrain.addOperandDigit(buttonText)
+    }
     @IBAction func operatorTapped(_ sender: UIButton) {
-        
+        guard let buttonText = sender.titleLabel?.text else {return}
+            calculatorBrain.setOperator(buttonText)
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        if sender.currentTitle != nil {
+        let equalDisplayText = calculatorBrain.calculateIfPossible()
+            outputLabel.text = equalDisplayText
     }
-    
-    @IBAction func clearTapped(_ sender: UIButton) {
-        
     }
-    
-    // MARK: - Private
-    
-    private func clearTransaction() {
         
+    // Instructions when the clear button is tapped. brain will be nil or it will hold the value of operator string 1 and 2 and an operand symbol .
+    @IBAction func clearButtonTapped(_ sender: UIButton) {
+        clearTransaction()
+        outputLabel.text = "0"
     }
+    //      MARK: - PRIVATE
+    //The function created will reset the transaction to 0 once clear transaction function is called
+    //    creating a function looks like line 50
+   private func clearTransaction() {
+        //        calling a function looks like left side of 52 , calling function looks like right side of 52
+        calculatorBrain = CalculatorBrain()
+    }
+
 }
+    
+
+
